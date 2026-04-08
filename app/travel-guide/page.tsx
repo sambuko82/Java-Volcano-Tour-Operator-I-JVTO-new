@@ -38,157 +38,253 @@ export default function TravelGuide() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-brand-cream">
       <JsonLd data={guideSchema} />
       <Navbar />
       
       {/* Header */}
-      <section className="bg-brand-olive text-white pt-40 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-48 pb-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://picsum.photos/seed/guide/1920/1080"
+            alt="East Java Landscape"
+            fill
+            className="object-cover opacity-20 grayscale"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-cream via-brand-cream/90 to-brand-cream"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Travel Guide: The Rulebook Before You Book</h1>
-            <p className="text-xl text-stone-300">Operational certainty starts with being informed. Read our comprehensive guide to understand the boundaries, logistics, and safety protocols of East Java expeditions.</p>
+            <span className="inline-block px-4 py-1.5 bg-brand-olive/10 text-brand-olive rounded-full text-[10px] font-bold tracking-[0.3em] uppercase mb-6 shadow-sm">
+              Essential Knowledge
+            </span>
+            <h1 className="text-6xl md:text-[10rem] font-serif font-light leading-[0.9] text-brand-olive mb-10 tracking-tight">
+              Travel Guide: <br />
+              <span className="italic">The Rulebook</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-stone-600 font-light leading-relaxed max-w-2xl italic">
+              Operational certainty starts with being informed. Read our comprehensive guide to understand the boundaries, logistics, and safety protocols of East Java expeditions.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* The Rulebook Before You Book */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-32 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">The Rulebook Before You Book</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Our operational boundaries ensure your safety and clarity. We don&apos;t guess; we follow the rules.</p>
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-8xl font-serif font-light text-brand-olive mb-8 leading-[0.9] tracking-tight">The Rulebook <br /> <span className="italic">Before You Book</span></h2>
+            <div className="w-24 h-px bg-brand-olive/20 mx-auto mb-10"></div>
+            <p className="text-stone-600 max-w-2xl mx-auto font-light italic text-xl">Our operational boundaries ensure your safety and clarity. We don&apos;t guess; we follow the rules.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-10 rounded-3xl border border-stone-200 shadow-sm">
-              <ShieldCheck className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Safety Boundaries</h3>
-              <p className="text-stone-600 text-sm mb-6">We follow official PVMBG alerts without exception. If a site is closed, we do not enter. Safety is our non-negotiable boundary.</p>
-              <Link href="/verify-jvto" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Verify Our Authority <ArrowRight size={12} /></Link>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-stone-200 shadow-sm">
-              <Activity className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Health Requirements</h3>
-              <p className="text-stone-600 text-sm mb-6">Mandatory certified clinic checks for Ijen. You must be medically cleared for altitude and sulfur exposure. No fake letters.</p>
-              <Link href="/verify-jvto" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Read Health Proof <ArrowRight size={12} /></Link>
-            </div>
-            <div className="bg-white p-10 rounded-3xl border border-stone-200 shadow-sm">
-              <Scale className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Operational Control</h3>
-              <p className="text-stone-600 text-sm mb-6">We are the operator, not a broker. We control the vehicles, the guides, and the safety decisions from start to finish.</p>
-              <Link href="/why-jvto" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Why This Matters <ArrowRight size={12} /></Link>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Safety Boundaries",
+                desc: "We follow official PVMBG alerts without exception. If a site is closed, we do not enter. Safety is our non-negotiable boundary.",
+                link: "/verify-jvto",
+                linkText: "Verify Our Authority"
+              },
+              {
+                icon: Activity,
+                title: "Health Requirements",
+                desc: "Mandatory certified clinic checks for Ijen. You must be medically cleared for altitude and sulfur exposure. No fake letters.",
+                link: "/verify-jvto",
+                linkText: "Read Health Proof"
+              },
+              {
+                icon: Scale,
+                title: "Operational Control",
+                desc: "We are the operator, not a broker. We control the vehicles, the guides, and the safety decisions from start to finish.",
+                link: "/why-jvto",
+                linkText: "Why This Matters"
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group bg-white p-12 rounded-[3rem] border border-stone-100 shadow-sm hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500"
+              >
+                <div className="w-16 h-16 bg-brand-cream rounded-[1.5rem] flex items-center justify-center mb-10 group-hover:bg-brand-olive group-hover:text-white transition-all duration-500">
+                  <item.icon size={32} />
+                </div>
+                <h3 className="text-3xl font-serif font-light text-brand-olive mb-6">{item.title}</h3>
+                <p className="text-stone-600 font-light text-lg leading-relaxed mb-10 italic">{item.desc}</p>
+                <Link href={item.link} className="text-brand-olive font-bold text-[10px] uppercase tracking-[0.3em] flex items-center gap-2 group-hover:gap-4 transition-all duration-500">
+                  {item.linkText} <ArrowRight size={14} className="text-brand-orange" />
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Destination Guides (Logistics Focus) */}
-      <section className="py-24 bg-white">
+      <section className="py-40 bg-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Destination Guides</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Practical logistics for East Java&apos;s primary destinations.</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-5xl md:text-8xl font-serif font-light text-brand-olive mb-8 leading-[0.9] tracking-tight">Destination <br /> <span className="italic">Guides</span></h2>
+              <p className="text-stone-600 font-light text-2xl italic">Practical logistics for East Java&apos;s primary destinations.</p>
+            </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/travel-guide/ijen-health-screening" className="group bg-stone-50 p-10 rounded-3xl border border-stone-100 hover:shadow-xl transition-all">
-              <MapPin className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Ijen Crater Guide</h3>
-              <p className="text-stone-600 text-sm">Logistics for the blue fire, health screening requirements, and gas mask protocols.</p>
-            </Link>
-            <Link href="/travel-guide/mount-bromo-logistics" className="group bg-stone-50 p-10 rounded-3xl border border-stone-100 hover:shadow-xl transition-all">
-              <MapPin className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Mount Bromo Guide</h3>
-              <p className="text-stone-600 text-sm">Jeep logistics, sunrise timing, and altitude preparation for the Bromo caldera.</p>
-            </Link>
-            <Link href="/travel-guide/tumpak-sewu-logistics" className="group bg-stone-50 p-10 rounded-3xl border border-stone-100 hover:shadow-xl transition-all">
-              <MapPin className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Tumpak Sewu Guide</h3>
-              <p className="text-stone-600 text-sm">Trekking logistics, footwear requirements, and safety for the waterfall descent.</p>
-            </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                title: "Ijen Crater Guide",
+                desc: "Logistics for the blue fire, health screening requirements, and gas mask protocols.",
+                link: "/travel-guide/ijen-health-screening",
+                img: "https://picsum.photos/seed/ijen/800/600"
+              },
+              {
+                title: "Mount Bromo Guide",
+                desc: "Jeep logistics, sunrise timing, and altitude preparation for the Bromo caldera.",
+                link: "/travel-guide/mount-bromo-logistics",
+                img: "https://picsum.photos/seed/bromo/800/600"
+              },
+              {
+                title: "Tumpak Sewu Guide",
+                desc: "Trekking logistics, footwear requirements, and safety for the waterfall descent.",
+                link: "/travel-guide/tumpak-sewu-logistics",
+                img: "https://picsum.photos/seed/tumpak/800/600"
+              }
+            ].map((item, idx) => (
+              <Link key={idx} href={item.link} className="group relative aspect-[4/5] overflow-hidden rounded-[4rem] bg-stone-200 shadow-xl">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-olive via-brand-olive/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-12">
+                  <MapPin className="text-brand-orange mb-6" size={24} />
+                  <h3 className="text-4xl font-serif font-light text-white mb-4">{item.title}</h3>
+                  <p className="text-white/80 text-lg font-light leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-all duration-500 italic">{item.desc}</p>
+                  <div className="flex items-center gap-3 text-white font-bold text-[10px] uppercase tracking-[0.3em] group-hover:gap-5 transition-all duration-500">
+                    Read Guide <ArrowRight size={14} className="text-brand-orange" />
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Practical Preparation */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-40 bg-white rounded-[5rem] shadow-2xl shadow-brand-olive/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Practical Preparation</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Be prepared for the diverse climates and terrain of East Java.</p>
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-8xl font-serif font-light text-brand-olive mb-8 leading-[0.9] tracking-tight">Practical <br /> <span className="italic">Preparation</span></h2>
+            <p className="text-stone-600 max-w-2xl mx-auto font-light italic text-2xl">Be prepared for the diverse climates and terrain of East Java.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/travel-guide/packing-list" className="bg-white p-8 rounded-3xl border border-stone-100 text-center hover:shadow-xl transition-all">
-              <Luggage className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-4">What to Pack</h3>
-              <p className="text-stone-600 text-sm">Layered clothing, hiking shoes, headlamps, and personal medication. See our full list.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <Link href="/travel-guide/packing-list" className="group bg-brand-cream/30 p-12 rounded-[3rem] border border-stone-100 text-center hover:bg-brand-cream transition-all duration-500 hover:shadow-xl">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-10 shadow-sm group-hover:scale-110 transition-transform duration-500 text-brand-olive">
+                <Luggage size={40} />
+              </div>
+              <h3 className="text-3xl font-serif font-light text-brand-olive mb-6">What to Pack</h3>
+              <p className="text-stone-600 text-lg font-light leading-relaxed italic">Layered clothing, hiking shoes, headlamps, and personal medication. See our full list.</p>
             </Link>
-            <div className="bg-white p-8 rounded-3xl border border-stone-100 text-center">
-              <Thermometer className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-4">Altitude & Temperature</h3>
-              <p className="text-stone-600 text-sm">Bromo can drop to 0°C. Ijen is at 2,386m. Prepare for cold mornings and thin air.</p>
+            <div className="bg-brand-cream/30 p-12 rounded-[3rem] border border-stone-100 text-center">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-10 shadow-sm text-brand-olive">
+                <Thermometer size={40} />
+              </div>
+              <h3 className="text-3xl font-serif font-light text-brand-olive mb-6">Altitude & Temperature</h3>
+              <p className="text-stone-600 text-lg font-light leading-relaxed italic">Bromo can drop to 0°C. Ijen is at 2,386m. Prepare for cold mornings and thin air.</p>
             </div>
-            <div className="bg-white p-8 rounded-3xl border border-stone-100 text-center">
-              <Globe className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-4">Money & Connectivity</h3>
-              <p className="text-stone-600 text-sm">Cash is king in remote areas. SIM cards and Wi-Fi availability vary by location.</p>
+            <div className="bg-brand-cream/30 p-12 rounded-[3rem] border border-stone-100 text-center">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-10 shadow-sm text-brand-olive">
+                <Globe size={40} />
+              </div>
+              <h3 className="text-3xl font-serif font-light text-brand-olive mb-6">Money & Connectivity</h3>
+              <p className="text-stone-600 text-lg font-light leading-relaxed italic">Cash is king in remote areas. SIM cards and Wi-Fi availability vary by location.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Operational Certainty Checklist */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Operational Certainty Checklist</h2>
-            <p className="text-stone-600">Three steps to ensure your trip is built on authority, not guesswork.</p>
+      <section className="py-40 bg-brand-cream">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-8xl font-serif font-light text-brand-olive mb-8 leading-[0.9] tracking-tight">Operational <br /> <span className="italic text-brand-orange">Certainty Checklist</span></h2>
+            <p className="text-stone-600 text-2xl font-light italic">Three steps to ensure your trip is built on authority, not guesswork.</p>
           </div>
           
-          <div className="space-y-8">
-            <div className="flex gap-6 items-start">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">1</div>
-              <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Verify Your Operator</h3>
-                <p className="text-stone-600">Check for a real NIB license and police-led safety oversight. Don&apos;t book with unlicensed brokers.</p>
-              </div>
-            </div>
-            <div className="flex gap-6 items-start">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">2</div>
-              <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Verify Your Health</h3>
-                <p className="text-stone-600">Ensure you have a real medical check at a certified clinic for Ijen. Your safety depends on it.</p>
-              </div>
-            </div>
-            <div className="flex gap-6 items-start">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">3</div>
-              <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Verify Your Route</h3>
-                <p className="text-stone-600">Confirm your private logistics and safety decision boundaries. Know who makes the call if things change.</p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 gap-12">
+            {[
+              {
+                num: "01",
+                title: "Verify Your Operator",
+                desc: "Check for a real NIB license and police-led safety oversight. Don&apos;t book with unlicensed brokers."
+              },
+              {
+                num: "02",
+                title: "Verify Your Health",
+                desc: "Ensure you have a real medical check at a certified clinic for Ijen. Your safety depends on it."
+              },
+              {
+                num: "03",
+                title: "Verify Your Route",
+                desc: "Confirm your private logistics and safety decision boundaries. Know who makes the call if things change."
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="flex flex-col md:flex-row gap-12 md:items-center bg-white p-12 rounded-[4rem] border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-500"
+              >
+                <div className="text-8xl font-serif font-light text-brand-olive/5">{item.num}</div>
+                <div>
+                  <h3 className="text-4xl font-serif font-light text-brand-olive mb-4">{item.title}</h3>
+                  <p className="text-stone-600 font-light leading-relaxed text-xl italic">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <FAQSection items={guideFaqs} />
+      <div className="bg-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/5">
+        <FAQSection items={guideFaqs} />
+      </div>
 
       {/* Ready for Operational Certainty? */}
-      <section className="py-24 bg-brand-olive text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready for Operational Certainty?</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/tours" className="bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
+      <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="https://picsum.photos/seed/guide-cta/1920/1080"
+            alt="Background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <h2 className="text-5xl md:text-8xl font-serif font-light mb-16 leading-[0.9] tracking-tight">Ready for <br /> <span className="italic text-brand-orange">Operational Certainty?</span></h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            <Link href="/tours" className="bg-brand-orange text-white px-12 py-6 rounded-full font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-brand-olive transition-all shadow-xl shadow-brand-orange/20 flex items-center gap-4 duration-500">
               Explore Private Tours <ArrowRight size={20} />
             </Link>
-            <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
+            <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-12 py-6 rounded-full font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-white/20 transition-all duration-500">
               Verify JVTO
             </Link>
           </div>
@@ -198,4 +294,4 @@ export default function TravelGuide() {
       <Footer />
     </main>
   );
-}
+ }

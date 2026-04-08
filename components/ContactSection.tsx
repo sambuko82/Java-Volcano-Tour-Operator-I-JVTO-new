@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Send, CheckCircle2, MessageSquare, Phone, Mail, ShieldCheck, Activity } from 'lucide-react';
+import { Send, CheckCircle2, MessageSquare, Phone, Mail, ShieldCheck, Activity, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 
 export default function ContactSection() {
@@ -23,126 +23,133 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-stone-900 text-white overflow-hidden">
+    <section id="contact" className="py-32 bg-brand-ink text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           {/* Left Side: Trust & Info */}
-          <div className="space-y-12">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Ready to Start Your Journey?</h2>
-              <p className="text-stone-400 text-lg max-w-lg">
+          <div className="space-y-16">
+            <div className="space-y-8">
+              <div className="inline-block px-6 py-2 bg-white/5 rounded-full text-[10px] font-bold text-brand-accent uppercase tracking-[0.2em]">
+                Direct Connection
+              </div>
+              <h2 className="text-5xl md:text-7xl font-serif leading-tight">Ready to Start <br /> Your <span className="italic text-brand-accent">Journey?</span></h2>
+              <p className="text-white/50 text-lg font-light leading-relaxed max-w-lg">
                 Our team is ready to help you craft the perfect private itinerary. Whether you have a specific route in mind or need expert advice, we&apos;re just a message away.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-orange-500">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+              <div className="space-y-6">
+                <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-brand-accent">
                   <ShieldCheck size={24} />
-                  <span className="font-bold uppercase tracking-wider text-sm">Police-Led Safety</span>
                 </div>
-                <p className="text-stone-500 text-sm">Every Bromo tour is overseen by active tourist police officers for maximum security.</p>
+                <div>
+                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">Police-Led Safety</h4>
+                  <p className="text-white/60 text-sm font-light leading-relaxed">Every Bromo tour is overseen by active tourist police officers for maximum security.</p>
+                </div>
               </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-brand-olive">
+              <div className="space-y-6">
+                <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-brand-olive">
                   <Activity size={24} />
-                  <span className="font-bold uppercase tracking-wider text-sm">Medical Verification</span>
                 </div>
-                <p className="text-stone-500 text-sm">Official health screenings for Ijen routes, ensuring compliance with local regulations.</p>
+                <div>
+                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">Medical Verification</h4>
+                  <p className="text-white/60 text-sm font-light leading-relaxed">Official health screenings for Ijen routes, ensuring compliance with local regulations.</p>
+                </div>
               </div>
             </div>
 
-            <div className="pt-8 border-t border-white/10 space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-orange-500">
+            <div className="pt-12 border-t border-white/10 space-y-8">
+              <div className="flex items-center gap-6 group cursor-pointer">
+                <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all">
                   <Phone size={20} />
                 </div>
                 <div>
-                  <div className="text-xs text-stone-500 uppercase tracking-widest font-bold">WhatsApp Support</div>
-                  <div className="text-lg font-bold">{SITE_CONFIG.whatsapp.number}</div>
+                  <div className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-1">WhatsApp Support</div>
+                  <div className="text-xl font-serif">{SITE_CONFIG.whatsapp.number}</div>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-orange-500">
+              <div className="flex items-center gap-6 group cursor-pointer">
+                <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all">
                   <Mail size={20} />
                 </div>
                 <div>
-                  <div className="text-xs text-stone-500 uppercase tracking-widest font-bold">Email Inquiry</div>
-                  <div className="text-lg font-bold">{SITE_CONFIG.organization.email}</div>
+                  <div className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-1">Email Inquiry</div>
+                  <div className="text-xl font-serif">{SITE_CONFIG.organization.email}</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Side: Structured Form */}
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-12 text-stone-900 shadow-2xl relative">
+          <div className="bg-white rounded-[60px] p-10 md:p-16 text-brand-ink shadow-2xl relative">
             {status === 'success' ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="py-20 text-center space-y-6"
+                className="py-20 text-center space-y-8"
               >
-                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
-                  <CheckCircle2 size={40} />
+                <div className="w-24 h-24 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 size={48} />
                 </div>
-                <h3 className="text-3xl font-display font-bold">Inquiry Received</h3>
-                <p className="text-stone-600">Our team will contact you via {formData.contactMethod} within 24 hours.</p>
+                <h3 className="text-4xl font-serif">Inquiry Received</h3>
+                <p className="text-stone-500 font-light">Our team will contact you via {formData.contactMethod} within 24 hours.</p>
                 <button 
                   onClick={() => setStatus('idle')}
-                  className="text-brand-olive font-bold underline underline-offset-4"
+                  className="text-brand-olive font-bold uppercase tracking-widest text-xs underline underline-offset-8"
                 >
                   Send another inquiry
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-stone-400">Your Name</label>
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400 ml-4">Your Name</label>
                     <input 
                       required
                       type="text" 
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
                       placeholder="John Doe"
-                      className="w-full px-6 py-4 bg-stone-50 border border-stone-100 rounded-2xl focus:bg-white focus:border-orange-500 transition-all outline-none"
+                      className="w-full px-8 py-5 bg-stone-50 border border-stone-100 rounded-full focus:bg-white focus:border-brand-olive transition-all outline-none text-sm"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-stone-400">Email Address</label>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400 ml-4">Email Address</label>
                     <input 
                       required
                       type="email" 
                       value={formData.email}
                       onChange={e => setFormData({...formData, email: e.target.value})}
                       placeholder="john@example.com"
-                      className="w-full px-6 py-4 bg-stone-50 border border-stone-100 rounded-2xl focus:bg-white focus:border-orange-500 transition-all outline-none"
+                      className="w-full px-8 py-5 bg-stone-50 border border-stone-100 rounded-full focus:bg-white focus:border-brand-olive transition-all outline-none text-sm"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-stone-400">WhatsApp Number</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400 ml-4">WhatsApp Number</label>
                     <input 
                       type="tel" 
                       value={formData.whatsapp}
                       onChange={e => setFormData({...formData, whatsapp: e.target.value})}
                       placeholder="+62..."
-                      className="w-full px-6 py-4 bg-stone-50 border border-stone-100 rounded-2xl focus:bg-white focus:border-orange-500 transition-all outline-none"
+                      className="w-full px-8 py-5 bg-stone-50 border border-stone-100 rounded-full focus:bg-white focus:border-brand-olive transition-all outline-none text-sm"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-stone-400">Preferred Contact</label>
-                    <div className="flex gap-2">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400 ml-4">Preferred Contact</label>
+                    <div className="flex gap-3">
                       {['WhatsApp', 'Email'].map(method => (
                         <button
                           key={method}
                           type="button"
                           onClick={() => setFormData({...formData, contactMethod: method})}
-                          className={`flex-1 py-4 rounded-2xl font-bold text-sm transition-all ${
+                          className={`flex-1 py-5 rounded-full font-bold text-[10px] uppercase tracking-widest transition-all ${
                             formData.contactMethod === method 
-                              ? 'bg-stone-900 text-white shadow-lg' 
+                              ? 'bg-brand-ink text-white shadow-xl' 
                               : 'bg-stone-50 text-stone-400 border border-stone-100 hover:bg-stone-100'
                           }`}
                         >
@@ -153,47 +160,52 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-stone-400">Route Interest</label>
-                  <select 
-                    value={formData.tourType}
-                    onChange={e => setFormData({...formData, tourType: e.target.value})}
-                    className="w-full px-6 py-4 bg-stone-50 border border-stone-100 rounded-2xl focus:bg-white focus:border-orange-500 transition-all outline-none appearance-none"
-                  >
-                    <option>Custom / Not Sure</option>
-                    <option>Bromo Midnight (1D1N)</option>
-                    <option>Bromo & Ijen (3D2N)</option>
-                    <option>Full East Java Circuit (4D+)</option>
-                    <option>Family Safari Adventure</option>
-                  </select>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400 ml-4">Route Interest</label>
+                  <div className="relative">
+                    <select 
+                      value={formData.tourType}
+                      onChange={e => setFormData({...formData, tourType: e.target.value})}
+                      className="w-full px-8 py-5 bg-stone-50 border border-stone-100 rounded-full focus:bg-white focus:border-brand-olive transition-all outline-none appearance-none text-sm"
+                    >
+                      <option>Custom / Not Sure</option>
+                      <option>Bromo Midnight (1D1N)</option>
+                      <option>Bromo & Ijen (3D2N)</option>
+                      <option>Full East Java Circuit (4D+)</option>
+                      <option>Family Safari Adventure</option>
+                    </select>
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-stone-400">
+                      <ArrowRight size={16} className="rotate-90" />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-stone-400">Message</label>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-stone-400 ml-4">Message</label>
                   <textarea 
                     rows={4}
                     value={formData.message}
                     onChange={e => setFormData({...formData, message: e.target.value})}
                     placeholder="Tell us about your group size, travel dates, or any special requirements..."
-                    className="w-full px-6 py-4 bg-stone-50 border border-stone-100 rounded-2xl focus:bg-white focus:border-orange-500 transition-all outline-none resize-none"
+                    className="w-full px-8 py-6 bg-stone-50 border border-stone-100 rounded-[32px] focus:bg-white focus:border-brand-olive transition-all outline-none resize-none text-sm"
                   />
                 </div>
 
                 <button 
                   disabled={status === 'submitting'}
-                  className="w-full bg-orange-500 text-white py-5 rounded-2xl font-bold text-lg hover:bg-orange-600 transition-all shadow-xl shadow-orange-500/20 flex items-center justify-center gap-3 disabled:opacity-50"
+                  className="w-full bg-brand-olive text-white py-6 rounded-full font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-brand-olive/90 transition-all shadow-2xl shadow-brand-olive/20 flex items-center justify-center gap-4 disabled:opacity-50"
                 >
                   {status === 'submitting' ? (
                     <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
                     <>
-                      Submit Inquiry <Send size={20} />
+                      Submit Inquiry <Send size={18} />
                     </>
                   )}
                 </button>
                 
-                <p className="text-center text-xs text-stone-400">
-                  By submitting, you agree to our privacy policy and terms of service.
+                <p className="text-center text-[10px] font-bold uppercase tracking-widest text-stone-300">
+                  By submitting, you agree to our privacy policy.
                 </p>
               </form>
             )}

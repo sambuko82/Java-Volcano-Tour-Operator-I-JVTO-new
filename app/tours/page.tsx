@@ -4,13 +4,16 @@
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { Search, Filter, ShieldCheck, Users, Scale, ArrowRight, MapPin, Clock, Activity, Heart, Star } from 'lucide-react';
+import Image from 'next/image';
 import TourCard from '@/components/TourCard';
+import RouteSelector from '@/components/RouteSelector';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { TOURS } from '@/lib/jvtoData';
+import { CheckCircle2 } from 'lucide-react';
 
 const toursFaqs = [
   {
@@ -45,134 +48,111 @@ export default function ToursPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-brand-cream">
       <JsonLd data={toursSchema} />
       <Navbar />
       
-      {/* Header */}
-      <section className="bg-brand-olive text-white pt-40 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="https://javavolcano-touroperator.com/assets/img/hero/tours.webp"
+          alt="Private Tours"
+          fill
+          className="object-cover scale-105"
+          priority
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
+        <div className="relative z-10 text-center px-4 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
+            className="inline-flex items-center gap-3 bg-brand-olive/80 backdrop-blur-md border border-white/20 text-white px-8 py-3 rounded-full mb-10 text-[10px] font-bold tracking-[0.3em] uppercase shadow-xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Private East Java Tours: Surabaya & Bali Departures</h1>
-            <p className="text-xl text-stone-300">Hand-picked private experiences designed for safety, flexibility, and real local impact. Led by an active Tourist Police officer.</p>
+            <ShieldCheck size={14} className="text-brand-accent" /> Private Expedition Routes
           </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl md:text-9xl font-serif text-white mb-10 leading-[0.9] tracking-tight"
+          >
+            The Art of <br /> <span className="italic font-light text-brand-accent">Route Selection</span>
+          </motion.h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+            Optimized East Java logistics for private travelers. Select your origin, compare routes, and verify operational standards.
+          </p>
         </div>
       </section>
 
-      {/* Start Your Route: Choose Your Origin Hub */}
-      <section className="py-24 bg-stone-50">
+      {/* 1. Decision Selector (Route Selector) */}
+      <section id="selector" className="py-32 bg-white rounded-b-[64px] shadow-2xl shadow-brand-olive/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Start Your Route: Choose Your Origin Hub</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Select your starting point to see the most efficient private routes.</p>
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Find Your <span className="italic">Perfect Route</span></h2>
+            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Use our interactive selector to find the private tour that fits your schedule and adventure goals.</p>
+          </div>
+          <RouteSelector />
+        </div>
+      </section>
+
+      {/* 2. Route Comparison */}
+      <section className="py-32 bg-brand-cream border-y border-stone-200/50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Route <span className="italic">Comparison</span></h2>
+            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Different volcanoes, different experiences. Choose the route that fits your adventure style.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link href="/tours/from-surabaya" className="group bg-white p-10 rounded-3xl border border-stone-200 shadow-sm hover:shadow-xl transition-all">
-              <MapPin className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Private Tours from Surabaya</h3>
-              <p className="text-stone-600 text-sm mb-8">Best for Bromo & Ijen. Direct access to East Java&apos;s primary transport hub with efficient multi-day routes.</p>
-              <div className="text-brand-olive font-bold flex items-center gap-2 group-hover:text-orange-500 transition-colors">
-                View Surabaya Hub <ArrowRight size={16} />
-              </div>
-            </Link>
-            <Link href="/tours/from-bali" className="group bg-white p-10 rounded-3xl border border-stone-200 shadow-sm hover:shadow-xl transition-all">
-              <MapPin className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Private Tours from Bali</h3>
-              <p className="text-stone-600 text-sm mb-8">Best for Ijen & Bromo. Seamless private transfers from Bali to the heart of East Java&apos;s volcano landscape.</p>
-              <div className="text-brand-olive font-bold flex items-center gap-2 group-hover:text-orange-500 transition-colors">
-                View Bali Hub <ArrowRight size={16} />
-              </div>
-            </Link>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[800px] bg-white rounded-[40px] overflow-hidden shadow-xl shadow-brand-olive/5">
+              <thead>
+                <tr className="border-b border-stone-100 bg-stone-50/50">
+                  <th className="py-10 px-8 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Feature</th>
+                  <th className="py-10 px-8 text-2xl font-serif text-brand-ink">Bromo Midnight</th>
+                  <th className="py-10 px-8 text-2xl font-serif text-brand-ink">Ijen Blue Fire</th>
+                  <th className="py-10 px-8 text-2xl font-serif text-brand-ink">The Full Expedition</th>
+                </tr>
+              </thead>
+              <tbody className="text-sm font-light">
+                <tr className="border-b border-stone-50 hover:bg-brand-cream/30 transition-colors">
+                  <td className="py-10 px-8 font-bold text-[10px] uppercase tracking-widest text-stone-900">Primary Focus</td>
+                  <td className="py-10 px-8 text-stone-600">Sunrise & Crater Rim</td>
+                  <td className="py-10 px-8 text-stone-600">Blue Fire & Acid Lake</td>
+                  <td className="py-10 px-8 text-stone-600">The Full East Java Circuit</td>
+                </tr>
+                <tr className="border-b border-stone-50 hover:bg-brand-cream/30 transition-colors">
+                  <td className="py-10 px-8 font-bold text-[10px] uppercase tracking-widest text-stone-900">Physicality</td>
+                  <td className="py-10 px-8 text-stone-600">Easy to Moderate</td>
+                  <td className="py-10 px-8 text-stone-600">Moderate to High</td>
+                  <td className="py-10 px-8 text-stone-600">High (Multi-day)</td>
+                </tr>
+                <tr className="border-b border-stone-50 hover:bg-brand-cream/30 transition-colors">
+                  <td className="py-10 px-8 font-bold text-[10px] uppercase tracking-widest text-stone-900">Logistics</td>
+                  <td className="py-10 px-8 text-stone-600">100% Private Jeep</td>
+                  <td className="py-10 px-8 text-stone-600">Private Car + Guide</td>
+                  <td className="py-10 px-8 text-stone-600">Full Private Crew</td>
+                </tr>
+                <tr className="border-b border-stone-50 hover:bg-brand-cream/30 transition-colors">
+                  <td className="py-10 px-8 font-bold text-[10px] uppercase tracking-widest text-stone-900">Safety System</td>
+                  <td className="py-10 px-8 text-stone-600">Police Oversight</td>
+                  <td className="py-10 px-8 text-stone-600">Medical + Gas Mask</td>
+                  <td className="py-10 px-8 text-stone-600">Full Safety Protocol</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* The JVTO Tour Standard */}
-      <section className="py-24 bg-white">
+      {/* 3. Featured Tours / Decision Selector Result */}
+      <section className="py-32 bg-white rounded-[64px] my-12 mx-4 shadow-2xl shadow-brand-olive/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">The JVTO Tour Standard</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Every JVTO tour is built on three non-negotiable pillars.</p>
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Private <span className="italic">Packages</span></h2>
+            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Our most requested private packages, built for operational certainty.</p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-              <Users className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">100% Private Logistics</h3>
-              <p className="text-stone-600 text-sm">No shared groups, no mixed transport. You control the pace and the focus of your journey.</p>
-            </div>
-            <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-              <ShieldCheck className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Police-Led Safety Oversight</h3>
-              <p className="text-stone-600 text-sm">Led by an active Tourist Police officer, our safety protocols are authority-backed and non-negotiable.</p>
-            </div>
-            <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
-              <Scale className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">All-Inclusive Pricing</h3>
-              <p className="text-stone-600 text-sm">No hidden fees, no commissions. What you see is what you pay for a complete private experience.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Browse by Duration & Route Type */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Duration */}
-            <div>
-              <h2 className="text-3xl font-display font-bold mb-8 flex items-center gap-3">
-                <Clock className="text-orange-500" /> Browse by Duration
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Link href="/tours/day-trips" className="p-6 bg-stone-50 rounded-2xl border border-stone-100 hover:border-orange-500 transition-all group">
-                  <h4 className="font-bold mb-1 group-hover:text-orange-500">Day Trips</h4>
-                  <p className="text-xs text-stone-500">Optimized for tight schedules</p>
-                </Link>
-                <Link href="/tours/multi-day" className="p-6 bg-stone-50 rounded-2xl border border-stone-100 hover:border-orange-500 transition-all group">
-                  <h4 className="font-bold mb-1 group-hover:text-orange-500">Multi-Day Expeditions</h4>
-                  <p className="text-xs text-stone-500">Deep immersion into the landscape</p>
-                </Link>
-              </div>
-            </div>
-            {/* Route Type */}
-            <div>
-              <h2 className="text-3xl font-display font-bold mb-8 flex items-center gap-3">
-                <Activity className="text-orange-500" /> Browse by Route Type
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <Link href="/tours/volcano" className="p-6 bg-stone-50 rounded-2xl border border-stone-100 hover:border-orange-500 transition-all group">
-                  <h4 className="font-bold mb-1 group-hover:text-orange-500">Volcano</h4>
-                  <p className="text-xs text-stone-500">Bromo & Ijen focus</p>
-                </Link>
-                <Link href="/tours/waterfall" className="p-6 bg-stone-50 rounded-2xl border border-stone-100 hover:border-orange-500 transition-all group">
-                  <h4 className="font-bold mb-1 group-hover:text-orange-500">Waterfall</h4>
-                  <p className="text-xs text-stone-500">Tumpak Sewu focus</p>
-                </Link>
-                <Link href="/tours/hybrid" className="p-6 bg-stone-50 rounded-2xl border border-stone-100 hover:border-orange-500 transition-all group">
-                  <h4 className="font-bold mb-1 group-hover:text-orange-500">Hybrid</h4>
-                  <p className="text-xs text-stone-500">The full expedition</p>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Private Tours */}
-      <section className="py-24 bg-stone-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Featured Private Tours</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Our most popular routes, optimized for operational certainty.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {TOURS.map((tour, index) => (
               <TourCard key={tour.slug} tour={tour} index={index} />
             ))}
@@ -180,85 +160,144 @@ export default function ToursPage() {
         </div>
       </section>
 
-      {/* How to Choose Your Route */}
-      <section className="py-24 bg-white">
+      {/* 4. Trust Strip (JVTO Tour Standard) */}
+      <section className="py-24 bg-brand-olive text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">How to Choose Your Route</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">Three factors to consider when planning your East Java expedition.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <Clock className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-4">Consider Your Time</h3>
-              <p className="text-stone-600 text-sm">Multi-day tours provide a deeper experience, while day trips are optimized for tight schedules.</p>
-            </div>
-            <div>
-              <Activity className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-4">Consider Your Fitness</h3>
-              <p className="text-stone-600 text-sm">Ijen and Tumpak Sewu require moderate physical effort. Bromo is more accessible for all fitness levels.</p>
-            </div>
-            <div>
-              <MapPin className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-4">Consider Your Origin</h3>
-              <p className="text-stone-600 text-sm">Surabaya is the most efficient hub for Bromo, while Bali is a popular starting point for Ijen.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Operational Certainty Checklist */}
-      <section className="py-24 bg-stone-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Operational Certainty Checklist</h2>
-            <p className="text-stone-600">Three steps to ensure your tour is built on authority, not guesswork.</p>
-          </div>
-          
-          <div className="space-y-8">
-            <div className="flex gap-6 items-start">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">1</div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="flex items-center gap-6">
+              <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center text-brand-accent shadow-xl">
+                <ShieldCheck size={40} />
+              </div>
               <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Verify Your Operator</h3>
-                <p className="text-stone-600">Check for a real NIB license and police-led safety oversight. Don&apos;t book with unlicensed brokers.</p>
+                <p className="text-3xl font-serif">The JVTO Standard</p>
+                <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">Police-Led Execution</p>
               </div>
             </div>
-            <div className="flex gap-6 items-start">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">2</div>
-              <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Verify Your Health</h3>
-                <p className="text-stone-600">Ensure you have a real medical check at a certified clinic for Ijen. Your safety depends on it.</p>
-              </div>
+            <div className="flex flex-wrap justify-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
+              <div className="flex items-center gap-3"><CheckCircle2 size={16} className="text-brand-accent" /> 100% Private</div>
+              <div className="flex items-center gap-3"><CheckCircle2 size={16} className="text-brand-accent" /> Licensed PT</div>
+              <div className="flex items-center gap-3"><CheckCircle2 size={16} className="text-brand-accent" /> Medical Proof</div>
             </div>
-            <div className="flex gap-6 items-start">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">3</div>
-              <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Verify Your Route</h3>
-                <p className="text-stone-600">Confirm your private logistics and safety decision boundaries. Know who makes the call if things change.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <FAQSection items={toursFaqs} />
-
-      {/* Ready for Operational Certainty? */}
-      <section className="py-24 bg-brand-olive text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready for Operational Certainty?</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
-              Contact the Team <ArrowRight size={20} />
+            <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white/20 transition-all shadow-lg">
+              Verify Credentials
             </Link>
-            <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Compact Policy Summary */}
+      <section className="py-32 bg-brand-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+            <div>
+              <h2 className="text-5xl md:text-7xl font-serif mb-12 leading-tight text-brand-ink">Transparent <br /> <span className="italic">Booking Logic</span></h2>
+              <div className="space-y-12">
+                {[
+                  { title: "Inquiry & Consultation", desc: "Discuss your route with our team to ensure it fits your goals." },
+                  { title: "Secure Deposit", desc: "Pay via secure channels to confirm your private vehicle and crew." },
+                  { title: "Operational Confirmation", desc: "Receive your detailed itinerary and crew contact information." }
+                ].map((step, i) => (
+                  <div key={i} className="flex gap-10">
+                    <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-brand-olive shrink-0 font-serif text-2xl border border-stone-100 shadow-sm">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <p className="text-2xl font-serif mb-2 text-brand-ink">{step.title}</p>
+                      <p className="text-stone-500 text-base font-light leading-relaxed">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white p-16 rounded-[60px] border border-stone-100 shadow-xl shadow-brand-olive/5">
+              <h3 className="text-4xl font-serif mb-8 text-brand-ink">Refund & <span className="italic">Reschedule</span></h3>
+              <p className="text-stone-500 text-base font-light mb-12 leading-relaxed">
+                We understand that travel plans change. Our policies are designed to be fair and transparent, with clear timelines for refunds and reschedule options in case of volcanic activity.
+              </p>
+              <Link href="/policy" className="inline-flex items-center gap-4 text-brand-olive font-bold text-xs uppercase tracking-widest group">
+                Read Full Policy <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Departure Logic (Origin Hub) */}
+      <section className="py-32 bg-white rounded-t-[64px] shadow-2xl shadow-brand-olive/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Departure <span className="italic">Hubs</span></h2>
+            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Select your starting point to see the most efficient private routes.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <Link href="/tours/from-surabaya" className="group bg-brand-cream/30 p-16 rounded-[60px] border border-stone-100 hover:bg-white hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500">
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-brand-olive mb-10 group-hover:bg-brand-olive group-hover:text-white transition-all shadow-sm">
+                <MapPin size={40} />
+              </div>
+              <h3 className="text-4xl font-serif mb-4 text-brand-ink">Surabaya Hub</h3>
+              <p className="text-stone-500 text-base font-light mb-12 leading-relaxed">Best for Bromo & Ijen. Direct access to East Java&apos;s primary transport hub with efficient multi-day routes.</p>
+              <div className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-4 group-hover:gap-6 transition-all">
+                View Surabaya Hub <ArrowRight size={18} />
+              </div>
+            </Link>
+            <Link href="/tours/from-bali" className="group bg-brand-cream/30 p-16 rounded-[60px] border border-stone-100 hover:bg-white hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500">
+              <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-brand-olive mb-10 group-hover:bg-brand-olive group-hover:text-white transition-all shadow-sm">
+                <MapPin size={40} />
+              </div>
+              <h3 className="text-4xl font-serif mb-4 text-brand-ink">Bali Hub</h3>
+              <p className="text-stone-500 text-base font-light mb-12 leading-relaxed">Best for Ijen & Bromo. Seamless private transfers from Bali to the heart of East Java&apos;s volcano landscape.</p>
+              <div className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-4 group-hover:gap-6 transition-all">
+                View Bali Hub <ArrowRight size={18} />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Deeper Planning Content (How to Choose Your Route) */}
+      <section className="py-32 bg-brand-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Planning Your <span className="italic">Expedition</span></h2>
+            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Three factors to consider when planning your East Java journey.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+            {[
+              { icon: <Clock size={48} />, title: "Consider Your Time", desc: "Multi-day tours provide a deeper experience, while day trips are optimized for tight schedules." },
+              { icon: <Activity size={48} />, title: "Consider Your Fitness", desc: "Ijen and Tumpak Sewu require moderate physical effort. Bromo is more accessible for all fitness levels." },
+              { icon: <MapPin size={48} />, title: "Consider Your Origin", desc: "Surabaya is the most efficient hub for Bromo, while Bali is a popular starting point for Ijen." }
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <div className="text-brand-olive mb-10 bg-white p-8 rounded-[32px] shadow-sm border border-stone-100">
+                  {item.icon}
+                </div>
+                <h3 className="text-3xl font-serif mb-4 text-brand-ink">{item.title}</h3>
+                <p className="text-stone-500 text-base font-light leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FAQ + CTA */}
+      <FAQSection title="Operational Certainty: Frequently Asked Questions" items={toursFaqs} />
+
+      <section className="py-32 bg-brand-olive text-white rounded-t-[64px] shadow-2xl shadow-brand-olive/20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-5xl md:text-7xl font-serif mb-12">Ready for Operational <span className="italic">Certainty?</span></h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            <Link href="/contact" className="bg-white text-brand-ink px-14 py-6 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-stone-100 transition-all flex items-center gap-4 group shadow-xl">
+              Contact the Team <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-14 py-6 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white/20 transition-all shadow-lg">
               Verify JVTO
             </Link>
           </div>
         </div>
       </section>
+
 
       <Footer />
     </main>

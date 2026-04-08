@@ -26,60 +26,63 @@ export default function TourCard({ tour, index }: TourCardProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.1 }}
-        className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-stone-100 flex flex-col"
+        className="group bg-white rounded-[40px] overflow-hidden border border-stone-100 hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500 flex flex-col"
       >
-        <div className="relative h-64 overflow-hidden">
+        <div className="relative h-72 overflow-hidden">
           <Image
             src={tour.image}
             alt={tour.name}
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            className="object-cover group-hover:scale-110 transition-transform duration-1000"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute top-4 left-4 flex flex-col gap-2">
-            <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
+          <div className="absolute top-6 left-6 flex flex-wrap gap-2 max-w-[80%]">
+            <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
               {tour.origin}
             </div>
-            <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
-              <ShieldCheck size={10} /> Police-Led
+            <div className="bg-brand-olive text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm flex items-center gap-2">
+              <ShieldCheck size={12} /> Police-Led
             </div>
             {tour.slug.includes('ijen') && (
-              <div className="bg-brand-olive text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
-                <Activity size={10} /> Health Check
+              <div className="bg-brand-accent text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm flex items-center gap-2">
+                <Activity size={12} /> Health Check
               </div>
             )}
-            <div className="bg-stone-900/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
-              {tour.physicality}
-            </div>
           </div>
         </div>
-        <div className="p-8 flex-grow flex flex-col">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-1 text-orange-500">
-              <Star size={16} fill="currentColor" />
-              <span className="text-sm font-bold text-stone-900">{tour.rating}</span>
+        
+        <div className="p-10 flex-grow flex flex-col">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2 text-brand-accent">
+              <Star size={14} fill="currentColor" />
+              <span className="text-[10px] font-bold text-stone-900 uppercase tracking-widest">{tour.rating} Rating</span>
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">
               {tour.bestFor}
             </span>
           </div>
+          
           <Link href={`/tours/${tour.slug}`}>
-            <h3 className="text-2xl font-display font-bold mb-4 group-hover:text-brand-olive transition-colors cursor-pointer">{tour.name}</h3>
+            <h3 className="text-3xl font-serif mb-4 group-hover:text-brand-olive transition-colors cursor-pointer leading-tight">{tour.name}</h3>
           </Link>
           
           <div className="mt-auto">
-            <div className="flex items-center justify-between pt-6 border-t border-stone-100 mb-6">
-              <div className="flex items-center gap-4 text-stone-500 text-sm">
-                <span className="flex items-center gap-1"><Calendar size={16} /> {tour.duration}</span>
+            <div className="flex items-center justify-between pt-8 border-t border-stone-100 mb-8">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400">Duration</span>
+                <span className="text-sm font-light text-stone-500 flex items-center gap-2"><Calendar size={14} /> {tour.duration}</span>
               </div>
-              <div className="text-xl font-bold text-brand-olive">{formatPrice(tour.priceFrom)}</div>
+              <div className="text-right">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400 block mb-1">From</span>
+                <div className="text-2xl font-serif text-brand-ink">{formatPrice(tour.priceFrom)}</div>
+              </div>
             </div>
             
             <button 
               onClick={() => setIsFormOpen(true)}
-              className="w-full bg-stone-100 text-stone-900 py-3 rounded-xl font-bold hover:bg-orange-500 hover:text-white transition-all flex items-center justify-center gap-2 group/btn"
+              className="w-full bg-brand-olive text-white py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-brand-olive/90 transition-all flex items-center justify-center gap-3 group/btn"
             >
-              Book Inquiry <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+              Book Inquiry <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>

@@ -21,7 +21,7 @@ export default function NotFound() {
             <h1 className="text-[12rem] font-serif leading-none text-brand-olive/10 select-none">404</h1>
             <h2 className="text-4xl md:text-5xl font-serif text-brand-ink -mt-20">Path Not Found</h2>
             <p className="text-stone-500 max-w-md mx-auto font-light leading-relaxed">
-              The trail you're looking for seems to have been covered by volcanic ash. Let's get you back to safety.
+              The trail you&apos;re looking for seems to have been covered by volcanic ash. Let&apos;s get you back to safety.
             </p>
           </motion.div>
 

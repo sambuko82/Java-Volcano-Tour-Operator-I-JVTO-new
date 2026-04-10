@@ -41,12 +41,12 @@ export default function PoliceSafetyPage() {
   };
 
   return (
-    <main className="min-h-screen bg-stone-50">
+    <main className="min-h-screen bg-page">
       <JsonLd data={schema} />
       <Navbar />
       
       {/* Header */}
-      <section className="bg-brand-olive text-white pt-40 pb-24">
+      <section className="bg-accent text-white pt-40 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export default function PoliceSafetyPage() {
             className="max-w-3xl"
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Police-Led Safety: Operational Certainty</h1>
-            <p className="text-xl text-stone-300 leading-relaxed">
+            <p className="text-xl text-white/80 leading-relaxed">
               Safety is not a marketing claim for JVTO. It is our operational foundation, led by an active member of the Indonesian Tourist Police.
             </p>
           </motion.div>
@@ -72,7 +72,7 @@ export default function PoliceSafetyPage() {
                 description={item.desc}
                 metadata={item.metadata}
                 href={item.href}
-                icon={item.icon || <UserCheck className="text-orange-500" />}
+                icon={item.icon || <UserCheck className="text-jvto-orange" />}
               />
             ))}
           </div>
@@ -82,10 +82,10 @@ export default function PoliceSafetyPage() {
             description="Agung Sambuko (Mr. Sam) brings the discipline and regulatory knowledge of the Indonesian Tourist Police to every JVTO expedition. This ensures that our tours are not only adventurous but also fully compliant with local safety laws."
           />
 
-          <div className="mt-16 bg-white p-12 rounded-3xl border border-stone-200 shadow-sm">
+          <div className="mt-16 bg-card p-12 rounded-3xl border border-border-base shadow-sm">
             <div className="flex items-center gap-4 mb-8">
-              <ShieldCheck className="text-brand-olive" size={32} />
-              <h2 className="text-3xl font-display font-bold">Safety Standards Checklist</h2>
+              <ShieldCheck className="text-accent" size={32} />
+              <h2 className="text-3xl font-display font-bold text-text-primary">Safety Standards Checklist</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -100,8 +100,8 @@ export default function PoliceSafetyPage() {
                 'Direct communication line with operational support'
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-4">
-                  <CheckCircle size={20} className="text-brand-olive shrink-0" />
-                  <span className="text-stone-600 font-medium">{item}</span>
+                  <CheckCircle size={20} className="text-accent shrink-0" />
+                  <span className="text-text-secondary font-medium">{item}</span>
                 </div>
               ))}
             </div>

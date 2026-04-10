@@ -31,6 +31,7 @@ export interface Tour {
   physicality: 'easy' | 'moderate' | 'hard';
   bestFor: string;
   idealTraveler: string;
+  pricingTable: { pax: number; price: number }[];
 }
 
 export interface CrewMember {
@@ -168,6 +169,13 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Time-sensitive travelers',
     idealTraveler: 'Solo or couples with limited time',
+    pricingTable: [
+      { pax: 1, price: 1850000 },
+      { pax: 2, price: 1000000 },
+      { pax: 3, price: 850000 },
+      { pax: 4, price: 750000 },
+      { pax: 5, price: 650000 }
+    ],
     highlights: ['Midnight departure', '4WD Jeep experience', 'Bromo crater exploration', 'Whispering Sand'],
     destinations: ['mount-bromo'],
     itinerary: [
@@ -189,6 +197,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Short escapes',
     idealTraveler: 'Couples and small groups',
+    pricingTable: [
+      { pax: 2, price: 1750000 },
+      { pax: 3, price: 1450000 },
+      { pax: 4, price: 1250000 },
+      { pax: 5, price: 1100000 }
+    ],
     highlights: ['Bromo Sunrise', 'Milky Way stargazing', 'Madakaripura Waterfall', '4WD Jeep adventure'],
     destinations: ['mount-bromo', 'madakaripura-waterfall'],
     itinerary: [
@@ -211,6 +225,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Ijen specialists',
     idealTraveler: 'Adventure seekers',
+    pricingTable: [
+      { pax: 2, price: 1550000 },
+      { pax: 3, price: 1250000 },
+      { pax: 4, price: 1050000 },
+      { pax: 5, price: 950000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Turquoise Crater Lake', 'Sulfur Miners', 'Malabar Coffee Plantation'],
     destinations: ['ijen-crater'],
     itinerary: [
@@ -233,6 +253,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'The Classic Circuit',
     idealTraveler: 'First-time East Java visitors',
+    pricingTable: [
+      { pax: 2, price: 2450000 },
+      { pax: 3, price: 2150000 },
+      { pax: 4, price: 1950000 },
+      { pax: 5, price: 1750000 }
+    ],
     highlights: ['Bromo Sunrise', 'Madakaripura Waterfall', 'Ijen Blue Fire', 'Java-Bali Ferry'],
     destinations: ['mount-bromo', 'madakaripura-waterfall', 'ijen-crater'],
     itinerary: [
@@ -256,6 +282,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Full Volcanic Experience',
     idealTraveler: 'Surabaya round-trip travelers',
+    pricingTable: [
+      { pax: 2, price: 2450000 },
+      { pax: 3, price: 2150000 },
+      { pax: 4, price: 1950000 },
+      { pax: 5, price: 1750000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Bromo Sunrise', 'Madakaripura Waterfall', 'Private Transport'],
     destinations: ['ijen-crater', 'mount-bromo', 'madakaripura-waterfall'],
     itinerary: [
@@ -279,6 +311,12 @@ export const TOURS: Tour[] = [
     physicality: 'easy',
     bestFor: 'Families with kids',
     idealTraveler: 'Families and nature lovers',
+    pricingTable: [
+      { pax: 2, price: 3450000 },
+      { pax: 3, price: 3150000 },
+      { pax: 4, price: 2950000 },
+      { pax: 5, price: 2750000 }
+    ],
     highlights: ['Taman Safari Prigen', 'Bromo Sunrise', 'Madakaripura Waterfall', 'Family Friendly'],
     destinations: ['mount-bromo', 'madakaripura-waterfall'],
     itinerary: [
@@ -302,6 +340,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Relaxed pace',
     idealTraveler: 'Travelers who prefer comfort',
+    pricingTable: [
+      { pax: 2, price: 3025000 },
+      { pax: 3, price: 2725000 },
+      { pax: 4, price: 2525000 },
+      { pax: 5, price: 2325000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Bromo Sunrise', 'Madakaripura Waterfall', 'Surabaya City Stay'],
     destinations: ['ijen-crater', 'mount-bromo', 'madakaripura-waterfall'],
     itinerary: [
@@ -326,6 +370,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Diverse landscapes',
     idealTraveler: 'Photography enthusiasts',
+    pricingTable: [
+      { pax: 2, price: 3125000 },
+      { pax: 3, price: 2825000 },
+      { pax: 4, price: 2625000 },
+      { pax: 5, price: 2425000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Papuma Beach', 'Tumpak Sewu Waterfall', 'Bromo Sunrise'],
     destinations: ['ijen-crater', 'papuma-beach', 'tumpak-sewu-waterfall', 'mount-bromo'],
     itinerary: [
@@ -350,6 +400,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Surabaya to Bali overland',
     idealTraveler: 'Backpackers and adventurers',
+    pricingTable: [
+      { pax: 2, price: 3125000 },
+      { pax: 3, price: 2825000 },
+      { pax: 4, price: 2625000 },
+      { pax: 5, price: 2425000 }
+    ],
     highlights: ['Tumpak Sewu Waterfall', 'Bromo Sunrise', 'Ijen Blue Fire', 'Java-Bali Ferry'],
     destinations: ['tumpak-sewu-waterfall', 'mount-bromo', 'ijen-crater'],
     itinerary: [
@@ -374,6 +430,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Culture & Nature',
     idealTraveler: 'Cultural explorers',
+    pricingTable: [
+      { pax: 2, price: 3850000 },
+      { pax: 3, price: 3550000 },
+      { pax: 4, price: 3350000 },
+      { pax: 5, price: 3150000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Bromo Sunrise', 'Madakaripura Waterfall', 'Malang City Tour'],
     destinations: ['ijen-crater', 'mount-bromo', 'madakaripura-waterfall'],
     itinerary: [
@@ -399,6 +461,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'The Ultimate Nature Trip',
     idealTraveler: 'Nature photographers',
+    pricingTable: [
+      { pax: 2, price: 3650000 },
+      { pax: 3, price: 3350000 },
+      { pax: 4, price: 3150000 },
+      { pax: 5, price: 2950000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Papuma Beach', 'Tumpak Sewu Waterfall', 'Bromo Sunrise'],
     destinations: ['ijen-crater', 'papuma-beach', 'tumpak-sewu-waterfall', 'mount-bromo'],
     itinerary: [
@@ -424,6 +492,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'The Complete Circuit',
     idealTraveler: 'Slow travelers',
+    pricingTable: [
+      { pax: 2, price: 4750000 },
+      { pax: 3, price: 4450000 },
+      { pax: 4, price: 4250000 },
+      { pax: 5, price: 4050000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Papuma Beach', 'Tumpak Sewu Waterfall', 'Bromo Sunrise', 'Malang City'],
     destinations: ['ijen-crater', 'papuma-beach', 'tumpak-sewu-waterfall', 'mount-bromo'],
     itinerary: [
@@ -450,6 +524,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Bali round-trip',
     idealTraveler: 'Bali-based travelers',
+    pricingTable: [
+      { pax: 2, price: 2850000 },
+      { pax: 3, price: 2550000 },
+      { pax: 4, price: 2350000 },
+      { pax: 5, price: 2150000 }
+    ],
     highlights: ['Bromo Sunrise', 'Ijen Blue Fire', 'Ferry Crossing', 'Round-trip Bali'],
     destinations: ['mount-bromo', 'ijen-crater'],
     itinerary: [
@@ -473,6 +553,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Bali to Surabaya overland',
     idealTraveler: 'Cross-island travelers',
+    pricingTable: [
+      { pax: 2, price: 3475000 },
+      { pax: 3, price: 3175000 },
+      { pax: 4, price: 2975000 },
+      { pax: 5, price: 2775000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Papuma Beach', 'Tumpak Sewu Waterfall', 'Bromo Sunrise', 'Bali to Surabaya'],
     destinations: ['ijen-crater', 'papuma-beach', 'tumpak-sewu-waterfall', 'mount-bromo'],
     itinerary: [
@@ -497,6 +583,12 @@ export const TOURS: Tour[] = [
     physicality: 'moderate',
     bestFor: 'Extended Bali to Surabaya',
     idealTraveler: 'Explorers starting from Bali',
+    pricingTable: [
+      { pax: 2, price: 4050000 },
+      { pax: 3, price: 3750000 },
+      { pax: 4, price: 3550000 },
+      { pax: 5, price: 3350000 }
+    ],
     highlights: ['Ijen Blue Fire', 'Papuma Beach', 'Tumpak Sewu Waterfall', 'Bromo Sunrise', 'Bali to Surabaya'],
     destinations: ['ijen-crater', 'papuma-beach', 'tumpak-sewu-waterfall', 'mount-bromo'],
     itinerary: [

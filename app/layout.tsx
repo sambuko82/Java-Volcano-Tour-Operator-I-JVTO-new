@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import { Inter, Space_Grotesk, Cormorant_Garamond } from 'next/font/google';
+import { Inter, Raleway, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { SITE_CONFIG } from '@/lib/siteConfig';
@@ -11,15 +11,14 @@ const inter = Inter({
   variable: '--font-sans',
 });
 
-const spaceGrotesk = Space_Grotesk({
+const raleway = Raleway({
   subsets: ['latin'],
   variable: '--font-display',
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-serif',
-  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
@@ -27,14 +26,18 @@ export const metadata: Metadata = {
   description: SITE_CONFIG.organization.description,
 };
 
+import ThemeWrapper from '@/components/ThemeWrapper';
+
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${cormorantGaramond.variable}`}>
-      <body suppressHydrationWarning className="font-sans bg-brand-cream text-brand-ink antialiased">
-        <ErrorBoundary>
-          {children}
-          <WhatsAppFAB />
-        </ErrorBoundary>
+    <html lang="en" className={`${inter.variable} ${raleway.variable} ${jetbrainsMono.variable}`}>
+      <body suppressHydrationWarning className="antialiased transition-colors duration-300">
+        <ThemeWrapper>
+          <ErrorBoundary>
+            {children}
+            <WhatsAppFAB />
+          </ErrorBoundary>
+        </ThemeWrapper>
       </body>
     </html>
   );

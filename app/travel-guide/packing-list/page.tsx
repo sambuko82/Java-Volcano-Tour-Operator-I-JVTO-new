@@ -51,7 +51,7 @@ export default function PackingListPage() {
   };
 
   return (
-    <main className="min-h-screen bg-brand-cream">
+    <main className="min-h-screen bg-page">
       <JsonLd data={schema} />
       <Navbar />
       
@@ -65,14 +65,14 @@ export default function PackingListPage() {
           priority
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-brand-olive/40 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-accent/40 backdrop-blur-[2px]" />
         <div className="relative z-10 text-center px-4 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3 rounded-full mb-10 text-[10px] font-bold tracking-[0.3em] uppercase shadow-xl"
           >
-            <Luggage size={14} className="text-brand-orange" /> Preparation <span className="text-brand-orange italic">Guide</span>
+            <Luggage size={14} className="text-jvto-orange" /> Preparation <span className="text-jvto-orange italic">Guide</span>
           </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
@@ -97,52 +97,52 @@ export default function PackingListPage() {
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-12 rounded-[3rem] border border-stone-100 shadow-sm hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500 group">
-              <div className="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center text-brand-olive mb-8 group-hover:bg-brand-olive group-hover:text-white transition-all duration-500">
+            <div className="bg-card p-12 rounded-[3rem] border border-border-base shadow-sm hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-page flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500">
                 <Thermometer size={32} />
               </div>
-              <h3 className="text-2xl font-serif font-light mb-4 text-brand-olive">Cold Temperatures</h3>
-              <p className="text-stone-600 font-light leading-relaxed italic">Sunrise at Bromo and Ijen can be as cold as 5°C. Layering is key to staying comfortable as the sun rises.</p>
+              <h3 className="text-2xl font-serif font-light mb-4 text-accent">Cold Temperatures</h3>
+              <p className="text-text-secondary font-light leading-relaxed italic">Sunrise at Bromo and Ijen can be as cold as 5°C. Layering is key to staying comfortable as the sun rises.</p>
             </div>
-            <div className="bg-white p-12 rounded-[3rem] border border-stone-100 shadow-sm hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500 group">
-              <div className="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center text-brand-olive mb-8 group-hover:bg-brand-olive group-hover:text-white transition-all duration-500">
+            <div className="bg-card p-12 rounded-[3rem] border border-border-base shadow-sm hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-page flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500">
                 <Wind size={32} />
               </div>
-              <h3 className="text-2xl font-serif font-light mb-4 text-brand-olive">High Winds</h3>
-              <p className="text-stone-600 font-light leading-relaxed italic">The crater rims are often windy. A windproof outer layer will significantly improve your experience.</p>
+              <h3 className="text-2xl font-serif font-light mb-4 text-accent">High Winds</h3>
+              <p className="text-text-secondary font-light leading-relaxed italic">The crater rims are often windy. A windproof outer layer will significantly improve your experience.</p>
             </div>
-            <div className="bg-white p-12 rounded-[3rem] border border-stone-100 shadow-sm hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500 group">
-              <div className="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center text-brand-olive mb-8 group-hover:bg-brand-olive group-hover:text-white transition-all duration-500">
+            <div className="bg-card p-12 rounded-[3rem] border border-border-base shadow-sm hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 group">
+              <div className="w-16 h-16 rounded-full bg-page flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500">
                 <CloudRain size={32} />
               </div>
-              <h3 className="text-2xl font-serif font-light mb-4 text-brand-olive">Variable Conditions</h3>
-              <p className="text-stone-600 font-light leading-relaxed italic">Tropical weather can change quickly. Always carry a light rain jacket or poncho just in case.</p>
+              <h3 className="text-2xl font-serif font-light mb-4 text-accent">Variable Conditions</h3>
+              <p className="text-text-secondary font-light leading-relaxed italic">Tropical weather can change quickly. Always carry a light rain jacket or poncho just in case.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* The List */}
-      <section className="py-32 bg-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/5">
+      <section className="py-32 bg-card rounded-t-[5rem] shadow-2xl shadow-accent/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-32">
             {packingItems.map((category, idx) => (
               <div key={idx}>
-                <div className="flex items-center gap-6 mb-16 border-b border-brand-olive/10 pb-8">
-                  <div className="w-16 h-16 bg-brand-cream text-brand-olive rounded-[2rem] flex items-center justify-center">
+                <div className="flex items-center gap-6 mb-16 border-b border-accent/10 pb-8">
+                  <div className="w-16 h-16 bg-page text-accent rounded-[2rem] flex items-center justify-center">
                     {category.icon}
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-serif font-light text-brand-olive">{category.category}</h2>
+                  <h2 className="text-4xl md:text-6xl font-serif font-light text-accent">{category.category}</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   {category.items.map((item, iidx) => (
-                    <div key={iidx} className="flex gap-8 p-10 bg-brand-cream rounded-[3rem] border border-stone-50 hover:shadow-xl transition-all duration-500 group">
-                      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand-orange shrink-0 group-hover:scale-110 transition-transform">
+                    <div key={iidx} className="flex gap-8 p-10 bg-page rounded-[3rem] border border-border-base hover:shadow-xl transition-all duration-500 group">
+                      <div className="w-12 h-12 rounded-full bg-card flex items-center justify-center text-jvto-orange shrink-0 group-hover:scale-110 transition-transform">
                         <CheckCircle2 size={24} />
                       </div>
                       <div>
-                        <h4 className="text-2xl font-serif font-light mb-3 text-brand-olive">{item.name}</h4>
-                        <p className="text-stone-600 font-light leading-relaxed italic">{item.desc}</p>
+                        <h4 className="text-2xl font-serif font-light mb-3 text-accent">{item.name}</h4>
+                        <p className="text-text-secondary font-light leading-relaxed italic">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -154,7 +154,7 @@ export default function PackingListPage() {
       </section>
 
       {/* What JVTO Provides */}
-      <section className="py-40 bg-brand-olive text-white relative overflow-hidden">
+      <section className="py-40 bg-accent text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image 
             src="https://picsum.photos/seed/gear/1920/1080"
@@ -166,7 +166,7 @@ export default function PackingListPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div>
-              <h2 className="text-5xl md:text-8xl font-serif font-light mb-10 leading-[0.9] tracking-tight">What JVTO <br /> <span className="italic text-brand-orange">Provides</span></h2>
+              <h2 className="text-5xl md:text-8xl font-serif font-light mb-10 leading-[0.9] tracking-tight">What JVTO <br /> <span className="italic text-jvto-orange">Provides</span></h2>
               <p className="text-white/70 mb-16 font-light text-xl italic max-w-xl">We handle the specialized gear so you don&apos;t have to carry it from home.</p>
               <div className="space-y-10">
                 {[
@@ -175,7 +175,7 @@ export default function PackingListPage() {
                   { title: "First Aid Kits", desc: "Carried by every JVTO guide for emergency response." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-8 group">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-orange shrink-0 group-hover:bg-brand-orange group-hover:text-white transition-all duration-500">
+                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-jvto-orange shrink-0 group-hover:bg-jvto-orange group-hover:text-white transition-all duration-500">
                       <ShieldCheck size={24} />
                     </div>
                     <div>
@@ -194,26 +194,26 @@ export default function PackingListPage() {
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-olive/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/60 to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Pro Tip */}
-      <section className="py-40 bg-brand-cream">
+      <section className="py-40 bg-page">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-3 px-8 py-3 bg-brand-orange/10 text-brand-orange rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-12 shadow-sm">
+          <div className="inline-flex items-center gap-3 px-8 py-3 bg-jvto-orange/10 text-jvto-orange rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-12 shadow-sm">
             <Info size={14} /> Pro Tip
           </div>
-          <h2 className="text-4xl md:text-7xl font-serif font-light mb-10 text-brand-olive leading-[0.9] tracking-tight">Wear Layers, <br /> <span className="italic">Not One Big Coat</span></h2>
-          <p className="text-stone-600 leading-relaxed mb-16 font-light text-2xl italic">
+          <h2 className="text-4xl md:text-7xl font-serif font-light mb-10 text-accent leading-[0.9] tracking-tight">Wear Layers, <br /> <span className="italic">Not One Big Coat</span></h2>
+          <p className="text-text-secondary leading-relaxed mb-16 font-light text-2xl italic">
             The hike up the volcano will make you sweat, but standing at the rim waiting for sunrise will be freezing. The best strategy is a moisture-wicking base layer, a warm fleece or down mid-layer, and a windproof outer shell. You can easily add or remove layers as your body temperature changes.
           </p>
           <div className="flex justify-center">
-            <Link href="/travel-guide" className="group flex items-center gap-4 text-brand-olive font-serif text-2xl italic hover:text-brand-orange transition-all duration-500">
-              <span className="border-b border-brand-olive/30 group-hover:border-brand-orange transition-all">Back to Travel Guide</span>
-              <div className="w-12 h-12 rounded-full border border-brand-olive/20 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all duration-500">
+            <Link href="/travel-guide" className="group flex items-center gap-4 text-accent font-serif text-2xl italic hover:text-jvto-orange transition-all duration-500">
+              <span className="border-b border-accent/30 group-hover:border-jvto-orange transition-all">Back to Travel Guide</span>
+              <div className="w-12 h-12 rounded-full border border-accent/20 flex items-center justify-center group-hover:bg-jvto-orange group-hover:border-jvto-orange group-hover:text-white transition-all duration-500">
                 <ArrowRight size={20} />
               </div>
             </Link>
@@ -222,7 +222,7 @@ export default function PackingListPage() {
       </section>
 
       {/* Ready for Operational Certainty? */}
-      <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
+      <section className="py-40 bg-accent text-white rounded-t-[5rem] shadow-2xl shadow-accent/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
             src="https://picsum.photos/seed/packing-cta/1920/1080"
@@ -232,9 +232,9 @@ export default function PackingListPage() {
           />
         </div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-5xl md:text-8xl font-serif font-light mb-16 leading-[0.9] tracking-tight">Ready for <br /> <span className="italic text-brand-orange">Operational Certainty?</span></h2>
+          <h2 className="text-5xl md:text-8xl font-serif font-light mb-16 leading-[0.9] tracking-tight">Ready for <br /> <span className="italic text-jvto-orange">Operational Certainty?</span></h2>
           <div className="flex flex-wrap justify-center gap-8">
-            <Link href="/tours" className="bg-brand-orange text-white px-12 py-6 rounded-full font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-brand-olive transition-all shadow-xl shadow-brand-orange/20 flex items-center gap-4 duration-500">
+            <Link href="/tours" className="bg-jvto-orange text-white px-12 py-6 rounded-full font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-brand-olive transition-all shadow-xl shadow-jvto-orange/20 flex items-center gap-4 duration-500">
               Explore Private Tours <ArrowRight size={20} />
             </Link>
             <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-12 py-6 rounded-full font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-white/20 transition-all duration-500">

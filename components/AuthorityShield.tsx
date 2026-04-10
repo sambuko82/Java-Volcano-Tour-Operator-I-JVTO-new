@@ -21,22 +21,22 @@ export default function AuthorityShield({
       viewport={{ once: true }}
       className="w-full max-w-sm mx-auto mt-6"
     >
-      <div className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white/90 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl hover:border-blue-300">
+      <div className="relative overflow-hidden rounded-3xl border border-border-base bg-card p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl hover:border-accent/30">
         
-        <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-blue-50 opacity-50"></div>
+        <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent/5 opacity-50"></div>
         
         <div className="flex items-start space-x-4">
           <div className="flex-shrink-0">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-md">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-white shadow-md">
               <ShieldCheck size={24} />
             </div>
           </div>
 
           <div className="flex-1">
-            <h3 className="text-sm font-bold text-gray-900">
+            <h3 className="text-sm font-bold text-text-primary">
               {title}
             </h3>
-            <p className="mt-1 text-xs leading-relaxed text-gray-600">
+            <p className="mt-1 text-xs leading-relaxed text-text-secondary">
               {description}
             </p>
             
@@ -44,15 +44,15 @@ export default function AuthorityShield({
               <span className="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-[10px] font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                 Lic: 1102230032918
               </span>
-              <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-[10px] font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">
+              <span className="inline-flex items-center rounded-full bg-accent/5 px-2 py-1 text-[10px] font-medium text-accent ring-1 ring-inset ring-accent/20">
                 Officer Led
               </span>
             </div>
           </div>
         </div>
 
-        <div className="mt-4 border-t border-gray-100 pt-3 text-center">
-          <Link href="/verify-jvto" className="group inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-800">
+        <div className="mt-4 border-t border-border-base pt-3 text-center">
+          <Link href="/verify-jvto" className="group inline-flex items-center text-xs font-medium text-accent hover:text-accent/80">
             Verify Our Credentials
             <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
           </Link>

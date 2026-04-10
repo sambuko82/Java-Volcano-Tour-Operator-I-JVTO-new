@@ -66,105 +66,113 @@ export default function Home() {
   const featuredDestinations = DESTINATIONS.slice(0, 4);
 
   return (
-    <main className="min-h-screen bg-brand-cream">
+    <main className="min-h-screen bg-page">
       <JsonLd data={homeSchema} />
       <TrustSummary />
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-accent">
         <Image
           src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
           alt="Java Volcano"
           fill
-          className="object-cover scale-105"
+          className="object-cover opacity-60"
           priority
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/40 via-transparent to-accent/80" />
+        
         <div className="relative z-10 text-center px-4 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-3 bg-brand-olive/80 backdrop-blur-md border border-white/20 text-white px-8 py-3 rounded-full mb-10 text-[10px] font-bold tracking-[0.3em] uppercase shadow-xl"
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full mb-8 text-[10px] font-bold tracking-[0.2em] uppercase"
           >
-            <ShieldCheck size={14} className="text-brand-accent" /> Tourist Police-Led Private Tours
+            <ShieldCheck size={14} className="text-jvto-orange" /> Tourist Police-Led Private Tours
           </motion.div>
+          
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="text-6xl md:text-[120px] font-serif font-light text-white mb-10 leading-[0.9] tracking-tight"
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-8xl font-display font-bold text-white mb-8 leading-[1.1] tracking-tight"
           >
-            The Art of <br /> <span className="italic font-normal text-brand-accent">Volcano Travel</span>
+            Tourist Police-Led <br /> 
+            <span className="text-jvto-orange">Private Volcano Tours</span>
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-lg md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto font-light leading-relaxed"
           >
-            Experience East Java through the lens of authority and local heritage. JVTO combines police-led safety systems with private, high-end execution for the discerning traveler.
+            Private Bromo, Ijen & Tumpak Sewu from Surabaya or Bali. <br className="hidden md:block" />
+            Direct operator with verifiable legal identity.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col items-center gap-6"
           >
-            <Link href="/tours" className="w-full sm:w-auto bg-brand-olive text-white px-12 py-5 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-brand-olive/90 transition-all flex items-center justify-center gap-3 group shadow-xl shadow-brand-olive/20">
-              Explore Routes <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link href="/verify-jvto" className="w-full sm:w-auto bg-white/20 backdrop-blur-md border border-white/30 text-white px-12 py-5 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white/30 transition-all flex items-center justify-center gap-2">
-              Verify JVTO
-            </Link>
+            <p className="text-white/60 text-xs font-bold uppercase tracking-[0.3em]">Choose Your Start Point</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
+              <Link href="/tours?origin=Surabaya" className="w-full bg-white text-accent px-10 py-5 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-stone-100 transition-all flex items-center justify-center gap-3 group shadow-xl">
+                From Surabaya <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-jvto-orange" />
+              </Link>
+              <Link href="/tours?origin=Bali" className="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-white/20 transition-all flex items-center justify-center gap-3 group">
+                From Bali <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-jvto-orange" />
+              </Link>
+            </div>
           </motion.div>
         </div>
-        
-        {/* Scroll Indicator */}
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent" />
-        </motion.div>
       </section>
 
-      {/* 2. Authority Hub - Evidence at a Glance */}
-      <section className="bg-brand-olive py-20 overflow-hidden">
+      {/* Forensic Crosslink Bar */}
+      <div className="bg-jvto-orange py-3 px-4 text-center">
+        <Link href="/verify-jvto" className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-white hover:underline underline-offset-4">
+          ✓ All documents verifiable — Verify JVTO Legal Identity <ArrowRight size={14} />
+        </Link>
+      </div>
+
+      {/* Trust Strip */}
+      <section className="bg-accent py-12 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="flex text-brand-accent mb-3">
-                {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
-              </div>
-              <p className="text-white font-serif text-2xl mb-1">{SITE_CONFIG.reputation.aggregateRating}★ Reputation</p>
-              <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">112+ Verified Reviews</p>
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="flex flex-col items-center text-center group cursor-help">
+              <Landmark className="text-jvto-orange mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
+              <p className="text-white text-sm font-bold mb-1">Licensed Operator</p>
+              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">#1102230032918</p>
             </div>
-            <div className="flex flex-col items-center md:items-start text-center md:text-left border-l border-white/10 pl-0 md:pl-12">
-              <ShieldCheck className="text-brand-accent mb-3" size={28} />
-              <p className="text-white font-serif text-2xl mb-1">Police-Led Safety</p>
-              <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">Active Officer Oversight</p>
+            <div className="flex flex-col items-center text-center group cursor-help">
+              <ShieldCheck className="text-jvto-orange mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
+              <p className="text-white text-sm font-bold mb-1">Police-Led</p>
+              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">Active Officer Oversight</p>
             </div>
-            <div className="flex flex-col items-center md:items-start text-center md:text-left border-l border-white/10 pl-0 md:pl-12">
-              <CheckCircle2 className="text-brand-accent mb-3" size={28} />
-              <p className="text-white font-serif text-2xl mb-1">100% Private</p>
-              <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">No Mixed Groups</p>
+            <div className="flex flex-col items-center text-center group cursor-help">
+              <Users className="text-jvto-orange mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
+              <p className="text-white text-sm font-bold mb-1">Private Groups Only</p>
+              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">No Mixed Strangers</p>
             </div>
-            <div className="flex flex-col items-center md:items-start text-center md:text-left border-l border-white/10 pl-0 md:pl-12">
-              <Landmark className="text-brand-accent mb-3" size={28} />
-              <p className="text-white font-serif text-2xl mb-1">Licensed PT</p>
-              <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">NIB: {SITE_CONFIG.organization.nib}</p>
+            <div className="flex flex-col items-center text-center group cursor-help">
+              <Star className="text-jvto-orange mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
+              <p className="text-white text-sm font-bold mb-1">4.9★ Trustpilot</p>
+              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">112+ Verified Reviews</p>
+            </div>
+            <div className="flex flex-col items-center text-center group cursor-help col-span-2 lg:col-span-1">
+              <CheckCircle2 className="text-jvto-orange mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
+              <p className="text-white text-sm font-bold mb-1">Permits Included</p>
+              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">Gas Mask & Health Check</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2.2 Trustpilot Social Proof */}
-      <section id="reviews" className="py-16 bg-brand-cream border-b border-stone-200/50">
+      <section id="reviews" className="py-16 bg-card/50 border-b border-border-base">
         <div className="max-w-7xl mx-auto px-4">
           <TrustpilotWidget />
         </div>
@@ -178,25 +186,25 @@ export default function Home() {
       <FounderSpotlight />
 
       {/* 2.6 The People Behind the Proof - Crew Grid */}
-      <section id="crew" className="py-32 bg-brand-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="crew" className="section-padding bg-page">
+        <div className="container-width">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">The <span className="italic">Custodians</span></h2>
-            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">The JVTO experience is delivered by real local people whose names, roles, and strengths matter to the quality of the trip. Every member is verified and licensed.</p>
+            <h2 className="text-5xl md:text-7xl mb-6 text-text-primary">The <span className="text-jvto-orange">Custodians</span></h2>
+            <p className="text-text-secondary max-w-2xl mx-auto font-light text-lg">The JVTO experience is delivered by real local people whose names, roles, and strengths matter to the quality of the trip. Every member is verified and licensed.</p>
           </div>
           <CrewGrid />
         </div>
       </section>
 
       {/* 3. Trust Pillars - Evidence Dashboard & Structured Proof */}
-      <section id="trust-pillars" className="py-32 bg-white rounded-[64px] my-12 mx-4 shadow-2xl shadow-brand-olive/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="trust-pillars" className="section-padding bg-card rounded-[64px] my-12 mx-4 shadow-2xl shadow-accent/5">
+        <div className="container-width">
           <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
             <div className="max-w-2xl">
-              <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Operational <br /> <span className="italic">Certainty</span></h2>
-              <p className="text-stone-500 font-light text-lg">In a landscape of freelancers and brokers, JVTO provides documented legitimacy. We don&apos;t ask for trust; we provide the library for you to audit it yourself.</p>
+              <h2 className="text-5xl md:text-7xl mb-6 text-text-primary">Operational <br /> <span className="text-jvto-orange">Certainty</span></h2>
+              <p className="text-text-secondary font-light text-lg">In a landscape of freelancers and brokers, JVTO provides documented legitimacy. We don&apos;t ask for trust; we provide the library for you to audit it yourself.</p>
             </div>
-            <Link href="/verify-jvto" className="bg-brand-olive text-white px-12 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-olive/90 transition-all flex items-center gap-3 shrink-0 shadow-lg shadow-brand-olive/20">
+            <Link href="/verify-jvto" className="bg-accent text-white px-12 py-5 rounded-md text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-3 shrink-0 shadow-lg shadow-accent/20">
               Open Proof Library <ArrowRight size={18} />
             </Link>
           </div>
@@ -208,13 +216,13 @@ export default function Home() {
               { title: "Press & Guides", desc: "Stefan Loose and independent travel media recognitions.", icon: <Award />, meta: "Recognition" },
               { title: "History", desc: "Operational continuity and digital footprint since 2016.", icon: <History />, meta: "Continuity" }
             ].map((item, i) => (
-              <div key={i} className="p-10 bg-brand-cream/50 rounded-[40px] border border-stone-100 hover:shadow-2xl hover:shadow-brand-olive/5 transition-all group">
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand-olive mb-8 group-hover:bg-brand-olive group-hover:text-white transition-all shadow-sm">
+              <div key={i} className="p-10 bg-page/50 rounded-[40px] border border-border-base hover:shadow-2xl hover:shadow-accent/5 transition-all group">
+                <div className="w-14 h-14 bg-card rounded-2xl flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all shadow-sm">
                   {item.icon}
                 </div>
-                <h3 className="text-2xl font-serif mb-3 text-brand-ink">{item.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-6 font-light">{item.desc}</p>
-                <p className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em]">{item.meta}</p>
+                <h3 className="text-2xl mb-3 text-text-primary">{item.title}</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 font-light">{item.desc}</p>
+                <p className="micro-label">{item.meta}</p>
               </div>
             ))}
           </div>
@@ -224,25 +232,25 @@ export default function Home() {
             <AnswerBlock 
               question="Why should I trust JVTO with my deposit?"
               answer="JVTO operates with a 'Trust First' philosophy. We are a legally registered PT (Perseroan Terbatas) in Indonesia, founded by a member of the Tourist Police. We provide our NIB (Business Identification Number) and legal documents upfront so you can verify us through official government channels before paying a single dollar."
-              icon={<ShieldCheck className="text-brand-olive" size={24} />}
+              icon={<ShieldCheck className="text-accent" size={24} />}
               metadata="NIB: 0220001393513 (PT Java Volcano Rendezvous)"
             />
             <AnswerBlock 
               question="How do you ensure safety at Ijen Crater?"
               answer="Safety is our core product. We provide mandatory health screenings with licensed medical partners, professional-grade gas masks, and a team trained in volcanic risk management. Our founder's background in the Tourist Police means our safety protocols are not just 'guidelines'—they are police-standard procedures."
-              icon={<Activity className="text-brand-olive" size={24} />}
+              icon={<Activity className="text-accent" size={24} />}
               metadata="Verified Medical Screening Partners"
             />
             <AnswerBlock 
               question="Are your tours truly private?"
               answer="Yes. We do not operate 'shared' tours where you are mixed with strangers. Every JVTO booking gets its own dedicated vehicle, driver, and guide. This ensures we can maintain strict safety standards and provide a personalized experience that shared tours simply cannot match."
-              icon={<Users className="text-brand-olive" size={24} />}
+              icon={<Users className="text-accent" size={24} />}
               metadata="100% Private Logistics Guarantee"
             />
             <AnswerBlock 
               question="What happens if my trip is cancelled?"
               answer="We maintain a transparent cancellation policy. If a trip is cancelled due to volcanic activity or government closures, we work with you to reschedule or provide a fair refund based on our documented terms. Our legal registration ensures you have recourse that 'freelance' guides cannot offer."
-              icon={<CheckCircle2 className="text-brand-olive" size={24} />}
+              icon={<CheckCircle2 className="text-accent" size={24} />}
               metadata="Documented Refund & Reschedule Policy"
             />
           </div>
@@ -250,26 +258,26 @@ export default function Home() {
       </section>
 
       {/* 4. Route Selection & Comparison */}
-      <section id="tours" className="py-32 bg-white rounded-t-[64px] shadow-2xl shadow-brand-olive/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
-          <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Find Your <span className="italic">Perfect Route</span></h2>
-          <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Use our interactive selector to find the private tour that fits your schedule, starting point, and adventure goals. Every JVTO trip is private by default, with your own vehicle and crew.</p>
+      <section id="tours" className="section-padding bg-page rounded-t-[64px] shadow-2xl shadow-accent/5">
+        <div className="container-width text-center mb-20">
+          <h2 className="text-5xl md:text-7xl mb-6 text-text-primary">Find Your <span className="text-jvto-orange">Perfect Route</span></h2>
+          <p className="text-text-secondary max-w-2xl mx-auto font-light text-lg">Use our interactive selector to find the private tour that fits your schedule, starting point, and adventure goals. Every JVTO trip is private by default, with your own vehicle and crew.</p>
         </div>
         
         <RouteSelector />
       </section>
 
       {/* 5. Ijen Health Proof Rail */}
-      <section className="py-24 bg-brand-cream border-y border-stone-200/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-card/50 border-y border-border-base">
+        <div className="container-width">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="flex items-center gap-8">
-              <div className="w-24 h-24 bg-white rounded-[32px] flex items-center justify-center text-brand-olive shadow-xl shadow-brand-olive/5 border border-stone-100">
+              <div className="w-24 h-24 bg-card rounded-[32px] flex items-center justify-center text-accent shadow-xl shadow-accent/5 border border-border-base">
                 <Activity size={40} />
               </div>
               <div>
-                <h3 className="text-3xl font-serif mb-2 text-brand-ink">Mandatory Ijen Health Screening</h3>
-                <p className="text-stone-500 text-sm font-light max-w-md leading-relaxed">Every Ijen tour includes a professional medical check-up as required by local regulations. We prioritize your safety above all else.</p>
+                <h3 className="text-3xl mb-2 text-text-primary">Mandatory Ijen Health Screening</h3>
+                <p className="text-text-secondary text-sm font-light max-w-md leading-relaxed">Every Ijen tour includes a professional medical check-up as required by local regulations. We prioritize your safety above all else.</p>
               </div>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-4">
@@ -278,12 +286,12 @@ export default function Home() {
                 "Official Certificates",
                 "Insurance Ready"
               ].map((label, i) => (
-                <div key={i} className="bg-white px-8 py-4 rounded-full border border-stone-100 flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-stone-600 shadow-sm">
-                  <CheckCircle2 size={16} className="text-brand-olive" /> {label}
+                <div key={i} className="bg-card px-8 py-4 rounded-full border border-border-base flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-text-primary shadow-sm">
+                  <CheckCircle2 size={16} className="text-jvto-orange" /> {label}
                 </div>
               ))}
             </div>
-            <Link href="/travel-guide/ijen-health-screening" className="text-brand-olive font-bold text-sm underline underline-offset-8 hover:text-brand-olive/80 transition-colors">
+            <Link href="/travel-guide/ijen-health-screening" className="text-accent font-bold text-sm underline underline-offset-8 hover:text-jvto-orange transition-colors">
               Learn about Ijen Safety
             </Link>
           </div>
@@ -291,11 +299,11 @@ export default function Home() {
       </section>
 
       {/* Destinations */}
-      <section id="destinations" className="py-32 bg-white rounded-b-[64px] shadow-2xl shadow-brand-olive/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="destinations" className="section-padding bg-page rounded-b-[64px] shadow-2xl shadow-accent/5">
+        <div className="container-width">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Iconic <span className="italic">Landscapes</span></h2>
-            <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">From the blue fire of Ijen to the thousand streams of Tumpak Sewu.</p>
+            <h2 className="text-5xl md:text-7xl mb-6 text-text-primary">Iconic <span className="text-jvto-orange">Landscapes</span></h2>
+            <p className="text-text-secondary max-w-2xl mx-auto font-light text-lg">From the blue fire of Ijen to the thousand streams of Tumpak Sewu.</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
@@ -306,7 +314,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.8 }}
-                  className="relative aspect-[3/4] rounded-[48px] overflow-hidden group cursor-pointer shadow-xl shadow-brand-olive/10"
+                  className="relative aspect-[3/4] rounded-[48px] overflow-hidden group cursor-pointer shadow-xl shadow-accent/10"
                 >
                 <Image
                   src={dest.image}
@@ -315,10 +323,10 @@ export default function Home() {
                   className="object-cover group-hover:scale-110 transition-transform duration-1000"
                   referrerPolicy="no-referrer"
                 />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-accent/90 via-accent/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   <div className="absolute bottom-10 left-8 right-8 text-white">
-                    <h3 className="text-2xl md:text-3xl font-serif mb-2">{dest.name}</h3>
-                    <p className="text-xs text-white/60 uppercase tracking-widest font-bold">{dest.highlights[0]}</p>
+                    <h3 className="text-2xl md:text-3xl mb-2">{dest.name}</h3>
+                    <p className="micro-label text-white/60">{dest.highlights[0]}</p>
                   </div>
                 </motion.div>
               </Link>
@@ -329,20 +337,20 @@ export default function Home() {
 
 
       {/* Reviews Section - What Our Guests Say */}
-      <section id="reviews" className="py-32 bg-brand-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="reviews" className="section-padding bg-card/50">
+        <div className="container-width">
           <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
             <div className="max-w-2xl">
-              <h2 className="text-5xl md:text-7xl font-serif mb-6">Guest <span className="italic">Reflections</span></h2>
-              <p className="text-stone-500 font-light text-lg">Trust should never rely on self-written praise. That is why JVTO points travelers to independent review platforms and real guest experiences rather than hiding behind anonymous testimonials.</p>
+              <h2 className="text-5xl md:text-7xl mb-6 text-text-primary">Guest <span className="text-jvto-orange">Reflections</span></h2>
+              <p className="text-text-secondary font-light text-lg">Trust should never rely on self-written praise. That is why JVTO points travelers to independent review platforms and real guest experiences rather than hiding behind anonymous testimonials.</p>
             </div>
             <div className="flex gap-4">
-               <div className="flex items-center gap-2 px-6 py-3 bg-white rounded-full border border-stone-100 shadow-sm">
-                  <span className="text-sm font-bold text-brand-olive">5.0</span>
-                  <div className="flex text-brand-accent">
+               <div className="flex items-center gap-2 px-6 py-3 bg-card rounded-full border border-border-base shadow-sm">
+                  <span className="text-sm font-bold text-text-primary">5.0</span>
+                  <div className="flex text-jvto-orange">
                     {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                   </div>
-                  <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest ml-2">Tripadvisor</span>
+                  <span className="micro-label ml-2 text-text-secondary">Tripadvisor</span>
                </div>
             </div>
           </div>
@@ -368,24 +376,24 @@ export default function Home() {
                 source: "Google"
               }
             ].map((review, i) => (
-              <div key={i} className="bg-white p-12 rounded-[40px] border border-stone-100 hover:shadow-2xl hover:shadow-brand-olive/5 transition-all duration-500">
-                <div className="flex text-brand-accent mb-8">
+              <div key={i} className="bg-card p-12 rounded-[40px] border border-border-base hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500">
+                <div className="flex text-jvto-orange mb-8">
                   {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                 </div>
-                <p className="text-stone-600 mb-10 italic font-light leading-relaxed">&quot;{review.text}&quot;</p>
-                <div className="flex justify-between items-end pt-8 border-t border-stone-50">
+                <p className="text-text-secondary mb-10 italic font-light leading-relaxed">&quot;{review.text}&quot;</p>
+                <div className="flex justify-between items-end pt-8 border-t border-border-base">
                   <div>
-                    <p className="font-serif text-xl text-brand-ink">{review.name}</p>
-                    <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">{review.country}</p>
+                    <p className="text-xl text-text-primary font-bold">{review.name}</p>
+                    <p className="micro-label mt-1 text-text-secondary">{review.country}</p>
                   </div>
-                  <p className="text-[10px] font-bold text-brand-olive uppercase tracking-[0.2em]">{review.source}</p>
+                  <p className="micro-label text-text-primary">{review.source}</p>
                 </div>
               </div>
             ))}
           </div>
           <div className="mt-20 text-center">
-            <Link href="/why-jvto/reviews" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-brand-olive hover:gap-6 transition-all">
-              Read Verified Reviews <ArrowRight size={18} />
+            <Link href="/why-jvto/reviews" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-text-primary hover:gap-6 transition-all">
+              Read Verified Reviews <ArrowRight size={18} className="text-jvto-orange" />
             </Link>
           </div>
         </div>
@@ -395,44 +403,44 @@ export default function Home() {
       <FAQSection title="Operational Certainty: Frequently Asked Questions" items={homeFaqs} />
 
       {/* Travel Guide CTA - Read the Rulebook Before You Book */}
-      <section id="travel-guide" className="py-32 bg-brand-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="travel-guide" className="section-padding bg-page">
+        <div className="container-width">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="relative aspect-square rounded-[80px] overflow-hidden shadow-2xl shadow-brand-olive/10">
+            <div className="relative aspect-square rounded-[80px] overflow-hidden shadow-2xl shadow-accent/10">
               <Image 
                 src="https://picsum.photos/seed/volcano-guide/1200/1200" 
-                alt="Java Travel Guide" 
+                alt="Java Volcano Guide" 
                 fill 
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-brand-olive/20 mix-blend-multiply" />
+              <div className="absolute inset-0 bg-accent/20 mix-blend-multiply" />
             </div>
             <div className="space-y-10">
-              <div className="inline-block px-6 py-2 bg-white rounded-full text-[10px] font-bold text-brand-olive uppercase tracking-[0.2em] shadow-sm border border-stone-100">
+              <div className="inline-block px-6 py-2 bg-card rounded-full text-[10px] font-bold text-text-primary uppercase tracking-[0.2em] shadow-sm border border-border-base">
                 Essential Knowledge
               </div>
-              <h2 className="text-5xl md:text-7xl font-serif leading-tight text-brand-ink">The Java <br /> <span className="italic">Expedition Guide</span></h2>
-              <p className="text-stone-500 font-light text-lg leading-relaxed">
+              <h2 className="text-5xl md:text-7xl leading-tight text-text-primary">The Java <br /> <span className="text-jvto-orange">Expedition Guide</span></h2>
+              <p className="text-text-secondary font-light text-lg leading-relaxed">
                 We do not ask guests to commit blindly. Our Travel Guide is public because informed travelers make better decisions, ask better questions, and arrive with the right expectations.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
-                  { title: "Ijen Health Guide", link: "/travel-guide/ijen-health" },
-                  { title: "Bromo Weather", link: "/travel-guide/bromo-weather" },
-                  { title: "Safety Protocols", link: "/why-jvto/safety" },
+                  { title: "Ijen Health Guide", link: "/travel-guide/ijen-health-screening" },
+                  { title: "Bromo Weather", link: "/travel-guide/weather-and-closures" },
+                  { title: "Safety Protocols", link: "/travel-guide/safety-on-tours" },
                   { title: "Booking Policy", link: "/policy" }
                 ].map((item, i) => (
                   <Link key={i} href={item.link} className="flex items-center gap-4 group cursor-pointer">
-                    <div className="w-12 h-12 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-brand-olive group-hover:border-brand-olive group-hover:text-white transition-all shadow-sm">
+                    <div className="w-12 h-12 rounded-full border border-border-base flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all shadow-sm">
                       <ArrowRight size={18} />
                     </div>
-                    <span className="text-base font-medium text-stone-700 group-hover:text-brand-olive transition-colors">{item.title}</span>
+                    <span className="text-base font-medium text-text-primary group-hover:text-jvto-orange transition-colors">{item.title}</span>
                   </Link>
                 ))}
               </div>
-              <Link href="/travel-guide" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-brand-olive hover:gap-6 transition-all pt-6">
-                Open Full Travel Guide <ArrowRight size={18} />
+              <Link href="/travel-guide" className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-text-primary hover:gap-6 transition-all pt-6">
+                Open Full Travel Guide <ArrowRight size={18} className="text-jvto-orange" />
               </Link>
             </div>
           </div>

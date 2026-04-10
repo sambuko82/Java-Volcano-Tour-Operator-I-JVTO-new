@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ['motion', 'framer-motion'],
   images: {
     remotePatterns: [
       {

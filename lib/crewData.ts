@@ -11,6 +11,7 @@ export interface CrewMember {
   mentions: number;
   quote: string;
   category: 'Safety' | 'Experience' | 'VIP';
+  kta?: string;
 }
 
 export interface CrewPairing {
@@ -31,7 +32,8 @@ export const CREW_MEMBERS: CrewMember[] = [
     specialty: 'Photography & Vibe Management',
     mentions: 18,
     quote: 'Gufron was excellent... always willing to help you get your best photo. - Adrián M.',
-    category: 'Experience'
+    category: 'Experience',
+    kta: 'KTA-39-2024'
   },
   {
     id: '13',
@@ -43,7 +45,8 @@ export const CREW_MEMBERS: CrewMember[] = [
     specialty: 'Volcanic Safety & Geology',
     mentions: 20,
     quote: 'Rendi made sure we were safe... held our hands to prevent us from falling. - Wing Shan Lui',
-    category: 'Safety'
+    category: 'Safety',
+    kta: 'KTA-13-2024'
   },
   {
     id: '77',
@@ -55,7 +58,8 @@ export const CREW_MEMBERS: CrewMember[] = [
     specialty: 'Communication & VIP Logistics',
     mentions: 19,
     quote: 'Prudent at the wheel and with a constant smile. - Veronica R.',
-    category: 'VIP'
+    category: 'VIP',
+    kta: 'KTA-77-2024'
   },
   {
     id: '7',
@@ -67,7 +71,8 @@ export const CREW_MEMBERS: CrewMember[] = [
     specialty: 'Logistics Reliability',
     mentions: 15,
     quote: 'Fredi provided logistical reliability that allowed us to focus on the experience.',
-    category: 'Safety'
+    category: 'Safety',
+    kta: 'KTA-07-2024'
   },
   {
     id: '1',
@@ -79,7 +84,8 @@ export const CREW_MEMBERS: CrewMember[] = [
     specialty: 'Family Care & Reliability',
     mentions: 12,
     quote: 'Tamu sering merasa diadopsi oleh keluarga lokal, yang meningkatkan rasa aman psikologis.',
-    category: 'Experience'
+    category: 'Experience',
+    kta: 'KTA-01-2024'
   },
   {
     id: '68',
@@ -91,7 +97,8 @@ export const CREW_MEMBERS: CrewMember[] = [
     specialty: 'Energy & Candid Photography',
     mentions: 10,
     quote: 'Boy brings a vibrant energy to the trek that keeps everyone motivated.',
-    category: 'Experience'
+    category: 'Experience',
+    kta: 'KTA-68-2024'
   }
 ];
 

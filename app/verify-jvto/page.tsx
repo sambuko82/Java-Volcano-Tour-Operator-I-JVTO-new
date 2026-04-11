@@ -124,12 +124,12 @@ export default function VerifyJVTO() {
       </section>
 
       {/* History Artifacts */}
-      <section id="history" className="py-40 bg-card rounded-[5rem] mx-4 my-16 shadow-2xl shadow-accent/5">
+      <section id="history" className="py-40 bg-white rounded-[5rem] mx-4 my-16 shadow-2xl shadow-brand-olive/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-32">
-            <h2 className="text-6xl md:text-8xl font-serif font-light mb-8 text-accent">History & <span className="italic">Continuity</span></h2>
-            <div className="w-24 h-px bg-accent/20 mx-auto mb-8"></div>
-            <p className="text-text-secondary max-w-2xl mx-auto font-light text-xl leading-relaxed italic">JVTO is not a new startup. We have a documented history of operational excellence since 2016.</p>
+            <h2 className="text-6xl md:text-8xl font-serif font-light mb-8 text-brand-olive">History & <span className="italic">Continuity</span></h2>
+            <div className="w-24 h-px bg-brand-olive/20 mx-auto mb-8"></div>
+            <p className="text-stone-600 max-w-2xl mx-auto font-light text-xl leading-relaxed italic">JVTO is not a new startup. We have a documented history of operational excellence since 2016.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
@@ -142,27 +142,27 @@ export default function VerifyJVTO() {
                 href={item.href}
                 imageUrl={item.imageUrl}
                 quote={item.quote}
-                icon={<Archive className="text-jvto-orange" size={24} />}
+                icon={<Archive className="text-brand-orange" size={24} />}
               />
             ))}
           </div>
 
-          <div className="bg-page/40 p-12 md:p-24 rounded-[4rem] border border-border-base shadow-inner">
+          <div className="bg-brand-cream/40 p-12 md:p-24 rounded-[4rem] border border-stone-100 shadow-inner">
             <div className="flex items-center gap-8 mb-20">
-              <div className="w-20 h-20 bg-card rounded-[2rem] flex items-center justify-center text-accent shadow-xl shadow-accent/5">
+              <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center text-brand-olive shadow-xl shadow-brand-olive/5">
                 <History size={40} />
               </div>
-              <h2 className="text-5xl font-serif font-light text-accent">The JVTO <span className="italic">Timeline</span></h2>
+              <h2 className="text-5xl font-serif font-light text-brand-olive">The JVTO <span className="italic">Timeline</span></h2>
             </div>
-            <div className="space-y-20 relative before:absolute before:left-[48px] before:top-0 before:bottom-0 before:w-px before:bg-accent/10">
+            <div className="space-y-20 relative before:absolute before:left-[48px] before:top-0 before:bottom-0 before:w-px before:bg-brand-olive/10">
               {TIMELINE.map((item, i) => (
                 <div key={i} className="flex gap-16 relative group">
-                  <div className="w-24 h-24 rounded-full bg-card border border-border-base flex items-center justify-center text-2xl font-serif font-light text-accent shrink-0 z-10 shadow-xl shadow-accent/5 group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-24 h-24 rounded-full bg-white border border-stone-100 flex items-center justify-center text-2xl font-serif font-light text-brand-olive shrink-0 z-10 shadow-xl shadow-brand-olive/5 group-hover:scale-110 transition-transform duration-500">
                     {item.year.toString().slice(-2)}
                   </div>
                   <div className="pt-6">
-                    <h4 className="text-3xl font-serif font-light mb-4 text-accent">{item.title}</h4>
-                    <p className="text-text-secondary font-light leading-relaxed text-lg italic">{item.desc}</p>
+                    <h4 className="text-3xl font-serif font-light mb-4 text-brand-olive">{item.title}</h4>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -172,14 +172,14 @@ export default function VerifyJVTO() {
       </section>
 
       {/* Police & Safety Proof */}
-      <section id="safety" className="py-40 bg-page">
+      <section id="safety" className="py-40 bg-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1 relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-accent/20"
+              className="order-2 lg:order-1 relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-brand-olive/20"
             >
               <Image 
                 src="https://javavolcano-touroperator.com/founder/agung_sambuko.jpg"
@@ -188,8 +188,8 @@ export default function VerifyJVTO() {
                 className="object-cover scale-110"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-accent/10 mix-blend-multiply" />
-              <div className="absolute inset-0 bg-gradient-to-t from-accent/40 to-transparent" />
+              <div className="absolute inset-0 bg-brand-olive/10 mix-blend-multiply" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-olive/40 to-transparent" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
@@ -197,24 +197,24 @@ export default function VerifyJVTO() {
               viewport={{ once: true }}
               className="order-1 lg:order-2"
             >
-              <h2 className="text-6xl md:text-8xl font-serif font-light mb-12 leading-tight text-accent">Police & <br /> <span className="italic">Safety Proof</span></h2>
+              <h2 className="text-6xl md:text-8xl font-serif font-light mb-12 leading-tight text-brand-olive">Police & <br /> <span className="italic">Safety Proof</span></h2>
               <div className="space-y-16">
                 <div className="flex gap-10">
-                  <div className="w-20 h-20 bg-card rounded-[2rem] flex items-center justify-center text-accent shrink-0 shadow-xl shadow-accent/5 border border-border-base">
+                  <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center text-brand-olive shrink-0 shadow-xl shadow-brand-olive/5 border border-stone-100">
                     <ShieldCheck size={36} />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-serif font-light mb-4 text-accent">Tourist Police Leadership</h3>
-                    <p className="text-text-secondary font-light leading-relaxed text-lg italic">Founder Agung Sambuko is an active member of the Indonesian Tourist Police (POLRI). This ensures our safety protocols are aligned with official law enforcement standards.</p>
+                    <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Tourist Police Leadership</h3>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">Founder Agung Sambuko is an active member of the Indonesian Tourist Police (POLRI). This ensures our safety protocols are aligned with official law enforcement standards.</p>
                   </div>
                 </div>
                 <div className="flex gap-10">
-                  <div className="w-20 h-20 bg-card rounded-[2rem] flex items-center justify-center text-accent shrink-0 shadow-xl shadow-accent/5 border border-border-base">
+                  <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center text-brand-olive shrink-0 shadow-xl shadow-brand-olive/5 border border-stone-100">
                     <Activity size={36} />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-serif font-light mb-4 text-accent">Real Health Screening</h3>
-                    <p className="text-text-secondary font-light leading-relaxed text-lg italic">We maintain formal partnerships with certified medical clinics for mandatory Ijen health screenings. Every check is real, ensuring you are medically cleared for the trek.</p>
+                    <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Real Health Screening</h3>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">We maintain formal partnerships with certified medical clinics for mandatory Ijen health screenings. Every check is real, ensuring you are medically cleared for the trek.</p>
                   </div>
                 </div>
               </div>
@@ -224,12 +224,12 @@ export default function VerifyJVTO() {
       </section>
 
       {/* Press & Recognition */}
-      <section id="press" className="py-40 bg-card rounded-[5rem] mx-4 my-16 shadow-2xl shadow-accent/5">
+      <section id="press" className="py-40 bg-white rounded-[5rem] mx-4 my-16 shadow-2xl shadow-brand-olive/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-32">
-            <h2 className="text-6xl md:text-8xl font-serif font-light mb-8 text-accent">Press & <span className="italic">Recognition</span></h2>
-            <div className="w-24 h-px bg-accent/20 mx-auto mb-8"></div>
-            <p className="text-text-secondary max-w-2xl mx-auto font-light text-xl leading-relaxed italic">JVTO has been featured and recognized by independent travel media and platforms.</p>
+            <h2 className="text-6xl md:text-8xl font-serif font-light mb-8 text-brand-olive">Press & <span className="italic">Recognition</span></h2>
+            <div className="w-24 h-px bg-brand-olive/20 mx-auto mb-8"></div>
+            <p className="text-stone-600 max-w-2xl mx-auto font-light text-xl leading-relaxed italic">JVTO has been featured and recognized by independent travel media and platforms.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
@@ -243,17 +243,17 @@ export default function VerifyJVTO() {
                 imageUrl={item.imageUrl}
                 quote={item.quote}
                 fullMetadata={item.fullMetadata}
-                icon={<Award className="text-jvto-orange" size={24} />}
+                icon={<Award className="text-brand-orange" size={24} />}
               />
             ))}
           </div>
 
-          <div className="bg-page/40 p-12 md:p-24 rounded-[4rem] border border-border-base shadow-inner">
+          <div className="bg-brand-cream/40 p-12 md:p-24 rounded-[4rem] border border-stone-100 shadow-inner">
             <div className="flex items-center gap-8 mb-20">
-              <div className="w-20 h-20 bg-card rounded-[2rem] flex items-center justify-center text-accent shadow-xl shadow-accent/5">
+              <div className="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center text-brand-olive shadow-xl shadow-brand-olive/5">
                 <Star size={40} />
               </div>
-              <h2 className="text-5xl font-serif font-light text-accent">Independent <span className="italic">Platform Ratings</span></h2>
+              <h2 className="text-5xl font-serif font-light text-brand-olive">Independent <span className="italic">Platform Ratings</span></h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -280,20 +280,20 @@ export default function VerifyJVTO() {
                   type: "stars"
                 }
               ].map((item, i) => (
-                <div key={i} className="p-12 bg-card rounded-[3rem] border border-border-base shadow-xl shadow-accent/5 hover:shadow-2xl transition-all group duration-500">
-                  <h4 className="text-[10px] font-bold text-text-secondary uppercase tracking-[0.3em] mb-8 group-hover:text-accent transition-colors">{item.label}</h4>
+                <div key={i} className="p-12 bg-white rounded-[3rem] border border-stone-100 shadow-xl shadow-brand-olive/5 hover:shadow-2xl transition-all group duration-500">
+                  <h4 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.3em] mb-8 group-hover:text-brand-olive transition-colors">{item.label}</h4>
                   <div className="flex items-center gap-4 mb-3">
-                    <span className="text-4xl font-serif font-light text-accent">{item.value}</span>
+                    <span className="text-4xl font-serif font-light text-brand-olive">{item.value}</span>
                     {item.type === "stars" ? (
-                      <div className="flex text-jvto-orange">
+                      <div className="flex text-brand-orange">
                         {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
                       </div>
                     ) : (
                       <CheckCircle2 size={32} className="text-green-500" />
                     )}
                   </div>
-                  <p className="text-base text-text-secondary font-light mb-10 tracking-wide italic">{item.sub}</p>
-                  <a href={item.href} target="_blank" className="text-[10px] font-bold text-accent hover:text-jvto-orange transition-colors flex items-center gap-4 uppercase tracking-[0.2em] border-b border-accent/10 pb-2 w-fit">
+                  <p className="text-base text-stone-500 font-light mb-10 tracking-wide italic">{item.sub}</p>
+                  <a href={item.href} target="_blank" className="text-[10px] font-bold text-brand-olive hover:text-brand-orange transition-colors flex items-center gap-4 uppercase tracking-[0.2em] border-b border-brand-olive/10 pb-2 w-fit">
                     View Profile <ExternalLink size={16} />
                   </a>
                 </div>
@@ -304,15 +304,15 @@ export default function VerifyJVTO() {
       </section>
 
       {/* FAQ */}
-      <section className="py-40 bg-page">
+      <section className="py-40 bg-brand-cream">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-6xl md:text-8xl font-serif font-light mb-24 text-center text-accent">Verification <span className="italic">FAQ</span></h2>
+          <h2 className="text-6xl md:text-8xl font-serif font-light mb-24 text-center text-brand-olive">Verification <span className="italic">FAQ</span></h2>
           <div className="space-y-20">
             {verifyFaqs.map((faq, index) => (
               <div key={index} className="group">
-                <h3 className="text-4xl font-serif font-light mb-6 group-hover:text-accent transition-colors text-accent">{faq.question}</h3>
-                <p className="text-text-secondary font-light leading-relaxed text-xl italic">{faq.answer}</p>
-                <div className="h-px bg-accent/10 mt-16 group-last:hidden" />
+                <h3 className="text-4xl font-serif font-light mb-6 group-hover:text-brand-olive transition-colors text-brand-olive">{faq.question}</h3>
+                <p className="text-stone-600 font-light leading-relaxed text-xl italic">{faq.answer}</p>
+                <div className="h-px bg-brand-olive/10 mt-16 group-last:hidden" />
               </div>
             ))}
           </div>
@@ -320,7 +320,7 @@ export default function VerifyJVTO() {
       </section>
 
       {/* Ready for Operational Certainty? */}
-      <section className="py-40 bg-accent text-white rounded-t-[5rem] shadow-2xl shadow-accent/20 relative overflow-hidden">
+      <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
             src="https://picsum.photos/seed/verify-cta/1920/1080"
@@ -332,7 +332,7 @@ export default function VerifyJVTO() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           <h2 className="text-6xl md:text-9xl font-serif font-light mb-16 leading-[0.9] tracking-tight">Ready for Operational <br /> <span className="italic">Certainty?</span></h2>
           <div className="flex flex-wrap justify-center gap-8">
-            <Link href="/tours" className="bg-jvto-orange text-white px-16 py-6 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-accent transition-all flex items-center gap-4 group shadow-xl shadow-accent/20">
+            <Link href="/tours" className="bg-brand-orange text-white px-16 py-6 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-brand-olive transition-all flex items-center gap-4 group shadow-xl shadow-brand-olive/20">
               Explore Private Tours <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
             </Link>
             <Link href="/why-jvto" className="bg-white/10 border border-white/20 text-white px-16 py-6 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white/20 transition-all backdrop-blur-md shadow-xl">

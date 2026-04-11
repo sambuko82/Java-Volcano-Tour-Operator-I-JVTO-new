@@ -27,35 +27,21 @@
   /* Elevation */
   --shadow-jvto: 0 20px 40px -15px rgba(13, 27, 42, 0.1);
   --shadow-jvto-hover: 0 30px 60px -12px rgba(13, 27, 42, 0.15);
-
-  /* Semantic Colors */
-  --color-page: var(--bg-page);
-  --color-card: var(--bg-card);
-  --color-accent: var(--accent-color);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-border-base: var(--border-color);
 }
-
-@custom-variant forensic (&:where(.forensic-mode, .forensic-mode *));
 
 @layer base {
   :root {
     --bg-page: var(--color-jvto-off);
-    --bg-card: #FFFFFF;
     --text-primary: var(--color-jvto-navy);
     --text-secondary: var(--color-jvto-muted);
     --border-color: var(--color-jvto-border);
-    --accent-color: var(--color-jvto-orange);
   }
 
   .forensic-mode {
     --bg-page: var(--color-forensic-bg);
-    --bg-card: var(--color-forensic-card);
     --text-primary: var(--color-forensic-accent);
     --text-secondary: var(--color-forensic-text);
     --border-color: #1E3A2A;
-    --accent-color: var(--color-forensic-accent);
     font-family: var(--font-mono);
   }
 

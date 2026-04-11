@@ -19,7 +19,7 @@ export default function CrewGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.1 }}
-          className="bg-card rounded-3xl overflow-hidden border border-border-base shadow-sm hover:shadow-xl transition-all group"
+          className="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition-all group"
         >
           <div className="relative h-80 w-full overflow-hidden">
             <Image 
@@ -32,36 +32,36 @@ export default function CrewGrid() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             
             {member.kta && (
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-border-base shadow-sm">
-                <ShieldCheck className="text-accent" size={14} />
-                <span className="text-[10px] font-bold text-text-primary uppercase tracking-tight">KTA Licensed: {member.kta}</span>
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-stone-200 shadow-sm">
+                <ShieldCheck className="text-blue-600" size={14} />
+                <span className="text-[10px] font-bold text-stone-900 uppercase tracking-tight">KTA Licensed: {member.kta}</span>
               </div>
             )}
 
             <div className="absolute bottom-6 left-6 right-6">
-              <p className="text-jvto-orange text-[10px] font-bold uppercase tracking-widest mb-1">{member.role}</p>
-              <h3 className="text-2xl font-serif font-bold text-white">{member.name}</h3>
+              <p className="text-orange-400 text-[10px] font-bold uppercase tracking-widest mb-1">{member.role}</p>
+              <h3 className="text-2xl font-display font-bold text-white">{member.name}</h3>
             </div>
           </div>
 
           <div className="p-8">
             <div className="flex items-center gap-2 mb-4">
-              <BadgeCheck className="text-jvto-orange" size={18} />
-              <span className="text-xs font-bold text-text-primary uppercase tracking-tight">{member.archetype}</span>
+              <BadgeCheck className="text-jvto-lime" size={18} />
+              <span className="text-xs font-bold text-jvto-navy uppercase tracking-tight">{member.archetype}</span>
             </div>
 
-            <p className="text-text-secondary text-sm leading-relaxed mb-6 line-clamp-3 italic">
+            <p className="text-jvto-muted text-sm leading-relaxed mb-6 line-clamp-3 italic">
               &quot;{member.about || member.highlights}&quot;
             </p>
 
-            <div className="space-y-3 pt-6 border-t border-border-base">
+            <div className="space-y-3 pt-6 border-t border-jvto-border">
               <div className="flex items-center gap-3">
-                <Languages className="text-text-secondary" size={16} />
-                <span className="text-xs text-text-secondary">{member.languages}</span>
+                <Languages className="text-jvto-muted" size={16} />
+                <span className="text-xs text-jvto-muted">{member.languages}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Quote className="text-text-secondary" size={16} />
-                <span className="text-xs text-text-secondary">{member.highlights.split(',')[0]}</span>
+                <Quote className="text-jvto-muted" size={16} />
+                <span className="text-xs text-jvto-muted">{member.highlights.split(',')[0]}</span>
               </div>
             </div>
           </div>

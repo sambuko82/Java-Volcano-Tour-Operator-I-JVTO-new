@@ -26,19 +26,19 @@ export default function AnswerBlock({
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-card p-8 rounded-3xl border border-border-base shadow-sm hover:shadow-md transition-all"
+        className="bg-white p-8 rounded-3xl border border-jvto-border shadow-[var(--shadow-jvto)] hover:shadow-[var(--shadow-jvto-hover)] transition-all"
       >
         <div className="flex items-start gap-4">
           {icon && (
-            <div className="w-12 h-12 rounded-2xl bg-page flex items-center justify-center shrink-0 border border-border-base">
+            <div className="w-12 h-12 rounded-2xl bg-jvto-off flex items-center justify-center shrink-0">
               {icon}
             </div>
           )}
           <div>
-            <h4 className="text-xl font-serif font-bold text-text-primary mb-3">{question}</h4>
-            <p className="text-text-secondary text-sm leading-relaxed mb-4">{answer}</p>
+            <h4 className="text-xl font-display font-bold text-jvto-navy mb-3">{question}</h4>
+            <p className="text-jvto-muted text-sm leading-relaxed mb-4">{answer}</p>
             {metadata && (
-              <p className="micro-label border-t border-border-base pt-4">
+              <p className="micro-label border-t border-jvto-border pt-4">
                 {metadata}
               </p>
             )}
@@ -57,7 +57,7 @@ export default function AnswerBlock({
       className="bg-jvto-orange/5 border-l-4 border-jvto-orange p-6 my-8 rounded-r-2xl shadow-sm"
     >
       <h3 className="text-sm font-bold uppercase tracking-wider text-jvto-orange mb-2">{title}</h3>
-      <p className="text-text-primary text-lg leading-relaxed font-medium italic">
+      <p className="text-jvto-navy text-lg leading-relaxed font-medium italic">
         {text}
       </p>
     </motion.div>

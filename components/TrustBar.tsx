@@ -13,7 +13,7 @@ const trustItems = [
 
 export default function TrustBar() {
   return (
-    <div className="bg-card border-y border-border-base py-6 overflow-hidden">
+    <div className="bg-stone-50 border-y border-stone-200 py-6 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center md:justify-between items-center gap-8">
           {trustItems.map((item, i) => (
@@ -23,9 +23,9 @@ export default function TrustBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex items-center gap-3 text-text-secondary font-medium text-sm tracking-wide uppercase"
+              className="flex items-center gap-3 text-stone-600 font-medium text-sm tracking-wide uppercase"
             >
-              <span className="text-accent">{item.icon}</span>
+              <span className="text-brand-olive">{item.icon}</span>
               {item.text}
             </motion.div>
           ))}

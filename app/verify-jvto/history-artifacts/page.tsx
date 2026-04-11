@@ -17,12 +17,12 @@ export default function HistoryArtifactsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-page">
+    <main className="min-h-screen bg-stone-50">
       <JsonLd data={schema} />
       <Navbar />
       
       {/* Header */}
-      <section className="bg-accent text-white pt-32 pb-16">
+      <section className="bg-brand-olive text-white pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export default function HistoryArtifactsPage() {
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-4">History & Artifacts</h1>
-            <p className="text-lg text-white/80 leading-relaxed">
+            <p className="text-lg text-stone-300 leading-relaxed">
               Documented operational excellence and historical continuity since 2016.
             </p>
           </motion.div>
@@ -50,24 +50,24 @@ export default function HistoryArtifactsPage() {
                 href={item.href}
                 imageUrl={item.imageUrl}
                 quote={item.quote}
-                icon={<Archive className="text-jvto-orange" size={20} />}
+                icon={<Archive className="text-orange-500" size={20} />}
               />
             ))}
           </div>
 
-          <div className="bg-card p-8 rounded-3xl border border-border-base shadow-sm">
+          <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm">
             <div className="flex items-center gap-3 mb-8">
-              <History className="text-accent" size={24} />
-              <h2 className="text-2xl font-display font-bold text-text-primary">The JVTO Timeline</h2>
+              <History className="text-brand-olive" size={24} />
+              <h2 className="text-2xl font-display font-bold">The JVTO Timeline</h2>
             </div>
             
             <div className="space-y-8">
               {TIMELINE.map((item, i) => (
                 <div key={i} className="flex gap-6">
-                  <div className="text-xl font-display font-bold text-accent w-20 shrink-0">{item.year}</div>
+                  <div className="text-xl font-display font-bold text-brand-olive w-20 shrink-0">{item.year}</div>
                   <div className="pt-0.5">
-                    <h4 className="text-lg font-display font-bold mb-1 text-text-primary">{item.title}</h4>
-                    <p className="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
+                    <h4 className="text-lg font-display font-bold mb-1">{item.title}</h4>
+                    <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}

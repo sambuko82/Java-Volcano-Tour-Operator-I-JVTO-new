@@ -10,7 +10,7 @@ export default function FounderSpotlight() {
   const founder = SITE_CONFIG.organization.founder;
 
   return (
-    <section className="section-padding bg-accent text-white overflow-hidden">
+    <section className="section-padding bg-jvto-navy text-white overflow-hidden">
       <div className="container-width">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -29,23 +29,23 @@ export default function FounderSpotlight() {
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-accent/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-jvto-navy/80 via-transparent to-transparent" />
               
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="h-px w-8 bg-jvto-orange" />
                   <span className="text-jvto-orange text-xs font-bold uppercase tracking-widest">Founder & Active Officer</span>
                 </div>
-                <h3 className="text-3xl font-serif font-bold">{founder.name}</h3>
+                <h3 className="text-3xl font-display font-bold">{founder.name}</h3>
                 <p className="text-white/60 text-sm">Bripka Agung Sambuko — Bondowoso Tourist Police (Polpar)</p>
               </div>
             </div>
             
             {/* Floating Badge */}
-            <div className="absolute -top-6 -right-6 bg-card text-text-primary p-6 rounded-2xl shadow-xl border border-border-base hidden md:block max-w-[200px]">
-              <ShieldCheck className="text-accent mb-2" size={32} />
+            <div className="absolute -top-6 -right-6 bg-white text-jvto-navy p-6 rounded-2xl shadow-xl border border-jvto-border hidden md:block max-w-[200px]">
+              <ShieldCheck className="text-jvto-navy mb-2" size={32} />
               <p className="text-xs font-bold uppercase tracking-tight leading-tight">Official Safety Authority</p>
-              <p className="text-[10px] text-text-secondary mt-1">Directly monitored by Police standards.</p>
+              <p className="text-[10px] text-jvto-muted mt-1">Directly monitored by Police standards.</p>
             </div>
           </motion.div>
 
@@ -60,7 +60,7 @@ export default function FounderSpotlight() {
               Verified Media Spotlight
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-serif font-bold mb-8 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 leading-tight">
               Real Safety, <br />
               <span className="text-jvto-orange italic">Not Just Marketing.</span>
             </h2>
@@ -104,11 +104,11 @@ export default function FounderSpotlight() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
-                  <p className="text-2xl font-serif font-bold text-jvto-orange">100%</p>
+                  <p className="text-2xl font-display font-bold text-jvto-orange">100%</p>
                   <p className="micro-label text-white/40 mt-1">Police-Led Operations</p>
                 </div>
                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
-                  <p className="text-2xl font-serif font-bold text-jvto-orange">24/7</p>
+                  <p className="text-2xl font-display font-bold text-jvto-orange">24/7</p>
                   <p className="micro-label text-white/40 mt-1">Safety Monitoring</p>
                 </div>
               </div>

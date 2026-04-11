@@ -99,7 +99,7 @@ export default function Home() {
             className="text-5xl md:text-8xl font-display font-bold text-white mb-8 leading-[1.1] tracking-tight"
           >
             Tourist Police-Led <br /> 
-            <span className="text-jvto-orange">Private Volcano Tours</span>
+            <span className="text-jvto-orange">Private Volcano Tours in East Java</span>
           </motion.h1>
           
           <motion.p 
@@ -108,8 +108,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-lg md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto font-light leading-relaxed"
           >
-            Private Bromo, Ijen & Tumpak Sewu from Surabaya or Bali. <br className="hidden md:block" />
-            Direct operator with verifiable legal identity.
+            Private Bromo, Ijen & Tumpak Sewu — departing from Surabaya or Bali.
           </motion.p>
 
           <motion.div

@@ -18,6 +18,7 @@ import MedicalTrustSection from '@/components/MedicalTrustSection';
 import TrustSummary from '@/components/TrustSummary';
 import RouteSelector from '@/components/RouteSelector';
 import ContactSection from '@/components/ContactSection';
+import DifferentiatorGrid from '@/components/DifferentiatorGrid';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { TOURS, DESTINATIONS } from '@/lib/jvtoData';
 
@@ -130,12 +131,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Forensic Crosslink Bar */}
-      <div className="bg-jvto-lime py-3 px-4 text-center">
-        <Link href="/verify-jvto" className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-jvto-navy hover:underline underline-offset-4">
-          ✓ All documents verifiable — Verify JVTO Legal Identity <ArrowRight size={14} />
-        </Link>
-      </div>
+      {/* Differentiators — 9 reasons JVTO is different */}
+      <DifferentiatorGrid />
+
+      {/* Destinations */}
+      <section id="destinations" className="section-padding bg-white rounded-b-[64px] shadow-2xl shadow-jvto-navy/5">
+        <div className="container-width">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl mb-6 text-jvto-navy">Iconic <span className="text-jvto-orange">Landscapes</span></h2>
+            <p className="text-jvto-muted max-w-2xl mx-auto font-light text-lg">From the blue fire of Ijen to the thousand streams of Tumpak Sewu.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+            {featuredDestinations.map((dest, index) => (
+              <Link key={dest.slug} href={`/destinations/${dest.slug}`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.8 }}
+                  className="relative aspect-[3/4] rounded-[48px] overflow-hidden group cursor-pointer shadow-xl shadow-jvto-navy/10"
+                >
+                <Image
+                  src={dest.image}
+                  alt={dest.name}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                  referrerPolicy="no-referrer"
+                />
+                  <div className="absolute inset-0 bg-gradient-to-t from-jvto-navy/90 via-jvto-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute bottom-10 left-8 right-8 text-white">
+                    <h3 className="text-2xl md:text-3xl mb-2">{dest.name}</h3>
+                    <p className="micro-label text-white/60">{dest.highlights[0]}</p>
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Route Selection & Comparison */}
+      <section id="tours" className="section-padding bg-white rounded-t-[64px] shadow-2xl shadow-jvto-navy/5">
+        <div className="container-width text-center mb-20">
+          <h2 className="text-5xl md:text-7xl mb-6 text-jvto-navy">Find Your <span className="text-jvto-orange">Perfect Route</span></h2>
+          <p className="text-jvto-muted max-w-2xl mx-auto font-light text-lg">Use our interactive selector to find the private tour that fits your schedule, starting point, and adventure goals. Every JVTO trip is private by default, with your own vehicle and crew.</p>
+        </div>
+        <RouteSelector />
+      </section>
+
+      {/* Ijen Health Proof Rail */}
+      <section className="py-24 bg-jvto-off border-y border-jvto-border">
+        <div className="container-width">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="flex items-center gap-8">
+              <div className="w-24 h-24 bg-white rounded-[32px] flex items-center justify-center text-jvto-navy shadow-xl shadow-jvto-navy/5 border border-jvto-border">
+                <Activity size={40} />
+              </div>
+              <div>
+                <h3 className="text-3xl mb-2 text-jvto-navy">Mandatory Ijen Health Screening</h3>
+                <p className="text-jvto-muted text-sm font-light max-w-md leading-relaxed">Every Ijen tour includes a professional medical check-up as required by local regulations. We prioritize your safety above all else.</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap justify-center md:justify-end gap-4">
+              {[
+                "Licensed Doctors",
+                "Official Certificates",
+                "Insurance Ready"
+              ].map((label, i) => (
+                <div key={i} className="bg-white px-8 py-4 rounded-full border border-jvto-border flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-jvto-navy shadow-sm">
+                  <CheckCircle2 size={16} className="text-jvto-lime" /> {label}
+                </div>
+              ))}
+            </div>
+            <Link href="/travel-guide/ijen-health-screening" className="text-jvto-navy font-bold text-sm underline underline-offset-8 hover:text-jvto-orange transition-colors">
+              Learn about Ijen Safety
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Trust Strip */}
       <section className="bg-jvto-navy py-12 border-b border-white/5">
@@ -232,7 +306,7 @@ export default function Home() {
               question="Why should I trust JVTO with my deposit?"
               answer="JVTO operates with a 'Trust First' philosophy. We are a legally registered PT (Perseroan Terbatas) in Indonesia, founded by a member of the Tourist Police. We provide our NIB (Business Identification Number) and legal documents upfront so you can verify us through official government channels before paying a single dollar."
               icon={<ShieldCheck className="text-jvto-navy" size={24} />}
-              metadata="NIB: 0220001393513 (PT Java Volcano Rendezvous)"
+              metadata={`NIB: ${SITE_CONFIG.organization.nib} (PT Java Volcano Rendezvous)`}
             />
             <AnswerBlock 
               question="How do you ensure safety at Ijen Crater?"
@@ -256,83 +330,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Route Selection & Comparison */}
-      <section id="tours" className="section-padding bg-white rounded-t-[64px] shadow-2xl shadow-jvto-navy/5">
-        <div className="container-width text-center mb-20">
-          <h2 className="text-5xl md:text-7xl mb-6 text-jvto-navy">Find Your <span className="text-jvto-orange">Perfect Route</span></h2>
-          <p className="text-jvto-muted max-w-2xl mx-auto font-light text-lg">Use our interactive selector to find the private tour that fits your schedule, starting point, and adventure goals. Every JVTO trip is private by default, with your own vehicle and crew.</p>
-        </div>
-        
-        <RouteSelector />
-      </section>
-
-      {/* 5. Ijen Health Proof Rail */}
-      <section className="py-24 bg-jvto-off border-y border-jvto-border">
-        <div className="container-width">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="flex items-center gap-8">
-              <div className="w-24 h-24 bg-white rounded-[32px] flex items-center justify-center text-jvto-navy shadow-xl shadow-jvto-navy/5 border border-jvto-border">
-                <Activity size={40} />
-              </div>
-              <div>
-                <h3 className="text-3xl mb-2 text-jvto-navy">Mandatory Ijen Health Screening</h3>
-                <p className="text-jvto-muted text-sm font-light max-w-md leading-relaxed">Every Ijen tour includes a professional medical check-up as required by local regulations. We prioritize your safety above all else.</p>
-              </div>
-            </div>
-            <div className="flex flex-wrap justify-center md:justify-end gap-4">
-              {[
-                "Licensed Doctors",
-                "Official Certificates",
-                "Insurance Ready"
-              ].map((label, i) => (
-                <div key={i} className="bg-white px-8 py-4 rounded-full border border-jvto-border flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-jvto-navy shadow-sm">
-                  <CheckCircle2 size={16} className="text-jvto-lime" /> {label}
-                </div>
-              ))}
-            </div>
-            <Link href="/travel-guide/ijen-health-screening" className="text-jvto-navy font-bold text-sm underline underline-offset-8 hover:text-jvto-orange transition-colors">
-              Learn about Ijen Safety
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Destinations */}
-      <section id="destinations" className="section-padding bg-white rounded-b-[64px] shadow-2xl shadow-jvto-navy/5">
-        <div className="container-width">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl mb-6 text-jvto-navy">Iconic <span className="text-jvto-orange">Landscapes</span></h2>
-            <p className="text-jvto-muted max-w-2xl mx-auto font-light text-lg">From the blue fire of Ijen to the thousand streams of Tumpak Sewu.</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
-            {featuredDestinations.map((dest, index) => (
-              <Link key={dest.slug} href={`/destinations/${dest.slug}`}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.8 }}
-                  className="relative aspect-[3/4] rounded-[48px] overflow-hidden group cursor-pointer shadow-xl shadow-jvto-navy/10"
-                >
-                <Image
-                  src={dest.image}
-                  alt={dest.name}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                  referrerPolicy="no-referrer"
-                />
-                  <div className="absolute inset-0 bg-gradient-to-t from-jvto-navy/90 via-jvto-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  <div className="absolute bottom-10 left-8 right-8 text-white">
-                    <h3 className="text-2xl md:text-3xl mb-2">{dest.name}</h3>
-                    <p className="micro-label text-white/60">{dest.highlights[0]}</p>
-                  </div>
-                </motion.div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
       {/* Reviews Section - What Our Guests Say */}
@@ -407,7 +404,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="relative aspect-square rounded-[80px] overflow-hidden shadow-2xl shadow-jvto-navy/10">
               <Image 
-                src="https://picsum.photos/seed/volcano-guide/1200/1200" 
+                src="https://javavolcano-touroperator.com/assets/img/destinations/ijen.webp"
                 alt="Java Volcano Guide" 
                 fill 
                 className="object-cover"
@@ -449,6 +446,13 @@ export default function Home() {
 
       {/* 6. Structured Inquiry Block */}
       <ContactSection />
+
+      {/* Verify CTA */}
+      <div className="bg-jvto-lime py-3 px-4 text-center">
+        <Link href="/verify-jvto" className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-jvto-navy hover:underline underline-offset-4">
+          ✓ All documents verifiable — Verify JVTO Legal Identity <ArrowRight size={14} />
+        </Link>
+      </div>
 
       <Footer />
     </main>

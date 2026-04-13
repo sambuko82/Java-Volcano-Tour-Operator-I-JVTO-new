@@ -47,7 +47,7 @@ export const RECOGNITIONS: Recognition[] = [
     desc: 'Recommended in the leading German-language travel guide for Indonesia. A mark of quality for European travelers.',
     metadata: 'Guidebook Recommendation (2018)',
     href: 'https://www.tripplanner.at/en/product-page/stefan-loose-reisef%C3%BChrer-indonesien',
-    imageUrl: 'https://picsum.photos/seed/stefan-loose/800/600',
+    imageUrl: undefined,
     quote: 'Features Ijen Bondowoso Homestay (JVTO) as a recommended accommodation and tour provider.',
     fullMetadata: {
       'Authors': 'Moritz Jacobi, Mischa Loose, Christian Wachsmuth',
@@ -62,7 +62,7 @@ export const RECOGNITIONS: Recognition[] = [
     desc: 'Official partner and verified discount provider for international students worldwide. Validates our fair pricing policy.',
     metadata: 'Verified Partner',
     href: 'https://www.isic.org/discounts/?providerId=259268',
-    imageUrl: 'https://picsum.photos/seed/isic/800/600',
+    imageUrl: undefined,
     quote: 'ISIC is the only internationally recognized proof of student status. JVTO is a proud partner providing official benefits.'
   },
   {
@@ -70,7 +70,7 @@ export const RECOGNITIONS: Recognition[] = [
     desc: 'Recognized for our commitment to sustainable and local ecotourism practices in East Java.',
     metadata: 'Ecotourism Spotlight',
     href: 'https://www.oneplanetnetwork.org/organisations/indecon-indonesia-ecotourism-network',
-    imageUrl: 'https://picsum.photos/seed/indecon/800/600',
+    imageUrl: undefined,
     quote: 'Affiliation with INDECON proves our commitment to ecotourism principles: minimizing impact and empowering communities.'
   },
   {
@@ -78,7 +78,7 @@ export const RECOGNITIONS: Recognition[] = [
     desc: 'National media coverage highlighting Agung Sambuko\'s dedication to tourist safety during extreme conditions.',
     metadata: 'Media Coverage (2021)',
     href: 'https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin',
-    imageUrl: 'https://picsum.photos/seed/detik-news/800/600',
+    imageUrl: undefined,
     quote: 'Since the holiday began... I have never gone home. The important thing is that the people who travel are safe. — Bripka Agung Sambuko'
   }
 ];
@@ -89,7 +89,7 @@ export const ARTIFACTS: Artifact[] = [
     desc: 'A historical plaque recognizing our early commitment to guest satisfaction and service quality as Ijen Bondowoso Homestay.',
     metadata: 'Score: 9.4/10',
     href: '#',
-    imageUrl: 'https://picsum.photos/seed/booking-2015/800/600',
+    imageUrl: undefined,
     quote: 'Recipient: Ijen Bondowoso Homestay. Address: Jl. Khairil Anwar No. 102 A (JVTO Headquarters).'
   },
   {
@@ -97,7 +97,7 @@ export const ARTIFACTS: Artifact[] = [
     desc: 'Official membership in the Himpunan Pelaku Wisata Khusus Ijen, validating our safety competence and volcanic training.',
     metadata: 'Verified Member',
     href: '#',
-    imageUrl: 'https://picsum.photos/seed/hpwki/800/600',
+    imageUrl: undefined,
     quote: 'Anggota HPWKI mendapatkan pelatihan teknis dari BBKSDA terkait penanganan gas beracun dan prosedur evakuasi.',
     assetId: 'ast-001'
   },
@@ -106,14 +106,14 @@ export const ARTIFACTS: Artifact[] = [
     desc: 'The original registration papers of PT Java Volcano Rendezvous, marking our official start.',
     metadata: 'Date: 2016-01-01',
     href: '#',
-    imageUrl: 'https://picsum.photos/seed/legal-docs/800/600'
+    imageUrl: undefined
   },
   {
     title: 'Legacy Website Snapshots',
     desc: 'Proof of our digital presence and continuity since our early years via the Wayback Machine.',
     metadata: 'Source: Wayback Machine',
     href: 'https://web.archive.org/web/*/javavolcano-touroperator.com',
-    imageUrl: 'https://picsum.photos/seed/wayback/800/600'
+    imageUrl: undefined
   }
 ];
 
@@ -149,7 +149,7 @@ export const MEDICAL_PARTNERS: MedicalPartner[] = [
 
 export const LEGAL_DATA: LegalData = {
   companyName: 'PT Java Volcano Rendezvous',
-  nib: '0220001393513',
+  nib: '1102230032918',
   ossUrl: 'https://oss.go.id',
   domain: 'javavolcano-touroperator.com',
   waybackUrl: 'https://web.archive.org/web/*/javavolcano-touroperator.com'

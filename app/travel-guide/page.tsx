@@ -8,6 +8,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
+import SupportShortcutRail from '@/components/SupportShortcutRail';
+import LiveSignalBlock from '@/components/LiveSignalBlock';
 import { ShieldCheck, CheckCircle2, Info, ArrowRight, Thermometer, Cloud, Clock, Luggage, Activity, Heart, Scale, Search, MapPin, Globe } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 
@@ -46,7 +48,7 @@ export default function TravelGuide() {
       <section className="relative pt-48 pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://picsum.photos/seed/guide/1920/1080"
+            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
             alt="East Java Landscape"
             fill
             className="object-cover opacity-20 grayscale"
@@ -73,6 +75,15 @@ export default function TravelGuide() {
               Operational certainty starts with being informed. Read our comprehensive guide to understand the boundaries, logistics, and safety protocols of East Java expeditions.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      <SupportShortcutRail />
+
+      {/* Live Volcano Signal */}
+      <section className="py-8 bg-white border-b border-jvto-border">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <LiveSignalBlock />
         </div>
       </section>
 
@@ -147,19 +158,19 @@ export default function TravelGuide() {
                 title: "Ijen Crater Guide",
                 desc: "Logistics for the blue fire, health screening requirements, and gas mask protocols.",
                 link: "/travel-guide/ijen-health-screening",
-                img: "https://picsum.photos/seed/ijen/800/600"
+                img: "https://javavolcano-touroperator.com/assets/img/destinations/ijen.webp"
               },
               {
                 title: "Mount Bromo Guide",
                 desc: "Jeep logistics, sunrise timing, and altitude preparation for the Bromo caldera.",
                 link: "/travel-guide/mount-bromo-logistics",
-                img: "https://picsum.photos/seed/bromo/800/600"
+                img: "https://javavolcano-touroperator.com/assets/img/destinations/bromo.webp"
               },
               {
                 title: "Tumpak Sewu Guide",
                 desc: "Trekking logistics, footwear requirements, and safety for the waterfall descent.",
                 link: "/travel-guide/tumpak-sewu-logistics",
-                img: "https://picsum.photos/seed/tumpak/800/600"
+                img: "https://javavolcano-touroperator.com/assets/img/destinations/tumpak-sewu.webp"
               }
             ].map((item, idx) => (
               <Link key={idx} href={item.link} className="group relative aspect-[4/5] overflow-hidden rounded-[4rem] bg-stone-200 shadow-xl">
@@ -272,7 +283,7 @@ export default function TravelGuide() {
       <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="https://picsum.photos/seed/guide-cta/1920/1080"
+            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
             alt="Background"
             fill
             className="object-cover"

@@ -58,7 +58,7 @@ export default function PackingListPage() {
       {/* Header */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://picsum.photos/seed/packing/1920/1080"
+          src="https://javavolcano-touroperator.com/assets/img/destinations/bromo.webp"
           alt="Packing List"
           fill
           className="object-cover scale-105"
@@ -157,7 +157,7 @@ export default function PackingListPage() {
       <section className="py-40 bg-brand-olive text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image 
-            src="https://picsum.photos/seed/gear/1920/1080"
+            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
             alt="Background"
             fill
             className="object-cover"
@@ -188,7 +188,7 @@ export default function PackingListPage() {
             </div>
             <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl group">
               <Image 
-                src="https://picsum.photos/seed/safety-gear/800/1000"
+                src="https://javavolcano-touroperator.com/assets/img/destinations/ijen.webp"
                 alt="JVTO Provided Gear"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
@@ -225,7 +225,7 @@ export default function PackingListPage() {
       <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="https://picsum.photos/seed/packing-cta/1920/1080"
+            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
             alt="Background"
             fill
             className="object-cover"

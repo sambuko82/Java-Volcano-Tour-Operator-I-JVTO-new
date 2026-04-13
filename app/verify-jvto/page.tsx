@@ -12,6 +12,7 @@ import { SITE_CONFIG } from '@/lib/siteConfig';
 import { LEGAL_DATA, RECOGNITIONS, ARTIFACTS, TIMELINE } from '@/lib/verificationData';
 import ProofCard from '@/components/ProofCard';
 import AuthorityShield from '@/components/AuthorityShield';
+import ProofCategoryGrid from '@/components/ProofCategoryGrid';
 
 export default function VerifyJVTO() {
   const verifySchema = {
@@ -76,6 +77,19 @@ export default function VerifyJVTO() {
         </div>
       </section>
 
+      {/* Proof Category Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <h2 className="text-2xl font-display font-bold text-jvto-navy mb-3">Proof by Category</h2>
+            <p className="text-jvto-muted text-sm max-w-2xl">
+              In the East Java tour market, many operators are unlicensed brokers or freelancers. We provide this library so travelers can audit our legitimacy, historical continuity, and safety authority before booking.
+            </p>
+          </div>
+          <ProofCategoryGrid />
+        </div>
+      </section>
+
       {/* Audit Log / Evidence Grid */}
       <section className="py-20 bg-forensic-bg border-t border-forensic-accent/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,13 +97,6 @@ export default function VerifyJVTO() {
             <div className="flex items-center gap-4">
               <div className="w-3 h-3 bg-forensic-accent rounded-full animate-pulse" />
               <h2 className="text-xl font-mono font-bold text-forensic-accent uppercase tracking-widest">Evidence_Database_v2.0</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {['All', 'Legal', 'Press', 'History', 'Safety'].map(filter => (
-                <button key={filter} className="px-4 py-1.5 rounded-md border border-forensic-accent/20 text-[10px] font-bold uppercase tracking-widest text-forensic-muted hover:bg-forensic-accent/10 hover:text-forensic-accent transition-all">
-                  {filter}
-                </button>
-              ))}
             </div>
           </div>
 
@@ -323,10 +330,11 @@ export default function VerifyJVTO() {
       <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="https://picsum.photos/seed/verify-cta/1920/1080"
+            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
             alt="Background"
             fill
             className="object-cover"
+            referrerPolicy="no-referrer"
           />
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">

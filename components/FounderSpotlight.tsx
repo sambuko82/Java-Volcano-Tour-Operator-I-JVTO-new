@@ -82,7 +82,7 @@ export default function FounderSpotlight() {
 
                 <div className="relative mb-6 rounded-xl overflow-hidden aspect-video border border-white/10">
                   <Image 
-                    src="https://picsum.photos/seed/detik-news/800/600" 
+                    src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
                     alt="Detik News Article Screenshot"
                     fill
                     className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"

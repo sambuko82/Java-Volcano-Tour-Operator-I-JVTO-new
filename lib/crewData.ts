@@ -1,4 +1,7 @@
 // lib/crewData.ts
+// @deprecated — This file is superseded by the CREW export in lib/jvtoData.ts
+// which contains the full 14-member SSOT-aligned crew dataset with canonical image URLs.
+// components/CrewGrid.tsx imports from lib/jvtoData.ts. Do not add data here.
 
 export interface CrewMember {
   id: string;

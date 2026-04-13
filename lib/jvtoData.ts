@@ -45,6 +45,8 @@ export interface CrewMember {
   photoUrl: string | null;
   displayPriority: number;
   kta?: string; // Kartu Tanda Anggota / License ID
+  forensicReviewQuote?: string; // Verbatim guest quote from reviews
+  ktaCardUrl?: string; // URL to official Ijen guide license card image
 }
 
 export const DESTINATIONS: Destination[] = [
@@ -53,7 +55,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Mount Bromo',
     shortDesc: 'The iconic active volcano of East Java, famous for its otherworldly sea of sand and sunrise views.',
     fullDesc: 'Mount Bromo is an active volcano within the Tengger Caldera, famed for its sunrise views from Kingkong Hill, the Sea of Sand jeep adventure, and the Tenggerese Hindu rituals at Pura Luhur Poten.',
-    image: 'https://picsum.photos/seed/bromo-volcano/1200/800',
+    image: 'https://javavolcano-touroperator.com/assets/img/destinations/bromo.webp',
     difficulty: 'Moderate',
     region: 'Tengger Highlands',
     altitude: 2329,
@@ -74,7 +76,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Kawah Ijen',
     shortDesc: 'Home to the world\'s largest acidic crater lake and the rare "Blue Fire" phenomenon.',
     fullDesc: 'Kawah Ijen is the world\'s largest acidic crater lake and one of only two places where natural blue fire appears at night. It is also a site of traditional sulfur mining.',
-    image: 'https://picsum.photos/seed/ijen-crater/1200/800',
+    image: 'https://javavolcano-touroperator.com/assets/img/destinations/ijen.webp',
     difficulty: 'Moderate',
     region: 'Bondowoso',
     altitude: 2769,
@@ -95,7 +97,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Madakaripura Waterfall',
     shortDesc: 'A majestic "eternal" waterfall hidden in a deep canyon, linked to the history of the Majapahit Empire.',
     fullDesc: 'A sacred 200-meter canyon waterfall believed to be the final meditation site of Gajah Mada, symbolizing loyalty and unity from the Majapahit legacy.',
-    image: 'https://picsum.photos/seed/madakaripura-waterfall/1200/800',
+    image: 'https://javavolcano-touroperator.com/assets/img/destinations/madakaripura.webp',
     difficulty: 'Moderate',
     region: 'Lumbang, Probolinggo',
     altitude: 620,
@@ -116,7 +118,7 @@ export const DESTINATIONS: Destination[] = [
     name: 'Tumpak Sewu Waterfall',
     shortDesc: 'The "Thousand Waterfalls," a massive semi-circular curtain of water cascading into a lush jungle ravine.',
     fullDesc: 'A multi-stream semicircular waterfall formed by Mount Semeru\'s volcanic erosion, known for its canyon trail and panoramic viewpoint with Semeru backdrop.',
-    image: 'https://picsum.photos/seed/tumpak-sewu-waterfall/1200/800',
+    image: 'https://javavolcano-touroperator.com/assets/img/destinations/tumpak-sewu.webp',
     difficulty: 'Hard',
     region: 'Lumajang–Malang Border',
     altitude: 500,
@@ -614,7 +616,9 @@ export const CREW: CrewMember[] = [
     about: 'I\'m someone who enjoys meaningful conversations on virtually any topic. In my professional life, I place the highest priority on safety and risk management – what some might call strict, I view as a fundamental matter of integrity and responsibility.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768225567764-405955176-gufron.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-001'
+    kta: 'KTA-G-2024-001',
+    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428741674-842615436-kta_gufron.jpg',
+    forensicReviewQuote: '"Always willing to help you get your best photo." — Adrián Martínez, Google Reviews'
   },
   {
     id: 'rendi',
@@ -626,7 +630,9 @@ export const CREW: CrewMember[] = [
     about: 'Love meeting people from different backgrounds and making every trip feel easy and enjoyable. I like to have new friend especially from overseas because can share about our unique culture.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768228514527-518051332-rendi.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-002'
+    kta: 'KTA-G-2024-002',
+    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428760524-516116110-kta_rendi.jpg',
+    forensicReviewQuote: '"When we went down the steep crater, he held our hands to prevent us from falling." — Wing Shan Lui, Google Reviews'
   },
   {
     id: 'yandi',
@@ -650,7 +656,8 @@ export const CREW: CrewMember[] = [
     about: 'I am a local resident who enjoys welcoming visitors and sharing stories about this area. I\'m happy to help travelers explore the natural beauty, local culture, and unique experiences.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768228191022-893381041-boy.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-004'
+    kta: 'KTA-G-2024-004',
+    forensicReviewQuote: '"Incredibly knowledgeable and went out of his way to make sure everything we needed was sorted." — Jason Li, Trustpilot'
   },
   {
     id: 'fredi',
@@ -662,7 +669,8 @@ export const CREW: CrewMember[] = [
     about: 'Experienced Tour Driver committed to making your travels memorable. I combine safe driving skills with a friendly, helpful attitude to provide a stress-free experience.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768276791622-262250680-freddy.png',
     displayPriority: 1,
-    kta: 'KTA-D-2024-005'
+    kta: 'KTA-D-2024-005',
+    forensicReviewQuote: '"Always on time no matter what time of the day. Exceptional driving skills." — Pooja Prakash, Google Reviews'
   },
   {
     id: 'anjas',
@@ -674,7 +682,9 @@ export const CREW: CrewMember[] = [
     about: 'I\'m a chill guy and nerdy enough to talk about brainrote meme. love playing games and listening to any kind of music. let me show you around how beautiful east java is.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768270423657-690185912-anjas.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-006'
+    kta: 'KTA-G-2024-006',
+    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428583288-513992233-kta_anjas.jpg',
+    forensicReviewQuote: '"Creative at taking fun photos... Anjas was the highlight for the trip." — Wang Zhe, Google Reviews'
   },
   {
     id: 'taufik',
@@ -686,7 +696,8 @@ export const CREW: CrewMember[] = [
     about: 'Reliable and organized individual with strong communication skills. I thrive in dynamic environments and enjoy taking on new challenges.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768228083285-919198019-taufik_1_.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-007'
+    kta: 'KTA-G-2024-007',
+    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428704448-911506028-kta_taufik.jpg'
   },
   {
     id: 'kiki',
@@ -698,7 +709,8 @@ export const CREW: CrewMember[] = [
     about: '"It is He who made the earth manageable for you—so walk among its slopes and eat of His provision—and to Him is the resurrection." (67:15)',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768271545598-834784538-kiki.png',
     displayPriority: 2,
-    kta: 'KTA-G-2024-008'
+    kta: 'KTA-G-2024-008',
+    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428489070-55145932-kta_kiki.jpg'
   },
   {
     id: 'holili',

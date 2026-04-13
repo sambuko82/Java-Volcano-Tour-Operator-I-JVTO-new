@@ -37,7 +37,7 @@ export default function Footer() {
               <li><Link href="/why-jvto" className="hover:text-brand-accent transition-colors">Why JVTO</Link></li>
               <li><Link href="/verify-jvto" className="hover:text-brand-accent transition-colors">Verify JVTO</Link></li>
               <li><Link href="/travel-guide" className="hover:text-brand-accent transition-colors">Travel Guide</Link></li>
-              <li><Link href="/legal" className="hover:text-brand-accent transition-colors">Legal & Transparency</Link></li>
+              <li><Link href="/verify-jvto/legal" className="hover:text-brand-accent transition-colors">Legal & Transparency</Link></li>
               <li><Link href="/contact" className="hover:text-brand-accent transition-colors">Contact Us</Link></li>
             </ul>
           </div>

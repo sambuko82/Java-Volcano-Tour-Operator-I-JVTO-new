@@ -11,7 +11,6 @@ import FAQSection from '@/components/FAQSection';
 import SupportShortcutRail from '@/components/SupportShortcutRail';
 import LiveSignalBlock from '@/components/LiveSignalBlock';
 import { ShieldCheck, CheckCircle2, Info, ArrowRight, Thermometer, Cloud, Clock, Luggage, Activity, Heart, Scale, Search, MapPin, Globe } from 'lucide-react';
-import { SITE_CONFIG } from '@/lib/siteConfig';
 
 const guideFaqs = [
   {
@@ -33,11 +32,30 @@ const guideFaqs = [
 ];
 
 export default function TravelGuide() {
-  const guideSchema = {
-    "@type": ["WebPage", "FAQPage"],
-    "name": "East Java Travel Guide – The Rulebook Before You Book",
-    "description": "Comprehensive travel guide for Mount Bromo, Ijen Crater, and Tumpak Sewu. Safety, logistics, and operational boundaries."
-  };
+  const guideSchema = [
+    {
+      "@type": "WebPage",
+      "@id": "https://javavolcano-touroperator.com/travel-guide#webpage",
+      "url": "https://javavolcano-touroperator.com/travel-guide",
+      "name": "East Java Travel Guide - The Rulebook Before You Book",
+      "description": "Comprehensive travel guide for Mount Bromo, Ijen Crater, and Tumpak Sewu. Safety, logistics, and operational boundaries.",
+      "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
+      "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
+      "mainEntity": { "@id": "https://javavolcano-touroperator.com/travel-guide#faq" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://javavolcano-touroperator.com/travel-guide#faq",
+      "mainEntity": guideFaqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    }
+  ];
 
   return (
     <main className="min-h-screen bg-brand-cream">

@@ -46,10 +46,20 @@ const homeFaqs = [
 ];
 
 export default function Home() {
-  const homeSchema = {
-    "@type": ["TravelAgency", "LocalBusiness", "WebSite", "WebPage"],
-    "mainEntity": {
+  const homeSchema = [
+    {
+      "@type": "WebPage",
+      "@id": "https://javavolcano-touroperator.com/#webpage",
+      "url": "https://javavolcano-touroperator.com",
+      "name": "Java Volcano Tour Operator",
+      "description": SITE_CONFIG.organization.description,
+      "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
+      "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
+      "mainEntity": { "@id": "https://javavolcano-touroperator.com/#home-faq" }
+    },
+    {
       "@type": "FAQPage",
+      "@id": "https://javavolcano-touroperator.com/#home-faq",
       "mainEntity": homeFaqs.map(faq => ({
         "@type": "Question",
         "name": faq.question,
@@ -59,7 +69,7 @@ export default function Home() {
         }
       }))
     }
-  };
+  ];
 
   // Get first 3 tours for featured section
   const featuredTours = TOURS.slice(0, 3);
@@ -68,7 +78,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-jvto-off">
-      <JsonLd data={homeSchema} />
+      <JsonLd data={homeSchema} includeWebSite />
       <TrustSummary />
       <Navbar />
 

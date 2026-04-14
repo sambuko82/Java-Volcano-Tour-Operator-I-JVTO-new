@@ -70,17 +70,31 @@ export default function FAQPage() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const schema = {
-    "@type": "FAQPage",
-    "mainEntity": faqs.flatMap(cat => cat.questions.map(q => ({
-      "@type": "Question",
-      "name": q.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": q.a
-      }
-    })))
-  };
+  const faqNodeId = "https://javavolcano-touroperator.com/travel-guide/faq#faq";
+  const schema = [
+    {
+      "@type": "WebPage",
+      "@id": "https://javavolcano-touroperator.com/travel-guide/faq#webpage",
+      "url": "https://javavolcano-touroperator.com/travel-guide/faq",
+      "name": "Frequently Asked Questions: Travel Guide",
+      "description": "Common booking, safety, health, logistics, and packing questions for JVTO private East Java expeditions.",
+      "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
+      "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
+      "mainEntity": { "@id": faqNodeId }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": faqNodeId,
+      "mainEntity": faqs.flatMap(cat => cat.questions.map(q => ({
+        "@type": "Question",
+        "name": q.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": q.a
+        }
+      })))
+    }
+  ];
 
   return (
     <main className="min-h-screen bg-stone-50">

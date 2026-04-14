@@ -32,12 +32,15 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
     "image": tour.image,
     "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
     "touristType": tour.idealTraveler,
-    "itinerary": tour.itinerary.map((item, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "name": item.title,
-      "description": item.summary,
-    })),
+    "itinerary": {
+      "@type": "ItemList",
+      "itemListElement": tour.itinerary.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.title,
+        "description": item.summary,
+      }))
+    },
     "itineraryStartPoint": {
       "@type": "City",
       "name": tour.origin
@@ -64,9 +67,15 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
     } : {}),
     "offers": {
       "@type": "Offer",
-      "price": tour.priceFrom,
       "priceCurrency": "IDR",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": tour.priceFrom,
+        "priceCurrency": "IDR",
+        "unitText": "per person, based on private group size"
+      }
     },
     "brand": {
       "@type": "Brand",
@@ -94,7 +103,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
   return (
     <main className="min-h-screen bg-brand-cream">
       <JsonLd data={tourSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={breadcrumbSchema} includeOrganization={false} />
       <Navbar />
 
       {/* Hero */}

@@ -61,15 +61,40 @@ const legalDocs: LegalProofDoc[] = [
 export default function LegalVerificationPage() {
   const schema = {
     "@type": ["WebPage", "AboutPage"],
+    "@id": "https://javavolcano-touroperator.com/verify-jvto/legal#webpage",
+    "url": "https://javavolcano-touroperator.com/verify-jvto/legal",
     "name": "Legal Verification",
     "description": "Official legal documentation and business credentials for PT Java Volcano Rendezvous.",
+    "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
+    "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
     "mainEntity": {
       "@type": "Organization",
+      "@id": "https://javavolcano-touroperator.com/#organization",
       "name": SITE_CONFIG.organization.legalName,
-      "identifier": SITE_CONFIG.organization.nib,
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "NIB (Nomor Induk Berusaha)",
+        "value": SITE_CONFIG.organization.nib
+      },
       "url": "https://javavolcano-touroperator.com",
       "sameAs": [EXTERNAL_VERIFICATION_URLS.ahuCompany, EXTERNAL_VERIFICATION_URLS.oss]
-    }
+    },
+    "mentions": [
+      {
+        "@type": "MediaObject",
+        "name": "NIB certificate 1102230032918",
+        "contentUrl": PROOF_ASSETS.nibPdf,
+        "encodingFormat": "application/pdf",
+        "sha256": FORENSIC_HASHES.nib
+      },
+      {
+        "@type": "MediaObject",
+        "name": "TDUP tourism license 1102230032918",
+        "contentUrl": PROOF_ASSETS.tdupPdf,
+        "encodingFormat": "application/pdf",
+        "sha256": FORENSIC_HASHES.tdup
+      }
+    ]
   };
 
   return (

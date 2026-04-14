@@ -9,7 +9,6 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import { Activity, ShieldCheck, AlertTriangle, CheckCircle, ExternalLink, Info, FileText, Heart, XCircle, Clock, MapPin, ArrowRight, Stethoscope, Building2 } from 'lucide-react';
-import { SITE_CONFIG } from '@/lib/siteConfig';
 import { MEDICAL_PARTNERS } from '@/lib/verificationData';
 
 const healthFaqs = [
@@ -25,9 +24,24 @@ const healthFaqs = [
 
 export default function IjenHealthScreeningPage() {
   const schema = {
-    "@type": "WebPage",
+    "@type": ["WebPage", "MedicalWebPage"],
+    "@id": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening#webpage",
+    "url": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening",
     "name": "Ijen Health Screening",
-    "description": "Mandatory health screening and safety protocols for visiting Ijen Crater."
+    "description": "Health screening and safety protocols for visiting Ijen Crater when local access rules require a recent medical certificate.",
+    "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
+    "about": [
+      { "@type": "TouristDestination", "name": "Ijen Crater" },
+      { "@id": "https://javavolcano-touroperator.com/#organization" }
+    ],
+    "medicalAudience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Traveler"
+    },
+    "mainContentOfPage": {
+      "@type": "WebPageElement",
+      "name": "Ijen health certificate requirements and clinic workflow"
+    }
   };
 
   return (

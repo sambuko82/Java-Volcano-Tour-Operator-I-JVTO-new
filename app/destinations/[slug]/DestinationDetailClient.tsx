@@ -43,7 +43,7 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
   return (
     <main className="min-h-screen bg-brand-cream">
       <JsonLd data={placeSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={breadcrumbSchema} includeOrganization={false} />
       <Navbar />
 
       {/* Hero */}

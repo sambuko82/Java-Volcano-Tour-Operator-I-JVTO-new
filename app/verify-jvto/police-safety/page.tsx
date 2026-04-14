@@ -93,19 +93,48 @@ const safetyProtocols: SafetyProof[] = [
 export default function PoliceSafetyPage() {
   const schema = {
     "@type": ["WebPage", "AboutPage"],
+    "@id": "https://javavolcano-touroperator.com/verify-jvto/police-safety#webpage",
+    "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety",
     "name": "Police-Led Safety",
     "description": "Understand the police-led safety standards and protocols of Java Volcano Tour Operator.",
+    "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
+    "about": [
+      { "@id": "https://javavolcano-touroperator.com/#organization" },
+      { "@type": "Thing", "name": "Tourist Police safety coordination" }
+    ],
     "mainEntity": {
-      "@type": "GovernmentService",
-      "name": "Tourist Police safety oversight context",
-      "provider": {
-        "@type": "Person",
-        "name": SITE_CONFIG.organization.founder.name,
-        "jobTitle": SITE_CONFIG.organization.founder.title,
-        "sameAs": [EXTERNAL_VERIFICATION_URLS.detikPolice, EXTERNAL_VERIFICATION_URLS.radarJemberPolpar]
+      "@type": "Person",
+      "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko",
+      "name": SITE_CONFIG.organization.founder.name,
+      "jobTitle": SITE_CONFIG.organization.founder.title,
+      "sameAs": [EXTERNAL_VERIFICATION_URLS.detikPolice, EXTERNAL_VERIFICATION_URLS.radarJemberPolpar]
+    },
+    "mentions": [
+      {
+        "@type": "MediaObject",
+        "name": "SPRIN POLPAR document",
+        "contentUrl": PROOF_ASSETS.sprinPolparPdf,
+        "encodingFormat": "application/pdf",
+        "sha256": FORENSIC_HASHES.sprinPolpar
       },
-      "serviceType": "Tourist safety coordination"
-    }
+      {
+        "@type": "MediaObject",
+        "name": "SPRIN WAL travel coordination document",
+        "contentUrl": PROOF_ASSETS.sprinWalTravelPdf,
+        "encodingFormat": "application/pdf",
+        "sha256": FORENSIC_HASHES.sprinWalTravel
+      },
+      {
+        "@type": "NewsArticle",
+        "headline": "Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin",
+        "url": EXTERNAL_VERIFICATION_URLS.detikPolice,
+        "datePublished": "2021-03-14",
+        "publisher": {
+          "@type": "NewsMediaOrganization",
+          "name": "Detik.com"
+        }
+      }
+    ]
   };
 
   return (

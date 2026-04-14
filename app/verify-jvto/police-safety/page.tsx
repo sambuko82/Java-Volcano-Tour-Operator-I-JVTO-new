@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import { Shield, ShieldCheck, Lock, CheckCircle, ExternalLink, UserCheck, AlertTriangle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import JsonLd from '@/components/JsonLd';
+import JsonLd, { buildGovernmentPermitSchemas } from '@/components/JsonLd';
 import AuthorityShield from '@/components/AuthorityShield';
 import ProofCard from '@/components/ProofCard';
 import { SITE_CONFIG } from '@/lib/siteConfig';
@@ -91,55 +91,54 @@ const safetyProtocols: SafetyProof[] = [
 ];
 
 export default function PoliceSafetyPage() {
-  const schema = {
+  const webPageSchema = {
     "@type": ["WebPage", "AboutPage"],
     "@id": "https://javavolcano-touroperator.com/verify-jvto/police-safety#webpage",
     "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety",
-    "name": "Police-Led Safety",
-    "description": "Understand the police-led safety standards and protocols of Java Volcano Tour Operator.",
+    "name": "Police-Led Safety Verification — Bripka Agung Sambuko, Ditpamobvit East Java",
+    "description": "Machine-readable proof of JVTO police authority: SPRIN documents, founder's GovernmentOrganization affiliation, and third-party press corroboration.",
     "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
     "about": [
       { "@id": "https://javavolcano-touroperator.com/#organization" },
-      { "@type": "Thing", "name": "Tourist Police safety coordination" }
+      { "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko" },
+      { "@type": "GovernmentOrganization", "name": "Ditpamobvit East Java — Indonesian National Police" }
     ],
     "mainEntity": {
       "@type": "Person",
       "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko",
-      "name": SITE_CONFIG.organization.founder.name,
+      "name": "Agung Sambuko",
+      "honorificPrefix": "Bripka",
       "jobTitle": SITE_CONFIG.organization.founder.title,
+      "memberOf": {
+        "@type": "GovernmentOrganization",
+        "name": "Ditpamobvit East Java — Indonesian National Police (Polri)",
+        "url": "https://www.polri.go.id"
+      },
       "sameAs": [EXTERNAL_VERIFICATION_URLS.detikPolice, EXTERNAL_VERIFICATION_URLS.radarJemberPolpar]
     },
     "mentions": [
-      {
-        "@type": "MediaObject",
-        "name": "SPRIN POLPAR document",
-        "contentUrl": PROOF_ASSETS.sprinPolparPdf,
-        "encodingFormat": "application/pdf",
-        "sha256": FORENSIC_HASHES.sprinPolpar
-      },
-      {
-        "@type": "MediaObject",
-        "name": "SPRIN WAL travel coordination document",
-        "contentUrl": PROOF_ASSETS.sprinWalTravelPdf,
-        "encodingFormat": "application/pdf",
-        "sha256": FORENSIC_HASHES.sprinWalTravel
-      },
       {
         "@type": "NewsArticle",
         "headline": "Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin",
         "url": EXTERNAL_VERIFICATION_URLS.detikPolice,
         "datePublished": "2021-03-14",
-        "publisher": {
-          "@type": "NewsMediaOrganization",
-          "name": "Detik.com"
-        }
+        "publisher": { "@type": "NewsMediaOrganization", "name": "Detik.com" }
+      },
+      {
+        "@type": "NewsArticle",
+        "headline": "Polpar Dibentuk untuk Mendukung Ijen Geopark",
+        "url": EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
+        "datePublished": "2021-03-24",
+        "publisher": { "@type": "NewsMediaOrganization", "name": "Radar Jember / Jawa Pos" }
       }
     ]
   };
 
+  const permitSchemas = buildGovernmentPermitSchemas();
+
   return (
     <main className="min-h-screen bg-stone-50">
-      <JsonLd data={schema} />
+      <JsonLd data={[webPageSchema, ...permitSchemas]} includeOrganization={false} />
       <Navbar />
       
       {/* Header */}

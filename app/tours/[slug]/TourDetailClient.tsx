@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnswerBlock from '@/components/AnswerBlock';
-import JsonLd from '@/components/JsonLd';
+import JsonLd, { buildTourPackageSchema } from '@/components/JsonLd';
 import { useCurrency } from '@/hooks/useCurrency';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { useState } from 'react';
@@ -25,63 +25,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
   const { formatPrice } = useCurrency();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const tourSchema = {
-    "@type": ["Product", "TouristTrip"],
-    "name": tour.name,
-    "description": tour.shortDesc,
-    "image": tour.image,
-    "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
-    "touristType": tour.idealTraveler,
-    "itinerary": {
-      "@type": "ItemList",
-      "itemListElement": tour.itinerary.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "name": item.title,
-        "description": item.summary,
-      }))
-    },
-    "itineraryStartPoint": {
-      "@type": "City",
-      "name": tour.origin
-    },
-    "amenityFeature": [
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Private vehicle and crew",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Police-led operational safety culture",
-        "value": true
-      },
-      ...(tour.destinations.includes('ijen-crater') ? [{
-        "@type": "LocationFeatureSpecification",
-        "name": "Ijen health screening and gas mask support",
-        "value": true
-      }] : [])
-    ],
-    ...(tour.destinations.includes('ijen-crater') ? {
-      "healthRequirement": "Kawah Ijen routes require health-screening readiness and compliance with local authority access rules."
-    } : {}),
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "IDR",
-      "availability": "https://schema.org/InStock",
-      "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": tour.priceFrom,
-        "priceCurrency": "IDR",
-        "unitText": "per person, based on private group size"
-      }
-    },
-    "brand": {
-      "@type": "Brand",
-      "name": SITE_CONFIG.organization.brandName
-    }
-  };
+  const tourSchema = buildTourPackageSchema(tour);
 
   const breadcrumbSchema = {
     "@type": "BreadcrumbList",

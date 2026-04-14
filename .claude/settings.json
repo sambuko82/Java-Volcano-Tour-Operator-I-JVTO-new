@@ -4,7 +4,14 @@
       "Read(//f/New folder/**)",
       "Bash(npx tsc:*)",
       "Bash(npm run:*)",
-      "Bash(vercel --prod)"
+      "Bash(vercel --prod)",
+      "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx tsc --noEmit 2>&1\")",
+      "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx tsc --noEmit\")",
+      "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx next build 2>&1 | tail -30\")",
+      "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx next build\")",
+      "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx next build > build_output.txt 2>&1 && echo BUILD_OK || echo BUILD_FAILED\")",
+      "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx next build > build_output.txt 2>&1 & echo done\")",
+      "Bash(cmd /c \"dir \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\build_output.txt\\\\\" 2>&1\")"
     ]
   }
 }

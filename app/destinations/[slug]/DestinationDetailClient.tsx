@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TourCard from '@/components/TourCard';
 import AnswerBlock from '@/components/AnswerBlock';
-import JsonLd from '@/components/JsonLd';
+import JsonLd, { buildTouristAttractionSchema } from '@/components/JsonLd';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { Destination, TOURS } from '@/lib/jvtoData';
 
@@ -19,17 +19,7 @@ interface DestinationDetailClientProps {
 export default function DestinationDetailClient({ destination }: DestinationDetailClientProps) {
   const associatedTours = TOURS.filter(t => t.destinations.includes(destination.slug));
 
-  const placeSchema = {
-    "@type": "Place",
-    "name": destination.name,
-    "description": destination.fullDesc,
-    "image": destination.image,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": destination.region,
-      "addressCountry": "Indonesia"
-    }
-  };
+  const attractionSchema = buildTouristAttractionSchema(destination);
 
   const breadcrumbSchema = {
     "@type": "BreadcrumbList",
@@ -42,7 +32,7 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
 
   return (
     <main className="min-h-screen bg-brand-cream">
-      <JsonLd data={placeSchema} />
+      <JsonLd data={attractionSchema} />
       <JsonLd data={breadcrumbSchema} includeOrganization={false} />
       <Navbar />
 

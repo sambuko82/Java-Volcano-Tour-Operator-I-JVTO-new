@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import JsonLd from '@/components/JsonLd';
+import JsonLd, { buildMedicalProcedureSchema, buildFAQSchema } from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import { Activity, ShieldCheck, AlertTriangle, CheckCircle, ExternalLink, Info, FileText, Heart, XCircle, Clock, MapPin, ArrowRight, Stethoscope, Building2 } from 'lucide-react';
 import { MEDICAL_PARTNERS } from '@/lib/verificationData';
@@ -23,30 +23,34 @@ const healthFaqs = [
 ];
 
 export default function IjenHealthScreeningPage() {
-  const schema = {
+  const webPageSchema = {
     "@type": ["WebPage", "MedicalWebPage"],
     "@id": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening#webpage",
     "url": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening",
-    "name": "Ijen Health Screening",
-    "description": "Health screening and safety protocols for visiting Ijen Crater when local access rules require a recent medical certificate.",
+    "name": "Ijen Health Screening — Mandatory Medical Protocol by JVTO",
+    "description": "A mandatory medical screening is required for all Kawah Ijen climbers to evaluate cardiovascular and respiratory fitness. Performed by a licensed physician (STR: QN00001073380217). JVTO includes this screening as a standard safety protocol.",
     "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
     "about": [
-      { "@type": "TouristDestination", "name": "Ijen Crater" },
+      { "@id": "https://javavolcano-touroperator.com/#ijen-health-screening" },
+      { "@type": "TouristDestination", "name": "Kawah Ijen (Ijen Crater)" },
       { "@id": "https://javavolcano-touroperator.com/#organization" }
     ],
     "medicalAudience": {
       "@type": "MedicalAudience",
-      "audienceType": "Traveler"
+      "audienceType": "Traveler, Adventure tourist"
     },
     "mainContentOfPage": {
       "@type": "WebPageElement",
-      "name": "Ijen health certificate requirements and clinic workflow"
+      "name": "Ijen health certificate requirements, physician credentials, and clinic workflow"
     }
   };
 
+  const medicalSchema = buildMedicalProcedureSchema();
+  const faqSchema = buildFAQSchema(healthFaqs);
+
   return (
     <main className="min-h-screen bg-white">
-      <JsonLd data={schema} />
+      <JsonLd data={[webPageSchema, medicalSchema, faqSchema]} includeOrganization={false} />
       <Navbar />
       
       {/* Header */}

@@ -11,6 +11,8 @@ export interface Destination {
   practicalNotes: string[];
   altitude?: number;
   region: string;
+  geoCoordinates?: { latitude: number; longitude: number };
+  hazardousSubstance?: string;
 }
 
 export interface Tour {
@@ -59,6 +61,8 @@ export const DESTINATIONS: Destination[] = [
     difficulty: 'Moderate',
     region: 'Tengger Highlands',
     altitude: 2329,
+    geoCoordinates: { latitude: -7.9425, longitude: 112.9531 },
+    hazardousSubstance: 'Volcanic ash and sulfuric gas emissions',
     highlights: [
       'Sunrise over Tengger Caldera',
       'Sea of Sand jeep adventure',
@@ -80,6 +84,8 @@ export const DESTINATIONS: Destination[] = [
     difficulty: 'Moderate',
     region: 'Bondowoso',
     altitude: 2769,
+    geoCoordinates: { latitude: -8.0584, longitude: 114.2420 },
+    hazardousSubstance: 'Sulfur Dioxide (SO₂) — up to 50,000 ppm at crater rim',
     highlights: [
       'Blue fire phenomenon',
       'Acidic turquoise crater lake',
@@ -101,6 +107,7 @@ export const DESTINATIONS: Destination[] = [
     difficulty: 'Moderate',
     region: 'Lumbang, Probolinggo',
     altitude: 620,
+    geoCoordinates: { latitude: -7.9136, longitude: 113.0472 },
     highlights: [
       'Sacred 200-meter canyon waterfall',
       'Gajah Mada\'s meditation site',
@@ -122,6 +129,7 @@ export const DESTINATIONS: Destination[] = [
     difficulty: 'Hard',
     region: 'Lumajang–Malang Border',
     altitude: 500,
+    geoCoordinates: { latitude: -8.2342, longitude: 112.9158 },
     highlights: [
       'Thousand-stream waterfall curtain',
       'Mount Semeru backdrop',
@@ -143,6 +151,7 @@ export const DESTINATIONS: Destination[] = [
     difficulty: 'Easy',
     region: 'Jember',
     altitude: 5,
+    geoCoordinates: { latitude: -8.2780, longitude: 113.6283 },
     highlights: [
       'White sand and turquoise water',
       'Unique rock formations',

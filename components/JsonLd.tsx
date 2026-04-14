@@ -282,8 +282,8 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       '@type': 'AggregateRating',
       ratingValue: SITE_CONFIG.reputation.aggregateRating,
       reviewCount: SITE_CONFIG.reputation.totalReviews,
-      bestRating: '5',
-      worstRating: '1',
+      bestRating: 5,
+      worstRating: 1,
     },
 
     citation: {

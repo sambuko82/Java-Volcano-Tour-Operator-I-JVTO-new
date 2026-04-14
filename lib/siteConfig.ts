@@ -15,7 +15,7 @@ export const SITE_CONFIG = {
       city: "Bondowoso",
       region: "Jawa Timur",
       postalCode: "68214",
-      country: "Indonesia",
+      country: "ID",
       mapUrl: "https://www.google.com/maps?cid=1266403973589689021"
     },
     founder: {
@@ -30,7 +30,7 @@ export const SITE_CONFIG = {
     isic: "https://www.isic.org/discounts/?providerId=259268",
     indecon: "https://www.indecon.id/spotlight-networks/java-volcano-tour-operator",
     googleMaps: "https://www.google.com/maps?cid=1266403973589689021",
-    aggregateRating: "4.9",
+    aggregateRating: 4.9,
     totalReviews: 112
   },
   whatsapp: {

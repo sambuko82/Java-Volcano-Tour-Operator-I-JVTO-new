@@ -158,6 +158,19 @@ export const RECOGNITIONS: Recognition[] = [
     quote: 'Affiliation with INDECON proves our commitment to ecotourism principles: minimizing impact and empowering communities.'
   },
   {
+    title: 'Radar Jember — Tak Seharusnya Bau Menyengat Itu Ada',
+    desc: 'Local press coverage mentioning Tourist Police patrol in the Ijen area. Supports JVTO\'s safety monitoring narrative and founder authority context.',
+    metadata: 'Media Coverage (May 27, 2021)',
+    href: EXTERNAL_VERIFICATION_URLS.radarJemberIjenPatrol,
+    imageUrl: undefined,
+    quote: 'Bripka Agung Sambuko named in Tourist Police patrol context around Ijen area, supporting local safety and monitoring narrative.',
+    fullMetadata: {
+      'Publisher': 'Radar Jember / Jawa Pos',
+      'Founder Variant': 'Bripka Agung Sambuko',
+      'Proof Role': 'Ijen patrol authority context'
+    }
+  },
+  {
     title: 'BBKSDA Ijen Guide Training Context',
     desc: 'Conservation authority context for guide training, toxic gas awareness, and visitor safety around Kawah Ijen.',
     metadata: 'Authority Context',

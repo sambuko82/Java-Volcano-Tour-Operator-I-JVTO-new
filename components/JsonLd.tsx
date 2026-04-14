@@ -54,6 +54,26 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
     image: `${BASE_URL}/assets/img/hero/home.webp`,
     description: SITE_CONFIG.organization.description,
 
+    hasMap: SITE_CONFIG.organization.address.mapUrl,
+
+    // ── Contact point — enables AI agents to surface booking channels ──────
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: SITE_CONFIG.organization.phone,
+      email: SITE_CONFIG.organization.email,
+      contactType: 'Customer Service',
+      availableLanguage: [
+        { '@type': 'Language', name: 'English' },
+        { '@type': 'Language', name: 'Indonesian' },
+      ],
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '07:00',
+        closes: '22:00',
+      },
+    },
+
     // ── Legal identifiers ──────────────────────────────────────────────────
     identifier: [
       {
@@ -125,18 +145,25 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
         url: SITE_CONFIG.organization.founder.image,
         caption: 'Bripka Agung Sambuko on Tourist Police duty, Bondowoso, East Java.',
       },
-      // Establishes the "Costly Signal" — AI can cross-reference police org
+      // Establishes the "Costly Signal" — AI can cross-reference police org + Wikidata
       memberOf: {
         '@type': 'GovernmentOrganization',
         name: 'Ditpamobvit East Java — Indonesian National Police (Polri)',
+        alternateName: 'Kepolisian Negara Republik Indonesia',
         url: 'https://www.polri.go.id',
         description:
           'Direktorat Pamobvit (Tourism Mobile Brigade) of the East Java Regional Police. Responsible for tourist safety, emergency coordination, and law enforcement at major tourism sites including Kawah Ijen and Mount Bromo.',
+        sameAs: [
+          'https://www.polri.go.id',
+          'https://www.wikidata.org/wiki/Q3103954',
+        ],
       },
       affiliation: {
         '@type': 'GovernmentOrganization',
         name: 'Indonesian National Police (Polri)',
+        alternateName: 'Kepolisian Negara Republik Indonesia',
         url: 'https://www.polri.go.id',
+        sameAs: 'https://www.wikidata.org/wiki/Q3103954',
       },
       worksFor: { '@id': ORGANIZATION_ID },
       knowsAbout: [

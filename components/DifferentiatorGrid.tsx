@@ -17,7 +17,7 @@ const PILLARS: Pillar[] = [
   {
     icon: <ShieldCheck size={28} />,
     title: 'Police-Led Safety',
-    desc: 'Founded by an active Tourist Police officer (Ditpamobvit). Safety protocols are police-standard, not just guidelines.',
+    desc: 'Founded by an active Tourist Police officer (Ditpamobvit). The operating culture is shaped by formal safety discipline and local authority coordination.',
   },
   {
     icon: <Users size={28} />,
@@ -27,12 +27,12 @@ const PILLARS: Pillar[] = [
   {
     icon: <Activity size={28} />,
     title: 'Real Health Screening',
-    desc: 'Ijen routes include a mandatory check by a licensed, verifiable doctor — no fake letters.',
+    desc: 'Ijen routes follow current health-certificate rules through real clinic checks, not pre-signed paperwork.',
   },
   {
     icon: <Award size={28} />,
-    title: 'KTA-Licensed Guides',
-    desc: 'All Ijen guides hold official HPWKI Ijen climbing association licenses (KTA cards).',
+    title: 'Guide License Proof',
+    desc: 'JVTO publishes Ijen guide-license evidence where available, including HPWKI KTA proof for key Ijen guides.',
   },
   {
     icon: <Star size={28} />,
@@ -52,7 +52,7 @@ const PILLARS: Pillar[] = [
   {
     icon: <Package size={28} />,
     title: 'Operator, Not Broker',
-    desc: 'We own the vehicles and crew. You deal directly with the people running your trip.',
+    desc: 'You deal with the JVTO operating team directly, with named crew, written inclusions, and accountable local execution.',
   },
 ];
 

@@ -72,7 +72,7 @@ export default function BookingPolicyPage() {
             <section id="liability">
               <h2 className="text-3xl font-display font-bold mb-6 text-brand-olive border-b border-stone-100 pb-4">4. Liability & Insurance</h2>
               <div className="space-y-4 text-stone-600 leading-relaxed">
-                <p>4.1. While we implement the highest safety standards, adventure travel involves inherent risks. Guests are responsible for their own travel insurance.</p>
+                <p>4.1. While we implement structured safety standards, adventure travel involves inherent risks. Guests are responsible for their own travel insurance.</p>
                 <p>4.2. JVTO is not liable for any personal injury, loss, or damage to property during the tour, except where caused by our gross negligence.</p>
               </div>
             </section>

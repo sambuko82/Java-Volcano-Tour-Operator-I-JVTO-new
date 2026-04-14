@@ -187,7 +187,7 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
                       <ArrowRight size={20} className="text-brand-orange group-hover:translate-x-2 transition-transform" />
                     </Link>
                     <div className="h-px bg-white/10" />
-                    <Link href="/verify-jvto#safety" className="flex items-center justify-between group py-2">
+                    <Link href="/verify-jvto/police-safety" className="flex items-center justify-between group py-2">
                       <span className="text-lg font-light text-white/60 group-hover:text-white transition-colors">Safety Protocols</span>
                       <ArrowRight size={20} className="text-brand-orange group-hover:translate-x-2 transition-transform" />
                     </Link>

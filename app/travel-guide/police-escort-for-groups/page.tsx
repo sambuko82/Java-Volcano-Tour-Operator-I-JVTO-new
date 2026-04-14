@@ -12,8 +12,8 @@ import { SITE_CONFIG } from '@/lib/siteConfig';
 const escortBenefits = [
   {
     icon: <Shield className="text-orange-500" />,
-    title: 'Priority Access',
-    desc: 'Police escorts can assist with priority access through traffic and national park checkpoints.'
+    title: 'Traffic Coordination',
+    desc: 'When approved, escort coordination can help multi-vehicle groups move through difficult traffic or formal movement points more predictably.'
   },
   {
     icon: <Lock className="text-orange-500" />,
@@ -22,8 +22,8 @@ const escortBenefits = [
   },
   {
     icon: <UserCheck className="text-orange-500" />,
-    title: 'Official Oversight',
-    desc: 'Ensures full compliance with local regulations and safety standards.'
+    title: 'Formal Coordination',
+    desc: 'Escort requests require advance coordination, eligibility checks, and official procedures. It is not an automatic add-on.'
   },
   {
     icon: <Users className="text-orange-500" />,
@@ -54,7 +54,7 @@ export default function PoliceEscortForGroupsPage() {
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Police Escort for Groups: Enhanced Safety</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              For large groups, high-profile travelers, or specific logistical needs, JVTO can arrange official police escorts through our founder&apos;s connections with the Indonesian Tourist Police.
+              For large groups, high-profile travelers, or specific logistical needs, JVTO can help coordinate official police escort requests through formal channels. Escort approval is case-by-case and not included by default in every tour.
             </p>
           </motion.div>
         </div>
@@ -83,8 +83,8 @@ export default function PoliceEscortForGroupsPage() {
           </div>
 
           <AuthorityShield 
-            title="Direct Police Integration"
-            description="Agung Sambuko (Mr. Sam) is an active member of the Indonesian Tourist Police. This allows JVTO to provide a level of official coordination and safety that is unique in the East Java tourism industry."
+            title="Formal Coordination Capacity"
+            description="Agung Sambuko (Mr. Sam) is an active member of the Indonesian Tourist Police. That background helps JVTO understand the process, documentation, and timing needed for eligible escort requests."
           />
 
           <div className="mt-16 bg-white p-12 rounded-3xl border border-stone-200 shadow-sm">
@@ -97,7 +97,7 @@ export default function PoliceEscortForGroupsPage() {
               <div className="space-y-6">
                 <h4 className="text-xl font-display font-bold mb-4">Availability</h4>
                 <p className="text-stone-600 leading-relaxed">
-                  Police escorts are available upon request for groups of 10 or more people, or for private VIP tours. Advance notice of at least 2 weeks is required to coordinate with the local police department.
+                  Police escort coordination may be requested for groups of 10 or more people, VIP movements, or complex multi-vehicle logistics. Advance notice of at least 2 weeks is recommended because approval depends on route, timing, and authority availability.
                 </p>
               </div>
               

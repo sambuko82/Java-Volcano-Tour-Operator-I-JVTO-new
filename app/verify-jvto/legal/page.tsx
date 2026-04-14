@@ -8,33 +8,68 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import ProofCard from '@/components/ProofCard';
 import { SITE_CONFIG } from '@/lib/siteConfig';
+import { EXTERNAL_VERIFICATION_URLS, FORENSIC_HASHES, PROOF_ASSETS } from '@/lib/verificationData';
 
-const legalDocs = [
+interface LegalProofDoc {
+  title: string;
+  desc: string;
+  metadata: string;
+  href: string;
+  imageUrl?: string;
+  fullMetadata: Record<string, string>;
+}
+
+const legalDocs: LegalProofDoc[] = [
   {
     title: 'NIB (Business Identification Number)',
     desc: 'The official registration of PT Java Volcano Rendezvous as a licensed tour operator in Indonesia.',
     metadata: `NIB: ${SITE_CONFIG.organization.nib}`,
-    href: '#'
+    href: PROOF_ASSETS.nibPdf,
+    imageUrl: PROOF_ASSETS.nibPreview,
+    fullMetadata: {
+      'Issuer': 'OSS Indonesia / BKPM',
+      'Registry': 'AHU company QR available',
+      'SHA-256': FORENSIC_HASHES.nib,
+    },
   },
   {
     title: 'TDUP (Tourism Business Registration)',
     desc: 'The mandatory license for operating tourism services in East Java.',
     metadata: 'License: Verified',
-    href: '#'
+    href: PROOF_ASSETS.tdupPdf,
+    imageUrl: PROOF_ASSETS.tdupPreview,
+    fullMetadata: {
+      'Business Field': 'Tourism / travel services',
+      'Identifier': SITE_CONFIG.organization.nib,
+      'SHA-256': FORENSIC_HASHES.tdup,
+    },
   },
   {
-    title: 'Tax Registration (NPWP)',
-    desc: 'Official tax identification for PT Java Volcano Rendezvous.',
-    metadata: 'Status: Active',
-    href: '#'
+    title: 'AHU Company Registry',
+    desc: 'Government registry QR context connecting the legal entity to Indonesian corporate records.',
+    metadata: 'Third-party registry',
+    href: EXTERNAL_VERIFICATION_URLS.ahuCompany,
+    imageUrl: undefined,
+    fullMetadata: {
+      'Registry': 'ahu.go.id',
+      'Legal Name': SITE_CONFIG.organization.legalName,
+      'Proof Role': 'Entity corroboration',
+    },
   }
 ];
 
 export default function LegalVerificationPage() {
   const schema = {
-    "@type": "WebPage",
+    "@type": ["WebPage", "AboutPage"],
     "name": "Legal Verification",
-    "description": "Official legal documentation and business credentials for PT Java Volcano Rendezvous."
+    "description": "Official legal documentation and business credentials for PT Java Volcano Rendezvous.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": SITE_CONFIG.organization.legalName,
+      "identifier": SITE_CONFIG.organization.nib,
+      "url": "https://javavolcano-touroperator.com",
+      "sameAs": [EXTERNAL_VERIFICATION_URLS.ahuCompany, EXTERNAL_VERIFICATION_URLS.oss]
+    }
   };
 
   return (
@@ -69,6 +104,8 @@ export default function LegalVerificationPage() {
                 description={doc.desc}
                 metadata={doc.metadata}
                 href={doc.href}
+                imageUrl={doc.imageUrl}
+                fullMetadata={doc.fullMetadata}
                 icon={<Building className="text-orange-500" />}
               />
             ))}
@@ -110,12 +147,12 @@ export default function LegalVerificationPage() {
                   <p className="text-stone-600">Tour Operator & Travel Agency Services</p>
                 </div>
                 <div className="pt-4">
-                  <a 
-                    href={SITE_CONFIG.whatsapp.waLink} 
+                  <a
+                    href={EXTERNAL_VERIFICATION_URLS.ahuCompany}
                     target="_blank"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-brand-olive text-white rounded-full font-bold hover:bg-brand-olive/90 transition-all"
                   >
-                    Request Full Documentation <ExternalLink size={16} />
+                    Open AHU Registry <ExternalLink size={16} />
                   </a>
                 </div>
               </div>

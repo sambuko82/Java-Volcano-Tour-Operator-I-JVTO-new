@@ -49,20 +49,35 @@
         "name": "NIB — Nomor Induk Berusaha",
         "identifier": "1102230032918",
         "issuer": "OSS Indonesia (Kementerian Investasi)",
-        "verify_url": "https://oss.go.id"
+        "verify_url": "https://oss.go.id",
+        "proof_url": "https://javavolcano-touroperator.com/legal/NIB-1102230032918.pdf",
+        "sha256": "fa20dde31bb75e46b061ed14cc6d003f6960c02a9a82c20d8603b0cbf6f7b1b7"
+      },
+      {
+        "type": "GovernmentPermit",
+        "name": "TDUP — Tourism Business License",
+        "identifier": "1102230032918",
+        "issuer": "Bondowoso tourism licensing authority",
+        "proof_url": "https://javavolcano-touroperator.com/legal/TDUP-1102230032918.pdf",
+        "sha256": "27252d512ddfa74de22a3e3ec10aa3dd40ef88da3eb57349fcd2137411551ee3"
       },
       {
         "type": "AssociationMembership",
         "name": "HPWKI",
         "full_name": "Himpunan Pelaku Wisata Khusus Ijen",
-        "significance": "Validates volcanic safety training and Ijen operating license"
+        "significance": "Validates volcanic safety training and Ijen operating license",
+        "verify_url": "https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyaSAyMDI0",
+        "proof_url": "https://javavolcano-touroperator.com/legal/HPWKI-approval.pdf",
+        "sha256": "ca1fb1a48b550a7748d400f165899f12a356e6941aacdde9c043427698aaf63b"
       },
       {
         "type": "GovernmentService",
         "name": "Tourist Police Oversight",
         "officer": "Bripka Agung Sambuko",
         "unit": "Ditpamobvit, East Java",
-        "document": "SPRIN (operational assignment letter)"
+        "document": "SPRIN (operational assignment letter)",
+        "proof_url": "https://javavolcano-touroperator.com/legal/SPRIN-POLPAR.pdf",
+        "sha256": "03c8578dc22956faa366d957badecfe38868d4760359cd8059fb2d6b145dfeab"
       }
     ],
     "press": [
@@ -71,6 +86,18 @@
         "headline": "Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin",
         "year": 2021,
         "url": "https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin"
+      },
+      {
+        "outlet": "Radar Jember",
+        "headline": "Polpar Dibentuk untuk Mendukung Ijen Geopark",
+        "year": 2021,
+        "url": "https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark"
+      },
+      {
+        "outlet": "BBKSDA Jatim",
+        "headline": "Pelatihan Pemandu Kawah Ijen",
+        "year": 2024,
+        "url": "https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/"
       }
     ],
     "historical_authority": {

@@ -26,10 +26,42 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const tourSchema = {
-    "@type": "Product",
+    "@type": ["Product", "TouristTrip"],
     "name": tour.name,
     "description": tour.shortDesc,
     "image": tour.image,
+    "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
+    "touristType": tour.idealTraveler,
+    "itinerary": tour.itinerary.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.title,
+      "description": item.summary,
+    })),
+    "itineraryStartPoint": {
+      "@type": "City",
+      "name": tour.origin
+    },
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Private vehicle and crew",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Police-led operational safety culture",
+        "value": true
+      },
+      ...(tour.destinations.includes('ijen-crater') ? [{
+        "@type": "LocationFeatureSpecification",
+        "name": "Ijen health screening and gas mask support",
+        "value": true
+      }] : [])
+    ],
+    ...(tour.destinations.includes('ijen-crater') ? {
+      "healthRequirement": "Kawah Ijen routes require health-screening readiness and compliance with local authority access rules."
+    } : {}),
     "offers": {
       "@type": "Offer",
       "price": tour.priceFrom,
@@ -120,7 +152,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
             <div className="lg:col-span-2 space-y-32">
               <div>
                 <AnswerBlock
-                  text={`${tour.name} is a ${tour.duration} private tour from ${tour.origin} covering ${tour.highlights.join(', ')}. Priced at ${formatPrice(tour.priceFrom)} per group. Includes private transport, expert guide, and all entrance fees. Led by licensed professionals.`}
+                  text={`${tour.name} is a ${tour.duration} private tour from ${tour.origin} covering ${tour.highlights.join(', ')}. Pricing starts from ${formatPrice(tour.priceFrom)} per person based on group size. The package includes private transport, expert guide support, and listed route logistics under JVTO's safety-led operating standards.`}
                 />
                 <h2 className="text-5xl md:text-7xl font-serif mb-12 text-brand-ink leading-[0.9] tracking-tight">Tour <br /> <span className="italic font-light text-brand-accent">Overview</span></h2>
                 <p className="text-2xl text-stone-500 leading-relaxed whitespace-pre-line font-light tracking-wide">{tour.longDesc}</p>
@@ -197,11 +229,11 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                       <div>
                         <h4 className="text-2xl font-serif mb-6 text-brand-accent italic">What is Required?</h4>
                         <p className="text-white/80 text-lg leading-relaxed mb-10 font-light tracking-wide">
-                          Since early 2024, Ijen National Park authorities mandate an official medical certificate for all visitors. This is to ensure every guest is medically cleared for the 2,386m altitude and sulfur exposure.
+                          Ijen access rules can require a recent local medical certificate. This helps assess whether guests are fit for the 2,386m altitude and sulfur-exposure environment.
                         </p>
                         <h4 className="text-2xl font-serif mb-6 text-brand-accent italic">Certified Clinics</h4>
                         <p className="text-white/80 text-lg leading-relaxed mb-10 font-light tracking-wide">
-                          We facilitate this check at certified medical clinics in Bondowoso or Banyuwangi. We do not use fake letters; every JVTO check is real and performed by a licensed doctor.
+                          We facilitate this check at certified medical clinics in Bondowoso or Banyuwangi. We do not use pre-signed letters; JVTO&apos;s screening flow is handled through real local medical checks.
                         </p>
                         <div className="flex flex-wrap gap-4 mt-8">
                           {MEDICAL_PARTNERS.slice(0, 2).map((partner, i) => (
@@ -225,6 +257,18 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                       </div>
                     </div>
                   </div>
+                </div>
+              )}
+
+              {tour.destinations.includes('ijen-crater') && (
+                <div className="bg-white p-12 rounded-[48px] border border-stone-100 shadow-lg shadow-brand-olive/5">
+                  <h3 className="text-3xl font-serif mb-6 text-brand-ink">Blue Fire Visibility: What We Can and Cannot Promise</h3>
+                  <p className="text-stone-500 text-lg font-light leading-relaxed mb-8">
+                    Ijen&apos;s blue fire is a natural sulfur-gas phenomenon, not lava and not a guaranteed show. Visibility depends on gas activity, wind, fog, rain, crater access, and darkness between roughly 02:00 and 04:00. JVTO plans the safest legal attempt, but we do not sell false certainty.
+                  </p>
+                  <Link href="/travel-guide/ijen-health-screening" className="text-brand-olive font-bold text-xs flex items-center gap-3 hover:gap-6 transition-all uppercase tracking-[0.2em] border-b border-brand-olive/20 pb-2 hover:border-brand-olive w-fit">
+                    Read Ijen Readiness Guide <ArrowRight size={20} />
+                  </Link>
                 </div>
               )}
 
@@ -267,7 +311,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                 <div>
                   <h2 className="text-4xl md:text-5xl font-serif mb-12 text-brand-ink leading-tight">You Might Also <span className="italic font-light text-brand-accent">Like</span></h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {relatedTours.map(t => <TourCard key={t.slug} tour={t} />)}
+                    {relatedTours.map((t, i) => <TourCard key={t.slug} tour={t} index={i} />)}
                   </div>
                 </div>
               )}

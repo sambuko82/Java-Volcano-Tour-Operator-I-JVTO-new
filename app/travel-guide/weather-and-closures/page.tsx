@@ -43,7 +43,7 @@ export default function WeatherAndClosuresPage() {
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Weather & Closures: Real-Time Updates</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              Volcanic conditions and weather can change rapidly. We monitor national park authorities and weather services to provide the most accurate information.
+              Volcanic conditions and weather can change rapidly. We monitor official authority notices, MAGMA/PVMBG information, and route conditions before advising guests.
             </p>
           </motion.div>
         </div>
@@ -84,7 +84,7 @@ export default function WeatherAndClosuresPage() {
                     <MapPin size={20} className="text-orange-500" /> Bromo Tengger Semeru
                   </h4>
                   <p className="text-stone-600 leading-relaxed">
-                    Closures can occur due to volcanic activity or extreme weather. We receive direct updates from the park authorities.
+                    Closures can occur due to volcanic activity, extreme weather, ceremonies, or conservation decisions. We check official notices before departure.
                   </p>
                 </div>
                 <div>

@@ -1,6 +1,6 @@
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { CREW } from '@/lib/jvtoData';
-import { FORENSIC_HASHES } from '@/lib/verificationData';
+import { EXTERNAL_VERIFICATION_URLS, FORENSIC_HASHES, PROOF_ASSETS } from '@/lib/verificationData';
 
 interface JsonLdProps {
   type?: string | string[];
@@ -10,7 +10,7 @@ interface JsonLdProps {
 /**
  * Hardened JSON-LD schema component.
  * Implements GovernmentPermit, MedicalWebPage, GovernmentService,
- * and ISBN-13 historical authority per YMYL AI-safety requirements.
+ * and ISBN-13 historical authority from the JVTO proof layer.
  * See: /public/llms.txt and /public/.well-known/ai-agent-config.json
  */
 export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data = {} }: JsonLdProps) {
@@ -18,6 +18,7 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
     "@context": "https://schema.org",
     "@type": type,
     "name": SITE_CONFIG.organization.name,
+    "@id": "https://javavolcano-touroperator.com/#organization",
     "legalName": SITE_CONFIG.organization.legalName,
     "brand": {
       "@type": "Brand",
@@ -32,21 +33,37 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
       "name": "NIB (Nomor Induk Berusaha)",
       "value": SITE_CONFIG.organization.nib
     },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "NIB public certificate",
+        "value": SITE_CONFIG.organization.nib,
+        "url": PROOF_ASSETS.nibPdf
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "TDUP tourism license",
+        "value": SITE_CONFIG.organization.nib,
+        "url": PROOF_ASSETS.tdupPdf
+      }
+    ],
     "foundingDate": SITE_CONFIG.organization.foundingDate,
 
     // ── Founder ─────────────────────────────────────────────────────────────
     "founder": {
       "@type": "Person",
-      "name": SITE_CONFIG.organization.founder.name,
-      "jobTitle": SITE_CONFIG.organization.founder.title,
-      "description": "Active-duty Bripka (Tourist Police officer) at Ditpamobvit, East Java. Founded JVTO in 2016 under the principle of Duty First, Business Second.",
+        "name": SITE_CONFIG.organization.founder.name,
+        "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko",
+        "jobTitle": SITE_CONFIG.organization.founder.title,
+      "description": "Active-duty Bripka (Tourist Police officer) at Ditpamobvit, East Java. Founded JVTO with a safety-led operating discipline.",
       "image": {
         "@type": "ImageObject",
         "url": SITE_CONFIG.organization.founder.image,
         "caption": "Agung Sambuko on duty with Tourist Police, Bondowoso."
       },
       "sameAs": [
-        "https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin"
+        EXTERNAL_VERIFICATION_URLS.detikPolice,
+        EXTERNAL_VERIFICATION_URLS.radarJemberPolpar
       ]
     },
 
@@ -69,6 +86,26 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
     "priceRange": "$$",
     "currenciesAccepted": "IDR, USD, EUR, AUD, SGD",
     "paymentAccepted": "Bank Transfer, PayPal, Wise",
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "HPWKI (Himpunan Pelaku Wisata Khusus Ijen)",
+        "url": EXTERNAL_VERIFICATION_URLS.ahuHpwki,
+        "description": "State-recognized Ijen tourism association context for volcanic safety competence."
+      },
+      {
+        "@type": "Organization",
+        "name": "International Student Identity Card",
+        "url": SITE_CONFIG.reputation.isic,
+        "description": "Global student verification network and student-benefit partner profile."
+      },
+      {
+        "@type": "Organization",
+        "name": "Indonesian Ecotourism Network",
+        "url": SITE_CONFIG.reputation.indecon,
+        "description": "Ecotourism network context for community-based tourism and local employment."
+      }
+    ],
 
     // ── Aggregate Rating ─────────────────────────────────────────────────────
     "aggregateRating": {
@@ -80,7 +117,7 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
     },
 
     // ── GovernmentPermit — NIB ───────────────────────────────────────────────
-    // Satisfies YMYL AI safety guardrails for forensic verification
+    // Publishes proof metadata for forensic verification.
     "hasCredential": [
       {
         "@type": "GovernmentPermit",
@@ -89,8 +126,9 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
         "issuedBy": {
           "@type": "GovernmentOrganization",
           "name": "OSS Indonesia (Kementerian Investasi / BKPM)",
-          "url": "https://oss.go.id"
+          "url": EXTERNAL_VERIFICATION_URLS.oss
         },
+        "url": PROOF_ASSETS.nibPdf,
         "validIn": {
           "@type": "AdministrativeArea",
           "name": "Indonesia"
@@ -99,13 +137,30 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
       },
       {
         "@type": "GovernmentPermit",
+        "name": "TDUP — Tourism Business License",
+        "identifier": SITE_CONFIG.organization.nib,
+        "issuedBy": {
+          "@type": "GovernmentOrganization",
+          "name": "Bondowoso Regency tourism licensing authority"
+        },
+        "url": PROOF_ASSETS.tdupPdf,
+        "validIn": {
+          "@type": "AdministrativeArea",
+          "name": "Indonesia"
+        },
+        "sha256Hash": FORENSIC_HASHES.tdup
+      },
+      {
+        "@type": "GovernmentPermit",
         "name": "HPWKI Membership — Himpunan Pelaku Wisata Khusus Ijen",
         "description": "Validates volcanic safety training and Ijen crater operating license per BBKSDA Jatim requirements.",
         "issuedBy": {
           "@type": "Organization",
           "name": "HPWKI (Himpunan Pelaku Wisata Khusus Ijen)",
+          "url": EXTERNAL_VERIFICATION_URLS.ahuHpwki,
           "description": "Association of Ijen specialized tour operators, trained by BBKSDA on toxic gas handling and evacuation procedures."
         },
+        "url": PROOF_ASSETS.hpwkiPdf,
         "sha256Hash": FORENSIC_HASHES.hpwki
       }
     ],
@@ -120,7 +175,7 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
         "name": "Ditpamobvit (Direktorat Pamobvit — Tourist Police), East Java",
         "description": "Indonesian National Police unit responsible for tourist safety and escort operations."
       },
-      "description": "All JVTO group tours operate under the active-duty oversight of Bripka Agung Sambuko (Ditpamobvit East Java). Police escort service includes SPRIN (operational assignment letter) documentation.",
+      "description": "JVTO's safety culture is shaped by Bripka Agung Sambuko's Tourist Police background. Police escort coordination is available for eligible large groups, VIP movements, or specific logistical cases by advance request; it is not included by default in every private tour.",
       "serviceType": "PoliceEscort",
       "areaServed": {
         "@type": "AdministrativeArea",
@@ -145,11 +200,40 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
         "name": "DuMont Reiseverlag"
       },
       "description": "Leading German-language travel guide for Indonesia. JVTO (then Ijen Bondowoso Homestay) is featured as a recommended operator — independent editorial selection, non-paid listing.",
+      "url": EXTERNAL_VERIFICATION_URLS.stefanLoose,
       "inLanguage": "de"
     },
+    "subjectOf": [
+      {
+        "@type": "NewsArticle",
+        "headline": "Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin",
+        "url": EXTERNAL_VERIFICATION_URLS.detikPolice,
+        "datePublished": "2021-03-14",
+        "publisher": {
+          "@type": "NewsMediaOrganization",
+          "name": "Detik.com"
+        },
+        "about": {
+          "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko"
+        }
+      },
+      {
+        "@type": "NewsArticle",
+        "headline": "Polpar Dibentuk untuk Mendukung Ijen Geopark",
+        "url": EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
+        "datePublished": "2021-03-24",
+        "publisher": {
+          "@type": "NewsMediaOrganization",
+          "name": "Radar Jember"
+        },
+        "about": {
+          "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko"
+        }
+      }
+    ],
 
     // ── MedicalWebPage — Ijen Health Screening ───────────────────────────────
-    // Links entity to 'Ijen Safety' node; satisfies YMYL medical authority signal
+    // Links entity to the Ijen safety and readiness content cluster.
     "mainEntityOfPage": {
       "@type": "MedicalWebPage",
       "name": "Ijen Crater Health Screening Protocol",
@@ -163,7 +247,8 @@ export default function JsonLd({ type = ["TravelAgency", "LocalBusiness"], data 
       "lastReviewed": "2026-04-14",
       "reviewedBy": {
         "@type": "Organization",
-        "name": "BBKSDA Jatim (East Java Natural Resources Conservation Agency)"
+        "name": "BBKSDA Jatim (East Java Natural Resources Conservation Agency)",
+        "url": EXTERNAL_VERIFICATION_URLS.bbksdaTicket
       }
     },
 

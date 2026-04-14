@@ -18,7 +18,7 @@ const differenceFaqs = [
   },
   {
     question: "What is the 'Police-Led' difference in practice?",
-    answer: "It means our safety protocols are derived from official Indonesian Tourist Police standards. We have direct lines to local authorities for real-time updates on volcanic activity and road safety, ensuring we never take unnecessary risks for a sale."
+    answer: "It means JVTO's operating culture is shaped by Tourist Police discipline: clearer escalation, respect for official closures, formal coordination capacity, and a stronger bias toward safety over sales pressure."
   }
 ];
 
@@ -44,7 +44,7 @@ export default function JVTODifferencePage() {
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">The JVTO Difference: Safety Leadership and Verified Proof</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              In an industry often marked by vague claims, we provide proof-backed standards and police-led safety for every expedition.
+              In an industry often marked by vague claims, we provide proof-backed standards and police-informed safety discipline for private East Java expeditions.
             </p>
           </motion.div>
         </div>
@@ -106,7 +106,7 @@ export default function JVTODifferencePage() {
           
           <AuthorityShield 
             title="Active Tourist Police Leadership"
-            description="Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police. This ensures that every JVTO tour operates within the highest safety standards and legal frameworks of East Java."
+            description="Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police. This informs JVTO's safety culture, formal coordination capacity, and documented proof-first operating style."
           />
         </div>
       </section>
@@ -133,7 +133,7 @@ export default function JVTODifferencePage() {
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">No Shared-Group Ambiguity</h3>
-              <p className="text-stone-400 text-sm">We do not offer &apos;budget&apos; shared tours. We only offer private tours because that is the only way to ensure our safety standards.</p>
+              <p className="text-stone-400 text-sm">We do not offer &apos;budget&apos; shared tours. Private execution gives better control over timing, pacing, and safety decisions.</p>
             </div>
           </div>
         </div>

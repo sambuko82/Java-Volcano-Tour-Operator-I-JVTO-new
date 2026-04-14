@@ -32,6 +32,7 @@ export default function LiveSignalBlock() {
   const [checkedAt, setCheckedAt] = useState<string>('');
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCheckedAt(new Date().toLocaleString('en-GB', {
       day: '2-digit', month: 'short', year: 'numeric',
       hour: '2-digit', minute: '2-digit', timeZoneName: 'short',

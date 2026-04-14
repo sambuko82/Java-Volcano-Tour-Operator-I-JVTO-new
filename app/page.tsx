@@ -354,33 +354,31 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
-                name: "Sarah Jenkins",
-                country: "Australia",
-                text: "The most professional tour I've ever taken. The police-led safety aspect really gave us peace of mind during the midnight Bromo hike.",
-                source: "Trustpilot"
+                title: "Safety Confidence",
+                text: "Guests repeatedly mention clear briefings, calm decision-making, and the sense that the team does not rush risky conditions.",
+                source: "Review pattern"
               },
               {
-                name: "Marc Weber",
-                country: "Germany",
-                text: "Everything was perfectly organized. The medical check for Ijen was quick and professional. No shortcuts taken.",
-                source: "TripAdvisor"
+                title: "Organized Logistics",
+                text: "Common review themes include punctual pickups, smooth transfers, clear itinerary timing, and helpful route communication.",
+                source: "Review pattern"
               },
               {
-                name: "Elena Rossi",
-                country: "Italy",
-                text: "JVTO is the real deal. We saw other groups with fake letters, but we were glad to have a real check. Safety first!",
-                source: "Google"
+                title: "Guide and Driver Care",
+                text: "Named guide and driver mentions often focus on patience, photography help, physical support, and practical local knowledge.",
+                source: "Review pattern"
               }
             ].map((review, i) => (
               <div key={i} className="bg-white p-12 rounded-[40px] border border-jvto-border hover:shadow-2xl hover:shadow-jvto-navy/5 transition-all duration-500">
                 <div className="flex text-jvto-gold mb-8">
                   {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                 </div>
-                <p className="text-jvto-muted mb-10 italic font-light leading-relaxed">&quot;{review.text}&quot;</p>
+                <h3 className="text-2xl text-jvto-navy font-bold mb-4">{review.title}</h3>
+                <p className="text-jvto-muted mb-10 font-light leading-relaxed">{review.text}</p>
                 <div className="flex justify-between items-end pt-8 border-t border-jvto-border">
                   <div>
-                    <p className="text-xl text-jvto-navy font-bold">{review.name}</p>
-                    <p className="micro-label mt-1">{review.country}</p>
+                    <p className="text-xl text-jvto-navy font-bold">Independent platforms</p>
+                    <p className="micro-label mt-1">Trustpilot, Tripadvisor, Google</p>
                   </div>
                   <p className="micro-label text-jvto-navy">{review.source}</p>
                 </div>

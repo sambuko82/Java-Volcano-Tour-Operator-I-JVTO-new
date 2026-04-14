@@ -7,13 +7,31 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import ProofCard from '@/components/ProofCard';
-import { ARTIFACTS, TIMELINE } from '@/lib/verificationData';
+import { ARTIFACTS, FORENSIC_HASHES, PROOF_ASSETS, TIMELINE } from '@/lib/verificationData';
 
 export default function HistoryArtifactsPage() {
   const schema = {
-    "@type": "WebPage",
+    "@type": ["WebPage", "CollectionPage"],
     "name": "History & Artifacts",
-    "description": "The historical continuity and foundational artifacts of Java Volcano Tour Operator."
+    "description": "The historical continuity and foundational artifacts of Java Volcano Tour Operator.",
+    "hasPart": [
+      {
+        "@type": "Event",
+        "name": "Booking.com Guest Review Award delivered to Bondowoso address",
+        "startDate": "2015",
+        "description": "Ijen Bondowoso Home Stay received a 9.4/10 Booking.com Guest Review Award delivered to Agung at Jl. Khairil Anwar No.102, Bondowoso.",
+        "image": PROOF_ASSETS.bookingPlaque2015,
+        "identifier": FORENSIC_HASHES.bookingPlaque2015
+      },
+      {
+        "@type": "Book",
+        "name": "Stefan Loose Reiseführer Indonesien",
+        "isbn": "978-3-7701-7881-0",
+        "bookEdition": "4th Edition (2018)",
+        "description": "German travel guidebook source listing Ijen Bondowoso Homestay and tour-arranging context in the Ijen-Massiv section.",
+        "image": PROOF_ASSETS.stefanLoosePage
+      }
+    ]
   };
 
   return (
@@ -31,7 +49,7 @@ export default function HistoryArtifactsPage() {
           >
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-4">History & Artifacts</h1>
             <p className="text-lg text-stone-300 leading-relaxed">
-              Documented operational excellence and historical continuity since 2016.
+              Documented operational excellence and historical continuity from the Ijen Bondowoso Homestay era into today&apos;s licensed JVTO operation.
             </p>
           </motion.div>
         </div>
@@ -40,6 +58,12 @@ export default function HistoryArtifactsPage() {
       {/* Artifacts Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm mb-12">
+            <p className="text-stone-700 text-lg leading-relaxed">
+              JVTO&apos;s continuity proof links three anchors: a 2015 Booking.com award delivered to Agung in Bondowoso, a German guidebook listing that names Agung and tour services, and the current PT Java Volcano Rendezvous legal identity at the same operational base.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {ARTIFACTS.map((item, i) => (
               <ProofCard 

@@ -9,16 +9,41 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { ShieldCheck, CheckCircle2, Star, ArrowRight, ExternalLink, FileText, Scale, Landmark, ClipboardCheck, ShieldAlert, Activity, Globe, Award, Archive, History } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/siteConfig';
-import { LEGAL_DATA, RECOGNITIONS, ARTIFACTS, TIMELINE } from '@/lib/verificationData';
+import { EXTERNAL_VERIFICATION_URLS, LEGAL_DATA, PROOF_ASSETS, RECOGNITIONS, ARTIFACTS, TIMELINE } from '@/lib/verificationData';
 import ProofCard from '@/components/ProofCard';
 import AuthorityShield from '@/components/AuthorityShield';
 import ProofCategoryGrid from '@/components/ProofCategoryGrid';
 
 export default function VerifyJVTO() {
   const verifySchema = {
-    "@type": ["WebPage", "LocalBusiness"],
+    "@type": ["WebPage", "CollectionPage"],
     "name": "Verify JVTO – Credentials, Safety, Press & History",
-    "description": "Review JVTO’s proof library: legal identity, historical continuity, police and safety context, and third-party references."
+    "description": "Review JVTO’s proof library: legal identity, historical continuity, police and safety context, and third-party references.",
+    "hasPart": [
+      { "@type": "WebPage", "name": "Legal Verification", "url": "https://javavolcano-touroperator.com/verify-jvto/legal" },
+      { "@type": "WebPage", "name": "Police-Led Safety", "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety" },
+      { "@type": "WebPage", "name": "Press & Recognition", "url": "https://javavolcano-touroperator.com/verify-jvto/press-recognition" },
+      { "@type": "WebPage", "name": "History & Artifacts", "url": "https://javavolcano-touroperator.com/verify-jvto/history-artifacts" }
+    ],
+    "mainEntity": {
+      "@type": "Organization",
+      "name": SITE_CONFIG.organization.legalName,
+      "identifier": SITE_CONFIG.organization.nib,
+      "sameAs": [
+        EXTERNAL_VERIFICATION_URLS.ahuCompany,
+        SITE_CONFIG.reputation.tripadvisor,
+        SITE_CONFIG.reputation.trustpilot,
+        SITE_CONFIG.reputation.googleMaps,
+        SITE_CONFIG.reputation.isic,
+        SITE_CONFIG.reputation.indecon
+      ],
+      "subjectOf": [
+        PROOF_ASSETS.nibPdf,
+        PROOF_ASSETS.tdupPdf,
+        PROOF_ASSETS.sprinPolparPdf,
+        EXTERNAL_VERIFICATION_URLS.detikPolice
+      ]
+    }
   };
 
   const verifyFaqs = [
@@ -212,7 +237,7 @@ export default function VerifyJVTO() {
                   </div>
                   <div>
                     <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Tourist Police Leadership</h3>
-                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">Founder Agung Sambuko is an active member of the Indonesian Tourist Police (POLRI). This ensures our safety protocols are aligned with official law enforcement standards.</p>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">Founder Agung Sambuko is an active member of the Indonesian Tourist Police (POLRI). His background shapes JVTO&apos;s safety culture, documentation habits, and formal coordination capacity.</p>
                   </div>
                 </div>
                 <div className="flex gap-10">
@@ -221,7 +246,7 @@ export default function VerifyJVTO() {
                   </div>
                   <div>
                     <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Real Health Screening</h3>
-                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">We maintain formal partnerships with certified medical clinics for mandatory Ijen health screenings. Every check is real, ensuring you are medically cleared for the trek.</p>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">We support the required Ijen health-screening workflow through local medical providers. The goal is real assessment before the trek, not paperwork shortcuts.</p>
                   </div>
                 </div>
               </div>

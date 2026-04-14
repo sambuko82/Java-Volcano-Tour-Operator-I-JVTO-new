@@ -34,10 +34,15 @@ export default function ToursPage() {
       "@type": "ListItem",
       "position": index + 1,
       "item": {
-        "@type": "Product",
+        "@type": ["Product", "TouristTrip"],
         "name": tour.name,
         "description": tour.shortDesc,
         "image": tour.image,
+        "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
+        "itineraryStartPoint": {
+          "@type": "City",
+          "name": tour.origin
+        },
         "offers": {
           "@type": "Offer",
           "price": tour.priceFrom,

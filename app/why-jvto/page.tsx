@@ -119,9 +119,9 @@ export default function WhyJVTO() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
-              { icon: History, title: "8+ Years Continuity", desc: "Documented operational history since 2016. Not a new startup.", link: "/verify-jvto#history", label: "Check History" },
-              { icon: Award, title: "Press Recognition", desc: "Featured in ISIC, Indecon, and Stefan Loose Travel Guide.", link: "/verify-jvto#press", label: "Check Press" },
-              { icon: Lock, title: "Legal Accountability", desc: "Fully registered PT with verifiable NIB license and physical base.", link: "/verify-jvto#legal", label: "Verify Legal" }
+              { icon: History, title: "Golden Thread History", desc: "Booking.com 2015, Stefan Loose, and address continuity tie the homestay era to JVTO today.", link: "/verify-jvto/history-artifacts", label: "Check History" },
+              { icon: Award, title: "Press & Recognition", desc: "Detik, Radar Jember, Stefan Loose, ISIC, and INDECON are mapped to the claims they actually support.", link: "/verify-jvto/press-recognition", label: "Check Press" },
+              { icon: Lock, title: "Legal Accountability", desc: "Fully registered PT with verifiable NIB, TDUP, AHU registry context, and physical base.", link: "/verify-jvto/legal", label: "Verify Legal" }
             ].map((item, i) => (
               <div key={i} className="bg-brand-cream p-16 rounded-[80px] border border-stone-50 group">
                 <item.icon className="text-brand-accent mb-10 group-hover:scale-110 transition-transform" size={40} />
@@ -190,10 +190,10 @@ export default function WhyJVTO() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
-              { step: "1", title: "Legal Identity", desc: "Review our legal identity and accountability layer.", link: "/verify-jvto#legal", label: "Verify Legal" },
-              { step: "2", title: "History", desc: "Review our history and continuity artifacts.", link: "/verify-jvto#history", label: "Check History" },
+              { step: "1", title: "Legal Identity", desc: "Review our legal identity and accountability layer.", link: "/verify-jvto/legal", label: "Verify Legal" },
+              { step: "2", title: "History", desc: "Review our history and continuity artifacts.", link: "/verify-jvto/history-artifacts", label: "Check History" },
               { step: "3", title: "Reviews", desc: "Review our independent guest reviews.", link: "/why-jvto/reviews", label: "Read Reviews" },
-              { step: "4", title: "Press & Safety", desc: "Review our press and safety-related proof pages.", link: "/verify-jvto#press", label: "Check Press" }
+              { step: "4", title: "Press & Safety", desc: "Review our press and safety-related proof pages.", link: "/verify-jvto/press-recognition", label: "Check Press" }
             ].map((item, i) => (
               <div key={i} className="text-center p-12 bg-brand-cream rounded-[64px] border border-stone-50 group">
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-8 text-brand-olive shadow-xl shadow-brand-olive/5 font-serif text-2xl group-hover:scale-110 transition-transform">{item.step}</div>

@@ -20,7 +20,7 @@ const guideFaqs = [
   },
   {
     question: "Is the Ijen health check really mandatory?",
-    answer: "Yes. Official regulations require every visitor to Ijen Crater to have a valid health certificate. We ensure this is done correctly at a certified clinic to avoid fake letters and ensure you are medically cleared for the altitude and sulfur exposure."
+    answer: "Ijen access rules can require a recent local health certificate. JVTO follows the current requirement through real clinic checks so documentation is valid and health risk is assessed before the hike."
   },
   {
     question: "What happens if a volcano is closed?",
@@ -108,14 +108,14 @@ export default function TravelGuide() {
               {
                 icon: Activity,
                 title: "Health Requirements",
-                desc: "Mandatory certified clinic checks for Ijen. You must be medically cleared for altitude and sulfur exposure. No fake letters.",
-                link: "/verify-jvto",
+                desc: "Current Ijen access rules can require certified local clinic checks. JVTO follows the active requirement through real screening support.",
+                link: "/travel-guide/ijen-health-screening",
                 linkText: "Read Health Proof"
               },
               {
                 icon: Scale,
                 title: "Operational Control",
-                desc: "We are the operator, not a broker. We control the vehicles, the guides, and the safety decisions from start to finish.",
+                desc: "JVTO works through named local crew, written inclusions, and direct operating responsibility instead of vague reseller handoffs.",
                 link: "/why-jvto",
                 linkText: "Why This Matters"
               }

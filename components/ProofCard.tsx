@@ -18,6 +18,10 @@ interface ProofCardProps {
 }
 
 export default function ProofCard({ title, description, href, icon, metadata, imageUrl, quote, fullMetadata }: ProofCardProps) {
+  const isExternal = href.startsWith('http');
+
+  const proofLinkClassName = "inline-flex items-center gap-2 text-sm font-bold text-jvto-navy forensic-mode:text-forensic-accent hover:text-jvto-orange forensic-mode:hover:brightness-110 transition-colors";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -64,12 +68,20 @@ export default function ProofCard({ title, description, href, icon, metadata, im
 
       <div className="mt-auto">
         {metadata && <p className="micro-label forensic-mode:text-forensic-muted mb-4">{metadata}</p>}
-        <Link 
-          href={href} 
-          className="inline-flex items-center gap-2 text-sm font-bold text-jvto-navy forensic-mode:text-forensic-accent hover:text-jvto-orange forensic-mode:hover:brightness-110 transition-colors"
-        >
-          Verify Proof <ExternalLink size={14} />
-        </Link>
+        {isExternal ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={proofLinkClassName}
+          >
+            Verify Proof <ExternalLink size={14} />
+          </a>
+        ) : (
+          <Link href={href} className={proofLinkClassName}>
+            Verify Proof <ExternalLink size={14} />
+          </Link>
+        )}
       </div>
     </motion.div>
   );

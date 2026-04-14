@@ -45,7 +45,7 @@ export default function IjenHealthScreeningPage() {
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Ijen Health Certificate: Mandatory Safety Requirements</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              Operational certainty at Ijen Crater starts with a real medical assessment. We ensure every guest is medically cleared for the 2,386m altitude and sulfur exposure.
+              Operational certainty at Ijen Crater starts with a real medical assessment. JVTO helps guests complete the required local screening before attempting the 2,386m altitude and sulfur-exposure environment.
             </p>
           </motion.div>
         </div>
@@ -73,7 +73,7 @@ export default function IjenHealthScreeningPage() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-display font-bold mb-2">Official Regulation Compliance</h3>
-                    <p className="text-stone-600 leading-relaxed">Since early 2024, the Ijen National Park authorities have mandated a medical certificate for all visitors. We follow this regulation to ensure your entry is legal and your health is protected.</p>
+                    <p className="text-stone-600 leading-relaxed">Ijen access rules can require a recent local medical certificate. We follow the current requirement so your entry documentation is valid and your health risk is assessed before the hike.</p>
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function IjenHealthScreeningPage() {
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">3</div>
                   <div>
                     <h3 className="text-2xl font-display font-bold mb-2">Official Certification</h3>
-                    <p className="text-stone-600 text-sm">If cleared, you receive an official medical certificate required for park entry. We handle the paperwork and fees.</p>
+                    <p className="text-stone-600 text-sm">If cleared, you receive the local medical certificate required for Ijen access when the rule is in force. We help with the paperwork and fees included in your package.</p>
                   </div>
                 </div>
               </div>
@@ -161,12 +161,12 @@ export default function IjenHealthScreeningPage() {
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">No Fake Health Letters</h3>
-              <p className="text-stone-400 text-sm">Many operators provide fake or pre-signed letters. We refuse this practice. Every JVTO check is real and performed by a doctor.</p>
+              <p className="text-stone-400 text-sm">We do not use pre-signed health letters. JVTO&apos;s screening flow is handled through real local medical checks.</p>
             </div>
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">No Skipping the Clinic</h3>
-              <p className="text-stone-400 text-sm">We do not &apos;bypass&apos; the health check. It is a mandatory part of our operational protocol for every Ijen guest.</p>
+              <p className="text-stone-400 text-sm">We do not &apos;bypass&apos; the health check when it is required for access. It is treated as part of the Ijen readiness workflow.</p>
             </div>
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />

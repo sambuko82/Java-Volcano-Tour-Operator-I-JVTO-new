@@ -4,7 +4,6 @@ import './globals.css';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
-import JsonLd from '@/components/JsonLd';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -24,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://javavolcano-touroperator.com'),
   title: {
-    default: `${SITE_CONFIG.organization.brandName} – Private Volcano Tours in East Java`,
+    default: `${SITE_CONFIG.organization.brandName} – Private, Safety-Certified Bromo & Ijen Expeditions`,
     template: `%s | ${SITE_CONFIG.organization.brandName}`,
   },
   description: SITE_CONFIG.organization.description,
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://javavolcano-touroperator.com',
     siteName: SITE_CONFIG.organization.name,
-    title: `${SITE_CONFIG.organization.brandName} – Private Volcano Tours in East Java`,
+    title: `${SITE_CONFIG.organization.brandName} – Private, Safety-Certified Bromo & Ijen Expeditions`,
     description: SITE_CONFIG.organization.description,
     images: [{
       url: `${SITE_CONFIG.organization.founder.image}`,
@@ -51,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_CONFIG.organization.brandName} – Private Volcano Tours in East Java`,
+    title: `${SITE_CONFIG.organization.brandName} – Private, Safety-Certified Bromo & Ijen Expeditions`,
     description: SITE_CONFIG.organization.description,
     images: [SITE_CONFIG.organization.founder.image],
   },

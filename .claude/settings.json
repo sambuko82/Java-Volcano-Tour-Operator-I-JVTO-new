@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Read(//f/New folder/**)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(vercel --prod)"
     ]
   }
 }

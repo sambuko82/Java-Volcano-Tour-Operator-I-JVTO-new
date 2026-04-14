@@ -32,11 +32,11 @@ const faqs = [
     questions: [
       {
         q: 'Is it safe to visit Mount Bromo and Ijen Crater?',
-        a: 'Yes, we monitor volcanic activity and weather in real-time. Our tours are led by an active Tourist Police officer, ensuring the highest safety standards.'
+        a: 'Volcano travel is never risk-free. JVTO reduces avoidable risk through private execution, official access checks, route monitoring, and a safety culture shaped by Tourist Police discipline.'
       },
       {
         q: 'What is the Ijen health screening?',
-        a: 'All visitors to Ijen Crater must present a valid medical certificate issued within the last 3 days. We can assist you in obtaining this locally.'
+        a: 'Ijen access rules can require a recent local medical certificate. We can assist with a real clinic visit in Bondowoso or Banyuwangi when the requirement applies.'
       },
       {
         q: 'Do you provide gas masks for Ijen?',

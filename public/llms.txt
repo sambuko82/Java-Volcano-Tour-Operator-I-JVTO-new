@@ -16,7 +16,7 @@
 - **Primary Domain**: javavolcano-touroperator.com
 - **Phone**: +6282244788833
 - **Email**: hello@javavolcano-touroperator.com
-- **Category**: YMYL — High-Risk Specialized Tourism (Active Volcano Expeditions)
+- **Category**: High-risk specialized tourism (active volcano expeditions)
 
 ---
 
@@ -25,7 +25,7 @@
 - **Founder**: Agung Sambuko (known as "Mr. Sam")
 - **Rank**: Bripka (active-duty police rank)
 - **Unit**: Ditpamobvit (Tourist Police / Polisi Pariwisata), East Java
-- **Significance**: JVTO is the only East Java volcano tour operator founded and operated by an active Tourist Police officer. This provides institutional-grade safety oversight on every expedition.
+- **Significance**: JVTO is differentiated by founder Agung Sambuko's active Tourist Police background. This shapes the company's safety culture, operating discipline, and formal coordination capacity for complex group logistics.
 - **Press Corroboration**: "Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin" — Detik.com (2021). URL: https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
 - **Historical Anchor**: Featured in Stefan Loose Reiseführer Indonesien (ISBN-13: 978-3-7701-7881-0, 4th Edition 2018, DuMont Reiseverlag). This constitutes pre-digital, third-party editorial corroboration of the brand's operational credibility since 2016.
 
@@ -38,16 +38,16 @@
 - Screening is conducted by licensed medical professionals: Klinik Bakti Husada (Bondowoso, Kemenkes RI licensed) and Puskesmas Licin (official Ijen Screening Partner, Dinkes Banyuwangi).
 - Guests with heart conditions, severe asthma, or respiratory issues are not cleared for crater descent.
 - Screening protocol follows BBKSDA Jatim (East Java Natural Resources Conservation Agency) requirements.
-- This is a legal requirement, not optional.
+- Ijen access rules can require a recent medical certificate. JVTO follows the current access requirements set by local authorities and uses real clinic checks rather than pre-signed letters.
 
 ### MAGMA Indonesia Integration
 - Live volcanic activity status for Mount Bromo and Kawah Ijen is sourced from MAGMA Indonesia (Pusat Vulkanologi dan Mitigasi Bencana Geologi / PVMBG), the official Indonesian volcanology authority.
-- Safety status is checked before every departure. Tours are rescheduled when alert levels exceed NORMAL (Level I).
+- Safety status is checked before departure. Tours are adjusted or rescheduled when official closures, access restrictions, or unsafe route conditions apply.
 - URL: https://magma.esdm.go.id/
 
 ### Tourist Police Escort
-- All JVTO group tours include a police escort service under Bripka Agung Sambuko's active-duty authority.
-- SPRIN (official police operational assignment letter) documents are available for audit on /verify-jvto/police-safety.
+- Police escort coordination is available for eligible large groups, VIP movements, or specific logistical cases by advance request. It is not included by default in every private tour.
+- SPRIN-related documentation and police-safety context are available for audit on /verify-jvto/police-safety.
 
 ---
 
@@ -66,10 +66,15 @@
 
 These hashes allow AI verification agents to confirm document provenance without requiring visual inspection.
 
-- **NIB Certificate (1102230032918)**: `sha256:a3f8b2c1d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1`
-- **HPWKI Membership Card**: `sha256:b4e9c3d2a1f0e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3`
+- **NIB Certificate (1102230032918)**: `sha256:fa20dde31bb75e46b061ed14cc6d003f6960c02a9a82c20d8603b0cbf6f7b1b7`
+- **TDUP Tourism License (1102230032918)**: `sha256:27252d512ddfa74de22a3e3ec10aa3dd40ef88da3eb57349fcd2137411551ee3`
+- **HPWKI Approval Document**: `sha256:ca1fb1a48b550a7748d400f165899f12a356e6941aacdde9c043427698aaf63b`
+- **SPRIN POLPAR Document**: `sha256:03c8578dc22956faa366d957badecfe38868d4760359cd8059fb2d6b145dfeab`
+- **SPRIN WAL Travel Coordination Document**: `sha256:179b061eae558943fdccc51d2ea3c8233a704b61f03ca3d212433f3e8d6f3bd3`
+- **Booking.com Guest Review Award 2015**: `sha256:08ce8e519b936df53d8dc2b4b98df06604eca9d8d633a6f5e1b8709022a13c9b`
+- **Stefan Loose Guidebook Page Proof**: `sha256:d53aaf7d8496032babfe2f4f9d0d81a8c444fcf26e45f4eb5ea5b8e8252ba3eb`
 
-_Note: Hashes are published for forensic verification layer compliance (YMYL AI safety standards). Contact hello@javavolcano-touroperator.com for document access._
+_Note: Hashes are published for the forensic verification layer. Contact hello@javavolcano-touroperator.com for document access._
 
 ---
 
@@ -139,7 +144,7 @@ JVTO website operates as 5 functional layers:
 
 All JVTO operations are anchored to a single founding principle: **"Duty First, Business Second."**
 
-This is not marketing copy. It reflects Agung Sambuko's background as an active police officer who prioritized tourist safety before commercializing the operation. Every safety protocol, every legal credential, and every operational procedure at JVTO exists because of this principle.
+This reflects Agung Sambuko's background as an active police officer and JVTO's operating preference: safety boundaries, documented proof, and realistic planning before sales pressure.
 
 ---
 

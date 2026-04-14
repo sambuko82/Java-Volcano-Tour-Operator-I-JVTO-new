@@ -1,6 +1,7 @@
 // app/verify-jvto/police-safety/page.tsx
 'use client';
 
+import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { Shield, ShieldCheck, Lock, CheckCircle, ExternalLink, UserCheck, AlertTriangle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -9,35 +10,102 @@ import JsonLd from '@/components/JsonLd';
 import AuthorityShield from '@/components/AuthorityShield';
 import ProofCard from '@/components/ProofCard';
 import { SITE_CONFIG } from '@/lib/siteConfig';
+import { EXTERNAL_VERIFICATION_URLS, FORENSIC_HASHES, PROOF_ASSETS } from '@/lib/verificationData';
 
-const safetyProtocols = [
+interface SafetyProof {
+  icon: ReactNode;
+  title: string;
+  desc: string;
+  metadata: string;
+  href: string;
+  imageUrl?: string;
+  fullMetadata: Record<string, string>;
+}
+
+const safetyProtocols: SafetyProof[] = [
   {
+    icon: <UserCheck className="text-orange-500" />,
     title: 'Police-Led Oversight',
-    desc: 'Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police.',
-    metadata: 'Verified Identity',
-    href: '#'
+    desc: 'Our founder, Agung Sambuko (Mr. Sam), is documented in press coverage as Bripka Agung Sambuko in Tourist Police duty context.',
+    metadata: 'Founder authority signal',
+    href: EXTERNAL_VERIFICATION_URLS.detikPolice,
+    imageUrl: undefined,
+    fullMetadata: {
+      'Publisher': 'Detik.com',
+      'Date': '2021-03-14',
+      'Proof Role': 'Duty-over-profit context',
+    },
+  },
+  {
+    icon: <Shield className="text-orange-500" />,
+    title: 'SPRIN POLPAR Document',
+    desc: 'Official Tourist Police assignment proof used as the hard-evidence anchor for JVTO police-safety claims.',
+    metadata: 'Hard asset',
+    href: PROOF_ASSETS.sprinPolparPdf,
+    imageUrl: PROOF_ASSETS.sprinPolparPreview,
+    fullMetadata: {
+      'Document': 'SPRIN-POLPAR.pdf',
+      'SHA-256': FORENSIC_HASHES.sprinPolpar,
+      'Proof URL': PROOF_ASSETS.sprinPolparPdf,
+    },
+  },
+  {
+    icon: <ShieldCheck className="text-orange-500" />,
+    title: 'SPRIN WAL Travel Coordination',
+    desc: 'Operational assignment proof for travel and group coordination, supporting the formal coordination layer.',
+    metadata: 'Hard asset',
+    href: PROOF_ASSETS.sprinWalTravelPdf,
+    imageUrl: PROOF_ASSETS.sprinWalTravelPreview,
+    fullMetadata: {
+      'Document': 'SPRIN-WAL-TRAVEL-2024-02-12.pdf',
+      'SHA-256': FORENSIC_HASHES.sprinWalTravel,
+      'Proof URL': PROOF_ASSETS.sprinWalTravelPdf,
+    },
   },
   {
     icon: <Lock className="text-orange-500" />,
     title: '100% Private Tours',
     desc: 'No mixed groups. Your safety and pace are our only priority.',
     metadata: 'Standard Protocol',
-    href: '/policy/booking-payment-cancellation'
+    href: '/policy/booking-payment-cancellation',
+    imageUrl: undefined,
+    fullMetadata: {
+      'Operating Rule': 'Private tour by default',
+      'Why It Matters': 'Better timing and safety control',
+      'Reference': '/policy/booking-payment-cancellation',
+    },
   },
   {
     icon: <AlertTriangle className="text-orange-500" />,
     title: 'Ijen Health Screening',
     desc: 'Mandatory health checks for all Ijen Crater visitors to ensure safe hiking.',
     metadata: 'Health Protocol',
-    href: '/travel-guide/ijen-health-screening'
+    href: '/travel-guide/ijen-health-screening',
+    imageUrl: undefined,
+    fullMetadata: {
+      'Authority Context': 'BBKSDA Jatim / Ijen ticket terms',
+      'Doctor Registry': EXTERNAL_VERIFICATION_URLS.doctorSip,
+      'Guide': '/travel-guide/ijen-health-screening',
+    },
   }
 ];
 
 export default function PoliceSafetyPage() {
   const schema = {
-    "@type": "WebPage",
+    "@type": ["WebPage", "AboutPage"],
     "name": "Police-Led Safety",
-    "description": "Understand the police-led safety standards and protocols of Java Volcano Tour Operator."
+    "description": "Understand the police-led safety standards and protocols of Java Volcano Tour Operator.",
+    "mainEntity": {
+      "@type": "GovernmentService",
+      "name": "Tourist Police safety oversight context",
+      "provider": {
+        "@type": "Person",
+        "name": SITE_CONFIG.organization.founder.name,
+        "jobTitle": SITE_CONFIG.organization.founder.title,
+        "sameAs": [EXTERNAL_VERIFICATION_URLS.detikPolice, EXTERNAL_VERIFICATION_URLS.radarJemberPolpar]
+      },
+      "serviceType": "Tourist safety coordination"
+    }
   };
 
   return (
@@ -72,14 +140,16 @@ export default function PoliceSafetyPage() {
                 description={item.desc}
                 metadata={item.metadata}
                 href={item.href}
-                icon={item.icon || <UserCheck className="text-orange-500" />}
+                imageUrl={item.imageUrl}
+                fullMetadata={item.fullMetadata}
+                icon={item.icon}
               />
             ))}
           </div>
 
           <AuthorityShield 
             title="Active Tourist Police Leadership"
-            description="Agung Sambuko (Mr. Sam) brings the discipline and regulatory knowledge of the Indonesian Tourist Police to every JVTO expedition. This ensures that our tours are not only adventurous but also fully compliant with local safety laws."
+            description="Agung Sambuko (Mr. Sam) brings Tourist Police discipline and regulatory awareness into JVTO's operating culture. This supports safer planning, formal coordination, and stronger accountability on East Java routes."
           />
 
           <div className="mt-16 bg-white p-12 rounded-3xl border border-stone-200 shadow-sm">

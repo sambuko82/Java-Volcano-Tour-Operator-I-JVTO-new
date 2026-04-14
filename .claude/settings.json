@@ -12,7 +12,8 @@
       "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx next build > build_output.txt 2>&1 && echo BUILD_OK || echo BUILD_FAILED\")",
       "Bash(cmd /c \"cd \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\\" && npx next build > build_output.txt 2>&1 & echo done\")",
       "Bash(cmd /c \"dir \\\\\"f:\\\\New folder\\\\Java-Volcano-Tour-Operator-I-JVTO-new\\\\build_output.txt\\\\\" 2>&1\")",
-      "Bash(cmd /c \"findstr /n \\\\\"aggregate_rating\\\\|totalReviews\\\\|review_count\\\\|llms\\\\|ai_agent\\\\|well.known\\\\|factual_freshness\\\\|magma\\\\|citation_cliff\\\\|secondary_email\\\\|contactPoint\\\\|wikidata\\\\\" \\\\\"F:\\\\New folder\\\\DOWNLOADS\\\\JVTO_SSOT_v4_0_CLEAN.json\\\\\" 2>&1 | head -40\")"
+      "Bash(cmd /c \"findstr /n \\\\\"aggregate_rating\\\\|totalReviews\\\\|review_count\\\\|llms\\\\|ai_agent\\\\|well.known\\\\|factual_freshness\\\\|magma\\\\|citation_cliff\\\\|secondary_email\\\\|contactPoint\\\\|wikidata\\\\\" \\\\\"F:\\\\New folder\\\\DOWNLOADS\\\\JVTO_SSOT_v4_0_CLEAN.json\\\\\" 2>&1 | head -40\")",
+      "Bash(cat \"F:/New folder/Strategic Blueprint_ Transforming JVTO\"*\".txt\")"
     ]
   }
 }

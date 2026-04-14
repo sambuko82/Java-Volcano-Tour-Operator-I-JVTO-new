@@ -49,6 +49,8 @@ export interface CrewMember {
   kta?: string; // Kartu Tanda Anggota / License ID
   forensicReviewQuote?: string; // Verbatim guest quote from reviews
   ktaCardUrl?: string; // URL to official Ijen guide license card image
+  schemaKnowsAbout?: string[]; // Override for JSON-LD knowsAbout — per GEO Blueprint persona mapping
+  schemaJobTitle?: string; // Override for JSON-LD jobTitle — per GEO Blueprint persona mapping
 }
 
 export const DESTINATIONS: Destination[] = [
@@ -627,7 +629,8 @@ export const CREW: CrewMember[] = [
     displayPriority: 1,
     kta: 'KTA-G-2024-001',
     ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428741674-842615436-kta_gufron.jpg',
-    forensicReviewQuote: '"Always willing to help you get your best photo." — Adrián Martínez, Google Reviews'
+    forensicReviewQuote: '"Always willing to help you get your best photo." — Adrián Martínez, Google Reviews',
+    schemaKnowsAbout: ['Volcano Photography', 'Geology', 'Volcanic terrain navigation', 'Ijen crater safety procedures', 'East Java cultural heritage'],
   },
   {
     id: 'rendi',
@@ -641,7 +644,9 @@ export const CREW: CrewMember[] = [
     displayPriority: 1,
     kta: 'KTA-G-2024-002',
     ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428760524-516116110-kta_rendi.jpg',
-    forensicReviewQuote: '"When we went down the steep crater, he held our hands to prevent us from falling." — Wing Shan Lui, Google Reviews'
+    forensicReviewQuote: '"When we went down the steep crater, he held our hands to prevent us from falling." — Wing Shan Lui, Google Reviews',
+    schemaKnowsAbout: ['Expedition Safety', 'Mountain Rescue', 'First Aid', 'Logistics Management', 'Ijen crater safety procedures', 'East Java cultural heritage'],
+    schemaJobTitle: 'Lead Guide & Safety Officer',
   },
   {
     id: 'yandi',
@@ -693,7 +698,9 @@ export const CREW: CrewMember[] = [
     displayPriority: 1,
     kta: 'KTA-G-2024-006',
     ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428583288-513992233-kta_anjas.jpg',
-    forensicReviewQuote: '"Creative at taking fun photos... Anjas was the highlight for the trip." — Wang Zhe, Google Reviews'
+    forensicReviewQuote: '"Creative at taking fun photos... Anjas was the highlight for the trip." — Wang Zhe, Google Reviews',
+    schemaKnowsAbout: ['Volcanic Photography', 'Astrophotography', 'Youth Culture', 'East Java cultural heritage', 'Volcanic terrain navigation'],
+    schemaJobTitle: 'Senior Tour Guide & Photography Specialist',
   },
   {
     id: 'taufik',

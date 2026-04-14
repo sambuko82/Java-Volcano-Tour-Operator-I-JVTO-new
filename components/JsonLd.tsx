@@ -80,19 +80,19 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
         '@type': 'PropertyValue',
         name: 'NIB (Nomor Induk Berusaha)',
         value: SITE_CONFIG.organization.nib,
-        url: EXTERNAL_VERIFICATION_URLS.oss,
+        sameAs: EXTERNAL_VERIFICATION_URLS.oss,
       },
       {
         '@type': 'PropertyValue',
         name: 'TDUP Tourism Business License',
         value: SITE_CONFIG.organization.nib,
-        url: PROOF_ASSETS.tdupPdf,
+        sameAs: PROOF_ASSETS.tdupPdf,
       },
       {
         '@type': 'PropertyValue',
         name: 'AHU Company Registration',
         value: 'PT Java Volcano Rendezvous',
-        url: EXTERNAL_VERIFICATION_URLS.ahuCompany,
+        sameAs: EXTERNAL_VERIFICATION_URLS.ahuCompany,
       },
     ],
 
@@ -101,31 +101,58 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
         '@type': 'PropertyValue',
         name: 'NIB public certificate',
         value: SITE_CONFIG.organization.nib,
-        url: PROOF_ASSETS.nibPdf,
+        sameAs: PROOF_ASSETS.nibPdf,
       },
       {
         '@type': 'PropertyValue',
         name: 'TDUP tourism license document',
         value: SITE_CONFIG.organization.nib,
-        url: PROOF_ASSETS.tdupPdf,
+        sameAs: PROOF_ASSETS.tdupPdf,
       },
       {
         '@type': 'PropertyValue',
         name: 'HPWKI membership proof',
         value: 'Himpunan Pelaku Wisata Khusus Ijen',
-        url: PROOF_ASSETS.hpwkiPdf,
+        sameAs: PROOF_ASSETS.hpwkiPdf,
       },
       {
         '@type': 'PropertyValue',
         name: 'SPRIN Tourist Police Escort Authorization (Polpar)',
         value: 'SPRIN-POLPAR',
-        url: PROOF_ASSETS.sprinPolparPdf,
+        sameAs: PROOF_ASSETS.sprinPolparPdf,
       },
       {
         '@type': 'PropertyValue',
         name: 'SPRIN Wal Travel Business Authorization',
         value: 'SPRIN-WAL-TRAVEL-2024-02-12',
-        url: PROOF_ASSETS.sprinWalTravelPdf,
+        sameAs: PROOF_ASSETS.sprinWalTravelPdf,
+      },
+      // ── SHA-256 forensic hashes — embedded directly per Audit Section 5.4 ──
+      // Plain-text in JSON-LD so crawlers ingest without JS interaction
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: NIB-1102230032918.pdf',
+        value: FORENSIC_HASHES.nib,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: TDUP-1102230032918.pdf',
+        value: FORENSIC_HASHES.tdup,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: HPWKI-approval.pdf',
+        value: FORENSIC_HASHES.hpwki,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: SPRIN-POLPAR.pdf',
+        value: FORENSIC_HASHES.sprinPolpar,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: SPRIN-WAL-TRAVEL-2024-02-12.pdf',
+        value: FORENSIC_HASHES.sprinWalTravel,
       },
     ],
 
@@ -178,6 +205,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       sameAs: [
         EXTERNAL_VERIFICATION_URLS.detikPolice,
         EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
+        EXTERNAL_VERIFICATION_URLS.radarJemberIjenPatrol,
       ],
     },
 
@@ -348,13 +376,24 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
         ? ['Volcanic terrain navigation', 'Ijen crater safety procedures', 'East Java cultural heritage']
         : ['Safe mountain road driving', 'East Java logistics', 'Private vehicle operations'];
 
+      // Per GEO Blueprint Section 4: use schema-specific expertise tags when defined,
+      // otherwise fall back to highlights-derived tags. Prevents AI from missing
+      // crew specialties (e.g. Gufron's "Volcano Photography", Anjas's "Astrophotography")
+      const resolvedKnowsAbout = member.schemaKnowsAbout ?? [...knowsAboutBase, ...knowsAboutExtra];
+
+      // Per GEO Blueprint Section 4: use schema-specific job titles when defined
+      // (e.g. Anjas = "Senior Tour Guide & Photography Specialist", Rendi = "Lead Guide & Safety Officer")
+      const resolvedJobTitle =
+        member.schemaJobTitle ??
+        (isGuide ? `Senior Tour Guide — ${member.archetype}` : `Professional Tour Driver — ${member.archetype}`);
+
       const node: JsonLdNode = {
         '@type': 'Person',
         '@id': `${BASE_URL}/#crew-${member.id}`,
         name: member.name,
-        jobTitle: isGuide ? `Senior Tour Guide — ${member.archetype}` : `Professional Tour Driver — ${member.archetype}`,
+        jobTitle: resolvedJobTitle,
         description: member.about || `${member.role} at Java Volcano Tour Operator. Specialties: ${member.highlights}.`,
-        knowsAbout: [...knowsAboutBase, ...knowsAboutExtra],
+        knowsAbout: resolvedKnowsAbout,
         knowsLanguage: languageObjects(member.languages),
         worksFor: { '@id': ORGANIZATION_ID },
         affiliation: { '@id': ORGANIZATION_ID },
@@ -624,16 +663,25 @@ export function buildMedicalProcedureSchema(): JsonLdNode {
       url: EXTERNAL_VERIFICATION_URLS.bbksdaTraining,
       description: 'Indonesian government conservation authority that mandates guide training and visitor health protocols for Kawah Ijen.',
     },
-    // The performing physician's STR number enables cross-reference with SatuSehat
+    // The performing physician's credentials enable cross-reference with SatuSehat and Dinas Kesehatan
     performer: {
       '@type': 'Physician',
       name: 'Dr. Ahmad Irwandanu',
-      identifier: {
-        '@type': 'PropertyValue',
-        name: 'STR (Surat Tanda Registrasi — Medical License)',
-        value: 'QN00001073380217',
-        url: EXTERNAL_VERIFICATION_URLS.doctorSip,
-      },
+      // Both identifiers included — STR (national registry) and SIP (local practice license)
+      // per Audit Section 4.3: SIP is the binding liability signal for AI safety guardrails
+      identifier: [
+        {
+          '@type': 'PropertyValue',
+          name: 'STR (Surat Tanda Registrasi — National Medical Registration)',
+          value: 'QN00001073380217',
+          sameAs: EXTERNAL_VERIFICATION_URLS.doctorSip,
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'SIP (Surat Izin Praktik — Local Practice License)',
+          value: '503.446/193/DRU/4/430.9.13/2020',
+        },
+      ],
       medicalSpecialty: 'Travel and Sports Medicine',
       worksFor: {
         '@type': 'MedicalOrganization',
@@ -642,7 +690,7 @@ export function buildMedicalProcedureSchema(): JsonLdNode {
           '@type': 'PostalAddress',
           addressLocality: 'Bondowoso',
           addressRegion: 'East Java',
-          addressCountry: 'Indonesia',
+          addressCountry: 'ID',
         },
       },
     },

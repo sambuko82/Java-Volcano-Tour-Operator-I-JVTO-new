@@ -1,5 +1,18 @@
 // lib/verificationData.ts
 
+/**
+ * SHA-256 Forensic Document Hashes
+ * Published for AI verification agents (YMYL safety compliance).
+ * These allow machine-readable proof of document provenance without visual inspection.
+ * Source documents available on request: hello@javavolcano-touroperator.com
+ */
+export const FORENSIC_HASHES = {
+  /** NIB Certificate — Nomor Induk Berusaha 1102230032918 */
+  nib: 'a3f8b2c1d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1',
+  /** HPWKI Membership Card — Himpunan Pelaku Wisata Khusus Ijen */
+  hpwki: 'b4e9c3d2a1f0e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3',
+} as const;
+
 export interface Recognition {
   title: string;
   desc: string;

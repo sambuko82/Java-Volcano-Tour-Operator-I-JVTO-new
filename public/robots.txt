@@ -1,3 +1,29 @@
 User-agent: *
 Allow: /
+Allow: /.well-known/ai-agent-config.json
+Allow: /llms.txt
+
+# AI Answer Engines & LLM crawlers — full access encouraged
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Machine-readable trust data
+# High-density SSOT for LLM ingestion
+LLMs-txt: https://javavolcano-touroperator.com/llms.txt
+
+# AI agent configuration (site map, permissions, trust signals)
+AI-Config: https://javavolcano-touroperator.com/.well-known/ai-agent-config.json
+
 Sitemap: https://javavolcano-touroperator.com/sitemap.xml

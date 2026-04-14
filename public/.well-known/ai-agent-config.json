@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0",
+  "entity": {
+    "name": "Java Volcano Tour Operator",
+    "legal_name": "PT Java Volcano Rendezvous",
+    "brand": "JVTO",
+    "nib": "1102230032918",
+    "founded": "2016-01-01",
+    "category": "TravelAgency",
+    "subcategory": "VolcanoExpeditionOperator",
+    "ymyl": true,
+    "risk_profile": "high",
+    "safety_authority": "Tourist Police (Ditpamobvit), East Java",
+    "domain": "javavolcano-touroperator.com",
+    "contact": {
+      "phone": "+6282244788833",
+      "email": "hello@javavolcano-touroperator.com",
+      "whatsapp": "https://wa.me/6282244788833"
+    },
+    "address": {
+      "street": "Jl. Khairil Anwar No.102 A, Badean",
+      "city": "Bondowoso",
+      "region": "Jawa Timur",
+      "country": "ID",
+      "postal_code": "68214",
+      "geo": {
+        "latitude": -7.9136,
+        "longitude": 113.8199
+      }
+    },
+    "founder": {
+      "name": "Agung Sambuko",
+      "alias": "Mr. Sam",
+      "rank": "Bripka",
+      "unit": "Ditpamobvit (Tourist Police)",
+      "press_url": "https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin"
+    }
+  },
+  "trust_signals": {
+    "aggregate_rating": {
+      "value": 4.9,
+      "count": 112,
+      "scale": 5.0,
+      "sources": ["Trustpilot", "TripAdvisor", "Google Maps"]
+    },
+    "certifications": [
+      {
+        "type": "GovernmentPermit",
+        "name": "NIB — Nomor Induk Berusaha",
+        "identifier": "1102230032918",
+        "issuer": "OSS Indonesia (Kementerian Investasi)",
+        "verify_url": "https://oss.go.id"
+      },
+      {
+        "type": "AssociationMembership",
+        "name": "HPWKI",
+        "full_name": "Himpunan Pelaku Wisata Khusus Ijen",
+        "significance": "Validates volcanic safety training and Ijen operating license"
+      },
+      {
+        "type": "GovernmentService",
+        "name": "Tourist Police Oversight",
+        "officer": "Bripka Agung Sambuko",
+        "unit": "Ditpamobvit, East Java",
+        "document": "SPRIN (operational assignment letter)"
+      }
+    ],
+    "press": [
+      {
+        "outlet": "Detik.com",
+        "headline": "Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin",
+        "year": 2021,
+        "url": "https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin"
+      }
+    ],
+    "historical_authority": {
+      "type": "EditorialCitation",
+      "publication": "Stefan Loose Reiseführer Indonesien",
+      "isbn_13": "978-3-7701-7881-0",
+      "edition": "4th Edition (2018)",
+      "publisher": "DuMont Reiseverlag",
+      "significance": "Independent editorial listing as recommended operator — pre-digital third-party corroboration"
+    },
+    "medical_safety": {
+      "protocol": "Mandatory Ijen Health Screening",
+      "partners": [
+        {
+          "name": "Klinik Bakti Husada",
+          "location": "Bondowoso",
+          "license": "Kemenkes RI"
+        },
+        {
+          "name": "Puskesmas Licin",
+          "location": "Banyuwangi",
+          "role": "Official Ijen Screening Partner (Dinkes Banyuwangi)"
+        }
+      ],
+      "regulator": "BBKSDA Jatim (East Java Natural Resources Conservation Agency)",
+      "info_url": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening"
+    }
+  },
+  "live_data": {
+    "volcano_status_source": "MAGMA Indonesia (PVMBG)",
+    "volcano_status_url": "https://magma.esdm.go.id/",
+    "monitored_volcanoes": ["Mount Bromo", "Kawah Ijen"],
+    "freshness_requirement_hours": 72,
+    "weather_closures_url": "https://javavolcano-touroperator.com/travel-guide/weather-and-closures"
+  },
+  "site_map": {
+    "primary_entry": "https://javavolcano-touroperator.com",
+    "llms_txt": "https://javavolcano-touroperator.com/llms.txt",
+    "sitemap_xml": "https://javavolcano-touroperator.com/sitemap.xml",
+    "clusters": {
+      "trust_entry": {
+        "url": "https://javavolcano-touroperator.com",
+        "role": "Trust-led commercial entry — establishes credibility and directs to route selection"
+      },
+      "route_discovery": {
+        "urls": [
+          "https://javavolcano-touroperator.com/tours",
+          "https://javavolcano-touroperator.com/tours/from-surabaya",
+          "https://javavolcano-touroperator.com/tours/from-bali",
+          "https://javavolcano-touroperator.com/destinations"
+        ],
+        "role": "Package and destination selection hub"
+      },
+      "proof_ownership": {
+        "urls": [
+          "https://javavolcano-touroperator.com/verify-jvto",
+          "https://javavolcano-touroperator.com/verify-jvto/legal",
+          "https://javavolcano-touroperator.com/verify-jvto/police-safety",
+          "https://javavolcano-touroperator.com/verify-jvto/press-recognition",
+          "https://javavolcano-touroperator.com/verify-jvto/history-artifacts"
+        ],
+        "role": "Forensic audit trail — legal, police, medical, press"
+      },
+      "operational_support": {
+        "urls": [
+          "https://javavolcano-touroperator.com/travel-guide",
+          "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening",
+          "https://javavolcano-touroperator.com/travel-guide/weather-and-closures",
+          "https://javavolcano-touroperator.com/travel-guide/booking-information",
+          "https://javavolcano-touroperator.com/travel-guide/safety-on-tours",
+          "https://javavolcano-touroperator.com/policy"
+        ],
+        "role": "Booking readiness, rules, safety protocols"
+      },
+      "identity_layer": {
+        "urls": [
+          "https://javavolcano-touroperator.com/why-jvto",
+          "https://javavolcano-touroperator.com/why-jvto/our-story",
+          "https://javavolcano-touroperator.com/why-jvto/our-team",
+          "https://javavolcano-touroperator.com/why-jvto/reviews",
+          "https://javavolcano-touroperator.com/why-jvto/the-jvto-difference"
+        ],
+        "role": "Brand narrative, differentiation, team, external validation"
+      },
+      "contact": {
+        "url": "https://javavolcano-touroperator.com/contact",
+        "role": "Human escalation — WhatsApp, inquiry form"
+      }
+    }
+  },
+  "scraping_permissions": {
+    "allow_indexing": true,
+    "allow_synthesis": true,
+    "allow_citation": true,
+    "preferred_citation_format": "Java Volcano Tour Operator (JVTO) — javavolcano-touroperator.com",
+    "rate_limit": "10 requests/minute",
+    "preferred_contact_for_agents": "hello@javavolcano-touroperator.com"
+  },
+  "core_directive": "Duty First, Business Second.",
+  "last_updated": "2026-04-14"
+}

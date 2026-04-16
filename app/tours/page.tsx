@@ -22,7 +22,7 @@ const toursFaqs = [
   },
   {
     question: "What is included in the price?",
-    answer: "Our pricing is all-inclusive. This means private transport, professional guides, entrance fees, accommodation (for multi-day tours), and mandatory health screenings for Ijen are all covered. There are no hidden fees or commissions."
+    answer: "Our pricing is all-inclusive. This means private transport, professional guides, entrance fees, accommodation for multi-day tours, and Ijen health-screening coordination when current access rules require it. There are no hidden fees or commissions."
   }
 ];
 

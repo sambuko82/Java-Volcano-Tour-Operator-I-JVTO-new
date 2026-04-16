@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import { Shield, ShieldCheck, Lock, CheckCircle, ExternalLink, UserCheck, AlertTriangle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import JsonLd, { buildGovernmentPermitSchemas } from '@/components/JsonLd';
+import JsonLd, { buildPoliceSafetyProofSchemas } from '@/components/JsonLd';
 import AuthorityShield from '@/components/AuthorityShield';
 import ProofCard from '@/components/ProofCard';
 import { SITE_CONFIG } from '@/lib/siteConfig';
@@ -25,7 +25,7 @@ interface SafetyProof {
 const safetyProtocols: SafetyProof[] = [
   {
     icon: <UserCheck className="text-orange-500" />,
-    title: 'Police-Led Oversight',
+    title: 'Tourist Police Duty Context',
     desc: 'Our founder, Agung Sambuko (Mr. Sam), is documented in press coverage as Bripka Agung Sambuko in Tourist Police duty context.',
     metadata: 'Founder authority signal',
     href: EXTERNAL_VERIFICATION_URLS.detikPolice,
@@ -96,12 +96,12 @@ export default function PoliceSafetyPage() {
     "@id": "https://javavolcano-touroperator.com/verify-jvto/police-safety#webpage",
     "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety",
     "name": "Police-Led Safety Verification — Bripka Agung Sambuko, Ditpamobvit East Java",
-    "description": "Machine-readable proof of JVTO police authority: SPRIN documents, founder's GovernmentOrganization affiliation, and third-party press corroboration.",
+    "description": "Machine-readable proof for JVTO's Tourist Police duty context: SPRIN assets, founder identity, and third-party press corroboration.",
     "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
     "about": [
       { "@id": "https://javavolcano-touroperator.com/#organization" },
       { "@id": "https://javavolcano-touroperator.com/#founder-agung-sambuko" },
-      { "@type": "GovernmentOrganization", "name": "Ditpamobvit East Java — Indonesian National Police" }
+      { "@type": "Thing", "name": "Tourist Police safety coordination" }
     ],
     "mainEntity": {
       "@type": "Person",
@@ -111,7 +111,7 @@ export default function PoliceSafetyPage() {
       "jobTitle": SITE_CONFIG.organization.founder.title,
       "memberOf": {
         "@type": "GovernmentOrganization",
-        "name": "Ditpamobvit East Java — Indonesian National Police (Polri)",
+        "name": "Indonesian National Police (Polri) - Tourist Police context",
         "url": "https://www.polri.go.id"
       },
       "sameAs": [EXTERNAL_VERIFICATION_URLS.detikPolice, EXTERNAL_VERIFICATION_URLS.radarJemberPolpar]
@@ -134,11 +134,11 @@ export default function PoliceSafetyPage() {
     ]
   };
 
-  const permitSchemas = buildGovernmentPermitSchemas();
+  const policeProofSchemas = buildPoliceSafetyProofSchemas();
 
   return (
     <main className="min-h-screen bg-stone-50">
-      <JsonLd data={[webPageSchema, ...permitSchemas]} includeOrganization={false} />
+      <JsonLd data={[webPageSchema, ...policeProofSchemas]} includeOrganization={false} />
       <Navbar />
       
       {/* Header */}
@@ -149,9 +149,9 @@ export default function PoliceSafetyPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Police-Led Safety: Operational Certainty</h1>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Tourist Police Safety Context: Operational Certainty</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              Safety is not a marketing claim for JVTO. It is our operational foundation, led by an active member of the Indonesian Tourist Police.
+              Safety is not a loose marketing claim for JVTO. It is supported by founder duty context, third-party press references, and proof assets that explain how Tourist Police discipline shapes our private-tour operating culture.
             </p>
           </motion.div>
         </div>
@@ -176,7 +176,7 @@ export default function PoliceSafetyPage() {
           </div>
 
           <AuthorityShield 
-            title="Active Tourist Police Leadership"
+            title="Tourist Police-Informed Leadership"
             description="Agung Sambuko (Mr. Sam) brings Tourist Police discipline and regulatory awareness into JVTO's operating culture. This supports safer planning, formal coordination, and stronger accountability on East Java routes."
           />
 

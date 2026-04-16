@@ -20,19 +20,19 @@ export default function MedicalTrustSection() {
               <span className="text-jvto-navy font-medium">Screening Partners</span>
             </h2>
             <p className="text-jvto-muted text-base mb-8 leading-relaxed max-w-xl">
-              Since 2024, Ijen Crater requires a mandatory health screening. JVTO partners with licensed medical facilities to ensure your safety is backed by professional Indonesian medical standards.
+              Ijen access rules can require a recent local health certificate. JVTO partners with licensed medical facilities so guests can complete a real screening workflow when the rule applies.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-5 rounded-2xl bg-jvto-off border border-jvto-border">
                 <FileCheck size={20} className="text-jvto-navy mb-3" />
                 <h4 className="font-bold text-jvto-navy text-sm mb-1">STR Verified Doctors</h4>
-                <p className="text-xs text-jvto-muted leading-relaxed">All screenings are performed by doctors with active STR licenses.</p>
+                <p className="text-xs text-jvto-muted leading-relaxed">Screenings are handled through medical partners and licensed local professionals.</p>
               </div>
               <div className="p-5 rounded-2xl bg-jvto-off border border-jvto-border">
                 <Activity size={20} className="text-jvto-navy mb-3" />
                 <h4 className="font-bold text-jvto-navy text-sm mb-1">Real-time Vitals</h4>
-                <p className="text-xs text-jvto-muted leading-relaxed">Blood pressure and respiratory health are verified before the climb.</p>
+                <p className="text-xs text-jvto-muted leading-relaxed">Blood pressure, heart rate, and oxygen readiness can be checked before the climb.</p>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function MedicalTrustSection() {
             <div className="mt-2 p-5 rounded-2xl bg-jvto-navy text-white shadow-xl shadow-jvto-navy/10">
               <p className="micro-label text-jvto-orange mb-2">JVTO Integrity Note</p>
               <p className="text-xs leading-relaxed text-white/60">
-                We strictly avoid &quot;shortcut&quot; screenings. Every guest undergoes a genuine physical check to ensure fitness for the high-altitude volcanic environment.
+                We avoid &quot;shortcut&quot; letters. When screening is required, the workflow uses a genuine local health check for the high-altitude volcanic environment.
               </p>
             </div>
           </div>

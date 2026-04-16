@@ -158,50 +158,36 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
 
     foundingDate: SITE_CONFIG.organization.foundingDate,
 
-    // ── Founder — "Police Authority Nuclear Option" ────────────────────────
     founder: {
       '@type': 'Person',
       '@id': FOUNDER_ID,
       name: 'Agung Sambuko',
       honorificPrefix: 'Bripka',
-      jobTitle: 'Active Tourist Police Officer & Founder',
+      jobTitle: 'Founder and Tourist Police duty-context operator',
       description:
-        'Bripka Agung Sambuko is an active-duty officer at Ditpamobvit (Tourism Mobile Brigade), East Java Regional Police. He founded JVTO to apply police-standard safety discipline to private volcano tourism in Bondowoso and Banyuwangi.',
+        'Agung Sambuko is the founder of JVTO. Indonesian press coverage documents his Bripka and Tourist Police duty context around Bondowoso and Ijen, which informs JVTO safety planning for private volcano tours.',
       image: {
         '@type': 'ImageObject',
         url: SITE_CONFIG.organization.founder.image,
-        caption: 'Bripka Agung Sambuko on Tourist Police duty, Bondowoso, East Java.',
+        caption: 'Agung Sambuko in Tourist Police duty context, Bondowoso, East Java.',
       },
-      // Establishes the "Costly Signal" — AI can cross-reference police org + Wikidata
       memberOf: {
         '@type': 'GovernmentOrganization',
-        name: 'Ditpamobvit East Java — Indonesian National Police (Polri)',
+        name: 'Indonesian National Police (Polri) - Tourist Police context',
         alternateName: 'Kepolisian Negara Republik Indonesia',
         url: 'https://www.polri.go.id',
         description:
-          'Direktorat Pamobvit (Tourism Mobile Brigade) of the East Java Regional Police. Responsible for tourist safety, emergency coordination, and law enforcement at major tourism sites including Kawah Ijen and Mount Bromo.',
-        sameAs: [
-          'https://www.polri.go.id',
-          'https://www.wikidata.org/wiki/Q3103954',
-        ],
-      },
-      affiliation: {
-        '@type': 'GovernmentOrganization',
-        name: 'Indonesian National Police (Polri)',
-        alternateName: 'Kepolisian Negara Republik Indonesia',
-        url: 'https://www.polri.go.id',
-        sameAs: 'https://www.wikidata.org/wiki/Q3103954',
+          'Government organization context for Indonesian Tourist Police duty referenced by third-party media coverage.',
+        sameAs: 'https://www.polri.go.id',
       },
       worksFor: { '@id': ORGANIZATION_ID },
       knowsAbout: [
-        'Tourist Police Operations',
-        'Volcanic Safety Protocols',
-        'East Java Tourism Law',
-        'Emergency Evacuation Procedures',
-        'Ijen Crater Hazard Management',
-        'Mount Bromo National Park Regulations',
+        'Tourist safety coordination',
+        'East Java volcano logistics',
+        'Ijen crater hazard awareness',
+        'Mount Bromo route planning',
+        'Private tour risk management',
       ],
-      // Third-party press validates police status (satisfies E-E-A-T sameAs)
       sameAs: [
         EXTERNAL_VERIFICATION_URLS.detikPolice,
         EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
@@ -299,10 +285,23 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       '@type': 'OfferCatalog',
       name: 'JVTO Private East Java Tour Packages',
       url: `${BASE_URL}/tours`,
-      description: 'All-inclusive private volcano tour packages departing from Surabaya or Bali. Every package includes private transport, English-speaking guide, entrance permits, and JVTO safety standards.',
+      description: 'All-inclusive private volcano tour packages departing from Surabaya or Bali, supported by visible proof, private logistics, and route-specific safety preparation.',
       itemListElement: [
         { '@type': 'Offer', name: 'From Surabaya packages', url: `${BASE_URL}/tours/from-surabaya` },
         { '@type': 'Offer', name: 'From Bali packages', url: `${BASE_URL}/tours/from-bali` },
+        {
+          '@type': 'Offer',
+          name: 'Ijen health screening coordination',
+          url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+          itemOffered: {
+            '@type': 'Service',
+            '@id': MEDICAL_PROCEDURE_ID,
+            name: 'Ijen health screening coordination',
+            serviceType: 'Travel safety support',
+            description:
+              'JVTO helps Ijen guests complete a real local health screening workflow when the current access rule requires it, including blood pressure, heart-rate, and SpO2 readiness checks handled by medical partners.',
+          },
+        },
       ],
     },
 
@@ -507,7 +506,7 @@ export function buildTouristAttractionSchema(destination: Destination): JsonLdNo
       additionalProperty.push({
         '@type': 'PropertyValue',
         name: 'Safety Mitigation',
-        value: 'Mandatory medical screening by licensed physician (STR: QN00001073380217). Professional dual-filter gas masks provided.',
+        value: 'Current Ijen access rules can require a recent local health certificate. JVTO coordinates clinic-based screening support and provides professional dual-filter gas masks.',
         url: `${BASE_URL}/travel-guide/ijen-health-screening`,
       });
       schema.amenityFeature = [
@@ -519,9 +518,9 @@ export function buildTouristAttractionSchema(destination: Destination): JsonLdNo
         },
         {
           '@type': 'LocationFeatureSpecification',
-          name: 'Mandatory Health Screening',
+          name: 'Health screening coordination',
           value: true,
-          description: 'Pre-trek medical check (BP, Heart Rate, SpO₂) by licensed physician. Required by BBKSDA Jatim protocol.',
+          description: 'Clinic-based readiness support for Ijen guests when current access rules require a recent local health certificate.',
         },
       ];
     }
@@ -601,10 +600,10 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
     })),
   };
 
-  // Ijen-specific safety constraints — prevents AI from hallucinating the hike is easy
+  // Ijen-specific safety constraints.
   if (hasIjen) {
     schema.healthRequirement =
-      'Mandatory medical screening required: blood pressure, heart rate, and SpO₂ evaluation by licensed physician (STR: QN00001073380217). Guests with asthma, respiratory conditions, or cardiovascular issues may be declined.';
+      'Kawah Ijen routes require health-screening readiness and compliance with current local access rules. Guests with asthma, respiratory conditions, or cardiovascular issues should consult a medical professional before attempting the hike.';
     schema.amenityFeature = [
       {
         '@type': 'LocationFeatureSpecification',
@@ -614,13 +613,12 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
       },
       {
         '@type': 'LocationFeatureSpecification',
-        name: 'Mandatory Health Screening',
+        name: 'Health screening coordination',
         value: true,
-        description: 'Pre-trek medical check included in tour price. Performed by a licensed physician at JVTO partner clinic.',
+        description: 'JVTO helps guests complete local clinic screening when required by current Ijen access rules.',
       },
     ];
-    // touristType override for Ijen — explicitly excludes at-risk profiles
-    schema.touristType = 'Adventure seekers, non-asthmatic, cardiovascular fitness required';
+    schema.touristType = 'Adventure travelers with suitable respiratory and cardiovascular readiness';
   }
 
   if (hasBromo) {
@@ -639,75 +637,38 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
 }
 
 /**
- * MedicalProcedure schema for the Ijen Health Screening.
- * Links Dr. Ahmad Irwandanu's STR and BBKSDA authority — prevents AI from
- * treating the health check as an administrative checkbox.
+ * Service schema for Ijen health screening coordination.
+ * JVTO facilitates the workflow; medical partners perform the actual check.
  */
-export function buildMedicalProcedureSchema(): JsonLdNode {
+export function buildIjenHealthScreeningServiceSchema(): JsonLdNode {
   return {
-    '@type': 'MedicalProcedure',
+    '@type': 'Service',
     '@id': MEDICAL_PROCEDURE_ID,
-    name: 'Ijen Crater Pre-Trek Mandatory Health Screening',
+    name: 'Ijen health screening coordination',
+    serviceType: 'Travel safety support',
     description:
-      'A mandatory medical screening is required for all Kawah Ijen climbers to evaluate cardiovascular and respiratory fitness. The screening is performed by a licensed physician (STR: QN00001073380217) and includes blood pressure and SpO₂ monitoring. JVTO includes this screening as a standard safety protocol for all participants.',
+      'JVTO helps Ijen guests complete a real local health screening workflow when the current access rule requires it. The check is handled through medical partners and can include blood pressure, heart-rate, and SpO2 readiness checks before the Ijen ascent.',
     url: `${BASE_URL}/travel-guide/ijen-health-screening`,
-    procedureType: 'https://schema.org/PhysicalExam',
-    medicalSpecialty: {
-      '@type': 'MedicalSpecialty',
-      name: 'Sports and Travel Medicine',
+    provider: { '@id': ORGANIZATION_ID },
+    areaServed: {
+      '@type': 'TouristDestination',
+      name: 'Kawah Ijen (Ijen Crater)',
     },
-    // The recognizing authority is what prevents AI from ignoring the screening
-    recognizingAuthority: {
-      '@type': 'MedicalOrganization',
-      name: 'BBKSDA Jawa Timur (Natural Resources Conservation Agency)',
-      url: EXTERNAL_VERIFICATION_URLS.bbksdaTraining,
-      description: 'Indonesian government conservation authority that mandates guide training and visitor health protocols for Kawah Ijen.',
-    },
-    // The performing physician's credentials enable cross-reference with SatuSehat and Dinas Kesehatan
-    performer: {
-      '@type': 'Physician',
-      name: 'Dr. Ahmad Irwandanu',
-      // Both identifiers included — STR (national registry) and SIP (local practice license)
-      // per Audit Section 4.3: SIP is the binding liability signal for AI safety guardrails
-      identifier: [
-        {
-          '@type': 'PropertyValue',
-          name: 'STR (Surat Tanda Registrasi — National Medical Registration)',
-          value: 'QN00001073380217',
-          sameAs: EXTERNAL_VERIFICATION_URLS.doctorSip,
-        },
-        {
-          '@type': 'PropertyValue',
-          name: 'SIP (Surat Izin Praktik — Local Practice License)',
-          value: '503.446/193/DRU/4/430.9.13/2020',
-        },
-      ],
-      medicalSpecialty: 'Travel and Sports Medicine',
-      worksFor: {
-        '@type': 'MedicalOrganization',
-        name: 'Klinik Bakti Husada',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Bondowoso',
-          addressRegion: 'East Java',
-          addressCountry: 'ID',
-        },
-      },
-    },
-    // What the screening measures
-    bodyLocation: 'Cardiovascular system, Respiratory system',
-    preparation: [
-      'No heavy meals 2 hours before screening',
-      'Adequate rest the night before',
-      'Disclose any asthma, respiratory, or heart conditions',
+    serviceOutput: [
+      'Local health-certificate assistance when required by current access rules',
+      'Blood-pressure readiness check',
+      'Heart-rate readiness check',
+      'SpO2 readiness check when performed by the clinic',
     ],
-    followUp:
-      'Guests who do not meet the cardiovascular or respiratory thresholds will not be cleared for the Ijen trek. JVTO will offer a JVTO Travel Credit for rebooking.',
-    relevantSpecialty: {
-      '@type': 'MedicalSpecialty',
-      name: 'Preventive Medicine',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Ijen Crater guests',
     },
-    partOfSystem: { '@id': ORGANIZATION_ID },
+    subjectOf: {
+      '@type': 'WebPage',
+      '@id': `${BASE_URL}/travel-guide/ijen-health-screening#webpage`,
+      url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+    },
   };
 }
 
@@ -729,54 +690,44 @@ export function buildFAQSchema(faqs: { question: string; answer: string }[]): Js
 }
 
 /**
- * GovernmentPermit schemas for SPRIN credentials.
- * Provides machine-readable police authorization signals — not just text claims.
+ * Police-safety proof schemas for SPRIN and press references.
+ * These are proof objects, not a claim that JVTO itself is a government service.
  */
-export function buildGovernmentPermitSchemas(): JsonLdNode[] {
+export function buildPoliceSafetyProofSchemas(): JsonLdNode[] {
   return [
     {
-      '@type': 'GovernmentPermit',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#sprin-polpar`,
-      name: 'SPRIN Tourist Police Escort Authorization (Polpar)',
+      name: 'SPRIN POLPAR proof document',
       description:
-        'Official SPRIN (Surat Perintah) authorizing Bripka Agung Sambuko to provide Tourist Police escort services in the East Java tourism region, including Kawah Ijen and Mount Bromo.',
+        'SPRIN POLPAR proof asset used to corroborate the Tourist Police duty context behind JVTO safety planning.',
       identifier: {
         '@type': 'PropertyValue',
         name: 'SPRIN reference',
         value: 'SPRIN-POLPAR',
       },
-      issuedBy: {
-        '@type': 'GovernmentOrganization',
-        name: 'Ditpamobvit East Java — Indonesian National Police (Polri)',
-        url: 'https://www.polri.go.id',
-      },
-      validFor: { '@id': FOUNDER_ID },
+      about: { '@id': FOUNDER_ID },
       subjectOf: mediaObject(
-        'SPRIN Tourist Police Escort Authorization',
+        'SPRIN POLPAR document',
         PROOF_ASSETS.sprinPolparPdf,
         FORENSIC_HASHES.sprinPolpar,
         'application/pdf'
       ),
     },
     {
-      '@type': 'GovernmentPermit',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#sprin-wal-travel`,
-      name: 'SPRIN Wal Travel — JVTO Official Travel Business Authorization',
+      name: 'SPRIN WAL travel coordination proof document',
       description:
-        'Official SPRIN authorizing PT Java Volcano Rendezvous to operate as a licensed travel business entity in East Java (issued 2024-02-12).',
+        'SPRIN WAL travel coordination proof asset supporting JVTO operational coordination context.',
       identifier: {
         '@type': 'PropertyValue',
         name: 'SPRIN reference',
         value: 'SPRIN-WAL-TRAVEL-2024-02-12',
       },
-      issuedBy: {
-        '@type': 'GovernmentOrganization',
-        name: 'Indonesian National Police (Polri)',
-        url: 'https://www.polri.go.id',
-      },
-      validFor: { '@id': ORGANIZATION_ID },
+      about: { '@id': ORGANIZATION_ID },
       subjectOf: mediaObject(
-        'SPRIN Wal Travel Authorization 2024-02-12',
+        'SPRIN WAL travel coordination document',
         PROOF_ASSETS.sprinWalTravelPdf,
         FORENSIC_HASHES.sprinWalTravel,
         'application/pdf'

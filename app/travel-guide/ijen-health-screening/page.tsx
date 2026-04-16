@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import JsonLd, { buildMedicalProcedureSchema, buildFAQSchema } from '@/components/JsonLd';
+import JsonLd, { buildIjenHealthScreeningServiceSchema, buildFAQSchema } from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import { Activity, ShieldCheck, AlertTriangle, CheckCircle, ExternalLink, Info, FileText, Heart, XCircle, Clock, MapPin, ArrowRight, Stethoscope, Building2 } from 'lucide-react';
 import { MEDICAL_PARTNERS } from '@/lib/verificationData';
@@ -28,7 +28,7 @@ export default function IjenHealthScreeningPage() {
     "@id": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening#webpage",
     "url": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening",
     "name": "Ijen Health Screening — Mandatory Medical Protocol by JVTO",
-    "description": "A mandatory medical screening is required for all Kawah Ijen climbers to evaluate cardiovascular and respiratory fitness. Performed by a licensed physician (STR: QN00001073380217). JVTO includes this screening as a standard safety protocol.",
+    "description": "Ijen access rules can require a recent local health certificate. JVTO helps guests complete a real clinic-based screening workflow before the sulfur-exposure ascent.",
     "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
     "about": [
       { "@id": "https://javavolcano-touroperator.com/#ijen-health-screening" },
@@ -45,12 +45,12 @@ export default function IjenHealthScreeningPage() {
     }
   };
 
-  const medicalSchema = buildMedicalProcedureSchema();
+  const healthServiceSchema = buildIjenHealthScreeningServiceSchema();
   const faqSchema = buildFAQSchema(healthFaqs);
 
   return (
     <main className="min-h-screen bg-white">
-      <JsonLd data={[webPageSchema, medicalSchema, faqSchema]} includeOrganization={false} />
+      <JsonLd data={[webPageSchema, healthServiceSchema, faqSchema]} includeOrganization={false} />
       <Navbar />
       
       {/* Header */}
@@ -127,7 +127,7 @@ export default function IjenHealthScreeningPage() {
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">2</div>
                   <div>
                     <h3 className="text-2xl font-display font-bold mb-2">Real Medical Assessment</h3>
-                    <p className="text-stone-600 text-sm">A licensed medical professional checks your blood pressure, heart rate, and general physical readiness for the hike.</p>
+                    <p className="text-stone-600 text-sm">A licensed medical professional checks your blood pressure, heart rate, oxygen readiness when performed by the clinic, and general physical readiness for the hike.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-start">

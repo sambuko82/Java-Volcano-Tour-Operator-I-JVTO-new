@@ -119,7 +119,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-lg md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto font-light leading-relaxed"
           >
-            Private Bromo, Ijen & Tumpak Sewu — departing from Surabaya or Bali.
+            Private Bromo, Ijen and Tumpak Sewu expeditions from Surabaya or Bali, built around visible legal proof, a Tourist Police-informed safety culture, documented operating history, and route-specific preparation for East Java&apos;s active volcanic terrain.
           </motion.p>
 
           <motion.div
@@ -199,15 +199,15 @@ export default function Home() {
                 <Activity size={40} />
               </div>
               <div>
-                <h3 className="text-3xl mb-2 text-jvto-navy">Mandatory Ijen Health Screening</h3>
-                <p className="text-jvto-muted text-sm font-light max-w-md leading-relaxed">Every Ijen tour includes a professional medical check-up as required by local regulations. We prioritize your safety above all else.</p>
+                <h3 className="text-3xl mb-2 text-jvto-navy">Ijen Health Screening Support</h3>
+                <p className="text-jvto-muted text-sm font-light max-w-md leading-relaxed">Ijen access rules can require a recent local health certificate. JVTO coordinates a real clinic-based check when the rule applies.</p>
               </div>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-4">
               {[
-                "Licensed Doctors",
-                "Official Certificates",
-                "Insurance Ready"
+                "Clinic Workflow",
+                "Local Certificate Support",
+                "No Shortcut Letters"
               ].map((label, i) => (
                 <div key={i} className="bg-white px-8 py-4 rounded-full border border-jvto-border flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-jvto-navy shadow-sm">
                   <CheckCircle2 size={16} className="text-jvto-lime" /> {label}
@@ -314,13 +314,13 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnswerBlock 
               question="Why should I trust JVTO with my deposit?"
-              answer="JVTO operates with a 'Trust First' philosophy. We are a legally registered PT (Perseroan Terbatas) in Indonesia, founded by a member of the Tourist Police. We provide our NIB (Business Identification Number) and legal documents upfront so you can verify us through official government channels before paying a single dollar."
+              answer="JVTO operates with a 'Trust First' philosophy. We are a legally registered PT (Perseroan Terbatas) in Indonesia with a founder whose Tourist Police duty context is documented by third-party press. We provide our NIB and legal documents upfront so you can verify us through official channels before paying a deposit."
               icon={<ShieldCheck className="text-jvto-navy" size={24} />}
               metadata={`NIB: ${SITE_CONFIG.organization.nib} (PT Java Volcano Rendezvous)`}
             />
             <AnswerBlock 
               question="How do you ensure safety at Ijen Crater?"
-              answer="Safety is our core product. We provide mandatory health screenings with licensed medical partners, professional-grade gas masks, and a team trained in volcanic risk management. Our founder's background in the Tourist Police means our safety protocols are not just 'guidelines'—they are police-standard procedures."
+              answer="Safety is treated as an operating system, not a slogan. For Ijen routes we coordinate real clinic-based health screening when current access rules require it, provide professional-grade gas masks, and use a team trained for volcanic terrain. Our founder's Tourist Police context informs practical discipline without turning JVTO into a government service."
               icon={<Activity className="text-jvto-navy" size={24} />}
               metadata="Verified Medical Screening Partners"
             />

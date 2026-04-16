@@ -139,7 +139,7 @@ export const MEDIA_REGISTRY: MediaAsset[] = [
     zones: ['homepage', 'people-layer', 'verify'],
     priority: 'core',
     renderStyle: 'spotlight',
-    alt: 'Agung Sambuko — Founder of JVTO & Active Tourist Police Officer',
+    alt: 'Agung Sambuko — Founder of JVTO with Tourist Police duty context',
     referrerPolicy: true,
   },
 

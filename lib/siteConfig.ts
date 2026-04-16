@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
     legalName: "PT Java Volcano Rendezvous",
     alternateName: "JVTO",
     foundingDate: "2016-01-01",
-    description: "Java Volcano Tour Operator (JVTO) is a registered Indonesian travel company based in Bondowoso and led by an active Tourist Police officer. We design private, all-inclusive itineraries to Mount Bromo, Ijen Crater and Tumpak Sewu with clear safety rules, transparent pricing and real local impact.",
+    description: "Java Volcano Tour Operator (JVTO) is a registered Indonesian travel company based in Bondowoso. We design private, all-inclusive itineraries to Mount Bromo, Ijen Crater and Tumpak Sewu with visible legal proof, Tourist Police-informed safety culture, transparent pricing and real local impact.",
     nib: "1102230032918",
     phone: "+6282244788833",
     email: "hello@javavolcano-touroperator.com",
@@ -20,7 +20,7 @@ export const SITE_CONFIG = {
     },
     founder: {
       name: "Agung Sambuko (Mr. Sam)",
-      title: "Founder & Active Tourist Police Officer",
+      title: "Founder & Tourist Police Duty Context",
       image: "https://javavolcano-touroperator.com/founder/agung_sambuko.jpg"
     }
   },

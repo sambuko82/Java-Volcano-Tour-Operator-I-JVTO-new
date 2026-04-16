@@ -83,8 +83,8 @@ export default function SafetyOnToursPage() {
           </div>
 
           <AuthorityShield 
-            title="Active Tourist Police Leadership"
-            description="Agung Sambuko (Mr. Sam) brings Tourist Police discipline into JVTO's operating culture. This supports formal coordination, realistic safety boundaries, and clear escalation when conditions change."
+            title="Tourist Police-Informed Leadership"
+            description="Agung Sambuko (Mr. Sam) brings Tourist Police discipline into JVTO's operating culture. This supports formal coordination habits, realistic safety boundaries, and clear escalation when conditions change."
           />
 
           <div className="mt-16 bg-white p-12 rounded-3xl border border-stone-200 shadow-sm">

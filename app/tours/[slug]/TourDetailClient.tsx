@@ -167,7 +167,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                 </div>
               </div>
 
-              {/* Ijen Mandatory Health Screening Section */}
+              {/* Ijen Health Screening Section */}
               {tour.destinations.includes('ijen-crater') && (
                 <div className="bg-brand-olive text-white p-20 rounded-[80px] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
@@ -176,7 +176,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                       <div className="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center text-brand-accent">
                         <Activity size={40} />
                       </div>
-                      <h2 className="text-5xl md:text-7xl font-serif leading-[0.9] tracking-tight">Mandatory Ijen <br /> <span className="italic font-light text-brand-accent">Health Screening</span></h2>
+                      <h2 className="text-5xl md:text-7xl font-serif leading-[0.9] tracking-tight">Ijen Health <br /> <span className="italic font-light text-brand-accent">Screening Support</span></h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
                       <div>
@@ -200,6 +200,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                         <h4 className="text-2xl font-serif mb-10 text-brand-accent italic">What to Expect</h4>
                         <ul className="space-y-6 text-white/80 text-lg mb-12 font-light tracking-wide">
                           <li className="flex items-start gap-4"><CheckCircle2 size={24} className="text-brand-accent mt-1 shrink-0" /> Blood pressure & heart rate check</li>
+                          <li className="flex items-start gap-4"><CheckCircle2 size={24} className="text-brand-accent mt-1 shrink-0" /> Oxygen readiness check when performed by the clinic</li>
                           <li className="flex items-start gap-4"><CheckCircle2 size={24} className="text-brand-accent mt-1 shrink-0" /> General physical readiness assessment</li>
                           <li className="flex items-start gap-4"><CheckCircle2 size={24} className="text-brand-accent mt-1 shrink-0" /> 15-30 minutes total duration</li>
                           <li className="flex items-start gap-4"><CheckCircle2 size={24} className="text-brand-accent mt-1 shrink-0" /> Bring your passport (or a photo)</li>
@@ -239,7 +240,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                       <Heart className="text-brand-accent" size={32} /> Health Screening
                     </h4>
                     <p className="text-stone-500 text-xl leading-relaxed mb-10 font-light tracking-wide">
-                      For Ijen Crater, a mandatory medical certificate is required by local authorities. We facilitate this at a certified clinic before the hike.
+                      For Ijen Crater, current access rules can require a recent local health certificate. We facilitate the clinic workflow before the hike when the rule applies.
                     </p>
                     <Link href="/travel-guide/ijen-health-screening" className="text-brand-olive font-bold text-xs flex items-center gap-3 hover:gap-6 transition-all uppercase tracking-[0.2em] border-b border-brand-olive/20 pb-2 hover:border-brand-olive">
                       Read Health Guide <ArrowRight size={20} />

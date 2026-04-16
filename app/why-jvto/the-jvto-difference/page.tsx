@@ -94,19 +94,19 @@ export default function JVTODifferencePage() {
             </div>
             <div className="p-8 border-l-4 border-orange-500 bg-stone-50">
               <h3 className="text-xl font-bold mb-2">Operational Safety</h3>
-              <p className="text-stone-600 text-sm mb-4">Mandatory health checks and professional-grade safety equipment.</p>
+              <p className="text-stone-600 text-sm mb-4">Route-specific health readiness support and professional-grade safety equipment.</p>
               <Link href="/verify-jvto/police-safety" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Verify Safety <ArrowRight size={12} /></Link>
             </div>
             <div className="p-8 border-l-4 border-orange-500 bg-stone-50">
-              <h3 className="text-xl font-bold mb-2">Police-Led Oversight</h3>
-              <p className="text-stone-600 text-sm mb-4">Direct coordination with Tourist Police and local authorities.</p>
+              <h3 className="text-xl font-bold mb-2">Tourist Police Context</h3>
+              <p className="text-stone-600 text-sm mb-4">Founder duty context and formal coordination habits documented through proof assets.</p>
               <Link href="/why-jvto/our-story" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Check Story <ArrowRight size={12} /></Link>
             </div>
           </div>
           
           <AuthorityShield 
-            title="Active Tourist Police Leadership"
-            description="Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police. This informs JVTO's safety culture, formal coordination capacity, and documented proof-first operating style."
+            title="Tourist Police-Informed Leadership"
+            description="Our founder, Agung Sambuko (Mr. Sam), has Tourist Police duty context documented by third-party coverage. This informs JVTO's safety culture, formal coordination habits, and proof-first operating style."
           />
         </div>
       </section>

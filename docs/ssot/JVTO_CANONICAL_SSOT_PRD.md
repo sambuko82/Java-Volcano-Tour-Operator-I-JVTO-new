@@ -19,6 +19,7 @@ It is intended to function as both:
    Canonical product, UX, trust, GEO/AEO, schema, content, and rollout requirements for the website project.
 
 This document is designed for direct use by:
+
 - product / founder
 - frontend engineering
 - content / SEO / GEO
@@ -85,6 +86,7 @@ This file is the canonical structured master context and currently contains:
 - roadmap and meta verification notes
 
 **Current audited dataset counts**
+
 - Canonical routes: **51**
 - Verification credentials: **14**
 - Assets inventory: **58**
@@ -115,6 +117,7 @@ This file is effectively a **PRD v4** and owns:
 - implementation delta notes
 
 It also explicitly states:
+
 - visual brief integrated
 - 7-phase code implementation completed
 - 23 files modified/created
@@ -127,6 +130,7 @@ It also explicitly states:
 ### 3.3 `Strategic JSON-LD Knowledge Graph Implementation Guide...`
 
 This file owns the **entity/search/AI trust strategy**, especially:
+
 - root organization entity strategy
 - founder authority graph
 - legal/safety proof schema model
@@ -149,6 +153,7 @@ The following conflicts or potential drifts were identified during audit.
 **Canonical organization values must come from SSOT JSON**
 
 Canonical organization:
+
 - Legal name: `PT Java Volcano Rendezvous`
 - Brand name: `Java Volcano Tour Operator`
 - Alternate name: `JVTO`
@@ -161,6 +166,7 @@ Canonical organization:
 ### 4.2 Postal code conflict
 
 Conflict found:
+
 - JSON SSOT address postal code: `68214`
 - KG guide example postal code: `68218`
 
@@ -170,6 +176,7 @@ Use `68214` as canonical until DB/source verification explicitly changes it.
 ### 4.3 Organization schema type conflict
 
 Conflict found:
+
 - SSOT embedded schema uses `TravelAgency`
 - KG guide recommends `["LocalBusiness","TravelAgency"]`
 
@@ -184,6 +191,7 @@ The KG guide recommends explicit `taxID` and `iso6523Code` mapped to NIB `110223
 **Resolution:**  
 This is an allowed enhancement, because it reinforces the already-canonical legal identifier rather than changing it.  
 It should be implemented only after validating:
+
 - existing NIB source in SSOT
 - schema validity
 - whether `iso6523Code` is semantically acceptable for this exact Indonesian business identifier usage in the live schema layer
@@ -222,6 +230,7 @@ The canonical narrative pillar set is:
 ### 5.3 Narrative claim system
 
 The canonical claim map contains **9 claims**, each tied to:
+
 - a pillar
 - a claim
 - mechanism logic
@@ -231,6 +240,7 @@ The canonical claim map contains **9 claims**, each tied to:
 - NLP variants for cross-channel reuse
 
 Canonical claims:
+
 - C1 — Safety-led operations → primary page `/why-jvto/community-standards`
 - C2 — Private tours (execution control) → primary page `/why-jvto/community-standards`
 - C3 — All-inclusive clarity (reduce surprises) → primary page `/policy/booking-payment-cancellation`
@@ -242,6 +252,7 @@ Canonical claims:
 - C9 — Press & Recognition (third-party context) → primary page `/verify-jvto/press-recognition`
 
 This means the trust system is already structured as:
+
 - claim
 - mechanism
 - evidence
@@ -345,6 +356,7 @@ The canonical context declares **51 routes** and marks the project status as:
 ### 6.4 Route ownership rule
 
 Each route must have exactly one authoritative owner collection:
+
 - `pages`
 - `verify_pages`
 - `travel_pages`
@@ -361,6 +373,7 @@ No route should have ambiguous ownership.
 ### Homepage
 
 Role:
+
 - trust-first commercial entry
 - explains who JVTO is
 - directs users into route/package discovery
@@ -368,6 +381,7 @@ Role:
 ### Tours hub
 
 Role:
+
 - route and package discovery layer
 - clarifies differences between packages
 - reduces selection confusion
@@ -375,6 +389,7 @@ Role:
 ### Package pages
 
 Role:
+
 - self-service commercial brochure
 - package-first conversion page
 - practicalities before heavy trust layer
@@ -382,18 +397,21 @@ Role:
 ### Travel Guide
 
 Role:
+
 - operational support system
 - readiness, screening, weather/closures, booking guidance
 
 ### Verify JVTO
 
 Role:
+
 - proof ownership system
 - legal, police/safety, press/recognition, history/artifacts
 
 ### Why JVTO
 
 Role:
+
 - differentiation narrative
 - people/team
 - reviews
@@ -402,12 +420,14 @@ Role:
 ### Policy
 
 Role:
+
 - formal rules layer
 - booking/payment/cancellation/privacy/inclusions
 
 ### Contact
 
 Role:
+
 - human escalation layer
 - not a substitute for missing package/support information
 
@@ -436,6 +456,7 @@ The package page model is already consolidated and must remain:
 17. final CTA  
 
 ### Package page rules
+
 - package-first
 - practicalities next
 - trust later
@@ -476,6 +497,7 @@ The trust architecture is not a decorative layer. It is a structured graph.
 #### Review layer
 
 Review logic must remain registry-like, not quote-wall style:
+
 - grouped by platform
 - grouped by pattern/theme
 - support trust validation
@@ -483,6 +505,7 @@ Review logic must remain registry-like, not quote-wall style:
 #### Partnership layer
 
 Canonical partner context includes:
+
 - ISIC
 - HPWKI
 - INDECON
@@ -498,6 +521,7 @@ Must remain evidence-driven and auditable.
 ### 9.3 Trust graph rule
 
 Trust content must support:
+
 1. human trust
 2. AI/entity trust
 3. commercial differentiation
@@ -517,6 +541,7 @@ Owned by route/page collections and content pages.
 ### 10.3 Trust/evidence domain
 
 Owned by:
+
 - verification credentials
 - assets inventory
 - proof items
@@ -528,6 +553,7 @@ Owned by:
 ### 10.4 Product/tour domain
 
 Owned by:
+
 - tour pages
 - destination pages
 - operational logic
@@ -537,6 +563,7 @@ Owned by:
 ### 10.5 UX/design/implementation domain
 
 Owned by PRD:
+
 - section order
 - screen behavior
 - design system
@@ -563,6 +590,7 @@ JVTO must appear not only relevant, but **verifiable**.
 ### 11.2 Required entity model
 
 At minimum:
+
 - Organization / TravelAgency
 - Founder / Person
 - Tour products / TouristTrip or equivalent route/product layer
@@ -585,6 +613,7 @@ At minimum:
 
 The KG guide is **strategy**, not literal copy-paste.  
 Every schema block must be normalized against:
+
 - canonical organization values
 - canonical route values
 - canonical page ownership
@@ -600,6 +629,7 @@ The PRD is the canonical source for frontend presentation and execution.
 ### 12.1 Design direction
 
 The visual direction must remain aligned to:
+
 - premium expedition
 - trust-led tour operator
 - volcanic travel with operational authority
@@ -607,6 +637,7 @@ The visual direction must remain aligned to:
 ### 12.2 Not acceptable
 
 The site must not drift into:
+
 - SaaS/dashboard feel
 - playful/travel-blog feel
 - corporate sterile feel
@@ -616,6 +647,7 @@ The site must not drift into:
 ### 12.3 Design system governance
 
 The PRD owns:
+
 - design system tokens
 - CTA styles
 - visual mode per cluster
@@ -636,14 +668,17 @@ The PRD implementation layer must not silently override the SSOT route/content/p
 ### 13.1 Recommended repository
 
 Target repository:
+
 - `sambuko82/Java-Volcano-Tour-Operator-I-JVTO-new`
 
 ### 13.2 Recommended file path
 
 Recommended canonical path:
+
 - `docs/ssot/JVTO_CANONICAL_SSOT_PRD.md`
 
 Optional related future files:
+
 - `docs/ssot/JVTO_SCHEMA_IMPLEMENTATION_SPEC.md`
 - `docs/ssot/JVTO_ROUTE_OWNER_MAP.md`
 - `docs/ssot/JVTO_TRUST_GRAPH_MAP.md`
@@ -651,12 +686,14 @@ Optional related future files:
 ### 13.3 Intended repo usage
 
 This document should be treated as:
+
 - a product + content + trust governance file
 - not as runtime JSON
 - not as a frontend-only design note
 - not as a marketing brief
 
 It is the cross-functional canonical reference used before:
+
 - route additions
 - copy rewrites
 - page ownership changes
@@ -668,6 +705,7 @@ It is the cross-functional canonical reference used before:
 ### 13.4 Change control rule
 
 Changes to this document should require explicit review whenever they affect:
+
 - organization identity
 - contact data
 - route ownership
@@ -685,6 +723,7 @@ Changes to this document should require explicit review whenever they affect:
 ### 14.1 Data source rule
 
 Until CMS/PostgreSQL fully becomes primary:
+
 - SSOT JSON remains canonical source reference
 - PRD remains canonical UI/UX behavior reference
 - local/build implementation must follow both
@@ -692,6 +731,7 @@ Until CMS/PostgreSQL fully becomes primary:
 ### 14.2 Frontend rule
 
 Frontend implementation must preserve:
+
 - canonical routes
 - package-first logic
 - trust/support separation
@@ -701,6 +741,7 @@ Frontend implementation must preserve:
 ### 14.3 Schema rule
 
 Do not ship schema that contradicts:
+
 - legal identity
 - postal code
 - founder role
@@ -712,6 +753,7 @@ Do not ship schema that contradicts:
 ### 14.4 Content ops rule
 
 Do not publish copy that:
+
 - weakens operational realism
 - overpromises natural phenomena
 - merges Why JVTO and Verify JVTO logic
@@ -730,6 +772,7 @@ The following open issues are already declared in the SSOT meta and remain activ
 - Surabaya and Malang City: sitemap routes exist but DB has no slug or content yet
 
 Additional audit-level gaps:
+
 - PRD file title still references earlier versioning while body states v4 supersession.
 - KG guide contains some example values and schema patterns that require normalization before live implementation.
 - Repo README is still generic and not yet aligned to the canonical JVTO product/documentation system.
@@ -772,6 +815,7 @@ Upgrade the live JVTO website significantly without breaking its data foundation
 ### Method
 
 Improve-in-place using:
+
 - SSOT JSON as canonical content/proof/route source
 - PRD as canonical UX/visual/implementation source
 - KG guide as canonical schema/AI trust strategy overlay

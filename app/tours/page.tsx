@@ -1,9 +1,10 @@
 // app/tours/page.tsx
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { Search, Filter, ShieldCheck, Users, Scale, ArrowRight, MapPin, Clock, Activity, Heart, Star } from 'lucide-react';
+import { Search, Filter, ShieldCheck, Users, Scale, ArrowRight, MapPin, Clock, Activity, Heart, Star, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import TourCard from '@/components/TourCard';
 import RouteSelector from '@/components/RouteSelector';
@@ -28,17 +29,43 @@ const toursFaqs = [
 ];
 
 export default function ToursPage() {
+  const [tours, setTours] = useState(TOURS);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchTours() {
+      try {
+        const response = await fetch('/api/tours');
+        if (!response.ok) {
+          throw new Error('Failed to fetch tours');
+        }
+        const data = await response.json();
+        setTours(data.length > 0 ? data : TOURS);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching tours:', err);
+        // Fallback to static data on error
+        setError(null);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchTours();
+  }, []);
+
   const toursSchema = {
     "@type": "ItemList",
-    "numberOfItems": TOURS.length,
-    "itemListElement": TOURS.map((tour, index) => ({
+    "numberOfItems": tours.length,
+    "itemListElement": tours.map((tour: any, index: number) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
         "@type": ["Product", "TouristTrip"],
         "name": tour.name,
         "description": tour.shortDesc,
-        "image": tour.image,
+        "image": tour.image || (tour.images?.[0]?.url),
         "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
         "itineraryStartPoint": {
           "@type": "City",
@@ -159,11 +186,18 @@ export default function ToursPage() {
             <h2 className="text-5xl md:text-7xl font-serif mb-6 text-brand-ink">Private <span className="italic">Packages</span></h2>
             <p className="text-stone-500 max-w-2xl mx-auto font-light text-lg">Our most requested private packages, built for operational certainty.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {TOURS.map((tour, index) => (
-              <TourCard key={tour.slug} tour={tour} index={index} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="flex flex-col items-center justify-center py-24">
+              <Loader2 className="text-brand-olive animate-spin mb-3" size={32} />
+              <p className="text-stone-400 text-sm font-medium">Loading tours...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {tours.map((tour: any, index: number) => (
+                <TourCard key={tour.slug} tour={tour} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

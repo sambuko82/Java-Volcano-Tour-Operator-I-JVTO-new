@@ -22,6 +22,7 @@ Source files audited:
 - `E:\Users\JAVA VOLCANO\Downloads\JVTO_Destination_Page_Narrative_Blueprint_Table.xlsx`
 - `E:\Users\JAVA VOLCANO\Downloads\JVTO_Why_JVTO_Hub_Narrative_Blueprint_Table.xlsx`
 - `E:\Users\JAVA VOLCANO\Downloads\JVTO_Verify_JVTO_Hub_Narrative_Blueprint_Table.xlsx`
+- `F:\New folder\North Star.txt`
 - current project files in `app/`, `components/`, `lib/`, `public/`, and `docs/`
 
 ---
@@ -41,12 +42,16 @@ North Star:
 
 Build a trust-led, package-first, support-backed, proof-owned, machine-readable website system for JVTO.
 
+North Star implementation note:
+
+Upgrade JVTO through improve-in-place execution. Keep the live/data baseline, use the local app as UX/trust/orchestration reference, and route users through trust entry, route discovery, package conversion, operational support, and proof ownership without treating new brainstorming as an automatic priority change.
+
 Core user conclusion:
 
 1. JVTO berbeda.
 2. Perbedaannya nyata dan dapat diverifikasi.
 3. Saya tahu paket mana yang cocok.
-4. Saya cukup percaya untuk lanjut inquiry atau booking.
+4. Saya cukup percaya untuk lanjut direct checkout atau official human escalation.
 
 ---
 
@@ -1056,4 +1061,3 @@ Review homepage section order against the homepage blueprint and current impleme
 Priority 5:
 
 Write implementation tickets from this PRD for Phase B and Phase D.
-

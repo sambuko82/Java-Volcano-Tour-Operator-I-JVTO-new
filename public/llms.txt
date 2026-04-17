@@ -212,6 +212,8 @@ The following schema types are deployed as JSON-LD across the site:
 
 ## Site Architecture (for AI navigation)
 
+North Star: upgrade JVTO through improve-in-place execution while keeping the live/data baseline, package-first route logic, proof ownership, and booking confidence intact.
+
 JVTO website operates as 5 functional layers:
 
 | Layer | URL Cluster | Function |
@@ -221,6 +223,14 @@ JVTO website operates as 5 functional layers:
 | Package Conversion | /tours/[slug] → /checkout/[slug] | Self-contained brochure + direct checkout bridge |
 | Operational Support | /travel-guide, /policy | Booking rules, readiness, screening |
 | Proof Ownership | /verify-jvto, /why-jvto | Legal, police, medical, press audit trail |
+
+User-intent clusters:
+- Discovery: /tours, /tours/from-surabaya, /tours/from-bali, /destinations
+- Trust: /why-jvto, /verify-jvto, /why-jvto/our-team, /why-jvto/reviews
+- Prepare & Book: /travel-guide/booking-information, /travel-guide/ijen-health-screening, /travel-guide/packing-and-fitness, /travel-guide/weather-and-closures
+- Rules & Contact: /policy/booking-payment-cancellation, /policy/inclusions-exclusions, /contact
+
+Success condition: a visitor should quickly understand that JVTO is different, that the difference is verifiable, which route fits, and how to proceed toward direct checkout.
 
 ### Canonical URLs
 - Homepage: https://javavolcano-touroperator.com

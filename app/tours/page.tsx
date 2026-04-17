@@ -13,6 +13,7 @@ import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { TOURS } from '@/lib/jvtoData';
+import { BOOKING_POLICY } from '@/lib/bookingPolicy';
 import { CheckCircle2 } from 'lucide-react';
 
 const toursFaqs = [
@@ -60,11 +61,12 @@ export default function ToursPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://javavolcano-touroperator.com/assets/img/hero/tours.webp"
+          src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
           alt="Private Tours"
           fill
           className="object-cover scale-105"
           priority
+          unoptimized
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
@@ -140,9 +142,9 @@ export default function ToursPage() {
                 </tr>
                 <tr className="border-b border-stone-50 hover:bg-brand-cream/30 transition-colors">
                   <td className="py-10 px-8 font-bold text-[10px] uppercase tracking-widest text-stone-900">Safety System</td>
-                  <td className="py-10 px-8 text-stone-600">Police Oversight</td>
-                  <td className="py-10 px-8 text-stone-600">Medical + Gas Mask</td>
-                  <td className="py-10 px-8 text-stone-600">Full Safety Protocol</td>
+                  <td className="py-10 px-8 text-stone-600">Private route control</td>
+                  <td className="py-10 px-8 text-stone-600">Clinic support + gas mask</td>
+                  <td className="py-10 px-8 text-stone-600">Proof-led operating support</td>
                 </tr>
               </tbody>
             </table>
@@ -198,9 +200,9 @@ export default function ToursPage() {
               <h2 className="text-5xl md:text-7xl font-serif mb-12 leading-tight text-brand-ink">Transparent <br /> <span className="italic">Booking Logic</span></h2>
               <div className="space-y-12">
                 {[
-                  { title: "Inquiry & Consultation", desc: "Discuss your route with our team to ensure it fits your goals." },
-                  { title: "Secure Deposit", desc: "Pay via secure channels to confirm your private vehicle and crew." },
-                  { title: "Operational Confirmation", desc: "Receive your detailed itinerary and crew contact information." }
+                  { title: "Direct Checkout", desc: "Open the package-specific checkout page and enter date, group size, pickup, drop-off, and lead guest details." },
+                  { title: "Availability Lock", desc: "JVTO verifies route feasibility, price tier, and operating availability before payment is treated as final confirmation." },
+                  { title: "Official Voucher", desc: BOOKING_POLICY.confirmationRule }
                 ].map((step, i) => (
                   <div key={i} className="flex gap-10">
                     <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-brand-olive shrink-0 font-serif text-2xl border border-stone-100 shadow-sm">
@@ -219,7 +221,7 @@ export default function ToursPage() {
               <p className="text-stone-500 text-base font-light mb-12 leading-relaxed">
                 We understand that travel plans change. Our policies are designed to be fair and transparent, with clear timelines for refunds and reschedule options in case of volcanic activity.
               </p>
-              <Link href="/policy" className="inline-flex items-center gap-4 text-brand-olive font-bold text-xs uppercase tracking-widest group">
+              <Link href="/policy/booking-payment-cancellation" className="inline-flex items-center gap-4 text-brand-olive font-bold text-xs uppercase tracking-widest group">
                 Read Full Policy <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -293,8 +295,8 @@ export default function ToursPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-5xl md:text-7xl font-serif mb-12">Ready for Operational <span className="italic">Certainty?</span></h2>
           <div className="flex flex-wrap justify-center gap-8">
-            <Link href="/contact" className="bg-white text-brand-ink px-14 py-6 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-stone-100 transition-all flex items-center gap-4 group shadow-xl">
-              Contact the Team <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <Link href="/tours#selector" className="bg-white text-brand-ink px-14 py-6 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-stone-100 transition-all flex items-center gap-4 group shadow-xl">
+              Find Your Route <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link href="/verify-jvto" className="bg-white/10 border border-white/20 text-white px-14 py-6 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white/20 transition-all shadow-lg">
               Verify JVTO

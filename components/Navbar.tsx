@@ -1,17 +1,15 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useCurrency } from '@/hooks/useCurrency';
 import { SITE_CONFIG } from '@/lib/siteConfig';
+import { NAVIGATION_CLUSTERS, PRIMARY_NAV_ITEMS } from '@/lib/siteOrchestration';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { currency, changeCurrency, currencies } = useCurrency();
-  const [isCurrencyMenuOpen, setIsCurrencyMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,10 +27,11 @@ export default function Navbar() {
         </Link>
         
         <div className={`hidden lg:flex space-x-8 micro-label transition-colors ${isScrolled ? 'text-jvto-navy' : 'text-white/80'}`}>
-          <Link href="/tours" className="hover:text-jvto-orange transition-colors">Tours</Link>
-          <Link href="/destinations" className="hover:text-jvto-orange transition-colors">Destinations</Link>
-          <Link href="/why-jvto" className="hover:text-jvto-orange transition-colors">Why JVTO</Link>
-          <Link href="/travel-guide" className="hover:text-jvto-orange transition-colors">Travel Guide</Link>
+          {PRIMARY_NAV_ITEMS.map((item) => (
+            <Link key={item.href} href={item.href} className="hover:text-jvto-orange transition-colors">
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         <div className="flex items-center gap-4">
@@ -64,14 +63,35 @@ export default function Navbar() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 w-full bg-white border-b border-jvto-border p-6 flex flex-col space-y-4 shadow-xl"
+          className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-jvto-border p-6 shadow-xl max-h-[calc(100vh-80px)] overflow-y-auto"
         >
-          <Link href="/tours" className="text-lg font-medium text-jvto-navy" onClick={() => setIsMobileMenuOpen(false)}>Tours</Link>
-          <Link href="/destinations" className="text-lg font-medium text-jvto-navy" onClick={() => setIsMobileMenuOpen(false)}>Destinations</Link>
-          <Link href="/why-jvto" className="text-lg font-medium text-jvto-navy" onClick={() => setIsMobileMenuOpen(false)}>Why JVTO</Link>
-          <Link href="/travel-guide" className="text-lg font-medium text-jvto-navy" onClick={() => setIsMobileMenuOpen(false)}>Travel Guide</Link>
-          <Link href="/verify-jvto" className="text-lg font-medium text-jvto-lime" onClick={() => setIsMobileMenuOpen(false)}>✓ Verify Us</Link>
-          <Link href={SITE_CONFIG.whatsapp.waLink} target="_blank" className="bg-jvto-wa-green text-white px-6 py-3 rounded-md font-bold text-center">WhatsApp</Link>
+          <div className="grid gap-8">
+            {NAVIGATION_CLUSTERS.map((cluster) => (
+              <div key={cluster.id}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-jvto-muted mb-3">{cluster.label}</p>
+                <div className="grid gap-3">
+                  {cluster.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="text-lg font-medium text-jvto-navy"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <Link
+              href={SITE_CONFIG.whatsapp.waLink}
+              target="_blank"
+              className="bg-jvto-wa-green text-white px-6 py-3 rounded-md font-bold text-center"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              WhatsApp
+            </Link>
+          </div>
         </motion.div>
       )}
     </nav>

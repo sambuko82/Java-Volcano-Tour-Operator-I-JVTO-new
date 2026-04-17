@@ -2,6 +2,7 @@ import { SITE_CONFIG } from '@/lib/siteConfig';
 import { CREW, type Destination, type Tour } from '@/lib/jvtoData';
 import { EXTERNAL_VERIFICATION_URLS, FORENSIC_HASHES, PROOF_ASSETS } from '@/lib/verificationData';
 import { BOOKING_POLICY } from '@/lib/bookingPolicy';
+import { SITE_LAYERS, getAllNavigationItems } from '@/lib/siteOrchestration';
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -450,10 +451,31 @@ function buildWebSiteSchema(): JsonLdNode {
     url: BASE_URL,
     publisher: { '@id': ORGANIZATION_ID },
     inLanguage: 'en',
+    hasPart: SITE_LAYERS.map((layer) => ({
+      '@type': 'WebPage',
+      name: layer.name,
+      description: layer.role,
+      url: `${BASE_URL}${layer.primaryRoutes[0] === '/' ? '' : layer.primaryRoutes[0]}`,
+    })),
   };
 }
 
 // ─── Exported builders for page-level use ────────────────────────────────────
+
+export function buildSiteNavigationSchema(): JsonLdNode {
+  return {
+    '@type': 'ItemList',
+    '@id': `${BASE_URL}/#site-navigation`,
+    name: 'JVTO site navigation by user intent',
+    itemListElement: getAllNavigationItems().map((item, index) => ({
+      '@type': 'SiteNavigationElement',
+      position: index + 1,
+      name: item.label,
+      description: item.description,
+      url: item.href.startsWith('http') ? item.href : `${BASE_URL}${item.href}`,
+    })),
+  };
+}
 
 /**
  * TouristAttraction schema for destination pages.

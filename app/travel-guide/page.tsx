@@ -10,6 +10,7 @@ import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import SupportShortcutRail from '@/components/SupportShortcutRail';
 import LiveSignalBlock from '@/components/LiveSignalBlock';
+import { BOOKING_SUPPORT_GROUPS } from '@/lib/siteOrchestration';
 import { ShieldCheck, CheckCircle2, Info, ArrowRight, Thermometer, Cloud, Clock, Luggage, Activity, Heart, Scale, Search, MapPin, Globe } from 'lucide-react';
 
 const guideFaqs = [
@@ -71,6 +72,7 @@ export default function TravelGuide() {
             fill
             className="object-cover opacity-20 grayscale"
             priority
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-cream via-brand-cream/90 to-brand-cream"></div>
         </div>
@@ -97,6 +99,33 @@ export default function TravelGuide() {
       </section>
 
       <SupportShortcutRail />
+
+      <section className="py-20 bg-white border-b border-jvto-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-brand-olive mb-5">Prepare & Book</p>
+              <h2 className="text-4xl font-serif text-brand-ink leading-tight">Support by Intent</h2>
+            </div>
+            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {BOOKING_SUPPORT_GROUPS.map((group) => (
+                <div key={group.id} className="bg-brand-cream p-7 rounded-2xl border border-stone-200">
+                  <h3 className="text-xl font-display font-bold text-brand-ink mb-3">{group.label}</h3>
+                  <p className="text-stone-500 text-sm leading-relaxed mb-6">{group.role}</p>
+                  <div className="space-y-3">
+                    {group.links.map((link) => (
+                      <Link key={link.href} href={link.href} className="flex items-center justify-between gap-4 text-sm font-bold text-brand-olive hover:text-jvto-orange transition-colors">
+                        <span>{link.label}</span>
+                        <ArrowRight size={14} />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Live Volcano Signal */}
       <section className="py-8 bg-white border-b border-jvto-border">
@@ -176,19 +205,19 @@ export default function TravelGuide() {
                 title: "Ijen Crater Guide",
                 desc: "Logistics for the blue fire, health screening requirements, and gas mask protocols.",
                 link: "/travel-guide/ijen-health-screening",
-                img: "https://javavolcano-touroperator.com/assets/img/destinations/ijen.webp"
+                img: "https://javavolcano-touroperator.com/assets/img/hero/home.webp"
               },
               {
                 title: "Mount Bromo Guide",
                 desc: "Jeep logistics, sunrise timing, and altitude preparation for the Bromo caldera.",
                 link: "/travel-guide/mount-bromo-logistics",
-                img: "https://javavolcano-touroperator.com/assets/img/destinations/bromo.webp"
+                img: "https://javavolcano-touroperator.com/assets/img/hero/home.webp"
               },
               {
                 title: "Tumpak Sewu Guide",
                 desc: "Trekking logistics, footwear requirements, and safety for the waterfall descent.",
                 link: "/travel-guide/tumpak-sewu-logistics",
-                img: "https://javavolcano-touroperator.com/assets/img/destinations/tumpak-sewu.webp"
+                img: "https://javavolcano-touroperator.com/assets/img/hero/home.webp"
               }
             ].map((item, idx) => (
               <Link key={idx} href={item.link} className="group relative aspect-[4/5] overflow-hidden rounded-[4rem] bg-stone-200 shadow-xl">
@@ -197,6 +226,7 @@ export default function TravelGuide() {
                   alt={item.title}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-olive via-brand-olive/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-12">
@@ -305,6 +335,7 @@ export default function TravelGuide() {
             alt="Background"
             fill
             className="object-cover"
+            unoptimized
           />
         </div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">

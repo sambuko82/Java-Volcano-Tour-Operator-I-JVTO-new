@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Activity, Package, CloudRain, Backpack, ShieldCheck, Info, Calendar, Navigation } from 'lucide-react';
+import { BOOKING_SUPPORT_GROUPS } from '@/lib/siteOrchestration';
 
 interface ShortcutItem {
   label: string;
@@ -10,16 +11,26 @@ interface ShortcutItem {
   slug: string;
 }
 
-const SHORTCUTS: ShortcutItem[] = [
-  { slug: 'ijen-health-screening', label: 'Ijen Screening', href: '/travel-guide/ijen-health-screening', icon: <Activity size={14} /> },
-  { slug: 'booking-information', label: 'How to Book', href: '/travel-guide/booking-information', icon: <Calendar size={14} /> },
-  { slug: 'packing-list', label: 'Packing List', href: '/travel-guide/packing-list', icon: <Backpack size={14} /> },
-  { slug: 'weather-and-closures', label: 'Weather & Closures', href: '/travel-guide/weather-and-closures', icon: <CloudRain size={14} /> },
-  { slug: 'safety-on-tours', label: 'Safety on Tours', href: '/travel-guide/safety-on-tours', icon: <ShieldCheck size={14} /> },
-  { slug: 'mount-bromo-logistics', label: 'Bromo Logistics', href: '/travel-guide/mount-bromo-logistics', icon: <Navigation size={14} /> },
-  { slug: 'tumpak-sewu-logistics', label: 'Tumpak Sewu', href: '/travel-guide/tumpak-sewu-logistics', icon: <Package size={14} /> },
-  { slug: 'faq', label: 'FAQ', href: '/travel-guide/faq', icon: <Info size={14} /> },
-];
+const ICONS_BY_HREF: Record<string, React.ReactNode> = {
+  '/travel-guide/ijen-health-screening': <Activity size={14} />,
+  '/travel-guide/booking-information': <Calendar size={14} />,
+  '/travel-guide/packing-and-fitness': <Backpack size={14} />,
+  '/travel-guide/weather-and-closures': <CloudRain size={14} />,
+  '/travel-guide/safety-on-tours': <ShieldCheck size={14} />,
+  '/travel-guide/mount-bromo-logistics': <Navigation size={14} />,
+  '/travel-guide/tumpak-sewu-logistics': <Package size={14} />,
+  '/travel-guide/faq': <Info size={14} />,
+  '/policy/booking-payment-cancellation': <ShieldCheck size={14} />,
+};
+
+const SHORTCUTS: ShortcutItem[] = BOOKING_SUPPORT_GROUPS.flatMap((group) => group.links)
+  .filter((item, index, items) => items.findIndex((candidate) => candidate.href === item.href) === index)
+  .map((item) => ({
+    slug: item.href.split('/').filter(Boolean).pop() ?? item.href,
+    label: item.label,
+    href: item.href,
+    icon: ICONS_BY_HREF[item.href] ?? <Info size={14} />,
+  }));
 
 interface SupportShortcutRailProps {
   activeSlug?: string;

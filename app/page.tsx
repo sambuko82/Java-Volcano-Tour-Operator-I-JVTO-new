@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 import TourCard from '@/components/TourCard';
 import AnswerBlock from '@/components/AnswerBlock';
 import FAQSection from '@/components/FAQSection';
-import JsonLd from '@/components/JsonLd';
+import JsonLd, { buildSiteNavigationSchema } from '@/components/JsonLd';
 import FounderSpotlight from '@/components/FounderSpotlight';
 import TrustpilotWidget from '@/components/TrustpilotWidget';
 import CrewGrid from '@/components/CrewGrid';
@@ -47,6 +47,7 @@ const homeFaqs = [
 
 export default function Home() {
   const homeSchema = [
+    buildSiteNavigationSchema(),
     {
       "@type": "WebPage",
       "@id": "https://javavolcano-touroperator.com/#webpage",
@@ -90,6 +91,7 @@ export default function Home() {
           fill
           className="object-cover opacity-60"
           priority
+          unoptimized
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-jvto-navy/40 via-transparent to-jvto-navy/80" />
@@ -413,10 +415,11 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="relative aspect-square rounded-[80px] overflow-hidden shadow-2xl shadow-jvto-navy/10">
               <Image 
-                src="https://javavolcano-touroperator.com/assets/img/destinations/ijen.webp"
+                src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
                 alt="Java Volcano Guide" 
                 fill 
                 className="object-cover"
+                unoptimized
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-jvto-navy/20 mix-blend-multiply" />

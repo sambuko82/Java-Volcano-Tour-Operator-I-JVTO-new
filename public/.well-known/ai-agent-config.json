@@ -47,6 +47,8 @@
   },
   "capabilities": [
     "direct-checkout-bridge",
+    "intent-based-navigation",
+    "proof-owned-trust-architecture",
     "safety-verification",
     "booking-policy-logic",
     "volcanic-status-monitoring",
@@ -191,6 +193,13 @@
     "primary_entry": "https://javavolcano-touroperator.com",
     "llms_txt": "https://javavolcano-touroperator.com/llms.txt",
     "sitemap_xml": "https://javavolcano-touroperator.com/sitemap.xml",
+    "north_star": "Improve JVTO in place: preserve live/data baseline, strengthen package-first route logic, trust proof, support clarity, and direct checkout confidence.",
+    "success_conditions": [
+      "JVTO is visibly different from generic operators",
+      "The difference is independently verifiable",
+      "The traveler can identify the right package quickly",
+      "The traveler has enough confidence to continue to direct checkout"
+    ],
     "clusters": {
       "trust_entry": {
         "url": "https://javavolcano-touroperator.com",
@@ -201,10 +210,16 @@
           "https://javavolcano-touroperator.com/tours",
           "https://javavolcano-touroperator.com/tours/from-surabaya",
           "https://javavolcano-touroperator.com/tours/from-bali",
-          "https://javavolcano-touroperator.com/checkout/{tour-slug}",
           "https://javavolcano-touroperator.com/destinations"
         ],
-        "role": "Package and destination selection hub with direct package-specific checkout bridge"
+        "role": "Package and destination selection by origin, duration, route seriousness, and destination fit"
+      },
+      "package_conversion": {
+        "urls": [
+          "https://javavolcano-touroperator.com/tours/{tour-slug}",
+          "https://javavolcano-touroperator.com/checkout/{tour-slug}"
+        ],
+        "role": "Self-service package brochure plus direct package-specific checkout bridge"
       },
       "proof_ownership": {
         "urls": [
@@ -245,6 +260,31 @@
         "url": "https://javavolcano-touroperator.com/contact",
         "role": "Human escalation — WhatsApp, inquiry form"
       }
+    },
+    "intent_clusters": {
+      "discovery": [
+        "https://javavolcano-touroperator.com/tours",
+        "https://javavolcano-touroperator.com/tours/from-surabaya",
+        "https://javavolcano-touroperator.com/tours/from-bali",
+        "https://javavolcano-touroperator.com/destinations"
+      ],
+      "trust": [
+        "https://javavolcano-touroperator.com/why-jvto",
+        "https://javavolcano-touroperator.com/verify-jvto",
+        "https://javavolcano-touroperator.com/why-jvto/our-team",
+        "https://javavolcano-touroperator.com/why-jvto/reviews"
+      ],
+      "prepare_and_book": [
+        "https://javavolcano-touroperator.com/travel-guide/booking-information",
+        "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening",
+        "https://javavolcano-touroperator.com/travel-guide/packing-and-fitness",
+        "https://javavolcano-touroperator.com/travel-guide/weather-and-closures"
+      ],
+      "rules_and_contact": [
+        "https://javavolcano-touroperator.com/policy/booking-payment-cancellation",
+        "https://javavolcano-touroperator.com/policy/inclusions-exclusions",
+        "https://javavolcano-touroperator.com/contact"
+      ]
     }
   },
   "agentic_protocols": {

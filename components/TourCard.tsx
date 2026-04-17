@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Star, Calendar, ArrowRight, ShieldCheck, Activity } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCurrency } from '@/hooks/useCurrency';
-import InquiryForm from '@/components/InquiryForm';
 
 import { Tour } from '@/lib/jvtoData';
 
@@ -17,11 +15,9 @@ interface TourCardProps {
 
 export default function TourCard({ tour, index }: TourCardProps) {
   const { formatPrice } = useCurrency();
-  const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <>
-      <motion.div
+    <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -34,6 +30,7 @@ export default function TourCard({ tour, index }: TourCardProps) {
             alt={tour.name}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-1000"
+            priority
             unoptimized
             referrerPolicy="no-referrer"
           />
@@ -79,21 +76,14 @@ export default function TourCard({ tour, index }: TourCardProps) {
               </div>
             </div>
             
-            <button 
-              onClick={() => setIsFormOpen(true)}
+            <Link
+              href={`/tours/${tour.slug}`}
               className="w-full bg-jvto-navy text-white py-4 rounded-md text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-jvto-navy-mid transition-all flex items-center justify-center gap-3 group/btn"
             >
-              Book Inquiry <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+              View Package <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </motion.div>
-
-      <InquiryForm 
-        isOpen={isFormOpen} 
-        onClose={() => setIsFormOpen(false)} 
-        tourTitle={tour.name}
-      />
-    </>
   );
 }

@@ -167,6 +167,7 @@ export default function Home() {
                   alt={dest.name}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                  unoptimized
                   referrerPolicy="no-referrer"
                 />
                   <div className="absolute inset-0 bg-gradient-to-t from-jvto-navy/90 via-jvto-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />

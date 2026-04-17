@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Star, Calendar, MapPin, Users, ShieldCheck, CheckCircle2, ArrowRight, Clock, Info, Heart, Activity } from 'lucide-react';
+import { Star, Users, ShieldCheck, CheckCircle2, ArrowRight, Clock, Info, Heart, Activity, CreditCard, FileText, Lock } from 'lucide-react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,13 +9,12 @@ import AnswerBlock from '@/components/AnswerBlock';
 import JsonLd, { buildTourPackageSchema } from '@/components/JsonLd';
 import { useCurrency } from '@/hooks/useCurrency';
 import { SITE_CONFIG } from '@/lib/siteConfig';
-import { useState } from 'react';
-import InquiryForm from '@/components/InquiryForm';
 import Link from 'next/link';
 import { Tour, TOURS, DESTINATIONS } from '@/lib/jvtoData';
 import { MEDICAL_PARTNERS } from '@/lib/verificationData';
 import RouteFactsBar from '@/components/RouteFactsBar';
 import TourCard from '@/components/TourCard';
+import { BOOKING_POLICY } from '@/lib/bookingPolicy';
 
 interface TourDetailClientProps {
   tour: Tour;
@@ -23,7 +22,6 @@ interface TourDetailClientProps {
 
 export default function TourDetailClient({ tour }: TourDetailClientProps) {
   const { formatPrice } = useCurrency();
-  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const tourSchema = buildTourPackageSchema(tour);
 
@@ -58,6 +56,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
           fill
           className="object-cover scale-105"
           priority
+          unoptimized
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/90 via-brand-ink/20 to-transparent" />
@@ -164,6 +163,47 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                       </li>
                     ))}
                   </ul>
+                </div>
+              </div>
+
+              {/* Compact Policy & Payment Summary */}
+              <div className="bg-white p-12 rounded-[48px] border border-stone-100 shadow-lg shadow-brand-olive/5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                  <div>
+                    <div className="w-14 h-14 bg-brand-cream rounded-2xl flex items-center justify-center text-brand-olive mb-6">
+                      <CreditCard size={28} />
+                    </div>
+                    <h3 className="text-2xl font-serif text-brand-ink mb-4">Direct Checkout</h3>
+                    <p className="text-stone-500 font-light leading-relaxed">
+                      Continue from this package into a package-specific checkout page. Enter date, group size, lead guest, pickup, and drop-off in one flow.
+                    </p>
+                  </div>
+                  <div>
+                    <div className="w-14 h-14 bg-brand-cream rounded-2xl flex items-center justify-center text-brand-olive mb-6">
+                      <FileText size={28} />
+                    </div>
+                    <h3 className="text-2xl font-serif text-brand-ink mb-4">Payment Gate</h3>
+                    <p className="text-stone-500 font-light leading-relaxed">
+                      Standard deposit is {BOOKING_POLICY.payment.standardDeposit}. If Day 1 is within 14 days, full payment may be required by policy.
+                    </p>
+                  </div>
+                  <div>
+                    <div className="w-14 h-14 bg-brand-cream rounded-2xl flex items-center justify-center text-brand-olive mb-6">
+                      <Lock size={28} />
+                    </div>
+                    <h3 className="text-2xl font-serif text-brand-ink mb-4">Voucher Rule</h3>
+                    <p className="text-stone-500 font-light leading-relaxed">
+                      Booking is confirmed only after approved payment and JVTO issues the Official E-Voucher / Invoice PDF.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                  <Link href={`/checkout/${tour.slug}`} className="inline-flex items-center justify-center gap-3 bg-jvto-orange text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-jvto-orange-hover transition-all">
+                    Continue to Direct Checkout <ArrowRight size={18} />
+                  </Link>
+                  <Link href="/policy/booking-payment-cancellation" className="inline-flex items-center justify-center gap-3 bg-brand-cream text-brand-olive px-8 py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-stone-100 transition-all">
+                    Read Booking Policy
+                  </Link>
                 </div>
               </div>
 
@@ -300,12 +340,12 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => setIsFormOpen(true)}
+                  <Link
+                    href={`/checkout/${tour.slug}`}
                     className="w-full bg-jvto-orange text-white py-8 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-jvto-orange-hover transition-all flex items-center justify-center gap-4 shadow-xl shadow-jvto-orange/20 group"
                   >
-                    Check Availability <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-                  </button>
+                    Direct Checkout <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                  </Link>
 
                   <div className="mt-10 text-center">
                     <a
@@ -345,11 +385,6 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
       </section>
 
       <Footer />
-      <InquiryForm
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        tourTitle={tour.name}
-      />
     </main>
   );
 }

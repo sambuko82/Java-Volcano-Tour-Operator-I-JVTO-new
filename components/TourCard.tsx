@@ -34,6 +34,7 @@ export default function TourCard({ tour, index }: TourCardProps) {
             alt={tour.name}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-1000"
+            unoptimized
             referrerPolicy="no-referrer"
           />
           <div className="absolute top-6 left-6 flex flex-wrap gap-2 max-w-[80%]">

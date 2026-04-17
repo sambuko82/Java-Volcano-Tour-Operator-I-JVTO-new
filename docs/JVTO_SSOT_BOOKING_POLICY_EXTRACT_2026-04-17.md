@@ -20,13 +20,13 @@ Relevant SSOT nodes:
 
 ## Canonical Booking Model
 
-Current app mode remains availability-inquiry first. The checkout model is represented as a confirmation/payment gate, not as a visible cart or instant booking engine until availability logic is implemented.
+Current app mode is a direct checkout bridge. Package pages point directly to `/checkout/[tour-slug]`, where the visitor sees the package, date/group-size logic, deposit/full-payment gate, policy precedence, and Official E-Voucher / Invoice confirmation rule.
 
 Canonical flow:
 
 1. Guest selects an official JVTO private tour.
-2. Guest sends availability inquiry with date, group size, start point, drop-off point, lead guest name, email, and WhatsApp.
-3. JVTO verifies availability and sends written quote or itinerary summary through official channels.
+2. Guest opens the direct checkout bridge for that package and enters date, group size, start point, drop-off point, lead guest name, email, and WhatsApp.
+3. JVTO verifies availability and locks the written quote or itinerary summary through official channels.
 4. Guest pays the required 20% deposit, or full payment if Day 1 is within 14 days or if JVTO requires it.
 5. JVTO issues the Official E-Voucher / Invoice PDF.
 6. Guest provides operational details such as guest list, pickup point, rooming, dietary needs, and relevant health notes.
@@ -103,6 +103,9 @@ JVTO does not store full card numbers, CVV codes, banking passwords, or OTP code
 ## Implementation Applied
 
 - Created `lib/bookingPolicy.ts` as local canonical policy constants.
+- Added package-specific direct checkout route `/checkout/[slug]`.
+- Updated tour package CTAs from inquiry-first to direct checkout.
+- Added direct checkout JSON-LD using `HowTo` and `ReserveAction`.
 - Rebuilt `/travel-guide/booking-information` around SSOT booking flow.
 - Rebuilt `/policy/booking-payment-cancellation` around payment, confirmation, anti-fraud, Travel Credit, and rescheduling.
 - Rebuilt `/policy/inclusions-exclusions` around write-it-to-bind-it rule.
@@ -110,9 +113,9 @@ JVTO does not store full card numbers, CVV codes, banking passwords, or OTP code
 - Updated `/policy` hub summary to match policy hierarchy.
 - Updated FAQ, homepage, tours copy, `llms.txt`, `ai-agent-config.json`, and JSON-LD payment methods.
 
-## Future Checkout Requirements
+## Checkout Requirements
 
-When checkout is implemented, it must preserve these SSOT rules:
+The direct checkout bridge must preserve these SSOT rules:
 
 - Availability must be checked before payment is treated as final confirmation.
 - Payment must be tied to package, date, group size, lead guest, and official quote.

@@ -86,6 +86,7 @@ export default function DestinationsPage() {
                       alt={dest.name}
                       fill
                       className="object-cover"
+                      unoptimized
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-brand-olive/10 mix-blend-multiply" />

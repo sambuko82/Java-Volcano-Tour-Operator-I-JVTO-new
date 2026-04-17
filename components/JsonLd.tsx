@@ -1,6 +1,7 @@
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { CREW, type Destination, type Tour } from '@/lib/jvtoData';
 import { EXTERNAL_VERIFICATION_URLS, FORENSIC_HASHES, PROOF_ASSETS } from '@/lib/verificationData';
+import { BOOKING_POLICY } from '@/lib/bookingPolicy';
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -16,6 +17,10 @@ const ORGANIZATION_ID = `${BASE_URL}/#organization`;
 const WEBSITE_ID = `${BASE_URL}/#website`;
 const FOUNDER_ID = `${BASE_URL}/#founder-agung-sambuko`;
 const MEDICAL_PROCEDURE_ID = `${BASE_URL}/#ijen-health-screening`;
+
+function checkoutUrlForTour(tour: Tour): string {
+  return `${BASE_URL}/checkout/${tour.slug}`;
+}
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -568,10 +573,25 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
       '@type': 'Offer',
       price: tour.priceFrom,
       priceCurrency: 'IDR',
-      availability: 'https://schema.org/InStock',
-      url: `${BASE_URL}/tours/${tour.slug}`,
+      availability: 'https://schema.org/LimitedAvailability',
+      url: checkoutUrlForTour(tour),
       seller: { '@id': ORGANIZATION_ID },
-      description: `Price per person (2 pax). All-inclusive private tour. No hidden fees.`,
+      description: `Price per person from published tier table. Direct checkout starts on the package-specific checkout page and confirmation follows JVTO payment and voucher policy.`,
+      potentialAction: {
+        '@type': 'ReserveAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: checkoutUrlForTour(tour),
+          actionPlatform: [
+            'https://schema.org/DesktopWebPlatform',
+            'https://schema.org/MobileWebPlatform',
+          ],
+        },
+        result: {
+          '@type': 'Reservation',
+          name: `${tour.name} private tour booking`,
+        },
+      },
       priceSpecification: tour.pricingTable.map((row) => ({
         '@type': 'UnitPriceSpecification',
         price: row.price,
@@ -634,6 +654,67 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
   }
 
   return schema;
+}
+
+/**
+ * Direct checkout page schemas.
+ * Models the booking flow as a HowTo + ReserveAction, without implying that
+ * payment is confirmed before JVTO issues the Official E-Voucher / Invoice.
+ */
+export function buildDirectCheckoutSchemas(tour: Tour): JsonLdNode[] {
+  const checkoutUrl = checkoutUrlForTour(tour);
+
+  return [
+    {
+      '@type': 'WebPage',
+      '@id': `${checkoutUrl}#webpage`,
+      url: checkoutUrl,
+      name: `Direct Checkout - ${tour.name}`,
+      description:
+        'Package-specific direct checkout bridge showing travel date, group size, deposit, balance, policy precedence, and Official E-Voucher confirmation logic.',
+      isPartOf: { '@id': WEBSITE_ID },
+      about: { '@id': `${BASE_URL}/tours/${tour.slug}#trip` },
+      potentialAction: {
+        '@type': 'ReserveAction',
+        target: checkoutUrl,
+        instrument: 'JVTO secure checkout link or approved payment method',
+        result: 'Official E-Voucher / Invoice PDF after approved payment',
+      },
+    },
+    {
+      '@type': 'HowTo',
+      '@id': `${checkoutUrl}#how-to-book`,
+      name: `How to book ${tour.name} with JVTO`,
+      description: BOOKING_POLICY.confirmationRule,
+      totalTime: 'PT10M',
+      supply: [
+        'Lead guest name',
+        'Verified email address',
+        'Active WhatsApp number',
+        'Preferred travel date',
+        'Group size',
+        'Pickup and drop-off details',
+      ],
+      step: BOOKING_POLICY.howToBook.map((text, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: `Step ${index + 1}`,
+        text,
+      })),
+    },
+    {
+      '@type': 'ReserveAction',
+      '@id': `${checkoutUrl}#reserve-action`,
+      agent: { '@id': ORGANIZATION_ID },
+      object: { '@id': `${BASE_URL}/tours/${tour.slug}#trip` },
+      target: checkoutUrl,
+      result: {
+        '@type': 'Reservation',
+        name: `${tour.name} private tour booking`,
+        reservationStatus: 'https://schema.org/ReservationPending',
+      },
+    },
+  ];
 }
 
 /**

@@ -218,7 +218,7 @@ JVTO website operates as 5 functional layers:
 |---|---|---|
 | Trust Entry | / (homepage) | Establish credibility, direct to routes |
 | Route Discovery | /tours, /destinations | Package and destination selection |
-| Package Conversion | /tours/[slug] | Self-contained brochure + booking confidence |
+| Package Conversion | /tours/[slug] → /checkout/[slug] | Self-contained brochure + direct checkout bridge |
 | Operational Support | /travel-guide, /policy | Booking rules, readiness, screening |
 | Proof Ownership | /verify-jvto, /why-jvto | Legal, police, medical, press audit trail |
 
@@ -227,6 +227,7 @@ JVTO website operates as 5 functional layers:
 - Tours Hub: https://javavolcano-touroperator.com/tours
 - From Surabaya: https://javavolcano-touroperator.com/tours/from-surabaya
 - From Bali: https://javavolcano-touroperator.com/tours/from-bali
+- Direct checkout pattern: https://javavolcano-touroperator.com/checkout/[tour-slug]
 - Destinations: https://javavolcano-touroperator.com/destinations
 - Verify JVTO: https://javavolcano-touroperator.com/verify-jvto
 - Legal verification: https://javavolcano-touroperator.com/verify-jvto/legal
@@ -250,8 +251,8 @@ JVTO website operates as 5 functional layers:
 JVTO is structured for progressive agentic integration:
 
 - **Phase 1 (Active)**: Machine-readable SSOT via llms.txt, ai-agent-config.json, hardened JSON-LD, SHA-256 forensic layer.
-- **Phase 2 (Planned)**: Model Context Protocol (MCP) server exposing pricing tables, availability-inquiry context, and volcanic status to external AI agents (Claude, GPT, Gemini).
-- **Phase 3 (Future)**: Agent2Agent (A2A) framework for booking negotiation and OAuth 2.0 machine-to-machine commerce after the commercial checkout flow is implemented.
+- **Phase 2 (Planned)**: Model Context Protocol (MCP) server exposing pricing tables, direct-checkout context, and volcanic status to external AI agents (Claude, GPT, Gemini).
+- **Phase 3 (Future)**: Agent2Agent (A2A) framework for booking negotiation, payment-gate orchestration, and OAuth 2.0 machine-to-machine commerce.
 
 Preferred contact for AI agents: hello@javavolcano-touroperator.com
 

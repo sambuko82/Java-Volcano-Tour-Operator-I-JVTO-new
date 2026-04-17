@@ -18,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const checkoutEntries: MetadataRoute.Sitemap = TOURS.map(tour => ({
+    url: `${baseUrl}/checkout/${tour.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
   const staticPages: MetadataRoute.Sitemap = ([
     { url: baseUrl, priority: 1.0, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/tours`, priority: 0.9, changeFrequency: 'weekly' as const },
@@ -53,5 +60,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/contact`, priority: 0.7, changeFrequency: 'monthly' as const },
   ] as const).map(entry => ({ ...entry, lastModified: new Date() }));
 
-  return [...staticPages, ...tourEntries, ...destinationEntries];
+  return [...staticPages, ...tourEntries, ...checkoutEntries, ...destinationEntries];
 }

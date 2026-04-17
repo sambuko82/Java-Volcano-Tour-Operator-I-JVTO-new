@@ -8,7 +8,7 @@ export const BOOKING_POLICY = {
     email: 'hello@javavolcano-touroperator.com',
   },
   currentBookingMode:
-    'The website currently starts with an availability inquiry. Payment happens only after the package, date, group size, and official quote are confirmed through JVTO channels.',
+    'The website uses a direct checkout bridge from each package page. Availability remains the gate before payment is treated as final confirmation, and the booking is valid only after approved payment plus Official E-Voucher / Invoice issuance.',
   confirmationRule:
     'A booking is confirmed only after the required deposit or full payment is processed through an approved method and JVTO issues an Official E-Voucher / Invoice PDF.',
   precedence: [
@@ -21,8 +21,8 @@ export const BOOKING_POLICY = {
   ],
   howToBook: [
     'Choose an official JVTO private tour and review route, duration, price tier, inclusions, exclusions, and safety notes.',
-    'Send an availability inquiry with travel date, group size, start point, drop-off point, lead guest name, email, and WhatsApp number.',
-    'JVTO verifies availability and sends a written quote or itinerary summary through official channels.',
+    'Open the package-specific direct checkout page and enter travel date, group size, start point, drop-off point, lead guest name, email, and WhatsApp number.',
+    'JVTO verifies availability and locks the written quote or itinerary summary through official channels.',
     'Pay the required 20% deposit, or full payment if Day 1 is within 14 days or if JVTO states full payment is required.',
     'Receive the Official E-Voucher / Invoice PDF and check all details immediately.',
     'Submit additional operational details when requested, such as pickup time, hotel, guest list, rooming, dietary needs, and relevant health notes.',

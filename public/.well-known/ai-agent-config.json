@@ -46,9 +46,9 @@
     }
   },
   "capabilities": [
-    "availability-inquiry",
+    "direct-checkout-bridge",
     "safety-verification",
-    "booking-readiness",
+    "booking-policy-logic",
     "volcanic-status-monitoring",
     "ijen-health-screening",
     "private-expedition-logistics",
@@ -184,6 +184,7 @@
     "proof_library": "https://javavolcano-touroperator.com/verify-jvto",
     "booking_policy": "https://javavolcano-touroperator.com/policy/booking-payment-cancellation",
     "booking_information": "https://javavolcano-touroperator.com/travel-guide/booking-information",
+    "direct_checkout_pattern": "https://javavolcano-touroperator.com/checkout/{tour-slug}",
     "contact": "https://javavolcano-touroperator.com/contact"
   },
   "site_map": {
@@ -200,9 +201,10 @@
           "https://javavolcano-touroperator.com/tours",
           "https://javavolcano-touroperator.com/tours/from-surabaya",
           "https://javavolcano-touroperator.com/tours/from-bali",
+          "https://javavolcano-touroperator.com/checkout/{tour-slug}",
           "https://javavolcano-touroperator.com/destinations"
         ],
-        "role": "Package and destination selection hub — current curated private-tour catalog"
+        "role": "Package and destination selection hub with direct package-specific checkout bridge"
       },
       "proof_ownership": {
         "urls": [
@@ -226,7 +228,7 @@
           "https://javavolcano-touroperator.com/policy/booking-payment-cancellation",
           "https://javavolcano-touroperator.com/policy/inclusions-exclusions"
         ],
-        "role": "Booking readiness, rules, screening, safety protocols"
+        "role": "Booking rules, payment-gate logic, screening, safety protocols"
       },
       "identity_layer": {
         "urls": [
@@ -252,7 +254,7 @@
     },
     "phase_2_planned": {
       "description": "Model Context Protocol (MCP) server",
-      "capabilities": ["pricing table queries", "availability-inquiry context", "volcanic status feed", "health-screening context"]
+      "capabilities": ["pricing table queries", "direct-checkout context", "volcanic status feed", "health-screening context"]
     },
     "phase_3_future": {
       "description": "Agent2Agent (A2A) framework",

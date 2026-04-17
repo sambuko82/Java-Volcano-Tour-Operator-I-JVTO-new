@@ -44,6 +44,7 @@ export default function DestinationDetailClient({ destination }: DestinationDeta
           fill
           className="object-cover scale-105"
           priority
+          unoptimized
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />

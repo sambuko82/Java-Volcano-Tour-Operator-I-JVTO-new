@@ -26,32 +26,32 @@ interface TripAdvisorReview {
 
 const reviews = [
   {
-    name: "Sarah Jenkins",
-    location: "United Kingdom",
-    text: "Agung and his team were incredible. As a solo female traveler, safety was my priority. Knowing Agung is a Tourist Police officer gave me total peace of mind. The Ijen blue fire was magical!",
-    rating: 5,
-    source: "TripAdvisor"
-  },
-  {
-    name: "Marc-Antoine",
-    location: "France",
-    text: "The most professional tour operator we found in Indonesia. The medical check for Ijen is a real differentiator. They actually care about your health and safety, not just the money.",
+    name: "Tan Yong Xue Jayden",
+    location: "Singapore",
+    text: "Our tour guide (KiKi) and driver (Nur) was amazing. Communication was easy, instructions were clear, and they made the experience fun and safe. Kiki also took amazing photos for us. 100% recommend",
     rating: 5,
     source: "Trustpilot"
   },
   {
-    name: "Elena Rossi",
-    location: "Italy",
-    text: "Tumpak Sewu was like a dream. Our guide, Gufron, was so helpful and took amazing photos. The logistics were perfect from start to finish.",
+    name: "Nina Kliem",
+    location: "Germany",
+    text: "We did the 3D2N Bromo and Mount Ijen tour. It was organised very well and our tourguide Rendi as well as our driver Holili were super kind and helpful! Great experience :) the accommodations were very nice as well.",
     rating: 5,
-    source: "Google"
+    source: "Trustpilot"
   },
   {
-    name: "David Chen",
-    location: "Singapore",
-    text: "Bromo sunrise was spectacular. The private jeep was clean and the driver was very professional. Highly recommend JVTO for anyone visiting East Java.",
+    name: "Patarachai Sereerat",
+    location: "Thailand",
+    text: "Had an amazing trip visiting Bromo, Ijen Crater, and Tumpak Sewu Waterfall! Everything was well organized and the price was really good. The staff were super kind and helpful — special thanks to Yandi (our driver) and Boy (our guide to Ijen crater). They were so friendly and shared lots of useful info. Highly recommended",
     rating: 5,
-    source: "TripAdvisor"
+    source: "Trustpilot"
+  },
+  {
+    name: "Jiang Tianjian",
+    location: "China",
+    text: "The tour guides were extremely friendly and accommodating. One of our friends was injured and they helped him as well. Overall, fantastic planning from the team!",
+    rating: 5,
+    source: "Trustpilot"
   }
 ];
 

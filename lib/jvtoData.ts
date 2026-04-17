@@ -39,6 +39,7 @@ export interface Tour {
   mealsIncluded?: string;
   gallery?: string[];
   faq?: { question: string; answer: string }[];
+  ijenRelevant?: boolean; // Schema flag: true if package includes Ijen Crater
 }
 
 export interface CrewMember {
@@ -300,7 +301,8 @@ export const TOURS: Tour[] = [
     faq: [
       { question: 'Is the Blue Fire guaranteed?', answer: 'It is a natural phenomenon subject to weather and gas activity.' },
       { question: 'What if I am not fit?', answer: 'We coordinate clinic checks before the tour to ensure safety.' }
-    ]
+    ],
+    ijenRelevant: true
   },
   {
     slug: 'bromo-madakaripura-ijen-3d2n',
@@ -330,6 +332,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-bromo-madakaripura-3d2n',
@@ -359,6 +362,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'safari-bromo-madakaripura-3d2n',
@@ -418,6 +422,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-4d3n',
@@ -448,6 +453,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'tumpak-sewu-bromo-ijen-4d3n',
@@ -478,6 +484,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-bromo-madakaripura-malang-5d4n',
@@ -509,6 +516,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-5d4n',
@@ -540,6 +548,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-malang-6d5n',
@@ -572,6 +581,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'bromo-ijen-3d2n-bali',
@@ -601,6 +611,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-4d3n-bali',
@@ -631,6 +642,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-5d4n-bali',
@@ -662,6 +674,7 @@ export const TOURS: Tour[] = [
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
     exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    ijenRelevant: true,
   }
 ];
 

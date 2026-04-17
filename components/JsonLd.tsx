@@ -571,13 +571,14 @@ export function buildTouristAttractionSchema(destination: Destination): JsonLdNo
 /**
  * TouristTrip schema for tour package pages.
  * Encodes healthRequirement, amenityFeature, touristType, and pricing for AEO.
+ * Per JVTO_PACKAGE_SCHEMA_MAP.md — Tier 1/2 package schema
  */
 export function buildTourPackageSchema(tour: Tour): JsonLdNode {
-  const hasIjen = tour.destinations.includes('ijen-crater');
+  const hasIjen = tour.ijenRelevant ?? tour.destinations.includes('ijen-crater');
   const hasBromo = tour.destinations.includes('mount-bromo');
 
   const schema: JsonLdNode = {
-    '@type': 'TouristTrip',
+    '@type': ['Product', 'TouristTrip'],
     '@id': `${BASE_URL}/tours/${tour.slug}#trip`,
     name: tour.name,
     description: tour.longDesc,
@@ -642,7 +643,7 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
     })),
   };
 
-  // Ijen-specific safety constraints.
+  // Ijen-specific safety constraints and support linkage
   if (hasIjen) {
     schema.healthRequirement =
       'Kawah Ijen routes require health-screening readiness and compliance with current local access rules. Guests with asthma, respiratory conditions, or cardiovascular issues should consult a medical professional before attempting the hike.';
@@ -661,6 +662,30 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
       },
     ];
     schema.touristType = 'Adventure travelers with suitable respiratory and cardiovascular readiness';
+
+    // Add support page reference for Ijen packages
+    schema.supportingLinks = {
+      '@type': 'ItemList',
+      name: 'Ijen Route Support Resources',
+      url: `${BASE_URL}/tours/${tour.slug}#support-resources`,
+      itemListElement: [
+        {
+          '@type': 'WebPage',
+          name: 'Ijen Health Screening Guide',
+          url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+        },
+        {
+          '@type': 'WebPage',
+          name: 'Weather & Closure Status',
+          url: `${BASE_URL}/travel-guide/weather-and-closures`,
+        },
+        {
+          '@type': 'WebPage',
+          name: 'Police Safety Verification',
+          url: `${BASE_URL}/verify-jvto/police-safety`,
+        },
+      ],
+    };
   }
 
   if (hasBromo) {
@@ -955,6 +980,128 @@ export function buildGovernmentServiceSchemas(): JsonLdNode[] {
       availableLanguage: ['Indonesian'],
     },
   ];
+}
+
+/**
+ * Trust Domain Reference schema for page-level trust implementation.
+ * Maps claims to their canonical evidence assets and page owners.
+ * Per JVTO_TRUST_GRAPH_MAP.md
+ */
+export function buildTrustDomainReferences(): JsonLdNode {
+  return {
+    '@type': 'ItemList',
+    '@id': `${BASE_URL}/#trust-domains`,
+    name: 'JVTO Trust Domains',
+    description: 'Canonical trust domain mappings for JVTO with claim ownership, evidence assets, and page ownership.',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Founder Authority',
+        description: 'Founder identity, police context, leadership trust',
+        url: `${BASE_URL}/#founder-agung-sambuko`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Operational Safety',
+        description: 'Safety-led operations, route discipline, closures',
+        url: `${BASE_URL}/why-jvto/community-standards`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Private Execution Control',
+        description: 'Private tours, timing control, dedicated handling',
+        url: `${BASE_URL}/policy/inclusions-exclusions`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: 'All-Inclusive Clarity',
+        description: 'Transparent inclusions/exclusions, booking/payment rules',
+        url: `${BASE_URL}/policy/booking-payment-cancellation`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        name: 'Ijen Health Screening',
+        description: 'Health/safety protocol for Ijen routes',
+        url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 6,
+        name: 'Proof-First Verification',
+        description: 'Legal, police, medical, partner, press, historical proof',
+        url: `${BASE_URL}/verify-jvto`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 7,
+        name: 'Reviews Registry',
+        description: 'Independent platform-based validation',
+        url: `${BASE_URL}/why-jvto/reviews`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 8,
+        name: 'Team / Crew Expertise',
+        description: 'Human execution quality, micro-entities, role credibility',
+        url: `${BASE_URL}/why-jvto/our-team`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 9,
+        name: 'Partnerships / Recognition',
+        description: 'HPWKI / INDECON / ISIC / press / history context',
+        url: `${BASE_URL}/verify-jvto`,
+      },
+    ],
+  };
+}
+
+/**
+ * Enhanced package schema with trust support linkage for Ijen packages.
+ * Adds support page references and trust context for Ijen-relevant routes.
+ */
+export function buildIjenPackageSupportLinks(slug: string): JsonLdNode {
+  return {
+    '@type': 'ItemList',
+    '@id': `${BASE_URL}/tours/${slug}#support-links`,
+    name: 'Ijen Route Support Resources',
+    description: 'Trust and operational support pages specifically for Ijen Crater routes',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Health Screening Coordination',
+        url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+        description: 'Learn about health-certificate coordination and clinic procedures',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Weather & Closure Status',
+        url: `${BASE_URL}/travel-guide/weather-and-closures`,
+        description: 'Check current Ijen status, weather patterns, and access rules',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Police Safety Context',
+        url: `${BASE_URL}/verify-jvto/police-safety`,
+        description: 'Founder police context and safety coordination proof',
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: 'Verify JVTO',
+        url: `${BASE_URL}/verify-jvto`,
+        description: 'Full legal and operational credential verification',
+      },
+    ],
+  };
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────

@@ -175,7 +175,7 @@ export default function ToursPage() {
               </div>
               <div>
                 <p className="text-3xl font-serif">The JVTO Standard</p>
-                <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">Police-Led Execution</p>
+                <p className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold">Proof-Led Execution</p>
               </div>
             </div>
             <div className="flex flex-wrap justify-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">

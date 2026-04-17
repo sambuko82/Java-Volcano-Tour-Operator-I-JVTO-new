@@ -54,7 +54,7 @@ export default function TeamPage() {
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-display font-bold mb-4 text-brand-olive">Agung Sambuko (Founder & Safety Lead)</h3>
-                  <p className="text-stone-600 leading-relaxed">As an active Tourist Police officer, Agung brings a unique authority-backed perspective to our operations. He oversees all safety protocols and emergency response training, ensuring that JVTO operates with a &apos;duty-first&apos; mindset.</p>
+                  <p className="text-stone-600 leading-relaxed">Agung&apos;s Tourist Police duty context is documented by third-party press and JVTO proof pages. That context informs our duty-first safety culture, route decisions, and escalation habits while JVTO remains a private Indonesian tour operator.</p>
                 </div>
                 <div>
                   <h3 className="text-2xl font-display font-bold mb-4 text-brand-olive">Operational Command Structure</h3>

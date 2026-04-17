@@ -41,7 +41,7 @@ export default function TourCard({ tour, index }: TourCardProps) {
               {tour.origin}
             </div>
             <div className="bg-jvto-navy text-white px-4 py-2 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm flex items-center gap-2">
-              <ShieldCheck size={12} className="text-jvto-lime" /> Police-Led
+              <ShieldCheck size={12} className="text-jvto-lime" /> Proof-Led
             </div>
             {tour.slug.includes('ijen') && (
               <div className="bg-jvto-lime text-jvto-navy px-4 py-2 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm flex items-center gap-2">

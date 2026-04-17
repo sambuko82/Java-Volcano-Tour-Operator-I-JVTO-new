@@ -296,7 +296,7 @@ export default function TourDetailClient({ tour }: TourDetailClientProps) {
                       <div className="w-12 h-12 rounded-2xl bg-jvto-off flex items-center justify-center text-jvto-navy shadow-sm">
                         <ShieldCheck size={24} />
                       </div>
-                      <span className="text-lg font-light tracking-wide">Police-Led Safety</span>
+                      <span className="text-lg font-light tracking-wide">Police-Informed Safety</span>
                     </div>
                   </div>
 

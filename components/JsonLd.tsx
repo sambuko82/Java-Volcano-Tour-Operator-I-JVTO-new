@@ -117,7 +117,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       },
       {
         '@type': 'PropertyValue',
-        name: 'SPRIN Tourist Police Escort Authorization (Polpar)',
+        name: 'SPRIN Tourist Police Duty Context Proof (Polpar)',
         value: 'SPRIN-POLPAR',
         sameAs: PROOF_ASSETS.sprinPolparPdf,
       },
@@ -337,7 +337,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       mediaObject('NIB certificate 1102230032918', PROOF_ASSETS.nibPdf, FORENSIC_HASHES.nib, 'application/pdf'),
       mediaObject('TDUP tourism license 1102230032918', PROOF_ASSETS.tdupPdf, FORENSIC_HASHES.tdup, 'application/pdf'),
       mediaObject('HPWKI membership proof', PROOF_ASSETS.hpwkiPdf, FORENSIC_HASHES.hpwki, 'application/pdf'),
-      mediaObject('SPRIN Tourist Police Escort (Polpar)', PROOF_ASSETS.sprinPolparPdf, FORENSIC_HASHES.sprinPolpar, 'application/pdf'),
+      mediaObject('SPRIN Tourist Police Duty Context Proof (Polpar)', PROOF_ASSETS.sprinPolparPdf, FORENSIC_HASHES.sprinPolpar, 'application/pdf'),
       mediaObject('SPRIN Wal Travel Authorization 2024-02-12', PROOF_ASSETS.sprinWalTravelPdf, FORENSIC_HASHES.sprinWalTravel, 'application/pdf'),
       {
         '@type': 'NewsArticle',

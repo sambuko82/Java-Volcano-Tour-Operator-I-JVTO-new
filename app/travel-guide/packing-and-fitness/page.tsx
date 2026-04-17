@@ -102,7 +102,7 @@ export default function PackingAndFitnessPage() {
                     <CheckCircle size={20} className="text-orange-500" /> Ijen (Moderate)
                   </h4>
                   <p className="text-stone-600 leading-relaxed">
-                    Requires a moderate level of fitness. The hike is 3km one way with a steep initial incline. Health screening is mandatory.
+                    Requires a moderate level of fitness. The hike is 3km one way with a steep initial incline. Health-certificate screening can be required under current Ijen access rules.
                   </p>
                 </div>
               </div>

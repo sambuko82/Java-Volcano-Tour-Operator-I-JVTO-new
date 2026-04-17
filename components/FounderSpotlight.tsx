@@ -105,7 +105,7 @@ export default function FounderSpotlight() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
                   <p className="text-2xl font-display font-bold text-jvto-orange">100%</p>
-                  <p className="micro-label text-white/40 mt-1">Police-Led Operations</p>
+                  <p className="micro-label text-white/40 mt-1">Proof-Led Operations</p>
                 </div>
                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
                   <p className="text-2xl font-display font-bold text-jvto-orange">24/7</p>

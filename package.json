@@ -6,7 +6,10 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "audit:prd": "node scripts/audit-prd-compliance.mjs",
+    "audit:jsonld": "node scripts/audit-jsonld-build.mjs",
+    "audit": "npm run audit:prd && npm run audit:jsonld"
   },
   "dependencies": {
     "@google/genai": "^1.17.0",

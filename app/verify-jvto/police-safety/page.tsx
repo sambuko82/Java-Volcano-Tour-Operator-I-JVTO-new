@@ -78,7 +78,7 @@ const safetyProtocols: SafetyProof[] = [
   {
     icon: <AlertTriangle className="text-orange-500" />,
     title: 'Ijen Health Screening',
-    desc: 'Mandatory health checks for all Ijen Crater visitors to ensure safe hiking.',
+    desc: 'Health-certificate screening coordination for Ijen visitors when current access rules require it.',
     metadata: 'Health Protocol',
     href: '/travel-guide/ijen-health-screening',
     imageUrl: undefined,
@@ -95,7 +95,7 @@ export default function PoliceSafetyPage() {
     "@type": ["WebPage", "AboutPage"],
     "@id": "https://javavolcano-touroperator.com/verify-jvto/police-safety#webpage",
     "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety",
-    "name": "Police-Led Safety Verification — Bripka Agung Sambuko, Ditpamobvit East Java",
+    "name": "Police-Informed Safety Verification — Bripka Agung Sambuko, Ditpamobvit East Java",
     "description": "Machine-readable proof for JVTO's Tourist Police duty context: SPRIN assets, founder identity, and third-party press corroboration.",
     "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
     "about": [

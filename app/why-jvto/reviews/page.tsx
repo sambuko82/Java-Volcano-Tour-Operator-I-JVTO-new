@@ -192,7 +192,7 @@ export default function ReviewsPage() {
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <ShieldCheck className="text-orange-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">Safety & Professionalism</h3>
-              <p className="text-stone-600 text-sm">Guests frequently highlight our police-led safety mindset and the peace of mind it provides in unpredictable environments.</p>
+              <p className="text-stone-600 text-sm">Guests frequently highlight our police-informed safety mindset and the peace of mind it provides in unpredictable environments.</p>
             </div>
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <Users className="text-orange-500 mb-6" size={40} />

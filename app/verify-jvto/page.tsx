@@ -21,7 +21,7 @@ export default function VerifyJVTO() {
     "description": "Review JVTO’s proof library: legal identity, historical continuity, police and safety context, and third-party references.",
     "hasPart": [
       { "@type": "WebPage", "name": "Legal Verification", "url": "https://javavolcano-touroperator.com/verify-jvto/legal" },
-      { "@type": "WebPage", "name": "Police-Led Safety", "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety" },
+      { "@type": "WebPage", "name": "Police-Informed Safety", "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety" },
       { "@type": "WebPage", "name": "Press & Recognition", "url": "https://javavolcano-touroperator.com/verify-jvto/press-recognition" },
       { "@type": "WebPage", "name": "History & Artifacts", "url": "https://javavolcano-touroperator.com/verify-jvto/history-artifacts" }
     ],

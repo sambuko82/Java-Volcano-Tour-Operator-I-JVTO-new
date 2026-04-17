@@ -5,7 +5,7 @@ import { Shield, CheckCircle, Award, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const trustItems = [
-  { icon: <Shield size={20} />, text: 'Police-Led Safety' },
+  { icon: <Shield size={20} />, text: 'Police-Informed Safety' },
   { icon: <CheckCircle size={20} />, text: 'Licensed Operator' },
   { icon: <Award size={20} />, text: 'ISIC Verified' },
   { icon: <Users size={20} />, text: '100% Private' }

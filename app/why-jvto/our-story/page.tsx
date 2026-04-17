@@ -14,7 +14,7 @@ export default function OurStoryPage() {
   const storySchema = {
     "@type": "WebPage",
     "name": "Our Story: Roots & Continuity Since 2015",
-    "description": "The history and origins of Java Volcano Tour Operator, from local host to professional police-led operator.",
+    "description": "The history and origins of Java Volcano Tour Operator, from local host to proof-led private tour operator.",
     "mainEntity": {
       "@type": "Organization",
       "name": SITE_CONFIG.organization.name,
@@ -40,7 +40,7 @@ export default function OurStoryPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Our Story: From Local Host to Police-Led Operator</h1>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Our Story: From Local Host to Proof-Led Operator</h1>
             <p className="text-xl text-stone-300">Roots and continuity since 2015. JVTO is built on documented history and local East Java execution.</p>
           </motion.div>
         </div>
@@ -96,9 +96,9 @@ export default function OurStoryPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-3xl font-display font-bold mb-4 text-brand-olive">2023: The Proof-First Standard</h3>
-                <p className="text-stone-600 leading-relaxed mb-6">With founder Agung Sambuko serving as an active Tourist Police officer, JVTO formalized a proof-first safety standard: legal identity, police-safety context, Ijen readiness, and operating claims that can be checked before guests commit.</p>
+                <p className="text-stone-600 leading-relaxed mb-6">With founder Agung Sambuko&apos;s Tourist Police duty context documented by third-party press and JVTO proof pages, JVTO formalized a proof-first safety standard: legal identity, police-safety context, Ijen readiness, and operating claims that can be checked before guests commit.</p>
                 <div className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest">
-                  <CheckCircle2 size={16} /> Official Authority Oversight
+                  <CheckCircle2 size={16} /> Documented Safety Context
                 </div>
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl">
@@ -159,9 +159,9 @@ export default function OurStoryPage() {
             </div>
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100 text-center">
               <Shield className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-2">Police Training Records</h3>
-              <p className="text-stone-600 text-sm mb-6">Documentation of our team&apos;s safety and emergency response training.</p>
-              <Link href="/verify-jvto/police-safety" className="text-brand-olive font-bold underline">View Training</Link>
+              <h3 className="text-xl font-bold mb-2">Safety Context Records</h3>
+              <p className="text-stone-600 text-sm mb-6">Documentation of founder duty context, safety evidence, and emergency-response discipline.</p>
+              <Link href="/verify-jvto/police-safety" className="text-brand-olive font-bold underline">View Safety Context</Link>
             </div>
           </div>
         </div>

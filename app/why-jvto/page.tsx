@@ -33,7 +33,7 @@ export default function WhyJVTO() {
   const whySchema = {
     "@type": "WebPage",
     "name": "Why Travel with Java Volcano Tour Operator (JVTO)",
-    "description": "Discover why travelers choose JVTO for private East Java volcano journeys: police-led safety culture, legal legitimacy, real Ijen health screening, and proof you can verify before booking."
+    "description": "Discover why travelers choose JVTO for private East Java volcano journeys: police-informed safety culture, legal legitimacy, Ijen health-screening coordination, and proof you can verify before booking."
   };
 
   return (
@@ -84,7 +84,7 @@ export default function WhyJVTO() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { icon: ShieldCheck, title: "Police-Led Safety", desc: "JVTO is shaped by a safety culture that comes from real operational discipline." },
+              { icon: ShieldCheck, title: "Police-Informed Safety", desc: "JVTO is shaped by a safety culture that comes from real operational discipline and documented duty context." },
               { icon: Lock, title: "Registered & Verifiable", desc: "We are tied to a legal business identity and physical base in Bondowoso." },
               { icon: Activity, title: "Real Health Screening", desc: "For Ijen routes, we use a real screening logic designed to reduce avoidable risk." },
               { icon: Users, title: "Private by Default", desc: "Every JVTO journey is private. No mixed groups. No strangers in your vehicle." },

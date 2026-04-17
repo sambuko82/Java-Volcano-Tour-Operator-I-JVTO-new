@@ -100,7 +100,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-jvto-lime/10 backdrop-blur-md border border-jvto-lime/30 text-jvto-lime px-6 py-2 rounded-full mb-8 text-[10px] font-bold tracking-[0.2em] uppercase"
           >
-            <ShieldCheck size={14} /> Tourist Police-Led Private Tours
+            <ShieldCheck size={14} /> Proof-First Private Tours
           </motion.div>
           
           <motion.h1 
@@ -109,7 +109,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-8xl font-display font-bold text-white mb-8 leading-[1.1] tracking-tight"
           >
-            Tourist Police-Led <br /> 
+            Police-Informed <br /> 
             <span className="text-jvto-orange">Private Volcano Tours in East Java</span>
           </motion.h1>
           
@@ -232,8 +232,8 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center text-center group cursor-help">
               <ShieldCheck className="text-jvto-lime mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
-              <p className="text-white text-sm font-bold mb-1">Police-Led</p>
-              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">Active Officer Oversight</p>
+              <p className="text-white text-sm font-bold mb-1">Police-Informed</p>
+              <p className="text-white/40 text-[9px] uppercase tracking-widest font-bold">Documented Duty Context</p>
             </div>
             <div className="flex flex-col items-center text-center group cursor-help">
               <Users className="text-jvto-lime mb-3 opacity-80 group-hover:opacity-100 transition-opacity" size={24} />
@@ -295,7 +295,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
             {[
               { title: "Legal Identity", desc: "PT Java Volcano Rendezvous registration and NIB artifacts.", icon: <Landmark />, meta: "Verified PT" },
-              { title: "Police Context", desc: "Agung Sambuko's active Tourist Police credentials and safety role.", icon: <ShieldCheck />, meta: "Authority" },
+              { title: "Police Context", desc: "Agung Sambuko's Tourist Police duty context is documented in third-party press and JVTO proof pages.", icon: <ShieldCheck />, meta: "Proof" },
               { title: "Press & Guides", desc: "Stefan Loose and independent travel media recognitions.", icon: <Award />, meta: "Recognition" },
               { title: "History", desc: "Operational continuity and digital footprint since 2016.", icon: <History />, meta: "Continuity" }
             ].map((item, i) => (

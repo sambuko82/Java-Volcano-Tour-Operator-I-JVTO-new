@@ -129,7 +129,7 @@ export default function CommunityStandardsPage() {
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">1</div>
               <div>
                 <h3 className="text-2xl font-display font-bold mb-2">Advocating for Safety & Accountability</h3>
-                <p className="text-stone-600 leading-relaxed">Through our police-led model, we advocate for higher safety and legal standards across the East Java tourism sector, pushing for better regulation and guest protection.</p>
+                <p className="text-stone-600 leading-relaxed">Through a proof-led operating model informed by documented duty context, we advocate for higher safety and legal standards across the East Java tourism sector.</p>
               </div>
             </div>
             <div className="flex gap-6 items-start">

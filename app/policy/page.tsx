@@ -129,7 +129,7 @@ export default function LegalPage() {
                 <div className="space-y-10 text-stone-600 font-light leading-relaxed text-lg">
                   <p>Volcano tourism involves inherent risks. JVTO prioritizes safety but requires clients to acknowledge these risks.</p>
                   <div className="p-10 bg-brand-olive/5 rounded-[48px] border border-brand-olive/10">
-                    <p className="italic text-brand-ink">&quot;Our safety protocols are police-led and medically informed. We reserve the right to cancel any route if conditions are deemed unsafe by local authorities.&quot;</p>
+                    <p className="italic text-brand-ink">&quot;Our safety protocols are police-informed and medically cautious. We reserve the right to cancel any route if conditions are deemed unsafe by local authorities.&quot;</p>
                   </div>
                 </div>
               </div>

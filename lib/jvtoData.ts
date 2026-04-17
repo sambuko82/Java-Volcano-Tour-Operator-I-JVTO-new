@@ -95,7 +95,7 @@ export const DESTINATIONS: Destination[] = [
       'Stunning sunrise over the caldera'
     ],
     practicalNotes: [
-      'Mandatory health screening included in JVTO packages.',
+      'Health-certificate screening is coordinated when current access rules require it.',
       'Gas masks and trekking poles provided by JVTO.',
       'Temperature: 5-10°C at night, 15-25°C during day.'
     ]

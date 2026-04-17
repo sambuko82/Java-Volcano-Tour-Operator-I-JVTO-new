@@ -12,8 +12,8 @@ import { SITE_CONFIG } from '@/lib/siteConfig';
 const safetyProtocols = [
   {
     icon: <Shield className="text-orange-500" />,
-    title: 'Police-Led Standards',
-    desc: 'Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police.'
+    title: 'Police-Informed Standards',
+    desc: 'Our founder, Agung Sambuko (Mr. Sam), has documented Tourist Police duty context that informs JVTO safety discipline.'
   },
   {
     icon: <Lock className="text-orange-500" />,

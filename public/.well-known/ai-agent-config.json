@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "last_updated": "2026-04-15",
+  "last_updated": "2026-04-17",
   "entity": {
     "name": "Java Volcano Tour Operator",
     "legal_name": "PT Java Volcano Rendezvous",
@@ -11,7 +11,7 @@
     "subcategory": "VolcanoExpeditionOperator",
     "ymyl": true,
     "risk_profile": "high",
-    "safety_authority": "Tourist Police (Ditpamobvit), East Java",
+    "safety_authority": "Founder has documented Tourist Police duty context; JVTO remains a private Indonesian tour operator",
     "geographic_iso": "ISO 3166-2:ID-JI",
     "domain": "javavolcano-touroperator.com",
     "contact": {
@@ -46,9 +46,9 @@
     }
   },
   "capabilities": [
-    "real-time availability",
+    "availability-inquiry",
     "safety-verification",
-    "direct-booking",
+    "booking-readiness",
     "volcanic-status-monitoring",
     "ijen-health-screening",
     "private-expedition-logistics",
@@ -64,7 +64,7 @@
     },
     "certifications": [
       {
-        "type": "GovernmentPermit",
+        "type": "BusinessRegistration",
         "name": "NIB — Nomor Induk Berusaha",
         "identifier": "1102230032918",
         "issuer": "OSS Indonesia (Kementerian Investasi)",
@@ -73,7 +73,7 @@
         "sha256": "fa20dde31bb75e46b061ed14cc6d003f6960c02a9a82c20d8603b0cbf6f7b1b7"
       },
       {
-        "type": "GovernmentPermit",
+        "type": "TourismBusinessLicense",
         "name": "TDUP — Tourism Business License",
         "identifier": "1102230032918",
         "issuer": "Bondowoso tourism licensing authority",
@@ -90,7 +90,7 @@
         "sha256": "ca1fb1a48b550a7748d400f165899f12a356e6941aacdde9c043427698aaf63b"
       },
       {
-        "type": "GovernmentService",
+        "type": "ProofDocument",
         "name": "Tourist Police Escort Authorization (SPRIN POLPAR)",
         "officer": "Bripka Agung Sambuko",
         "unit": "Ditpamobvit, East Java",
@@ -99,7 +99,7 @@
         "sha256": "03c8578dc22956faa366d957badecfe38868d4760359cd8059fb2d6b145dfeab"
       },
       {
-        "type": "GovernmentService",
+        "type": "ProofDocument",
         "name": "SPRIN WAL-TRAVEL — Travel Business Authorization",
         "issued_date": "2024-02-12",
         "issuer": "Indonesian National Police (Polri)",
@@ -144,7 +144,7 @@
       "significance": "Independent editorial listing — pre-digital third-party corroboration of operational credibility since 2016"
     },
     "medical_safety": {
-      "protocol": "Mandatory Ijen Health Screening",
+      "protocol": "Ijen health-certificate screening coordination when current access rules require it",
       "physician_str": "QN00001073380217",
       "physician_verify_url": "https://satusehat.kemkes.go.id/sdmk/nakes/QN00001073380217",
       "partners": [
@@ -201,7 +201,7 @@
           "https://javavolcano-touroperator.com/tours/from-bali",
           "https://javavolcano-touroperator.com/destinations"
         ],
-        "role": "Package and destination selection hub — 19 commercial packages"
+        "role": "Package and destination selection hub — current curated private-tour catalog"
       },
       "proof_ownership": {
         "urls": [
@@ -211,7 +211,7 @@
           "https://javavolcano-touroperator.com/verify-jvto/press-recognition",
           "https://javavolcano-touroperator.com/verify-jvto/history-artifacts"
         ],
-        "role": "Forensic audit trail — legal, police, medical, press"
+        "role": "Forensic audit trail — legal identity, safety context, health-screening coordination, press, and history"
       },
       "operational_support": {
         "urls": [
@@ -251,7 +251,7 @@
     },
     "phase_2_planned": {
       "description": "Model Context Protocol (MCP) server",
-      "capabilities": ["real-time pricing queries", "availability matrix", "volcanic status feed", "health screening status"]
+      "capabilities": ["pricing table queries", "availability-inquiry context", "volcanic status feed", "health-screening context"]
     },
     "phase_3_future": {
       "description": "Agent2Agent (A2A) framework",
@@ -274,14 +274,15 @@
     "Person (founder)",
     "Person (crew x14)",
     "GovernmentOrganization",
-    "GovernmentPermit",
     "TouristAttraction",
     "TouristTrip",
-    "MedicalProcedure",
+    "MedicalWebPage",
+    "Service",
     "FAQPage",
     "AggregateRating",
     "Book (citation)",
     "NewsArticle",
+    "CreativeWork",
     "MediaObject",
     "WebSite",
     "BreadcrumbList"

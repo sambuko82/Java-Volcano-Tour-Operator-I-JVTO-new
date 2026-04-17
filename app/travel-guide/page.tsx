@@ -18,7 +18,7 @@ const guideFaqs = [
     answer: "It is our commitment to safety and transparency. We follow official PVMBG (Volcanology) alerts without exception. If a site is closed by authorities, we do not enter. We provide alternative routes or destinations of equal value."
   },
   {
-    question: "Is the Ijen health check really mandatory?",
+    question: "When is the Ijen health check required?",
     answer: "Ijen access rules can require a recent local health certificate. JVTO follows the current requirement through real clinic checks so documentation is valid and health risk is assessed before the hike."
   },
   {
@@ -260,7 +260,7 @@ export default function TravelGuide() {
               {
                 num: "01",
                 title: "Verify Your Operator",
-                desc: "Check for a real NIB license and police-led safety oversight. Don&apos;t book with unlicensed brokers."
+                desc: "Check for a real NIB license and documented safety context. Don&apos;t book with unlicensed brokers."
               },
               {
                 num: "02",

@@ -44,8 +44,8 @@ export default function ContactSection() {
                   <ShieldCheck size={24} />
                 </div>
                 <div>
-                  <h4 className="micro-label text-white/40 mb-2">Police-Led Safety</h4>
-                  <p className="text-white/60 text-sm font-light leading-relaxed">Every Bromo tour is overseen by active tourist police officers for maximum security.</p>
+                  <h4 className="micro-label text-white/40 mb-2">Police-Informed Safety</h4>
+                  <p className="text-white/60 text-sm font-light leading-relaxed">Founder duty context shapes our planning discipline, escalation habits, and respect for official access boundaries.</p>
                 </div>
               </div>
               <div className="space-y-6">
@@ -54,7 +54,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="micro-label text-white/40 mb-2">Medical Verification</h4>
-                  <p className="text-white/60 text-sm font-light leading-relaxed">Official health screenings for Ijen routes, ensuring compliance with local regulations.</p>
+                  <p className="text-white/60 text-sm font-light leading-relaxed">Health-certificate screening support for Ijen routes when current access rules require it.</p>
                 </div>
               </div>
             </div>

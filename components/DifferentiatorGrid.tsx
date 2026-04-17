@@ -16,8 +16,8 @@ const PILLARS: Pillar[] = [
   },
   {
     icon: <ShieldCheck size={28} />,
-    title: 'Police-Led Safety',
-    desc: 'Founded by an active Tourist Police officer (Ditpamobvit). The operating culture is shaped by formal safety discipline and local authority coordination.',
+    title: 'Police-Informed Safety',
+    desc: 'Founder Agung Sambuko has documented Tourist Police duty context. JVTO uses that field discipline for private-tour readiness, route decisions, and escalation habits.',
   },
   {
     icon: <Users size={28} />,

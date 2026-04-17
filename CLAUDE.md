@@ -112,15 +112,15 @@ Package pages are self-contained brochures. The correct section order:
 ## 6. Trust Architecture
 
 ### What makes JVTO unique (never omit these):
-- **Active Tourist Police founder** — Bripka Agung Sambuko, Ditpamobvit East Java
-- **Mandatory Ijen Health Screening** — licensed doctors, BBKSDA Jatim compliance
+- **Founder with documented Tourist Police duty context** — Bripka Agung Sambuko, Ditpamobvit East Java, corroborated through third-party press and proof pages
+- **Ijen health-screening coordination** — clinic workflow and health-certificate support when current access rules require it
 - **Live MAGMA Indonesia integration** — volcano status updated before every departure
 - **NIB + HPWKI + TDUP + SPRIN** — full legal and operational credential set
 - **Stefan Loose guidebook (ISBN-13: 978-3-7701-7881-0)** — pre-digital editorial authority
 - **Detik.com press coverage** — national media corroboration
 
 ### Trust placement rules:
-- **Homepage**: Trust strip (Trustpilot, police-led, doctor-backed, live MAGMA) + Founder spotlight
+- **Homepage**: Trust strip (Trustpilot, police-informed, health-readiness, live MAGMA) + Founder spotlight
 - **Package pages**: Compact proof rail (not full audit)
 - **Verify JVTO**: Full forensic audit trail
 - **Travel Guide**: Operational evidence (screening, weather, field ops)
@@ -139,13 +139,16 @@ Package pages are self-contained brochures. The correct section order:
 
 ### JSON-LD schemas in use (`components/JsonLd.tsx`):
 - `TravelAgency` + `LocalBusiness` (base)
-- `GovernmentPermit` — NIB 1102230032918
-- `GovernmentPermit` — HPWKI membership
-- `GovernmentService` — Tourist Police escort
+- `WebSite` + `WebPage`
+- `Product` + `TouristTrip` — tour detail pages
+- `TouristAttraction` + `Place` — destination detail pages
+- `CreativeWork` + `MediaObject` — verification proof documents and SHA-256 evidence
 - `MedicalWebPage` — Ijen Health Screening
+- `Service` — Ijen health-screening coordination
 - `Book` (citation) — Stefan Loose ISBN-13
 - `Person` — Agung Sambuko (founder)
 - `AggregateRating` — 4.9/5, 112 reviews
+- `FAQPage` + `BreadcrumbList`
 - `PostalAddress` + `GeoCoordinates`
 
 ### SHA-256 forensic hashes (in `lib/verificationData.ts`):

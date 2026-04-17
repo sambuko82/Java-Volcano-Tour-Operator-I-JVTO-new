@@ -68,7 +68,7 @@ export default function InquiryForm({ isOpen, onClose, tourTitle }: InquiryFormP
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 size={16} className="text-orange-400" />
-                <span>Police-Led Safety</span>
+                <span>Police-Informed Safety</span>
               </div>
             </div>
           </div>

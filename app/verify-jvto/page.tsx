@@ -245,7 +245,7 @@ export default function VerifyJVTO() {
                     <Activity size={36} />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Real Health Screening</h3>
+                    <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Ijen Screening Support</h3>
                     <p className="text-stone-600 font-light leading-relaxed text-lg italic">We support the required Ijen health-screening workflow through local medical providers. The goal is real assessment before the trek, not paperwork shortcuts.</p>
                   </div>
                 </div>

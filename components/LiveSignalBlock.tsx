@@ -24,7 +24,7 @@ const VOLCANO_STATUSES: VolcanoStatus[] = [
     level: 'I',
     levelLabel: 'Normal',
     levelColor: 'text-jvto-lime',
-    note: 'Standard operating conditions. BBKSDA ticket + health screening required.',
+    note: 'Standard operating conditions. BBKSDA ticket rules can require health-certificate screening.',
   },
 ];
 

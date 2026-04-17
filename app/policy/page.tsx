@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { ShieldCheck, FileText, Scale, Landmark, ClipboardCheck, ShieldAlert, ArrowRight, CheckCircle2, Info, Lock, MapPin, Activity, Users } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/siteConfig';
+import { BOOKING_POLICY } from '@/lib/bookingPolicy';
 
 export default function LegalPage() {
   const legalSchema = {
@@ -62,7 +63,7 @@ export default function LegalPage() {
             {/* Sidebar Navigation */}
             <div className="lg:col-span-1">
               <div className="sticky top-32 space-y-4">
-                {['Corporate Identity', 'Terms of Service', 'Safety & Liability', 'Privacy Policy'].map((item) => (
+                {['Corporate Identity', 'Booking Terms', 'Inclusions', 'Privacy Policy'].map((item) => (
                   <button
                     key={item}
                     className="w-full text-left px-10 py-6 rounded-full text-xs font-bold uppercase tracking-[0.3em] transition-all border border-brand-olive/10 hover:bg-brand-olive hover:text-white text-brand-ink bg-white shadow-sm"
@@ -103,13 +104,14 @@ export default function LegalPage() {
                   <h2 className="text-5xl font-serif text-brand-ink leading-tight">Terms of Service</h2>
                 </div>
                 <div className="space-y-10 text-stone-600 font-light leading-relaxed text-lg">
-                  <p>By booking a tour with JVTO, you agree to our operational terms designed to ensure safety and service quality.</p>
+                  <p>By booking a tour with JVTO, you agree to the policy hierarchy below. If details differ, your Official E-Voucher / Invoice for the confirmed booking takes priority.</p>
                   <ul className="space-y-6 list-none">
                     {[
-                      "All bookings require a deposit to secure vehicles and guides.",
-                      "Cancellations made within 48 hours of departure are non-refundable.",
-                      "Itineraries may be adjusted based on volcanic activity or weather.",
-                      "Clients must provide accurate health information for Ijen routes."
+                      BOOKING_POLICY.confirmationRule,
+                      `Standard deposit is ${BOOKING_POLICY.payment.standardDeposit}; bookings within 14 days may require full payment.`,
+                      "Cancellations 48 hours or more before Day 1 convert eligible booking value into Lifetime Travel Credit.",
+                      "Cancellations less than 48 hours before Day 1 are fully forfeited.",
+                      "Itineraries may be adjusted based on volcanic activity, official closures, weather, access rules, or safety conditions."
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-6">
                         <span className="w-8 h-8 rounded-full bg-brand-accent/10 text-brand-accent flex items-center justify-center text-[10px] font-bold shrink-0 mt-1">{i+1}</span>
@@ -117,6 +119,11 @@ export default function LegalPage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link href="/policy/booking-payment-cancellation" className="text-brand-olive font-bold underline underline-offset-4">Booking Policy</Link>
+                  <Link href="/policy/inclusions-exclusions" className="text-brand-olive font-bold underline underline-offset-4">Inclusions & Exclusions</Link>
+                  <Link href="/policy/privacy" className="text-brand-olive font-bold underline underline-offset-4">Privacy Policy</Link>
                 </div>
               </div>
 
@@ -127,7 +134,7 @@ export default function LegalPage() {
                   <h2 className="text-5xl font-serif text-brand-ink leading-tight">Safety & Liability</h2>
                 </div>
                 <div className="space-y-10 text-stone-600 font-light leading-relaxed text-lg">
-                  <p>Volcano tourism involves inherent risks. JVTO prioritizes safety but requires clients to acknowledge these risks.</p>
+                  <p>Volcano tourism involves inherent risks. JVTO prioritizes safety but requires clients to acknowledge these risks, provide accurate guest details, and follow route decisions made for safety.</p>
                   <div className="p-10 bg-brand-olive/5 rounded-[48px] border border-brand-olive/10">
                     <p className="italic text-brand-ink">&quot;Our safety protocols are police-informed and medically cautious. We reserve the right to cancel any route if conditions are deemed unsafe by local authorities.&quot;</p>
                   </div>

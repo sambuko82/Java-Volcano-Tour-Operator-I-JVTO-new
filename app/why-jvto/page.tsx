@@ -86,7 +86,7 @@ export default function WhyJVTO() {
             {[
               { icon: ShieldCheck, title: "Police-Informed Safety", desc: "JVTO is shaped by a safety culture that comes from real operational discipline and documented duty context." },
               { icon: Lock, title: "Registered & Verifiable", desc: "We are tied to a legal business identity and physical base in Bondowoso." },
-              { icon: Activity, title: "Real Health Screening", desc: "For Ijen routes, we use a real screening logic designed to reduce avoidable risk." },
+              { icon: Activity, title: "Ijen Screening Support", desc: "For Ijen routes, we coordinate real clinic workflow when current access rules require a health certificate." },
               { icon: Users, title: "Private by Default", desc: "Every JVTO journey is private. No mixed groups. No strangers in your vehicle." },
               { icon: Globe, title: "Local Team", desc: "The experience is delivered by real local people whose names and roles matter." },
               { icon: Star, title: "Independent Proof", desc: "We do not ask you to trust what we say without showing where to verify it." }

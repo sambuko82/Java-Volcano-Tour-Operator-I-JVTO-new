@@ -77,7 +77,7 @@ const safetyProtocols: SafetyProof[] = [
   },
   {
     icon: <AlertTriangle className="text-orange-500" />,
-    title: 'Ijen Health Screening',
+    title: 'Ijen Screening Support',
     desc: 'Health-certificate screening coordination for Ijen visitors when current access rules require it.',
     metadata: 'Health Protocol',
     href: '/travel-guide/ijen-health-screening',

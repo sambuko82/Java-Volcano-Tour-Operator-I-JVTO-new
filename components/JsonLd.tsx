@@ -214,7 +214,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
     email: SITE_CONFIG.organization.email,
     priceRange: '$$',
     currenciesAccepted: 'IDR, USD, EUR, AUD, SGD',
-    paymentAccepted: 'Bank Transfer, PayPal, Wise',
+    paymentAccepted: 'Credit Card, Debit Card, Bank Transfer, Wise, Cash by written approval',
 
     // ── areaServed — ISO 3166-2:ID-JI prevents Bali-reseller confusion ────
     areaServed: [

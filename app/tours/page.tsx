@@ -18,11 +18,11 @@ import { CheckCircle2 } from 'lucide-react';
 const toursFaqs = [
   {
     question: "Are these tours really private?",
-    answer: "Yes. We do not offer shared or group tours. Every booking is 100% private, ensuring your safety, comfort, and a personalized pace. You have full control over the logistics and the experience."
+    answer: "Yes. JVTO operates private tours only. Each confirmed booking has its own vehicle, crew, timing, and route control without being mixed into an open join-in group."
   },
   {
     question: "What is included in the price?",
-    answer: "Our pricing is all-inclusive. This means private transport, professional guides, entrance fees, accommodation for multi-day tours, and Ijen health-screening coordination when current access rules require it. There are no hidden fees or commissions."
+    answer: "Our pricing is all-inclusive by design. Contractual inclusions are the items written on the official tour page and/or your Official E-Voucher / Invoice, including private transport, crew, listed tickets, accommodation where included, and Ijen health-certificate coordination when current access rules require it."
   }
 ];
 

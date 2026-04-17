@@ -26,7 +26,7 @@ const PILLARS: Pillar[] = [
   },
   {
     icon: <Activity size={28} />,
-    title: 'Real Health Screening',
+    title: 'Real Ijen Screening Support',
     desc: 'Ijen routes follow current health-certificate rules through real clinic checks, not pre-signed paperwork.',
   },
   {

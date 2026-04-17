@@ -27,7 +27,7 @@ export default function IjenHealthScreeningPage() {
     "@type": ["WebPage", "MedicalWebPage"],
     "@id": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening#webpage",
     "url": "https://javavolcano-touroperator.com/travel-guide/ijen-health-screening",
-    "name": "Ijen Health Screening — Mandatory Medical Protocol by JVTO",
+    "name": "Ijen Health Screening Coordination by JVTO",
     "description": "Ijen access rules can require a recent local health certificate. JVTO helps guests complete a real clinic-based screening workflow before the sulfur-exposure ascent.",
     "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
     "about": [

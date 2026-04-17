@@ -33,7 +33,7 @@ const homeFaqs = [
   },
   {
     question: "Is the Ijen health screening included?",
-    answer: "Yes. For routes that include Ijen, the health screening is arranged as part of the trip flow so guests do not have to navigate the process alone."
+    answer: "For routes that include Ijen, JVTO coordinates health-certificate screening when current access rules require it, so guests do not have to navigate the clinic or certificate process alone."
   },
   {
     question: "What happens if weather or volcanic conditions change the plan?",
@@ -199,7 +199,7 @@ export default function Home() {
                 <Activity size={40} />
               </div>
               <div>
-                <h3 className="text-3xl mb-2 text-jvto-navy">Ijen Health Screening Support</h3>
+                <h3 className="text-3xl mb-2 text-jvto-navy">Ijen Screening Support</h3>
                 <p className="text-jvto-muted text-sm font-light max-w-md leading-relaxed">Ijen access rules can require a recent local health certificate. JVTO coordinates a real clinic-based check when the rule applies.</p>
               </div>
             </div>
@@ -332,7 +332,7 @@ export default function Home() {
             />
             <AnswerBlock 
               question="What happens if my trip is cancelled?"
-              answer="We maintain a transparent cancellation policy. If a trip is cancelled due to volcanic activity or government closures, we work with you to reschedule or provide a fair refund based on our documented terms. Our legal registration ensures you have recourse that 'freelance' guides cannot offer."
+              answer="We maintain a transparent cancellation policy. Guest cancellations 48 hours or more before Day 1 convert eligible value into Lifetime Travel Credit. If official closures affect the route, we offer a safe alternative, reschedule option, or destination-fee adjustment according to the confirmed booking context."
               icon={<CheckCircle2 className="text-jvto-navy" size={24} />}
               metadata="Documented Refund & Reschedule Policy"
             />

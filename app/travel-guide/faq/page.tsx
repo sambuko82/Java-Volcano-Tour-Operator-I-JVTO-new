@@ -15,15 +15,15 @@ const faqs = [
     questions: [
       {
         q: 'How do I book a tour with JVTO?',
-        a: 'You can book by contacting us via WhatsApp or email. We will verify availability and send you a detailed itinerary and price quote. A deposit is required to secure your booking.'
+        a: 'Start with an availability inquiry through the official website, WhatsApp, or email. JVTO verifies the route, date, group size, and quote. A booking is confirmed only after the required deposit or full payment is processed and JVTO issues an Official E-Voucher / Invoice PDF.'
       },
       {
         q: 'What payment methods do you accept?',
-        a: 'We accept bank transfers (IDR), international wire transfers (Wise), and major credit cards via secure payment links.'
+        a: 'Official pricing is in IDR. Deposits are normally paid by card through a secure payment link or checkout when issued by JVTO. Balance payments may use card, bank transfer, Wise, or approved cash at the JVTO office.'
       },
       {
         q: 'Is the price all-inclusive?',
-        a: 'Yes, our prices are all-inclusive of private transport, English-speaking guide, all entrance fees, and safety gear. Only personal expenses and meals (unless specified) are excluded.'
+        a: 'JVTO packages are private and all-inclusive by design, but only inclusions written on the official tour page and/or your Official E-Voucher / Invoice are contractually binding.'
       }
     ]
   },
@@ -57,7 +57,7 @@ const faqs = [
       },
       {
         q: 'Are the tours private?',
-        a: 'Yes, all JVTO tours are 100% private. We do not run mixed-group tours.'
+        a: 'Yes. JVTO operates private tours only. We do not run open join-in groups or transport-only products as our core service.'
       }
     ]
   }

@@ -136,6 +136,7 @@ Package pages are self-contained brochures. The correct section order:
 | `ai-agent-config.json` | `public/.well-known/ai-agent-config.json` | Machine-readable site map, trust signals, scraping permissions |
 | `robots.txt` | `public/robots.txt` | Allows GPTBot, PerplexityBot, anthropic-ai, ClaudeBot |
 | `sitemap.ts` | `app/sitemap.ts` | Dynamic XML sitemap |
+| `JVTO_CANONICAL_SSOT_PRD.md` | `docs/ssot/JVTO_CANONICAL_SSOT_PRD.md` | Master SSOT for product, UX, trust, and implementation |
 
 ### JSON-LD schemas in use (`components/JsonLd.tsx`):
 - `TravelAgency` + `LocalBusiness` (base)

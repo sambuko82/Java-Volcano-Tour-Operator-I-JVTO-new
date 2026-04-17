@@ -34,6 +34,11 @@ export interface Tour {
   bestFor: string;
   idealTraveler: string;
   pricingTable: { pax: number; price: number }[];
+  accommodation?: string;
+  vehicleDetails?: string;
+  mealsIncluded?: string;
+  gallery?: string[];
+  faq?: { question: string; answer: string }[];
 }
 
 export interface CrewMember {
@@ -167,11 +172,62 @@ export const DESTINATIONS: Destination[] = [
       'Best visited during the dry season (April–October).',
       'Ideal for a rest day between hikes.'
     ]
+  },
+  {
+    slug: 'surabaya-city',
+    name: 'Surabaya City',
+    shortDesc: 'The "City of Heroes," East Java\'s bustling capital and main arrival gateway.',
+    fullDesc: 'Surabaya is Indonesia\'s second-largest city, a major port, and the historical "City of Heroes." It serves as the primary gateway for tours to Bromo and Ijen.',
+    image: VALID_MEDIA_FALLBACK,
+    difficulty: 'Easy',
+    region: 'Surabaya',
+    highlights: ['House of Sampoerna', 'Heroes Monument', 'Suramadu Bridge'],
+    practicalNotes: ['The main arrival point via Juanda International Airport (SUB).']
+  },
+  {
+    slug: 'malang-city',
+    name: 'Malang & Batu',
+    shortDesc: 'A cool highland city known for its Dutch colonial architecture, apple orchards, and creative villages.',
+    fullDesc: 'Malang and the nearby city of Batu offer a refreshing alpine climate, colorful rainbow villages, and historical charm at the foot of Mount Semeru.',
+    image: VALID_MEDIA_FALLBACK,
+    difficulty: 'Easy',
+    region: 'Malang Highlands',
+    highlights: ['Kampung Warna-Warni (Rainbow Village)', 'Batu Flower Garden', 'Dutch Colonial Architecture'],
+    practicalNotes: ['Lower temperatures than Surabaya; a perfect cultural stop.']
   }
 ];
 
 
 export const TOURS: Tour[] = [
+  {
+    slug: 'bromo-1d1n',
+    name: '1D1N Bromo Midnight Tour',
+    shortDesc: 'The efficient Bromo express: depart at midnight, witness sunrise, return by afternoon.',
+    longDesc: 'Designed for travelers with limited time, this midnight dash takes you from Surabaya straight to the Bromo sunrise. Experience the 4WD jeep adventure across the Sea of Sand and the crater trek before heading back to the city.',
+    duration: '1 Day, 1 Night',
+    origin: 'Surabaya',
+    priceFrom: 1850000,
+    image: 'https://javavolcano-touroperator.com/img/destinations/2d-1n-surabaya-bromo-1-day-tours-1679725846337/bromo14.webp',
+    rating: 5.0,
+    physicality: 'moderate',
+    bestFor: 'Time-critical travelers',
+    idealTraveler: 'Solo travelers and business guests',
+    pricingTable: [
+      { pax: 1, price: 1850000 },
+      { pax: 2, price: 1250000 },
+      { pax: 3, price: 950000 }
+    ],
+    highlights: ['Bromo Sunrise', 'Sea of Sand Jeep', 'Crater Rim Trek', 'Direct Surabaya Return'],
+    destinations: ['mount-bromo'],
+    itinerary: [
+      { day: '00:00', title: 'Midnight Departure', summary: 'Pickup from Surabaya. Overland drive to Bromo area.' },
+      { day: '03:30', title: 'Sunrise Adventure', summary: 'Switch to 4WD Jeep for Penanjakan sunrise view.' },
+      { day: '06:00', title: 'Crater Exploration', summary: 'Crossing the Sea of Sand and trekking to Bromo crater.' },
+      { day: '12:00', title: 'Return', summary: 'Drive back to Surabaya. Drop-off by afternoon.' }
+    ],
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Snack Box'],
+    exclusions: ['Flights', 'Lunch', 'Tipping']
+  },
   {
     slug: 'bromo-2d1n',
     name: '2D1N Bromo & Madakaripura',
@@ -198,7 +254,18 @@ export const TOURS: Tour[] = [
       { day: 'Day 2', title: 'Bromo & Madakaripura', summary: 'Early morning sunrise tour. Bromo crater hike. Madakaripura Waterfall trek. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Daily Breakfast', 'Complimentary T-shirt'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
+    accommodation: 'Hutan Bromo or similar high-quality lodge near the crater rim.',
+    vehicleDetails: 'Private Toyota Avanza/Innova for overland. Private Toyota Land Cruiser 4WD for Bromo crater.',
+    mealsIncluded: 'Breakfast everyday. Coffee/tea at sunrise. Local dinner options on Day 1.',
+    faq: [
+      { question: 'What is the best time for Bromo?', answer: 'The dry season (April-October) offers the clearest sunrise views.' },
+      { question: 'Is this tour suitable for children?', answer: 'Yes, Bromo is very accessible for families, though it is cold in the morning.' }
+    ],
+    gallery: [
+      'https://javavolcano-touroperator.com/img/destinations/2d-1n-surabaya-bromo-1-day-tours-1679725846337/bromo14.webp',
+      'https://javavolcano-touroperator.com/assets/img/hero/home.webp'
+    ]
   },
   {
     slug: 'ijen-2d1n',
@@ -226,7 +293,14 @@ export const TOURS: Tour[] = [
       { day: 'Day 2', title: 'Ijen Expedition', summary: 'Midnight hike to Ijen for Blue Fire and sunrise. Crater lake exploration. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
+    accommodation: 'Grand Padis Hotel Bondowoso or similar.',
+    vehicleDetails: 'Private AC Transport for overland. Ijen-area shuttle coordination.',
+    mealsIncluded: 'Breakfast after descent. Coffee/tea before hike.',
+    faq: [
+      { question: 'Is the Blue Fire guaranteed?', answer: 'It is a natural phenomenon subject to weather and gas activity.' },
+      { question: 'What if I am not fit?', answer: 'We coordinate clinic checks before the tour to ensure safety.' }
+    ]
   },
   {
     slug: 'bromo-madakaripura-ijen-3d2n',

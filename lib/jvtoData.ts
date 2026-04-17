@@ -331,7 +331,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Ijen to Bali', summary: 'Ijen night hike. Ferry crossing to Bali. Drop-off at your Bali hotel.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -361,7 +361,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Bromo & Madakaripura', summary: 'Sunrise tour. Bromo crater. Madakaripura Waterfall. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -421,7 +421,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Departure', summary: 'Breakfast at hotel. Transfer to Juanda Airport for your flight.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -452,7 +452,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Tumpak Sewu & Bromo', summary: 'Tumpak Sewu trek. Bromo sunrise. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -483,7 +483,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Ijen to Bali', summary: 'Ijen night hike. Ferry crossing to Bali. Drop-off at your Bali hotel.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -515,7 +515,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 5', title: 'Departure', summary: 'Breakfast at hotel. Transfer to Juanda Airport.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -547,7 +547,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 5', title: 'Bromo & Return', summary: 'Bromo sunrise. Bromo crater. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -580,7 +580,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 6', title: 'Malang & Return', summary: 'Explore Batu city and Malang attractions. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -610,7 +610,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Ijen to Bali', summary: 'Ijen night hike. Ferry crossing back to Bali. Drop-off at your hotel.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -641,7 +641,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Tumpak Sewu & Bromo to Surabaya', summary: 'Tumpak Sewu trek. Bromo sunrise. Drop-off in Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   },
   {
@@ -673,7 +673,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 5', title: 'Bromo & Return to Surabaya', summary: 'Bromo sunrise. Bromo crater. Drop-off in Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
     ijenRelevant: true,
   }
 ];

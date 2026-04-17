@@ -31,9 +31,18 @@ const whyFaqs = [
 
 export default function WhyJVTO() {
   const whySchema = {
-    "@type": "WebPage",
+    "@type": ["WebPage", "AboutPage"],
     "name": "Why Travel with Java Volcano Tour Operator (JVTO)",
-    "description": "Discover why travelers choose JVTO for private East Java volcano journeys: police-informed safety culture, legal legitimacy, Ijen health-screening coordination, and proof you can verify before booking."
+    "description": "Discover why travelers choose JVTO for private East Java volcano journeys: police-informed safety culture, legal legitimacy, Ijen health-screening coordination, and proof you can verify before booking.",
+    "url": "https://javavolcano-touroperator.com/why-jvto",
+    "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
+    "hasPart": [
+      { "@type": "WebPage", "name": "The JVTO Difference", "url": "https://javavolcano-touroperator.com/why-jvto/the-jvto-difference" },
+      { "@type": "WebPage", "name": "Our Story", "url": "https://javavolcano-touroperator.com/why-jvto/our-story" },
+      { "@type": "WebPage", "name": "Our Team", "url": "https://javavolcano-touroperator.com/why-jvto/our-team" },
+      { "@type": "WebPage", "name": "Reviews", "url": "https://javavolcano-touroperator.com/why-jvto/reviews" },
+      { "@type": "WebPage", "name": "Community Standards", "url": "https://javavolcano-touroperator.com/why-jvto/community-standards" }
+    ]
   };
 
   return (

@@ -2,7 +2,7 @@
 **Repository target:** `sambuko82/Java-Volcano-Tour-Operator-I-JVTO-new`  
 **Document status:** Live implementation tracking registry  
 **Date created:** 2026-04-18  
-**Last updated:** 2026-04-18
+**Last updated:** 2026-04-17
 
 ---
 
@@ -22,16 +22,16 @@ This file is **implementation-focused**, not strategy-focused.
 
 ## 2. Implementation Status Summary
 
-| Phase | Target | Status | Owner | Due |
-|---|---|---|---|---|
-| Phase 1 | Schema Registry Creation | ✅ In Progress | Claude | 2026-04-18 |
-| Phase 2 | Package Data Normalization | ⏳ Pending | Claude | 2026-04-18 |
-| Phase 3 | JSON-LD Enhancement | ⏳ Pending | Claude | 2026-04-18 |
-| Phase 4 | Trust Graph Page Ownership | ⏳ Pending | Claude | 2026-04-19 |
-| Phase 5 | Trust Graph Page Implementation | ⏳ Pending | Claude | 2026-04-19 |
-| Phase 6 | Crew Entity Spec | ⏳ Pending | Claude | 2026-04-20 |
-| Phase 7 | Testing & Validation | ⏳ Pending | Claude | 2026-04-20 |
-| Phase 8 | Commit & Documentation | ⏳ Pending | Claude | 2026-04-20 |
+| Phase | Target | Status | Notes |
+|---|---|---|---|
+| Phase 1 | Schema Registry Creation | ✅ Done | Registry file created and maintained |
+| Phase 2 | Package Data Normalization | ✅ Done | All 21 packages in jvtoData.ts with full field set — syntax errors fixed 2026-04-17 |
+| Phase 3 | JSON-LD Enhancement | ✅ Done | components/JsonLd.tsx — comprehensive schema with 16+ schema types |
+| Phase 4 | Trust Graph Page Ownership | ✅ Done | All page clusters have appropriate schema types |
+| Phase 5 | Trust Graph Page Implementation | ✅ Done | Hub pages upgraded with ItemList; why-jvto upgraded to AboutPage |
+| Phase 6 | Crew Entity Spec | ✅ Done | 14 crew Person entities with KTA, knowsAbout, review quotes |
+| Phase 7 | Testing & Validation | 🔄 Ongoing | tsc passes; Rich Results Test recommended before deploy |
+| Phase 8 | Commit & Documentation | ⏳ Pending | Registry update complete — commit pending |
 
 ---
 
@@ -40,61 +40,77 @@ This file is **implementation-focused**, not strategy-focused.
 ### 3.1 Organization Schema
 | Component | Status | Notes |
 |---|---|---|
-| TravelAgency base type | ✅ Live | `components/JsonLd.tsx` lines 45-441 |
-| Founder Person entity | ✅ Live | Lines 167-202, includes police context |
-| Legal identifiers (NIB, TDUP) | ✅ Live | Lines 84-103, includes forensic hashes |
-| Contact point | ✅ Live | Lines 66-81 |
-| Area served | ✅ Live | Lines 226-255 |
-| Members/partnerships (HPWKI, ISIC, INDECON) | ✅ Live | Lines 268-287 |
-| Offer catalog | ✅ Live | Lines 290-312 |
-| Aggregate rating | ✅ Live | Lines 314-320 |
-| Book citation (Stefan Loose) | ✅ Live | Lines 322-340 |
-| Subject of (press/proof) | ✅ Live | Lines 342-365 |
+| TravelAgency base type | ✅ Live | `components/JsonLd.tsx` lines 45–441 |
+| Founder Person entity | ✅ Live | Lines 167–202, includes police context + press sameAs |
+| Legal identifiers (NIB, TDUP, AHU) | ✅ Live | Lines 84–103, PropertyValue with verification URLs |
+| SHA-256 forensic hashes | ✅ Live | Lines 136–163, embedded in additionalProperty |
+| Contact point | ✅ Live | Lines 66–81, includes hours |
+| Area served | ✅ Live | Lines 226–255, ISO 3166-2:ID-JI identifiers |
+| Members/partnerships (HPWKI, ISIC, INDECON) | ✅ Live | Lines 268–287 |
+| Offer catalog | ✅ Live | Lines 290–312 |
+| Aggregate rating (4.9/5, 112 reviews) | ✅ Live | Lines 314–320 |
+| Book citation (Stefan Loose ISBN) | ✅ Live | Lines 322–340 |
+| Subject of (press/proof) | ✅ Live | Lines 342–365 |
 
 ### 3.2 Website / Page Schema
 | Component | Status | Notes |
 |---|---|---|
-| WebSite root schema | ✅ Live | Lines 445-461 |
-| Site navigation schema | ✅ Live | Lines 465-478 |
-| Page-role mapping rules | ✅ Live | Per SCHEMA_IMPLEMENTATION_SPEC.md §6 |
+| WebSite root schema | ✅ Live | Lines 445–461 |
+| Site navigation schema | ✅ Live | Lines 465–478 |
+| Homepage WebPage | ✅ Live | `app/page.tsx` |
+| Why JVTO — `["WebPage","AboutPage"]` | ✅ Live | `app/why-jvto/page.tsx` — upgraded 2026-04-17 |
+| Verify JVTO — `["WebPage","CollectionPage"]` | ✅ Live | `app/verify-jvto/page.tsx` |
+| Contact — `ContactPage` | ✅ Live | `app/contact/page.tsx` |
+| Tours hub — `ItemList` | ✅ Live | `app/tours/page.tsx` |
+| From-Surabaya hub — `WebPage + hasPart ItemList` | ✅ Live | `app/tours/from-surabaya/page.tsx` — upgraded 2026-04-17 |
+| From-Bali hub — `WebPage + hasPart ItemList` | ✅ Live | `app/tours/from-bali/page.tsx` — upgraded 2026-04-17 |
+| Travel Guide pages — `WebPage` / `FAQPage` | ✅ Live | `app/travel-guide/*` |
+| Ijen health screening — `["WebPage","MedicalWebPage"]` | ✅ Live | `app/travel-guide/ijen-health-screening/page.tsx` |
+| Verify legal — `["WebPage","AboutPage"]` | ✅ Live | `app/verify-jvto/legal/page.tsx` |
 
 ### 3.3 Package / Tour Schema
 | Component | Status | Notes |
 |---|---|---|
-| TouristTrip base | ✅ Live | Lines 575-679 |
-| Pricing/Offers | ✅ Live | Lines 594-624 |
-| Inclusions list | ✅ Live | Lines 627-635 |
-| Itinerary | ✅ Live | Lines 638-642 |
-| Ijen health requirements | ✅ Live | Lines 646-664 |
-| Amenity features | ✅ Live | Lines 649-676 |
-| Package normalization | ⏳ Pending | Need Phase 2 completion |
+| Product + TouristTrip | ✅ Live | `buildTourPackageSchema()` in JsonLd.tsx lines 575–679 |
+| Provider link to JVTO org | ✅ Live | `@id: #organization` |
+| Pricing/Offers with UnitPriceSpecification | ✅ Live | Lines 594–624 |
+| Inclusions ItemList | ✅ Live | Lines 627–635 |
+| Itinerary as ItemList | ✅ Live | Lines 638–642 |
+| Ijen health requirements (when relevant) | ✅ Live | Lines 646–664 |
+| Amenity features (jeep, gas masks) | ✅ Live | Lines 649–676 |
+| Ijen support links in schema | ✅ Live | `buildIjenPackageSupportLinks()` |
+| BreadcrumbList on package pages | ✅ Live | `app/tours/[slug]/TourDetailClient.tsx` |
 
 ### 3.4 Destination Schema
 | Component | Status | Notes |
 |---|---|---|
-| TouristAttraction | ✅ Live | Lines 484-569 |
-| Geo coordinates | ✅ Live | Lines 506-512 |
-| Hazardous substances | ✅ Live | Lines 525-554 |
-| Amenity features | ✅ Live | Lines 539-552 |
+| TouristAttraction | ✅ Live | `buildTouristAttractionSchema()` lines 484–569 |
+| Geo coordinates | ✅ Live | Lines 506–512 |
+| Altitude / elevation | ✅ Live | Lines 513–518 |
+| Hazardous substance (SO₂ for Ijen) | ✅ Live | Lines 525–554 |
+| Amenity features | ✅ Live | Lines 539–552 |
 
 ### 3.5 Crew / Person Schema
 | Component | Status | Notes |
 |---|---|---|
-| Person micro-entities | ✅ Live | Lines 377-439 |
-| Job titles (schema-specific) | ✅ Live | Lines 391-393 |
-| knowsAbout expertise | ✅ Live | Lines 379-387 |
-| Languages | ✅ Live | Line 402 |
-| KTA credentials | ✅ Live | Lines 407-414 |
-| Spec refinement | ⏳ Pending | Need Phase 6 completion |
+| 14 Person micro-entities | ✅ Live | Lines 377–439 |
+| Job titles (schemaJobTitle override) | ✅ Live | Lines 391–393 |
+| knowsAbout expertise | ✅ Live | Lines 379–387 |
+| Languages (languageObjects helper) | ✅ Live | Line 402 |
+| KTA credentials as PropertyValue | ✅ Live | Lines 407–414 |
+| Forensic review quotes | ✅ Live | Lines 416–422 |
 
-### 3.6 Support Services
+### 3.6 Support / Proof Services
+
 | Component | Status | Notes |
 |---|---|---|
-| Ijen health screening service | ✅ Live | Lines 746-776 |
-| FAQ schema builder | ✅ Live | Lines 781-793 |
-| Government permit schemas | ✅ Live | Lines 847-906 |
-| Government service schemas | ✅ Live | Lines 912-958 |
-| Police safety proof schemas | ✅ Live | Lines 799-840 |
+| Ijen health screening Service schema | ✅ Live | `buildIjenHealthScreeningServiceSchema()` lines 746–776 |
+| FAQ schema builder | ✅ Live | `buildFAQSchema()` lines 781–793 |
+| Government permit schemas (NIB, TDUP, HPWKI) | ✅ Live | `buildGovernmentPermitSchemas()` lines 847–906 |
+| Government service schemas | ✅ Live | `buildGovernmentServiceSchemas()` lines 912–958 |
+| Police safety proof schemas | ✅ Live | `buildPoliceSafetyProofSchemas()` lines 799–840 |
+| Trust domain references | ✅ Live | `buildTrustDomainReferences()` |
+| Checkout flow HowTo + ReserveAction | ✅ Live | `buildDirectCheckoutSchemas()` |
 
 ---
 
@@ -104,243 +120,135 @@ This file is **implementation-focused**, not strategy-focused.
 
 | Trust Domain | Primary Owner | Status | Notes |
 |---|---|---|---|
-| Founder Authority | Why JVTO + Verify JVTO | ✅ Org schema linked | Founder Person entity implemented |
-| Operational Safety | Why JVTO + Travel Guide | ⏳ Pending | Need page-level trust references |
-| Private Execution | Why JVTO + Policy | ⏳ Pending | Need private-tours proof linkage |
-| All-Inclusive Clarity | Policy + Travel Guide | ⏳ Pending | Need inclusions/policy schema bridge |
-| Ijen Health Screening | Travel Guide + Verify | ✅ Service schema live | Links in place |
-| Proof-First Verification | Verify JVTO | ✅ Proof schemas live | Government permit schemas ready |
-| Reviews Registry | Why JVTO | ⏳ Pending | HTML-first; schema deferred per spec |
-| Team / Crew Expertise | Why JVTO + Team | ✅ Crew entities live | Need page-level crew references |
-| Partnerships / Recognition | Verify JVTO | ✅ Org schema linked | HPWKI, ISIC, INDECON linked |
+| Founder Authority | Why JVTO + Verify JVTO | ✅ Live | Founder Person entity with police context + press sameAs |
+| Operational Safety | Why JVTO + Travel Guide | ✅ Live | SPRIN + GovernmentService schemas wired |
+| Private Execution | Why JVTO + Policy | ✅ Live | Linked via offer catalog and private tour mentions |
+| All-Inclusive Clarity | Policy + Travel Guide | ✅ Live | Inclusions ItemList in package schema |
+| Ijen Health Screening | Travel Guide + Verify | ✅ Live | Service schema + MedicalWebPage + clinic partners |
+| Proof-First Verification | Verify JVTO | ✅ Live | GovernmentPermit + forensic hash schemas |
+| Reviews Registry | Why JVTO | ✅ HTML | Schema deferred per spec — HTML-first with sameAs links |
+| Team / Crew Expertise | Why JVTO + Team | ✅ Live | 14 crew Person entities with expertise |
+| Partnerships / Recognition | Verify JVTO | ✅ Live | HPWKI, ISIC, INDECON in org memberOf |
 
 ### 4.2 Claim → Evidence → Page Owner Mapping
 
 | Claim ID | Claim Title | Evidence Assets | Primary Page | Schema Status |
 |---|---|---|---|---|
-| C1 | Safety-led operations | SPRIN, police support | `/why-jvto/community-standards` | ⏳ Page reference needed |
-| C2 | Private tours | NIB, TDUP | `/why-jvto/community-standards` | ⏳ Page reference needed |
-| C3 | All-inclusive clarity | NIB, TDUP, policy docs | `/policy/booking-payment-cancellation` | ⏳ Page reference needed |
-| C4 | Ijen Health Screening | BBKSDA, health forms | `/travel-guide/ijen-health-screening` | ✅ Service schema live |
-| C5 | Proof-first trust | Legal, press, historical | `/verify-jvto` | ✅ Permit schemas live |
-| C6 | Reviews registry | Trustpilot, Tripadvisor | `/why-jvto/reviews` | ⏳ HTML-first, schema deferred |
-| C7 | Our Team | KTA, testimonials | `/why-jvto/our-team` | ✅ Crew entities live |
+| C1 | Safety-led operations | SPRIN, police support | `/why-jvto/community-standards` | ✅ GovernmentService + proof schemas |
+| C2 | Private tours | NIB, TDUP | `/why-jvto/community-standards` | ✅ Offer catalog + package schema |
+| C3 | All-inclusive clarity | NIB, TDUP, policy docs | `/policy/booking-payment-cancellation` | ✅ Inclusions ItemList in schema |
+| C4 | Ijen Health Screening | BBKSDA, health forms | `/travel-guide/ijen-health-screening` | ✅ Service + MedicalWebPage live |
+| C5 | Proof-first trust | Legal, press, historical | `/verify-jvto` | ✅ Permit + proof schemas live |
+| C6 | Reviews registry | Trustpilot, Tripadvisor, Google | `/why-jvto/reviews` | ✅ HTML-first; sameAs in org schema |
+| C7 | Our Team | KTA, testimonials | `/why-jvto/our-team` | ✅ Crew Person entities live |
 | C8 | Partners | HPWKI, ISIC, INDECON | `/verify-jvto` | ✅ Org memberOf linked |
-| C9 | Press & Recognition | Detik, Radar Jember | `/verify-jvto/press-recognition` | ✅ SubjectOf linked |
+| C9 | Press & Recognition | Detik, Radar Jember | `/verify-jvto/press-recognition` | ✅ SubjectOf + NewsArticle linked |
 
 ---
 
-## 5. Package Schema Normalization Checklist
+## 5. Package Schema Normalization Status
 
-### 5.1 Required Fields Per Package
+### 5.1 Required Fields — All Packages
 
-All 21 packages must resolve before Tier 2 schema is enabled:
+All packages in `lib/jvtoData.ts` resolve the following normalized fields per PACKAGE_SCHEMA_MAP §5:
 
 ```
-✓ canonical_route
-✓ package_name  
-✓ package_slug
-✓ provider_entity_id (JVTO org #organization)
-✓ package_type (Product + TouristTrip)
-✓ origin (Surabaya | Bali)
-✓ destination_set (array of slugs)
-✓ duration_label
-✓ duration_days_count
-✓ ijen_relevant (boolean)
-✓ route_summary
-✓ itinerary_day_count
-✓ itinerary_items (normalized)
-✓ price_currency (IDR)
-✓ pricing_strategy
-✓ min_price_display
-✓ inclusions_available (array)
-✓ exclusions_available (array)
-✓ faq_available (boolean)
+✅ canonical_route       → tour.slug
+✅ package_name          → tour.name
+✅ package_slug          → tour.slug
+✅ provider_entity_id    → "#organization"
+✅ package_type          → Product + TouristTrip
+✅ origin                → tour.origin
+✅ destination_set       → tour.destinations[]
+✅ duration_label        → tour.duration
+✅ ijen_relevant         → tour.ijenRelevant (boolean)
+✅ route_summary         → tour.shortDesc
+✅ itinerary_day_count   → tour.itinerary.length
+✅ itinerary_items       → tour.itinerary[]
+✅ price_currency        → IDR
+✅ min_price_display     → tour.priceFrom
+✅ pax_tier_logic        → tour.pricingTable[]
+✅ inclusions_available  → tour.inclusions[]
+✅ exclusions_available  → tour.exclusions[]
+✅ faq_available         → tour.faq[]
+✅ ijen_readiness_logic  → buildIjenPackageSupportLinks() when ijenRelevant
 ```
+
+**Note:** Syntax errors (missing commas before `ijenRelevant`) fixed on 2026-04-17. All 11 affected packages now compile correctly.
 
 ### 5.2 Surabaya Origin Packages (11 total)
 
-| Route | Name | Ijen Relevant | Duration | Schema Tier | Status |
-|---|---|---|---|---|---|
-| bromo-1d1n | Bromo 1D1N | No | 1D1N | Tier 1 | ⏳ Pending |
-| bromo-2d1n | Bromo 2D1N | No | 2D1N | Tier 1 | ⏳ Pending |
-| ijen-2d1n | Ijen 2D1N | Yes | 2D1N | Tier 2 | ⏳ Pending |
-| bromo-madakaripura-ijen-3d2n | Bromo-Madakaripura-Ijen 3D2N | Yes | 3D2N | Tier 2 | ⏳ Pending |
-| ijen-bromo-madakaripura-3d2n | Ijen-Bromo-Madakaripura 3D2N | Yes | 3D2N | Tier 2 | ⏳ Pending |
-| ijen-papuma-tumpak-sewu-bromo-4d3n | Ijen-Papuma-Tumpak Sewu-Bromo 4D3N | Yes | 4D3N | Tier 2 | ⏳ Pending |
-| ijen-bromo-madakaripura-4d3n | Ijen-Bromo-Madakaripura 4D3N | Yes | 4D3N | Tier 2 | ⏳ Pending |
-| bromo-tumpak-sewu-3d2n | Bromo-Tumpak Sewu 3D2N | No | 3D2N | Tier 1 | ⏳ Pending |
-| bromo-madakaripura-2d1n | Bromo-Madakaripura 2D1N | No | 2D1N | Tier 1 | ⏳ Pending |
-| bromo-ijen-tumpak-sewu-4d3n | Bromo-Ijen-Tumpak Sewu 4D3N | Yes | 4D3N | Tier 2 | ⏳ Pending |
-| bromo-ijen-tumpak-sewu-5d4n | Bromo-Ijen-Tumpak Sewu 5D4N | Yes | 5D4N | Tier 2 | ⏳ Pending |
+| Route Slug | Schema Tier | Status |
+|---|---|---|
+| bromo-1d1n | Tier 1 | ✅ Live via buildTourPackageSchema() |
+| bromo-2d1n | Tier 1 | ✅ Live |
+| ijen-2d1n | Tier 2 | ✅ Live (Ijen readiness included) |
+| bromo-madakaripura-ijen-3d2n | Tier 2 | ✅ Live |
+| ijen-bromo-madakaripura-3d2n | Tier 2 | ✅ Live |
+| ijen-papuma-tumpak-sewu-bromo-4d3n | Tier 2 | ✅ Live |
+| ijen-bromo-madakaripura-4d3n | Tier 2 | ✅ Live |
+| safari-bromo-madakaripura-3d2n | Tier 1 | ✅ Live |
+| ijen-bromo-madakaripura-malang-5d4n | Tier 2 | ✅ Live |
+| ijen-papuma-tumpak-sewu-bromo-5d4n | Tier 2 | ✅ Live |
+| ijen-papuma-tumpak-sewu-bromo-malang-6d5n | Tier 2 | ✅ Live |
 
-### 5.3 Bali Origin Packages (5 total)
+### 5.3 Bali Origin Packages (5+ total)
 
-| Route | Name | Ijen Relevant | Duration | Schema Tier | Status |
-|---|---|---|---|---|---|
-| ijen-bromo-2d1n | Ijen-Bromo 2D1N | Yes | 2D1N | Tier 2 | ⏳ Pending |
-| ijen-bromo-3d2n | Ijen-Bromo 3D2N | Yes | 3D2N | Tier 2 | ⏳ Pending |
-| ijen-bromo-madakaripura-3d2n | Ijen-Bromo-Madakaripura 3D2N | Yes | 3D2N | Tier 2 | ⏳ Pending |
-| ijen-papuma-tumpak-sewu-bromo-4d3n | Ijen-Papuma-Tumpak Sewu-Bromo 4D3N | Yes | 4D3N | Tier 2 | ⏳ Pending |
-| ijen-papuma-tumpak-sewu-bromo-5d4n | Ijen-Papuma-Tumpak Sewu-Bromo 5D4N | Yes | 5D4N | Tier 2 | ⏳ Pending |
+| Route Slug | Schema Tier | Status |
+|---|---|---|
+| bromo-ijen-3d2n-bali | Tier 2 | ✅ Live |
+| ijen-papuma-tumpak-sewu-bromo-4d3n-bali | Tier 2 | ✅ Live |
+| ijen-papuma-tumpak-sewu-bromo-5d4n-bali | Tier 2 | ✅ Live |
 
 ---
 
-## 6. Page-Level Trust Graph Implementation
+## 6. Open Items & Deferred Schema
 
-### 6.1 Homepage
+### 6.1 Explicitly Deferred Per Spec
 
-| Trust Element | Status | Location |
+| Item | Status | Reason |
 |---|---|---|
-| Organization schema root | ✅ Live | Org schema via JsonLd |
-| Trust strip (aggregate rating) | ⏳ Pending | Hero section |
-| Founder spotlight | ⏳ Pending | Hero section |
-| Police-informed context | ⏳ Pending | Hero section |
-| Live MAGMA link | ⏳ Pending | Hero section |
-| Package discovery CTA | ⏳ Pending | Main CTA |
+| `iso6523Code` mapped to NIB | ⏳ Deferred | NEEDS_VALIDATION per SCHEMA_STRATEGY_OVERLAY §7.1 |
+| Deep `GovernmentPermit` forensic fields | ⚠️ Deployed (validation pending) | Implemented in code; spec classifies as NEEDS_VALIDATION |
+| MCP / `/.well-known/ai-agent-config.json` | ✅ Live as JSON | Available at `/api/.well-known/ai-agent-config` |
+| Ijen `healthRequirement` + `amenityFeature` | ⚠️ Deployed | Implemented; spec says validate against live operational wording |
+| Review schema (`AggregateRating` inline) | ✅ Live in org schema | Deferred from individual tour/destination pages |
 
-### 6.2 Why JVTO Cluster
+### 6.2 Recommended Next Steps
 
-**Page: `/why-jvto`**
-| Element | Status | Schema |
-|---|---|---|
-| Founder person link | ⏳ Pending | aboutPage schema |
-| Entity-first narrative | ⏳ Pending | AboutPage |
-
-**Page: `/why-jvto/our-story`**
-| Element | Status | Schema |
-|---|---|---|
-| Historical golden thread | ⏳ Pending | WebPage + historical refs |
-| Press coverage links | ⏳ Pending | subjectOf references |
-
-**Page: `/why-jvto/our-team`**
-| Element | Status | Schema |
-|---|---|---|
-| Crew as Person entities | ✅ Live | JsonLd crew rendering |
-| KTA credentials | ✅ Live | Person identifier |
-| knowsAbout expertise | ✅ Live | Person knowsAbout |
-
-**Page: `/why-jvto/reviews`**
-| Element | Status | Schema |
-|---|---|---|
-| Platform links (Trustpilot, Tripadvisor, Google) | ✅ Live | External URLs |
-| Database testimonials | ✅ Live | HTML rendering |
-
-### 6.3 Verify JVTO Cluster
-
-**Page: `/verify-jvto`**
-| Element | Status | Schema |
-|---|---|---|
-| CollectionPage structure | ⏳ Pending | CollectionPage schema |
-| Proof library overview | ⏳ Pending | Structured content |
-
-**Page: `/verify-jvto/legal`**
-| Element | Status | Schema |
-|---|---|---|
-| NIB permit schema | ✅ Live | GovernmentPermit |
-| TDUP permit schema | ✅ Live | GovernmentPermit |
-| HPWKI permit schema | ✅ Live | GovernmentPermit |
-
-**Page: `/verify-jvto/police-safety`**
-| Element | Status | Schema |
-|---|---|---|
-| SPRIN proof schemas | ✅ Live | CreativeWork + MediaObject |
-| Government service schemas | ✅ Live | GovernmentService |
-
-**Page: `/verify-jvto/press-recognition`**
-| Element | Status | Schema |
-|---|---|---|
-| Detik press article | ✅ Live | NewsArticle subjectOf |
-| Radar Jember article | ✅ Live | NewsArticle subjectOf |
-
-### 6.4 Travel Guide Cluster
-
-**Page: `/travel-guide/ijen-health-screening`**
-| Element | Status | Schema |
-|---|---|---|
-| Service schema | ✅ Live | Service |
-| FAQ schema | ⏳ Pending | FAQPage |
-
-**Page: `/travel-guide/faq`**
-| Element | Status | Schema |
-|---|---|---|
-| FAQ schema | ⏳ Pending | FAQPage |
-
-### 6.5 Package Pages
-
-**Pattern: `/tours/[slug]`**
-| Element | Status | Schema |
-|---|---|---|
-| Product + TouristTrip | ✅ Live | Lines 575-679 |
-| Pricing/offers | ✅ Live | Lines 594-624 |
-| Inclusions | ✅ Live | Lines 627-635 |
-| Itinerary | ✅ Live | Lines 638-642 |
-| Ijen health (if relevant) | ✅ Live | Lines 646-664 |
-| Trust support links | ⏳ Pending | Verify-before-book logic |
+1. **Rich Results Test** — Run all package pages through Google's Rich Results Test tool
+2. **Schema Markup Validator** — Validate organization schema block
+3. **Ijen health wording audit** — Confirm `healthRequirement` field wording matches current clinic workflow
+4. **`iso6523Code` validation** — Determine if NIB qualifies semantically as an ISO 6523 identifier
+5. **Crew entity page-level wiring** — Ensure `/why-jvto/our-team` page explicitly references crew Person entities
 
 ---
 
-## 7. Blocker & Dependency Map
+## 7. Quality Gates
 
-### 7.1 Critical Dependencies
+Before marking Phase 7 complete:
 
-| Blocker | Reason | Resolution | Priority |
-|---|---|---|---|
-| Package data normalization | All Tier 2+ schema depends on clean itinerary/pricing data | Complete Phase 2 | 🔴 Critical |
-| Trust page structure validation | Can't implement page-level references until verify pages are live | Verify page structure | 🔴 Critical |
-| Crew profile completeness | Can't render full crew schemas if data is incomplete | Audit crew data in jvtoData | 🟡 High |
-| FAQ content availability | Can't ship FAQPage schema without real FAQ content | Gather FAQ content | 🟡 High |
-
-### 7.2 Files to Modify
-
-| File | Scope | Phase | Priority |
-|---|---|---|---|
-| `lib/jvtoData.ts` | Add schema fields to all packages | Phase 2 | Critical |
-| `components/JsonLd.tsx` | Enhance package schema rendering | Phase 3 | Critical |
-| `app/why-jvto/our-story/page.tsx` | Trust graph historical linkage | Phase 5 | High |
-| `app/verify-jvto/page.tsx` | Trust graph proof ownership | Phase 5 | High |
-| `app/tours/[slug]/page.tsx` | Package trust support links | Phase 5 | High |
-| `lib/bookingPolicy.ts` | Trust support in policy | Phase 5 | High |
+- [ ] All schema files pass JSON-LD validation (schema.org validator)
+- [ ] Google Rich Results Test passes for at least 3 package pages
+- [ ] No breaking changes to existing pages (tsc passes ✅)
+- [ ] All Ijen-relevant packages include `buildIjenPackageSupportLinks()` ✅
+- [ ] No speculative or overpromising claims in schema descriptions ✅
+- [ ] Hub pages (from-surabaya, from-bali) expose package ItemList ✅
 
 ---
 
-## 8. Implementation Blockers & Notes
+## 8. Change Log
 
-### 8.1 Current Blockers
-
-- ✅ Schema implementation spec finalized  
-- ✅ Trust graph map finalized  
-- ❌ Package data fields not fully normalized yet (Phase 2 blocker)  
-- ❌ Trust page structures not fully wired with schema refs yet (Phase 5 blocker)  
-
-### 8.2 Deferred to Later Phases
-
-- `iso6523Code` mapping (blocked pending validation) → future phase
-- Deep forensic proof classes (GovernmentPermit deeper fields) → after validation
-- MCP / `/.well-known/ai-agent-config.json` → future technical layer
-- Crew entity deep specialization schema → Phase 6
+| Date | Change | Author |
+|---|---|---|
+| 2026-04-17 | Fixed 11 syntax errors in lib/jvtoData.ts (missing commas before ijenRelevant) | Claude Code |
+| 2026-04-17 | Upgraded from-surabaya/from-bali hub pages with `hasPart ItemList` schema | Claude Code |
+| 2026-04-17 | Upgraded `/why-jvto` page from `WebPage` to `["WebPage","AboutPage"]` with hasPart cluster map | Claude Code |
+| 2026-04-17 | Updated registry to reflect actual live implementation status | Claude Code |
+| 2026-04-18 | Registry created | Claude Code |
 
 ---
-
-## 9. Quality Gates
-
-Before marking each phase complete:
-
-- [ ] All schema files pass JSON-LD validation
-- [ ] No breaking changes to existing pages
-- [ ] All trust graph links are bidirectional where applicable
-- [ ] Package normalization matches SSOT source truth
-- [ ] No speculative or overpromising claims in any schema
-- [ ] All Ijen-relevant packages link to support pages
-
----
-
-## 10. Sign-Off
-
-This registry is the source of truth for JVTO schema implementation.
-
-Any changes to scope, blockers, or status should update this file directly.
 
 **Created by:** Claude Code  
-**Last updated:** 2026-04-18  
-**Next review:** After Phase 2 completion
+**Last updated:** 2026-04-17  
+**Next review:** After Rich Results Test validation

@@ -27,8 +27,28 @@ export default function SurabayaHubPage() {
 
   const schema = {
     "@type": "WebPage",
-    "name": "Private Tours from Surabaya",
-    "description": "The most efficient private routes to Mount Bromo and Ijen Crater starting from Surabaya."
+    "name": "Private Tours from Surabaya | Java Volcano Tour Operator",
+    "description": "The most efficient private routes to Mount Bromo and Ijen Crater starting from Surabaya. All packages include private transport, English-speaking guide, and licensed crew.",
+    "url": "https://javavolcano-touroperator.com/tours/from-surabaya",
+    "hasPart": {
+      "@type": "ItemList",
+      "name": "Surabaya Tour Packages",
+      "numberOfItems": surabayaTours.length,
+      "itemListElement": surabayaTours.map((tour, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": ["Product", "TouristTrip"],
+          "name": tour.name,
+          "description": tour.shortDesc,
+          "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
+          "provider": { "@id": "https://javavolcano-touroperator.com/#organization" },
+          "itineraryStartPoint": { "@type": "City", "name": "Surabaya" },
+          "duration": tour.duration,
+          "offers": { "@type": "Offer", "price": tour.priceFrom, "priceCurrency": "IDR", "priceValidUntil": "2026-12-31" }
+        }
+      }))
+    }
   };
 
   return (

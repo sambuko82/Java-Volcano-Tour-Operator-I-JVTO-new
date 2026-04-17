@@ -27,8 +27,28 @@ export default function BaliHubPage() {
 
   const schema = {
     "@type": "WebPage",
-    "name": "Private Tours from Bali",
-    "description": "Seamless private transfers and volcano tours from Bali to Ijen Crater and Mount Bromo."
+    "name": "Private Tours from Bali | Java Volcano Tour Operator",
+    "description": "Seamless private transfers and volcano tours from Bali to Ijen Crater and Mount Bromo. Ferry logistics included. All packages private, no group mixing.",
+    "url": "https://javavolcano-touroperator.com/tours/from-bali",
+    "hasPart": {
+      "@type": "ItemList",
+      "name": "Bali Tour Packages",
+      "numberOfItems": baliTours.length,
+      "itemListElement": baliTours.map((tour, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": ["Product", "TouristTrip"],
+          "name": tour.name,
+          "description": tour.shortDesc,
+          "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
+          "provider": { "@id": "https://javavolcano-touroperator.com/#organization" },
+          "itineraryStartPoint": { "@type": "City", "name": "Bali" },
+          "duration": tour.duration,
+          "offers": { "@type": "Offer", "price": tour.priceFrom, "priceCurrency": "IDR", "priceValidUntil": "2026-12-31" }
+        }
+      }))
+    }
   };
 
   return (

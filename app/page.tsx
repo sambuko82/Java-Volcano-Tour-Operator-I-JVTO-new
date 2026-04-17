@@ -10,7 +10,15 @@ import Footer from '@/components/Footer';
 import TourCard from '@/components/TourCard';
 import AnswerBlock from '@/components/AnswerBlock';
 import FAQSection from '@/components/FAQSection';
-import JsonLd, { buildSiteNavigationSchema } from '@/components/JsonLd';
+import JsonLd, {
+  buildSiteNavigationSchema,
+  buildFounderSchema,
+  buildMedicalBusinessSchema,
+  buildPhysicianSchema,
+  buildBookCitationNode,
+  buildDetikPressNode,
+  buildRadarJemberPressNode,
+} from '@/components/JsonLd';
 import FounderSpotlight from '@/components/FounderSpotlight';
 import TrustpilotWidget from '@/components/TrustpilotWidget';
 import CrewGrid from '@/components/CrewGrid';
@@ -47,16 +55,31 @@ const homeFaqs = [
 
 export default function Home() {
   const homeSchema = [
+    // ── Named entity nodes (cross-referenced via @id in org schema) ────────
+    buildFounderSchema(),
+    buildMedicalBusinessSchema(),
+    buildPhysicianSchema(),
+    buildBookCitationNode(),
+    buildDetikPressNode(),
+    buildRadarJemberPressNode(),
+    // ── Site navigation ────────────────────────────────────────────────────
     buildSiteNavigationSchema(),
+    // ── Homepage WebPage + FAQ ─────────────────────────────────────────────
     {
       "@type": "WebPage",
       "@id": "https://javavolcano-touroperator.com/#webpage",
       "url": "https://javavolcano-touroperator.com",
-      "name": "Java Volcano Tour Operator",
+      "name": "Java Volcano Tour Operator — Private Volcano Tours from Surabaya & Bali",
       "description": SITE_CONFIG.organization.description,
       "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
       "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
-      "mainEntity": { "@id": "https://javavolcano-touroperator.com/#home-faq" }
+      "mainEntity": { "@id": "https://javavolcano-touroperator.com/#home-faq" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://javavolcano-touroperator.com" }
+        ]
+      }
     },
     {
       "@type": "FAQPage",
@@ -346,7 +369,7 @@ export default function Home() {
 
 
       {/* Reviews Section - What Our Guests Say */}
-      <section id="reviews" className="section-padding bg-jvto-off">
+      <section id="guest-reviews" className="section-padding bg-jvto-off">
         <div className="container-width">
           <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
             <div className="max-w-2xl">

@@ -18,6 +18,10 @@ const ORGANIZATION_ID = `${BASE_URL}/#organization`;
 const WEBSITE_ID = `${BASE_URL}/#website`;
 const FOUNDER_ID = `${BASE_URL}/#founder-agung-sambuko`;
 const MEDICAL_PROCEDURE_ID = `${BASE_URL}/#ijen-health-screening`;
+const PHYSICIAN_ID = `${BASE_URL}/#doctor-ahmad-irwandanu`;
+const BOOK_STEFAN_LOOSE_ID = `${BASE_URL}/#book-stefan-loose`;
+const PRESS_DETIK_ID = `${BASE_URL}/#press-detik-2021`;
+const PRESS_RADAR_JEMBER_ID = `${BASE_URL}/#press-radar-jember-2021`;
 
 function checkoutUrlForTour(tour: Tour): string {
   return `${BASE_URL}/checkout/${tour.slug}`;
@@ -164,42 +168,9 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
 
     foundingDate: SITE_CONFIG.organization.foundingDate,
 
-    founder: {
-      '@type': 'Person',
-      '@id': FOUNDER_ID,
-      name: 'Agung Sambuko',
-      honorificPrefix: 'Bripka',
-      jobTitle: 'Founder and Tourist Police duty-context operator',
-      description:
-        'Agung Sambuko is the founder of JVTO. Indonesian press coverage documents his Bripka and Tourist Police duty context around Bondowoso and Ijen, which informs JVTO safety planning for private volcano tours.',
-      image: {
-        '@type': 'ImageObject',
-        url: SITE_CONFIG.organization.founder.image,
-        caption: 'Agung Sambuko in Tourist Police duty context, Bondowoso, East Java.',
-      },
-      memberOf: {
-        '@type': 'GovernmentOrganization',
-        name: 'Indonesian National Police (Polri) - Tourist Police context',
-        alternateName: 'Kepolisian Negara Republik Indonesia',
-        url: 'https://www.polri.go.id',
-        description:
-          'Government organization context for Indonesian Tourist Police duty referenced by third-party media coverage.',
-        sameAs: 'https://www.polri.go.id',
-      },
-      worksFor: { '@id': ORGANIZATION_ID },
-      knowsAbout: [
-        'Tourist safety coordination',
-        'East Java volcano logistics',
-        'Ijen crater hazard awareness',
-        'Mount Bromo route planning',
-        'Private tour risk management',
-      ],
-      sameAs: [
-        EXTERNAL_VERIFICATION_URLS.detikPolice,
-        EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
-        EXTERNAL_VERIFICATION_URLS.radarJemberIjenPatrol,
-      ],
-    },
+    // Cross-reference to separate @graph node — avoids duplication
+    founder: { '@id': FOUNDER_ID },
+    department: { '@id': MEDICAL_PROCEDURE_ID },
 
     address: {
       '@type': 'PostalAddress',
@@ -319,25 +290,8 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       worstRating: 1,
     },
 
-    citation: {
-      '@type': 'Book',
-      name: 'Stefan Loose Reiseführer Indonesien',
-      isbn: '978-3-7701-7881-0',
-      bookEdition: '4th Edition (2018)',
-      author: [
-        { '@type': 'Person', name: 'Moritz Jacobi' },
-        { '@type': 'Person', name: 'Mischa Loose' },
-        { '@type': 'Person', name: 'Christian Wachsmuth' },
-      ],
-      publisher: {
-        '@type': 'Organization',
-        name: 'DuMont Reiseverlag',
-      },
-      description:
-        'German-language travel guidebook listing Agung and Ijen tour services in the Ijen-Massiv section (Page 287). Independent editorial selection — not a paid advertisement.',
-      url: EXTERNAL_VERIFICATION_URLS.stefanLoose,
-      inLanguage: 'de',
-    },
+    // Cross-reference to separate @graph node
+    citation: { '@id': BOOK_STEFAN_LOOSE_ID },
 
     subjectOf: [
       mediaObject('NIB certificate 1102230032918', PROOF_ASSETS.nibPdf, FORENSIC_HASHES.nib, 'application/pdf'),
@@ -345,22 +299,9 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       mediaObject('HPWKI membership proof', PROOF_ASSETS.hpwkiPdf, FORENSIC_HASHES.hpwki, 'application/pdf'),
       mediaObject('SPRIN Tourist Police Duty Context Proof (Polpar)', PROOF_ASSETS.sprinPolparPdf, FORENSIC_HASHES.sprinPolpar, 'application/pdf'),
       mediaObject('SPRIN Wal Travel Authorization 2024-02-12', PROOF_ASSETS.sprinWalTravelPdf, FORENSIC_HASHES.sprinWalTravel, 'application/pdf'),
-      {
-        '@type': 'NewsArticle',
-        headline: 'Suka Duka Polisi Pariwisata Bondowoso Tegakkan Prokes Sambil Lawan Dingin',
-        url: EXTERNAL_VERIFICATION_URLS.detikPolice,
-        datePublished: '2021-03-14',
-        publisher: { '@type': 'NewsMediaOrganization', name: 'Detik.com' },
-        about: { '@id': FOUNDER_ID },
-      },
-      {
-        '@type': 'NewsArticle',
-        headline: 'Polpar Dibentuk untuk Mendukung Ijen Geopark',
-        url: EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
-        datePublished: '2021-03-24',
-        publisher: { '@type': 'NewsMediaOrganization', name: 'Radar Jember / Jawa Pos' },
-        about: { '@id': FOUNDER_ID },
-      },
+      // Cross-reference to named press article nodes in @graph
+      { '@id': PRESS_DETIK_ID },
+      { '@id': PRESS_RADAR_JEMBER_ID },
     ],
 
     sameAs: [
@@ -1101,6 +1042,213 @@ export function buildIjenPackageSupportLinks(slug: string): JsonLdNode {
         description: 'Full legal and operational credential verification',
       },
     ],
+  };
+}
+
+// ─── Standalone @graph node builders (for homepage @graph composition) ────────
+
+/**
+ * Founder as a separate @graph node.
+ * Cross-referenced from org schema via founder: { '@id': FOUNDER_ID }.
+ * Separating this node allows search engines to resolve the Person entity
+ * independently and link it to press coverage and police duty context.
+ */
+export function buildFounderSchema(): JsonLdNode {
+  return {
+    '@type': 'Person',
+    '@id': FOUNDER_ID,
+    name: 'Agung Sambuko',
+    alternateName: 'Mr. Sam',
+    honorificPrefix: 'Bripka',
+    jobTitle: 'Founder & Active Tourist Police Officer',
+    description:
+      'Agung Sambuko is the founder of JVTO. Indonesian press coverage documents his Bripka rank and Tourist Police (Ditpamobvit) duty context around Bondowoso and Ijen, informing JVTO safety planning for private volcano tours.',
+    image: {
+      '@type': 'ImageObject',
+      url: SITE_CONFIG.organization.founder.image,
+      caption: 'Agung Sambuko — Founder of JVTO and active Tourist Police officer, Bondowoso, East Java.',
+    },
+    memberOf: {
+      '@type': 'GovernmentOrganization',
+      name: 'Indonesian National Police (Polri)',
+      alternateName: 'Kepolisian Negara Republik Indonesia',
+      url: 'https://www.polri.go.id',
+      sameAs: 'https://www.polri.go.id',
+      subOrganization: {
+        '@type': 'GovernmentOrganization',
+        name: 'Ditpamobvit (Directorate of Vital Object Security and Tourism Police)',
+        description: 'East Java Tourist Police unit — coordinates visitor safety and volcanic route monitoring.',
+      },
+    },
+    worksFor: { '@id': ORGANIZATION_ID },
+    knowsAbout: [
+      'Tourist safety coordination',
+      'East Java volcano logistics',
+      'Ijen crater hazard awareness',
+      'Mount Bromo route planning',
+      'Private tour risk management',
+      'Volcanic contingency planning',
+    ],
+    // Corroborated by named press nodes in @graph
+    subjectOf: { '@id': PRESS_DETIK_ID },
+    sameAs: [
+      EXTERNAL_VERIFICATION_URLS.detikPolice,
+      EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
+      EXTERNAL_VERIFICATION_URLS.radarJemberIjenPatrol,
+    ],
+  };
+}
+
+/**
+ * Ijen Health Screening unit as MedicalBusiness — semantically more precise
+ * than Service for a medical coordination function with a licensed physician.
+ * Cross-referenced from org schema via department: { '@id': MEDICAL_PROCEDURE_ID }.
+ */
+export function buildMedicalBusinessSchema(): JsonLdNode {
+  return {
+    '@type': 'MedicalBusiness',
+    '@id': MEDICAL_PROCEDURE_ID,
+    name: 'Ijen Health Screening Unit',
+    medicalSpecialty: 'https://schema.org/PublicHealth',
+    description:
+      'JVTO coordinates a real local health screening workflow for Ijen Crater guests when current access rules require it. Readiness checks — blood pressure, heart-rate, SpO2 — are performed by licensed medical partners before the Ijen ascent.',
+    url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+    parentOrganization: { '@id': ORGANIZATION_ID },
+    employee: { '@id': PHYSICIAN_ID },
+    availableService: {
+      '@type': 'MedicalProcedure',
+      name: 'Pre-Ijen health readiness check',
+      procedureType: 'https://schema.org/PhysicalExam',
+      bodyLocation: 'Cardiovascular and respiratory systems',
+      description: 'Blood pressure, heart-rate, and SpO2 screening before the Ijen Crater ascent.',
+    },
+  };
+}
+
+/**
+ * Licensed physician as a separate Physician @graph node.
+ * Cross-referenced from MedicalBusiness via employee: { '@id': PHYSICIAN_ID }.
+ * STR (medical council registration) is publicly verifiable via SatuSehat SDMK.
+ */
+export function buildPhysicianSchema(): JsonLdNode {
+  return {
+    '@type': 'Physician',
+    '@id': PHYSICIAN_ID,
+    name: 'dr. Ahmad Irwandanu',
+    identifier: [
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'SIP',
+        name: 'Surat Izin Praktik (Practice License)',
+        value: '503.446/193/DRU/4/430.9.13/2020',
+      },
+      {
+        '@type': 'PropertyValue',
+        propertyID: 'STR',
+        name: 'Surat Tanda Registrasi (Registration Certificate)',
+        value: 'QN00001073380217',
+        url: EXTERNAL_VERIFICATION_URLS.doctorSip,
+      },
+    ],
+    affiliation: {
+      '@type': 'MedicalOrganization',
+      name: 'Konsil Kesehatan Indonesia (KKI)',
+      alternateName: 'Indonesian Health Council',
+      description: 'Government body that issues and verifies physician STR credentials in Indonesia.',
+    },
+    memberOf: { '@id': MEDICAL_PROCEDURE_ID },
+    url: EXTERNAL_VERIFICATION_URLS.doctorSip,
+  };
+}
+
+/**
+ * Stefan Loose guidebook as a separate Book @graph node.
+ * Cross-referenced from org schema via citation: { '@id': BOOK_STEFAN_LOOSE_ID }.
+ * Independent editorial authority — not a paid listing.
+ */
+export function buildBookCitationNode(): JsonLdNode {
+  return {
+    '@type': 'Book',
+    '@id': BOOK_STEFAN_LOOSE_ID,
+    name: 'Stefan Loose Reiseführer Indonesien',
+    isbn: '978-3-7701-7881-0',
+    bookEdition: '4th Edition',
+    datePublished: '2018',
+    author: [
+      { '@type': 'Person', name: 'Moritz Jacobi' },
+      { '@type': 'Person', name: 'Mischa Loose' },
+      { '@type': 'Person', name: 'Christian Wachsmuth' },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: 'DuMont Reiseverlag',
+    },
+    description:
+      'German-language travel guidebook listing Agung and Ijen tour services in the Ijen-Massiv section (Page 287). Independent editorial selection — not a paid advertisement.',
+    url: EXTERNAL_VERIFICATION_URLS.stefanLoose,
+    inLanguage: 'de',
+    about: { '@id': ORGANIZATION_ID },
+    image: {
+      '@type': 'ImageObject',
+      url: PROOF_ASSETS.stefanLoosePage,
+      caption: 'Stefan Loose Reiseführer Indonesien — Page 287, Ijen-Massiv section.',
+      sha256: FORENSIC_HASHES.stefanLoosePage287,
+    },
+  };
+}
+
+/**
+ * Detik.com press article as a separate NewsArticle @graph node.
+ * Cross-referenced from org/founder schema via subjectOf: [{ '@id': PRESS_DETIK_ID }].
+ * National media corroboration of founder police duty context.
+ */
+export function buildDetikPressNode(): JsonLdNode {
+  return {
+    '@type': 'NewsArticle',
+    '@id': PRESS_DETIK_ID,
+    headline: 'Suka Duka Polisi Pariwisata Bondowoso: Tegakkan Prokes Sambil Lawan Dingin',
+    url: EXTERNAL_VERIFICATION_URLS.detikPolice,
+    datePublished: '2021-03-14',
+    inLanguage: 'id',
+    publisher: {
+      '@type': 'NewsMediaOrganization',
+      name: 'Detik.com',
+      url: 'https://detik.com',
+    },
+    about: { '@id': FOUNDER_ID },
+    image: {
+      '@type': 'ImageObject',
+      url: PROOF_ASSETS.detikScreenshot,
+      sha256: FORENSIC_HASHES.detikCoverage2021,
+      caption: 'Screenshot of Detik.com article — Suka Duka Polisi Pariwisata Bondowoso, 2021.',
+    },
+  };
+}
+
+/**
+ * Radar Jember press article as a separate NewsArticle @graph node.
+ * Cross-referenced from org schema via subjectOf: [{ '@id': PRESS_RADAR_JEMBER_ID }].
+ */
+export function buildRadarJemberPressNode(): JsonLdNode {
+  return {
+    '@type': 'NewsArticle',
+    '@id': PRESS_RADAR_JEMBER_ID,
+    headline: 'Polpar Dibentuk untuk Mendukung Ijen Geopark',
+    url: EXTERNAL_VERIFICATION_URLS.radarJemberPolpar,
+    datePublished: '2021-03-24',
+    inLanguage: 'id',
+    publisher: {
+      '@type': 'NewsMediaOrganization',
+      name: 'Radar Jember / Jawa Pos',
+      url: 'https://radarjember.jawapos.com',
+    },
+    about: { '@id': FOUNDER_ID },
+    image: {
+      '@type': 'ImageObject',
+      url: PROOF_ASSETS.radarJemberScreenshot,
+      sha256: FORENSIC_HASHES.radarJemberPolpar2021,
+      caption: 'Screenshot of Radar Jember article — Polpar Dibentuk untuk Mendukung Ijen Geopark, 2021.',
+    },
   };
 }
 

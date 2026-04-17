@@ -6,10 +6,11 @@ const CACHE_TTL = parseInt(process.env.CACHE_TTL_TOURS || '86400');
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const cacheKey = `tour:${params.slug}`;
+    const { slug } = await params;
+    const cacheKey = `tour:${slug}`;
 
     const cached = await cacheGet(cacheKey);
     if (cached) {
@@ -63,7 +64,7 @@ export async function GET(
       WHERE p.slug = $1
         AND p.deleted_at IS NULL
       `,
-      [params.slug]
+      [slug]
     );
 
     if (result.rows.length === 0) {

@@ -170,28 +170,8 @@ export const DESTINATIONS: Destination[] = [
   }
 ];
 
+
 export const TOURS: Tour[] = [
-  {
-    image: 'https://javavolcano-touroperator.com/img/destinations/surabaya-mt.-bromo-1-day-tour-1692564153744/bromo11.webp',
-    rating: 4.9,
-    physicality: 'moderate',
-    bestFor: 'Time-sensitive travelers',
-    idealTraveler: 'Solo or couples with limited time',
-    pricingTable: [
-      { pax: 1, price: 1850000 },
-      { pax: 2, price: 1000000 },
-      { pax: 3, price: 850000 },
-      { pax: 4, price: 750000 },
-      { pax: 5, price: 650000 }
-    ],
-    highlights: ['Midnight departure', '4WD Jeep experience', 'Bromo crater exploration', 'Whispering Sand'],
-    destinations: ['mount-bromo'],
-    itinerary: [
-      { day: 'Day 1', title: 'Overnight Adventure in Bromo', summary: 'Midnight pickup from Surabaya. Jeep tour for sunrise at Kingkong Hill. Hike to Bromo crater. Return to Surabaya by noon.' }
-    ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Complimentary T-shirt'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
-  },
   {
     slug: 'bromo-2d1n',
     name: '2D1N Bromo & Madakaripura',

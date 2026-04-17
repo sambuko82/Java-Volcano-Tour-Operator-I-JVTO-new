@@ -839,6 +839,124 @@ export function buildPoliceSafetyProofSchemas(): JsonLdNode[] {
   ];
 }
 
+/**
+ * Government Permit schemas for legal credentials.
+ * Converts static license images into machine-readable forensic proof.
+ * Each permit includes SHA-256 hash for verification integrity.
+ */
+export function buildGovernmentPermitSchemas(): JsonLdNode[] {
+  return [
+    {
+      '@type': 'GovernmentPermit',
+      '@id': `${BASE_URL}/#permit-nib`,
+      name: 'NIB Business License',
+      description: 'Nomor Induk Berusaha (NIB) - Indonesian Business Registration Number for PT Java Volcano Rendezvous.',
+      identifier: SITE_CONFIG.organization.nib,
+      issuedBy: {
+        '@type': 'GovernmentOrganization',
+        name: 'Government of Indonesia (Pemerintah Republik Indonesia)',
+        url: EXTERNAL_VERIFICATION_URLS.oss,
+      },
+      dateIssued: '2023-02-08',
+      image: {
+        '@type': 'ImageObject',
+        url: PROOF_ASSETS.nibPreview,
+        sha256: FORENSIC_HASHES.nib,
+      },
+      url: PROOF_ASSETS.nibPdf,
+    },
+    {
+      '@type': 'GovernmentPermit',
+      '@id': `${BASE_URL}/#permit-tdup`,
+      name: 'TDUP Tourism Business License',
+      description: 'Tanda Daftar Usaha Pariwisata (TDUP) - Tourism business registration issued by Indonesian Ministry of Tourism.',
+      identifier: SITE_CONFIG.organization.nib,
+      issuedBy: {
+        '@type': 'GovernmentOrganization',
+        name: 'Ministry of Tourism, Republic of Indonesia',
+        alternateName: 'Kementerian Pariwisata dan Ekonomi Kreatif',
+      },
+      image: {
+        '@type': 'ImageObject',
+        url: PROOF_ASSETS.tdupPreview,
+        sha256: FORENSIC_HASHES.tdup,
+      },
+      url: PROOF_ASSETS.tdupPdf,
+    },
+    {
+      '@type': 'GovernmentPermit',
+      '@id': `${BASE_URL}/#permit-hpwki`,
+      name: 'HPWKI Ijen Tourism Specialization',
+      description:
+        'Membership in Himpunan Pelaku Wisata Khusus Ijen (HPWKI) - official Ijen tourism association. Members receive technical training from BBKSDA on toxic gas handling and evacuation procedures.',
+      identifier: 'HPWKI-Membership',
+      issuedBy: {
+        '@type': 'Organization',
+        name: 'HPWKI (Himpunan Pelaku Wisata Khusus Ijen)',
+        description: 'State-recognized Ijen tourism association',
+      },
+      image: {
+        '@type': 'ImageObject',
+        url: PROOF_ASSETS.hpwkiPreview,
+        sha256: FORENSIC_HASHES.hpwki,
+      },
+      url: PROOF_ASSETS.hpwkiPdf,
+    },
+  ];
+}
+
+/**
+ * Government Service schemas for operational authority.
+ * Documents specialized training, certifications, and safety protocols.
+ */
+export function buildGovernmentServiceSchemas(): JsonLdNode[] {
+  return [
+    {
+      '@type': 'GovernmentService',
+      '@id': `${BASE_URL}/#service-ijen-specialization`,
+      name: 'Ijen Specialization & Volcanic Safety Training',
+      description:
+        'JVTO guides are trained members of HPWKI with specialized knowledge of Ijen crater hazards, toxic gas protocols, and visitor safety. Training provided through BBKSDA (Balai Besar Kawasan Suaka Alam Daratan Jatim).',
+      serviceType: 'Specialized tour guide training',
+      provider: {
+        '@type': 'Organization',
+        name: 'BBKSDA Jatim (Conservation Authority)',
+        url: EXTERNAL_VERIFICATION_URLS.bbksdaTraining,
+      },
+      areaServed: {
+        '@type': 'TouristDestination',
+        name: 'Kawah Ijen (Ijen Crater)',
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -8.0584,
+          longitude: 114.242,
+        },
+      },
+      availableLanguage: ['Indonesian', 'English'],
+      audience: { '@type': 'Audience', audienceType: 'Tour operators and guides' },
+    },
+    {
+      '@type': 'GovernmentService',
+      '@id': `${BASE_URL}/#service-sar-training`,
+      name: 'Search and Rescue & First Aid Training',
+      description:
+        'JVTO leadership receives SAR and first-aid training from BBKSDA and conservation authorities to ensure emergency preparedness on volcano expeditions.',
+      serviceType: 'Emergency response training',
+      provider: {
+        '@type': 'GovernmentOrganization',
+        name: 'BBKSDA Jatim (Balai Besar Kawasan Suaka Alam Daratan Jatim)',
+        url: EXTERNAL_VERIFICATION_URLS.bbksdaTraining,
+      },
+      areaServed: {
+        '@type': 'AdministrativeArea',
+        name: 'East Java',
+        identifier: 'ISO 3166-2:ID-JI',
+      },
+      availableLanguage: ['Indonesian'],
+    },
+  ];
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 function normalizeData(data?: JsonLdNode | JsonLdNode[]): JsonLdNode[] {

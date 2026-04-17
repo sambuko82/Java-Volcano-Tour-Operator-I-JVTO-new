@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120" role="img" aria-label="Java Volcano Tour Operator logo">
+  <rect width="400" height="120" fill="#0D1B2A" rx="8"/>
+  <text x="24" y="54" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#FFFFFF" letter-spacing="-1">JVTO</text>
+  <rect x="24" y="62" width="180" height="2" fill="#E8650A"/>
+  <text x="24" y="88" font-family="Arial, sans-serif" font-size="13" font-weight="400" fill="#FFFFFF" opacity="0.75" letter-spacing="2">JAVA VOLCANO TOUR OPERATOR</text>
+  <polygon points="310,30 352,90 268,90" fill="none" stroke="#E8650A" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="310,55 330,90 290,90" fill="#E8650A" opacity="0.4"/>
+</svg>

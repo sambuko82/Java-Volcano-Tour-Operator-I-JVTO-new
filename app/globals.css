@@ -17,6 +17,12 @@
   --color-jvto-muted: #6B7280;
   --color-jvto-border: #E3E0DA;
   
+  /* Legacy brand-* aliases — maps to jvto-* tokens (do not use in new code) */
+  --color-brand-ink: #0D1B2A;
+  --color-brand-cream: #F6F5F2;
+  --color-brand-accent: #E8650A;
+  --color-brand-olive: #0D1B2A;
+
   /* Forensic Mode Specific */
   --color-forensic-bg: #0A1520;
   --color-forensic-card: #0D2414;

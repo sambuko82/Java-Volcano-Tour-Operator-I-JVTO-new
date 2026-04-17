@@ -1,6 +1,6 @@
 'use client';
 
-import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Star, Award, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { NAVIGATION_CLUSTERS } from '@/lib/siteOrchestration';
@@ -18,14 +18,13 @@ export default function Footer() {
               {SITE_CONFIG.organization.description}
             </p>
             <div className="flex gap-4">
-              {/* Social Icons */}
-              <a href={SITE_CONFIG.reputation.tripadvisor} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-brand-ink transition-all">
-                <Instagram size={20} />
+              <a href={SITE_CONFIG.reputation.tripadvisor} target="_blank" rel="noopener noreferrer" aria-label="JVTO on TripAdvisor" title="Review us on TripAdvisor" className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-brand-ink transition-all">
+                <Star size={20} />
               </a>
-              <a href={SITE_CONFIG.reputation.trustpilot} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-brand-ink transition-all">
-                <Facebook size={20} />
+              <a href={SITE_CONFIG.reputation.trustpilot} target="_blank" rel="noopener noreferrer" aria-label="JVTO on Trustpilot" title="Review us on Trustpilot" className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-brand-ink transition-all">
+                <Award size={20} />
               </a>
-              <a href={`mailto:${SITE_CONFIG.organization.email}`} className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-brand-ink transition-all">
+              <a href={`mailto:${SITE_CONFIG.organization.email}`} aria-label="Email JVTO" className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-brand-ink transition-all">
                 <Mail size={20} />
               </a>
             </div>

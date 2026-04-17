@@ -56,7 +56,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       name: SITE_CONFIG.organization.brandName,
     },
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.png`,
+    logo: `${BASE_URL}/logo.svg`,
     image: `${BASE_URL}/assets/img/hero/home.webp`,
     description: SITE_CONFIG.organization.description,
 

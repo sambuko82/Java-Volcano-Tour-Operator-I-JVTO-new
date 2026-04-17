@@ -11,48 +11,57 @@ export async function GET(
   try {
     const cacheKey = `tour:${params.slug}`;
 
-    // Try cache first
     const cached = await cacheGet(cacheKey);
     if (cached) {
       return NextResponse.json(cached, { headers: { 'X-Cache': 'HIT' } });
     }
 
-    // Query package + images + prices + itinerary
+    // Use subqueries per collection to avoid cross-join multiplication
     const result = await pgPool.query(
       `
       SELECT
         p.id,
         p.slug,
         p.name,
-        p.description as "longDesc",
-        p.duration,
-        p.physical_difficulty as "difficulty",
-        json_agg(
-          json_build_object(
-            'url', pi.url,
-            'alt_text', pi.alt_text,
-            'sort_order', pi.sort_order
-          ) ORDER BY pi.sort_order
-        ) FILTER (WHERE pi.url IS NOT NULL) as images,
-        json_agg(
-          json_build_object(
-            'pax', pp.pax,
-            'price_per_person', pp.price_per_person
-          ) ORDER BY pp.pax
-        ) FILTER (WHERE pp.price_per_person IS NOT NULL) as "pricingTable",
-        json_agg(
-          json_build_object(
-            'day', pid.day,
-            'title', pid.title,
-            'summary', pid.summary
-          ) ORDER BY pid.day
-        ) FILTER (WHERE pid.title IS NOT NULL) as itinerary
+        p.description                             AS "longDesc",
+        dur.name                                  AS duration,
+        p.physicality                             AS difficulty,
+        COALESCE(p.aggregate_rating_value, 4.9)  AS rating,
+        p.highlights_bullets                      AS highlights,
+        p.suitable_for                            AS "idealTraveler",
+        (
+          SELECT COALESCE(json_agg(
+            json_build_object('url', pi.url, 'alt_text', pi.alt_text, 'sort_order', pi.sort_order)
+            ORDER BY pi.sort_order
+          ), '[]'::json)
+          FROM package_images pi
+          WHERE pi.package_id = p.id AND pi.deleted_at IS NULL
+        ) AS images,
+        (
+          SELECT COALESCE(json_agg(
+            json_build_object('pax', pt.min_pax, 'price_per_person', pp.price)
+            ORDER BY pt.min_pax
+          ), '[]'::json)
+          FROM package_prices pp
+          JOIN price_tiers pt ON pp.price_tier_id = pt.id
+          WHERE pp.package_id = p.id AND pp.deleted_at IS NULL
+        ) AS "pricingTable",
+        (
+          SELECT COALESCE(json_agg(
+            json_build_object(
+              'day',     'Day ' || pid.day_no,
+              'title',   pid.title,
+              'summary', pid.activity
+            )
+            ORDER BY pid.day_no
+          ), '[]'::json)
+          FROM package_itinerary_days pid
+          WHERE pid.package_id = p.id AND pid.deleted_at IS NULL
+        ) AS itinerary
       FROM packages p
-      LEFT JOIN package_images pi ON p.id = pi.package_id
-      LEFT JOIN package_prices pp ON p.id = pp.package_id
-      LEFT JOIN package_itinerary_days pid ON p.id = pid.package_id
-      WHERE p.slug = $1 AND p.deleted_at IS NULL
-      GROUP BY p.id, p.slug, p.name, p.description, p.duration, p.physical_difficulty
+      LEFT JOIN durations dur ON p.duration_id = dur.id
+      WHERE p.slug = $1
+        AND p.deleted_at IS NULL
       `,
       [params.slug]
     );
@@ -63,7 +72,6 @@ export async function GET(
 
     const tour = result.rows[0];
 
-    // Cache for configured TTL
     await cacheSet(cacheKey, tour, CACHE_TTL);
 
     return NextResponse.json(tour, { headers: { 'X-Cache': 'MISS' } });

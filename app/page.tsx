@@ -116,7 +116,7 @@ export default function Home() {
         magmaStatus={"MAGMA: Normal"}
       />
 
-      {      {/* Legacy hero removed — replaced by <Hero /> component above */}
+      {/* Legacy hero removed — replaced by <Hero /> component above */}
 
       {/* Differentiators — 9 reasons JVTO is different */}
       <DifferentiatorGrid />

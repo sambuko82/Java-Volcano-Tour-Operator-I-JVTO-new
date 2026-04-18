@@ -3,12 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 /**
- * Hero — Server Component
- * - Image-first, accessible hero for JVTO
- * - Uses project design tokens (globals.css) and Tailwind mapping
- * - Keep as Server Component to keep bundle small; no 'use client' here
+ * Hero — Client Component
+ * Image-first, accessible hero for JVTO
  */
-
 export type HeroProps = {
   title: string;
   tagline?: string;
@@ -37,11 +34,7 @@ export default function Hero({
   magmaStatus = "MAGMA: Normal",
 }: HeroProps) {
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="relative w-full"
-      role="region"
-    >
+    <section aria-labelledby="hero-title" className="relative w-full" role="region">
       <div className="relative h-[60vh] md:h-[80vh]">
         <Image
           src={heroImageSrc}
@@ -79,15 +72,15 @@ export default function Hero({
 
             <div className="mt-6 flex flex-wrap items-center gap-6 text-sm" aria-hidden>
               <div className="flex items-center gap-2 text-jvto-gold">
-                <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden>
-                  <path d=\"M12 .587l3.668 7.431 8.2 1.192-5.934 5.79 1.402 8.17L12 18.896 4.664 23.17l1.402-8.17L.132 9.21l8.2-1.192z\" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.79 1.402 8.17L12 18.896 4.664 23.17l1.402-8.17L.132 9.21l8.2-1.192z" />
                 </svg>
-                <span className=\"text-white/90\">{rating} / 5</span>
+                <span className="text-white/90">{rating} / 5</span>
               </div>
 
-              <div className=\"text-white/80\">NIB {nib}</div>
+              <div className="text-white/80">NIB {nib}</div>
 
-              <div className=\"px-3 py-1 rounded-md bg-jvto-verify text-black font-medium\">{magmaStatus}</div>
+              <div className="px-3 py-1 rounded-md bg-jvto-verify text-black font-medium">{magmaStatus}</div>
             </div>
           </div>
         </div>

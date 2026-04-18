@@ -22,6 +22,7 @@ import TrustpilotWidget from '@/components/TrustpilotWidget';
 import CrewGrid from '@/components/CrewGrid';
 import MedicalTrustSection from '@/components/MedicalTrustSection';
 import TrustSummary from '@/components/TrustSummary';
+import Hero from '@/components/Hero';
 import RouteSelector from '@/components/RouteSelector';
 import ContactSection from '@/components/ContactSection';
 import DifferentiatorGrid from '@/components/DifferentiatorGrid';
@@ -102,65 +103,20 @@ export default function Home() {
       <TrustSummary />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-jvto-navy">
-        <Image
-          src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
-          alt="Java Volcano"
-          fill
-          className="object-cover opacity-60"
-          priority
-          unoptimized
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-jvto-navy/40 via-transparent to-jvto-navy/80" />
-        
-        <div className="relative z-10 text-center px-4 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-jvto-lime/10 backdrop-blur-md border border-jvto-lime/30 text-jvto-lime px-6 py-2 rounded-full mb-8 text-[10px] font-bold tracking-[0.2em] uppercase"
-          >
-            <ShieldCheck size={14} /> Proof-First Private Tours
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-8xl font-display font-bold text-white mb-8 leading-[1.1] tracking-tight"
-          >
-            Police-Informed <br /> 
-            <span className="text-jvto-orange">Private Volcano Tours in East Java</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-lg md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto font-light leading-relaxed"
-          >
-            Private Bromo, Ijen and Tumpak Sewu expeditions from Surabaya or Bali, built around visible legal proof, a Tourist Police-informed safety culture, documented operating history, and route-specific preparation for East Java&apos;s active volcanic terrain.
-          </motion.p>
+      <Hero title={"Police-Informed Private Volcano Tours in East Java"} 
+        tagline={"Private Bromo, Ijen and Tumpak Sewu expeditions from Surabaya or Bali, built around visible legal proof, a Tourist Police-informed safety culture, documented operating history, and route-specific preparation for East Java's active volcanic terrain."}
+        ctaPrimaryLabel={"Book a private tour"}
+        ctaPrimaryHref={"/contact"}
+        ctaSecondaryLabel={"Browse tours"}
+        ctaSecondaryHref={"/tours"}
+        heroImageSrc={"https://javavolcano-touroperator.com/assets/img/hero/home.webp"}
+        heroImageAlt={"Java Volcano"}
+        rating={4.9}
+        nib={"1102230032918"}
+        magmaStatus={"MAGMA: Normal"}
+      />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-center gap-6"
-          >
-            <p className="text-white/60 text-xs font-bold uppercase tracking-[0.3em]">Choose Your Start Point</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
-              <Link href="/tours?origin=Surabaya" className="w-full bg-white text-jvto-navy px-10 py-5 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-stone-100 transition-all flex items-center justify-center gap-3 group shadow-xl">
-                From Surabaya <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link href="/tours?origin=Bali" className="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-white/20 transition-all flex items-center justify-center gap-3 group">
-                From Bali <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {      {/* Legacy hero removed — replaced by <Hero /> component above */}
 
       {/* Differentiators — 9 reasons JVTO is different */}
       <DifferentiatorGrid />
@@ -489,3 +445,4 @@ export default function Home() {
     </main>
   );
 }
+

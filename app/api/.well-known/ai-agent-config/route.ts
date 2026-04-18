@@ -154,7 +154,7 @@ export async function GET() {
         { path: '/policy', role: 'Rules, cancellation, payment terms' },
       ],
       trustOwnership: [
-        { path: '/verify-jvto', role: 'Forensic proof audit trail', schemas: ['GovernmentPermit', 'GovernmentService', 'CreativeWork'] },
+        { path: '/verify-jvto', role: 'Forensic proof audit trail', schemas: ['CreativeWork', 'MediaObject', 'Service'] },
         { path: '/why-jvto', role: 'Brand narrative + differentiation', schemas: ['Organization', 'Person'] },
       ],
     },

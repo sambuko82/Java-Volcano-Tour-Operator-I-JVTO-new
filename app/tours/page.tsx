@@ -67,7 +67,7 @@ export default function ToursPage() {
         "description": tour.shortDesc,
         "image": tour.image || (tour.images?.[0]?.url),
         "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
-        "itineraryStartPoint": {
+        "tripOrigin": {
           "@type": "City",
           "name": tour.origin
         },

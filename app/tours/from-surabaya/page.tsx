@@ -43,7 +43,7 @@ export default function SurabayaHubPage() {
           "description": tour.shortDesc,
           "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
           "provider": { "@id": "https://javavolcano-touroperator.com/#organization" },
-          "itineraryStartPoint": { "@type": "City", "name": "Surabaya" },
+          "tripOrigin": { "@type": "City", "name": "Surabaya" },
           "duration": tour.duration,
           "offers": { "@type": "Offer", "price": tour.priceFrom, "priceCurrency": "IDR", "priceValidUntil": "2026-12-31" }
         }

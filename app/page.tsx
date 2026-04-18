@@ -13,8 +13,6 @@ import FAQSection from '@/components/FAQSection';
 import JsonLd, {
   buildSiteNavigationSchema,
   buildFounderSchema,
-  buildMedicalBusinessSchema,
-  buildPhysicianSchema,
   buildBookCitationNode,
   buildDetikPressNode,
   buildRadarJemberPressNode,
@@ -57,8 +55,6 @@ export default function Home() {
   const homeSchema = [
     // ── Named entity nodes (cross-referenced via @id in org schema) ────────
     buildFounderSchema(),
-    buildMedicalBusinessSchema(),
-    buildPhysicianSchema(),
     buildBookCitationNode(),
     buildDetikPressNode(),
     buildRadarJemberPressNode(),

@@ -43,7 +43,7 @@ export default function BaliHubPage() {
           "description": tour.shortDesc,
           "url": `https://javavolcano-touroperator.com/tours/${tour.slug}`,
           "provider": { "@id": "https://javavolcano-touroperator.com/#organization" },
-          "itineraryStartPoint": { "@type": "City", "name": "Bali" },
+          "tripOrigin": { "@type": "City", "name": "Bali" },
           "duration": tour.duration,
           "offers": { "@type": "Offer", "price": tour.priceFrom, "priceCurrency": "IDR", "priceValidUntil": "2026-12-31" }
         }

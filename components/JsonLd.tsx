@@ -17,7 +17,7 @@ const BASE_URL = 'https://javavolcano-touroperator.com';
 const ORGANIZATION_ID = `${BASE_URL}/#organization`;
 const WEBSITE_ID = `${BASE_URL}/#website`;
 const FOUNDER_ID = `${BASE_URL}/#founder-agung-sambuko`;
-const MEDICAL_PROCEDURE_ID = `${BASE_URL}/#ijen-health-screening`;
+const IJEN_SCREENING_SERVICE_ID = `${BASE_URL}/#ijen-health-screening`;
 const PHYSICIAN_ID = `${BASE_URL}/#doctor-ahmad-irwandanu`;
 const BOOK_STEFAN_LOOSE_ID = `${BASE_URL}/#book-stefan-loose`;
 const PRESS_DETIK_ID = `${BASE_URL}/#press-detik-2021`;
@@ -170,8 +170,6 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
 
     // Cross-reference to separate @graph node — avoids duplication
     founder: { '@id': FOUNDER_ID },
-    department: { '@id': MEDICAL_PROCEDURE_ID },
-
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE_CONFIG.organization.address.street,
@@ -272,7 +270,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
           url: `${BASE_URL}/travel-guide/ijen-health-screening`,
           itemOffered: {
             '@type': 'Service',
-            '@id': MEDICAL_PROCEDURE_ID,
+            '@id': IJEN_SCREENING_SERVICE_ID,
             name: 'Ijen health screening coordination',
             serviceType: 'Travel safety support',
             description:
@@ -290,15 +288,13 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       worstRating: 1,
     },
 
-    // Cross-reference to separate @graph node
-    citation: { '@id': BOOK_STEFAN_LOOSE_ID },
-
     subjectOf: [
       mediaObject('NIB certificate 1102230032918', PROOF_ASSETS.nibPdf, FORENSIC_HASHES.nib, 'application/pdf'),
       mediaObject('TDUP tourism license 1102230032918', PROOF_ASSETS.tdupPdf, FORENSIC_HASHES.tdup, 'application/pdf'),
       mediaObject('HPWKI membership proof', PROOF_ASSETS.hpwkiPdf, FORENSIC_HASHES.hpwki, 'application/pdf'),
       mediaObject('SPRIN Tourist Police Duty Context Proof (Polpar)', PROOF_ASSETS.sprinPolparPdf, FORENSIC_HASHES.sprinPolpar, 'application/pdf'),
       mediaObject('SPRIN Wal Travel Authorization 2024-02-12', PROOF_ASSETS.sprinWalTravelPdf, FORENSIC_HASHES.sprinWalTravel, 'application/pdf'),
+      { '@id': BOOK_STEFAN_LOOSE_ID },
       // Cross-reference to named press article nodes in @graph
       { '@id': PRESS_DETIK_ID },
       { '@id': PRESS_RADAR_JEMBER_ID },
@@ -369,7 +365,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       }
 
       if (member.forensicReviewQuote) {
-        node.review = {
+        node.subjectOf = {
           '@type': 'Review',
           reviewBody: member.forensicReviewQuote,
           itemReviewed: { '@id': ORGANIZATION_ID },
@@ -511,7 +507,7 @@ export function buildTouristAttractionSchema(destination: Destination): JsonLdNo
 
 /**
  * TouristTrip schema for tour package pages.
- * Encodes healthRequirement, amenityFeature, touristType, and pricing for AEO.
+ * Encodes route readiness, touristType, and pricing for AEO.
  * Per JVTO_PACKAGE_SCHEMA_MAP.md — Tier 1/2 package schema
  */
 export function buildTourPackageSchema(tour: Tour): JsonLdNode {
@@ -586,47 +582,68 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
 
   // Ijen-specific safety constraints and support linkage
   if (hasIjen) {
-    schema.healthRequirement =
-      'Kawah Ijen routes require health-screening readiness and compliance with current local access rules. Guests with asthma, respiratory conditions, or cardiovascular issues should consult a medical professional before attempting the hike.';
-    schema.amenityFeature = [
+    schema.additionalProperty = [
+      ...((schema.additionalProperty as JsonLdNode[] | undefined) ?? []),
       {
-        '@type': 'LocationFeatureSpecification',
-        name: 'Professional Dual-Filter Gas Mask',
-        value: true,
+        '@type': 'PropertyValue',
+        name: 'Ijen health screening readiness',
+        value:
+          'Kawah Ijen routes require health-screening readiness and compliance with current local access rules. Guests with asthma, respiratory conditions, or cardiovascular issues should consult a medical professional before attempting the hike.',
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Professional dual-filter gas mask',
+        value: 'Included for Ijen Crater guests',
         description: 'Provided by JVTO for all Ijen Crater guests. Filters Sulfur Dioxide (SO₂) and particulate matter.',
       },
       {
-        '@type': 'LocationFeatureSpecification',
+        '@type': 'PropertyValue',
         name: 'Health screening coordination',
-        value: true,
+        value: 'Local clinic screening coordination when current Ijen access rules require it',
         description: 'JVTO helps guests complete local clinic screening when required by current Ijen access rules.',
       },
     ];
     schema.touristType = 'Adventure travelers with suitable respiratory and cardiovascular readiness';
 
     // Add support page reference for Ijen packages
-    schema.supportingLinks = {
+    const ijenSupportLinks = {
       '@type': 'ItemList',
       name: 'Ijen Route Support Resources',
       url: `${BASE_URL}/tours/${tour.slug}#support-resources`,
       itemListElement: [
         {
-          '@type': 'WebPage',
-          name: 'Ijen Health Screening Guide',
-          url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'WebPage',
+            name: 'Ijen Health Screening Guide',
+            url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+          },
         },
         {
-          '@type': 'WebPage',
-          name: 'Weather & Closure Status',
-          url: `${BASE_URL}/travel-guide/weather-and-closures`,
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@type': 'WebPage',
+            name: 'Weather & Closure Status',
+            url: `${BASE_URL}/travel-guide/weather-and-closures`,
+          },
         },
         {
-          '@type': 'WebPage',
-          name: 'Police Safety Verification',
-          url: `${BASE_URL}/verify-jvto/police-safety`,
+          '@type': 'ListItem',
+          position: 3,
+          item: {
+            '@type': 'WebPage',
+            name: 'Police Safety Verification',
+            url: `${BASE_URL}/verify-jvto/police-safety`,
+          },
         },
       ],
     };
+
+    schema.subjectOf = Array.isArray(schema.subjectOf)
+      ? [...(schema.subjectOf as JsonLdNode[]), ijenSupportLinks]
+      : [schema.subjectOf as JsonLdNode, ijenSupportLinks].filter(Boolean);
   }
 
   if (hasBromo) {
@@ -634,11 +651,15 @@ export function buildTourPackageSchema(tour: Tour): JsonLdNode {
       name: '4WD Bromo Jeep',
       description: 'Dedicated private 4WD Jeep for Bromo Sea of Sand crossing and sunrise viewpoint access. Included in all Bromo packages.',
     };
-    if (schema.amenityFeature) {
-      (schema.amenityFeature as JsonLdNode[]).push({ '@type': 'LocationFeatureSpecification', ...bromo, value: true });
-    } else {
-      schema.amenityFeature = [{ '@type': 'LocationFeatureSpecification', ...bromo, value: true }];
-    }
+    schema.additionalProperty = [
+      ...((schema.additionalProperty as JsonLdNode[] | undefined) ?? []),
+      {
+        '@type': 'PropertyValue',
+        name: bromo.name,
+        value: 'Included',
+        description: bromo.description,
+      },
+    ];
   }
 
   return schema;
@@ -712,7 +733,7 @@ export function buildDirectCheckoutSchemas(tour: Tour): JsonLdNode[] {
 export function buildIjenHealthScreeningServiceSchema(): JsonLdNode {
   return {
     '@type': 'Service',
-    '@id': MEDICAL_PROCEDURE_ID,
+    '@id': IJEN_SCREENING_SERVICE_ID,
     name: 'Ijen health screening coordination',
     serviceType: 'Travel safety support',
     description:
@@ -806,24 +827,29 @@ export function buildPoliceSafetyProofSchemas(): JsonLdNode[] {
 }
 
 /**
- * Government Permit schemas for legal credentials.
+ * Business registration proof schemas for legal credentials.
  * Converts static license images into machine-readable forensic proof.
- * Each permit includes SHA-256 hash for verification integrity.
+ * Each proof includes SHA-256 hash for verification integrity.
  */
-export function buildGovernmentPermitSchemas(): JsonLdNode[] {
+export function buildBusinessRegistrationProofSchemas(): JsonLdNode[] {
   return [
     {
-      '@type': 'GovernmentPermit',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#permit-nib`,
       name: 'NIB Business License',
       description: 'Nomor Induk Berusaha (NIB) - Indonesian Business Registration Number for PT Java Volcano Rendezvous.',
-      identifier: SITE_CONFIG.organization.nib,
-      issuedBy: {
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'NIB',
+        value: SITE_CONFIG.organization.nib,
+      },
+      publisher: {
         '@type': 'GovernmentOrganization',
         name: 'Government of Indonesia (Pemerintah Republik Indonesia)',
         url: EXTERNAL_VERIFICATION_URLS.oss,
       },
       dateIssued: '2023-02-08',
+      about: { '@id': ORGANIZATION_ID },
       image: {
         '@type': 'ImageObject',
         url: PROOF_ASSETS.nibPreview,
@@ -832,16 +858,21 @@ export function buildGovernmentPermitSchemas(): JsonLdNode[] {
       url: PROOF_ASSETS.nibPdf,
     },
     {
-      '@type': 'GovernmentPermit',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#permit-tdup`,
       name: 'TDUP Tourism Business License',
       description: 'Tanda Daftar Usaha Pariwisata (TDUP) - Tourism business registration issued by Indonesian Ministry of Tourism.',
-      identifier: SITE_CONFIG.organization.nib,
-      issuedBy: {
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'TDUP / NIB reference',
+        value: SITE_CONFIG.organization.nib,
+      },
+      publisher: {
         '@type': 'GovernmentOrganization',
         name: 'Ministry of Tourism, Republic of Indonesia',
         alternateName: 'Kementerian Pariwisata dan Ekonomi Kreatif',
       },
+      about: { '@id': ORGANIZATION_ID },
       image: {
         '@type': 'ImageObject',
         url: PROOF_ASSETS.tdupPreview,
@@ -850,17 +881,22 @@ export function buildGovernmentPermitSchemas(): JsonLdNode[] {
       url: PROOF_ASSETS.tdupPdf,
     },
     {
-      '@type': 'GovernmentPermit',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#permit-hpwki`,
       name: 'HPWKI Ijen Tourism Specialization',
       description:
         'Membership in Himpunan Pelaku Wisata Khusus Ijen (HPWKI) - official Ijen tourism association. Members receive technical training from BBKSDA on toxic gas handling and evacuation procedures.',
-      identifier: 'HPWKI-Membership',
-      issuedBy: {
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'Membership reference',
+        value: 'HPWKI-Membership',
+      },
+      publisher: {
         '@type': 'Organization',
         name: 'HPWKI (Himpunan Pelaku Wisata Khusus Ijen)',
         description: 'State-recognized Ijen tourism association',
       },
+      about: { '@id': ORGANIZATION_ID },
       image: {
         '@type': 'ImageObject',
         url: PROOF_ASSETS.hpwkiPreview,
@@ -872,53 +908,58 @@ export function buildGovernmentPermitSchemas(): JsonLdNode[] {
 }
 
 /**
- * Government Service schemas for operational authority.
- * Documents specialized training, certifications, and safety protocols.
+ * Operational training proof schemas.
+ * Documents specialized training, certifications, and safety protocols without
+ * presenting JVTO as a state service.
  */
-export function buildGovernmentServiceSchemas(): JsonLdNode[] {
+export function buildOperationalTrainingProofSchemas(): JsonLdNode[] {
   return [
     {
-      '@type': 'GovernmentService',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#service-ijen-specialization`,
       name: 'Ijen Specialization & Volcanic Safety Training',
       description:
         'JVTO guides are trained members of HPWKI with specialized knowledge of Ijen crater hazards, toxic gas protocols, and visitor safety. Training provided through BBKSDA (Balai Besar Kawasan Suaka Alam Daratan Jatim).',
-      serviceType: 'Specialized tour guide training',
-      provider: {
+      about: [
+        { '@id': ORGANIZATION_ID },
+        {
+          '@type': 'TouristDestination',
+          name: 'Kawah Ijen (Ijen Crater)',
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: -8.0584,
+            longitude: 114.242,
+          },
+        },
+      ],
+      publisher: {
         '@type': 'Organization',
         name: 'BBKSDA Jatim (Conservation Authority)',
         url: EXTERNAL_VERIFICATION_URLS.bbksdaTraining,
       },
-      areaServed: {
-        '@type': 'TouristDestination',
-        name: 'Kawah Ijen (Ijen Crater)',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: -8.0584,
-          longitude: 114.242,
-        },
-      },
-      availableLanguage: ['Indonesian', 'English'],
+      inLanguage: ['id', 'en'],
       audience: { '@type': 'Audience', audienceType: 'Tour operators and guides' },
     },
     {
-      '@type': 'GovernmentService',
+      '@type': 'CreativeWork',
       '@id': `${BASE_URL}/#service-sar-training`,
       name: 'Search and Rescue & First Aid Training',
       description:
         'JVTO leadership receives SAR and first-aid training from BBKSDA and conservation authorities to ensure emergency preparedness on volcano expeditions.',
-      serviceType: 'Emergency response training',
-      provider: {
+      about: [
+        { '@id': ORGANIZATION_ID },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'East Java',
+          identifier: 'ISO 3166-2:ID-JI',
+        },
+      ],
+      publisher: {
         '@type': 'GovernmentOrganization',
         name: 'BBKSDA Jatim (Balai Besar Kawasan Suaka Alam Daratan Jatim)',
         url: EXTERNAL_VERIFICATION_URLS.bbksdaTraining,
       },
-      areaServed: {
-        '@type': 'AdministrativeArea',
-        name: 'East Java',
-        identifier: 'ISO 3166-2:ID-JI',
-      },
-      availableLanguage: ['Indonesian'],
+      inLanguage: 'id',
     },
   ];
 }
@@ -1100,29 +1141,12 @@ export function buildFounderSchema(): JsonLdNode {
 }
 
 /**
- * Ijen Health Screening unit as MedicalBusiness — semantically more precise
- * than Service for a medical coordination function with a licensed physician.
- * Cross-referenced from org schema via department: { '@id': MEDICAL_PROCEDURE_ID }.
+ * Backwards-compatible builder for callers that still import the old name.
+ * The output is intentionally Service-based because JVTO coordinates travel
+ * readiness; licensed medical partners perform the actual clinical checks.
  */
 export function buildMedicalBusinessSchema(): JsonLdNode {
-  return {
-    '@type': 'MedicalBusiness',
-    '@id': MEDICAL_PROCEDURE_ID,
-    name: 'Ijen Health Screening Unit',
-    medicalSpecialty: 'https://schema.org/PublicHealth',
-    description:
-      'JVTO coordinates a real local health screening workflow for Ijen Crater guests when current access rules require it. Readiness checks — blood pressure, heart-rate, SpO2 — are performed by licensed medical partners before the Ijen ascent.',
-    url: `${BASE_URL}/travel-guide/ijen-health-screening`,
-    parentOrganization: { '@id': ORGANIZATION_ID },
-    employee: { '@id': PHYSICIAN_ID },
-    availableService: {
-      '@type': 'MedicalProcedure',
-      name: 'Pre-Ijen health readiness check',
-      procedureType: 'https://schema.org/PhysicalExam',
-      bodyLocation: 'Cardiovascular and respiratory systems',
-      description: 'Blood pressure, heart-rate, and SpO2 screening before the Ijen Crater ascent.',
-    },
-  };
+  return buildIjenHealthScreeningServiceSchema();
 }
 
 /**
@@ -1132,7 +1156,7 @@ export function buildMedicalBusinessSchema(): JsonLdNode {
  */
 export function buildPhysicianSchema(): JsonLdNode {
   return {
-    '@type': 'Physician',
+    '@type': ['Person', 'Physician'],
     '@id': PHYSICIAN_ID,
     name: 'dr. Ahmad Irwandanu',
     identifier: [
@@ -1156,14 +1180,14 @@ export function buildPhysicianSchema(): JsonLdNode {
       alternateName: 'Indonesian Health Council',
       description: 'Government body that issues and verifies physician STR credentials in Indonesia.',
     },
-    memberOf: { '@id': MEDICAL_PROCEDURE_ID },
+    memberOf: { '@id': IJEN_SCREENING_SERVICE_ID },
     url: EXTERNAL_VERIFICATION_URLS.doctorSip,
   };
 }
 
 /**
  * Stefan Loose guidebook as a separate Book @graph node.
- * Cross-referenced from org schema via citation: { '@id': BOOK_STEFAN_LOOSE_ID }.
+ * Cross-referenced from org schema via subjectOf.
  * Independent editorial authority — not a paid listing.
  */
 export function buildBookCitationNode(): JsonLdNode {

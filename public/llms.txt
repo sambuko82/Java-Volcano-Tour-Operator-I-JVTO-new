@@ -195,13 +195,13 @@ The following schema types are deployed as JSON-LD across the site:
 |---|---|---|
 | TravelAgency + LocalBusiness | All pages (global `@graph`) | identifier, founder, memberOf, areaServed, hasOfferCatalog, employee |
 | Person (Founder) | All pages | honorificPrefix, memberOf GovernmentOrganization, sameAs Detik/Radar |
-| Person (Crew ×14) | All pages | knowsAbout, knowsLanguage, worksFor, identifier KTA, review quote |
+| Person (Crew ×14) | All pages | knowsAbout, knowsLanguage, worksFor, identifier KTA, subjectOf review quote |
 | TouristAttraction | /destinations/[slug] | geo GeoCoordinates, elevation, hazardousSubstance, amenityFeature |
-| TouristTrip | /tours/[slug] | healthRequirement, amenityFeature, touristType, UnitPriceSpecification |
+| TouristTrip | /tours/[slug] | additionalProperty route readiness, touristType, UnitPriceSpecification |
 | MedicalWebPage + Service | /travel-guide/ijen-health-screening | health-screening coordination, licensed clinic partners, access-rule context |
 | CreativeWork + MediaObject | /verify-jvto/police-safety | SPRIN-POLPAR, SPRIN-WAL-TRAVEL proof pages with SHA-256 |
 | FAQPage | Homepage, Ijen health page | acceptedAnswer (40–60 word rule) |
-| Book (citation) | All pages | isbn, author, publisher DuMont Reiseverlag |
+| Book (subjectOf reference) | Homepage / proof graph | isbn, author, publisher DuMont Reiseverlag |
 | AggregateRating | All pages | ratingValue 4.9, reviewCount 112 |
 | NewsArticle ×2 | All pages (subjectOf) | Detik.com, Radar Jember — about founder |
 | MediaObject ×5 | All pages (subjectOf) | SHA-256 forensic hashes for all documents |

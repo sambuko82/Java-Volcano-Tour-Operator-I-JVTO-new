@@ -1,0 +1,34 @@
+{
+  "$note": "Canonical third-party review platform URLs for JVTO. Direct scraping blocked by anti-bot on all platforms — use official APIs for ingest.",
+  "snapshot_date": "2026-04-19",
+  "platforms": {
+    "trustpilot": {
+      "review_url": "https://www.trustpilot.com/review/javavolcano-touroperator.com",
+      "official_api": "https://businessapp.b2b.trustpilot.com/api",
+      "api_notes": "Trustpilot Business API — requires owner OAuth + paid tier",
+      "observed_aggregate": { "total_reviews": 34, "average_rating": 4.0 }
+    },
+    "tripadvisor": {
+      "review_url": "https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html",
+      "location_id": "d19983165",
+      "official_api": "https://www.tripadvisor.com/developers",
+      "api_notes": "TripAdvisor Content API — partner program application required",
+      "observed_aggregate": { "total_reviews": 8, "average_rating": 5.0 }
+    },
+    "google_maps": {
+      "review_url": "https://www.google.com/maps?cid=1266403973589689021",
+      "cid": "1266403973589689021",
+      "official_api": "https://developers.google.com/maps/documentation/places/web-service/details",
+      "api_notes": "Google Places API — public API key, includes up to 5 reviews per call. For full set use Google Business Profile API (owner-auth)",
+      "observed_aggregate": { "total_reviews": 92, "average_rating": 4.9 }
+    },
+    "facebook": {
+      "review_url": "https://www.facebook.com/javavolcanotours/reviews",
+      "official_api": "https://developers.facebook.com/docs/graph-api/reference/page/ratings/",
+      "api_notes": "Facebook Graph API — requires page access token",
+      "observed_aggregate": { "total_reviews": 41, "recommendation_rate_percent": 98 }
+    }
+  },
+  "db_canonical_path": "jvto_dev.reviews table — already populated with ~10 verified rows. API endpoint: /api/reviews/database.",
+  "action_for_sprint_a_plus": "Replace SITE_CONFIG.aggregateRating static 4.9/112 with DB query via getAggregateRating() helper. Add these 4 platform URLs as C6 evidence_slugs in SSOT narrative_claimmap."
+}

@@ -2,7 +2,18 @@
   "permissions": {
     "allow": [
       "mcp__Claude_Preview__preview_start",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "WebFetch(domain:www.trustpilot.com)",
+      "WebFetch(domain:www.tripadvisor.com)",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:ie.trustpilot.com)",
+      "WebFetch(domain:ca.trustpilot.com)",
+      "WebSearch",
+      "WebFetch(domain:javavolcano-touroperator.com)",
+      "WebFetch(domain:wanderlog.com)",
+      "WebFetch(domain:web.archive.org)",
+      "WebFetch(domain:uk.trustpilot.com)",
+      "WebFetch(domain:au.trustpilot.com)"
     ]
   }
 }

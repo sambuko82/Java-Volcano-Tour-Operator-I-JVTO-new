@@ -26,6 +26,7 @@ import Hero from '@/components/Hero';
 import RouteSelector from '@/components/RouteSelector';
 import ContactSection from '@/components/ContactSection';
 import DifferentiatorGrid from '@/components/DifferentiatorGrid';
+import ClaimBadge from '@/components/ClaimBadge';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 import { TOURS, DESTINATIONS } from '@/lib/jvtoData';
 
@@ -268,6 +269,13 @@ export default function Home() {
             <Link href="/verify-jvto" className="bg-jvto-navy text-white px-12 py-5 rounded-md text-xs font-bold uppercase tracking-widest hover:bg-jvto-navy-mid transition-all flex items-center gap-3 shrink-0 shadow-lg shadow-jvto-navy/20">
               Open Proof Library <ArrowRight size={18} />
             </Link>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-12" data-ssot-claim-strip>
+            <ClaimBadge claimId="C1" variant="compact" />
+            <ClaimBadge claimId="C5" variant="compact" />
+            <ClaimBadge claimId="C7" variant="compact" />
+            <ClaimBadge claimId="C9" variant="compact" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">

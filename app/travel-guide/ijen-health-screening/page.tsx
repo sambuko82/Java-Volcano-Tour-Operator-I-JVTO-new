@@ -8,8 +8,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd, { buildIjenHealthScreeningServiceSchema, buildFAQSchema } from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
-import { Activity, ShieldCheck, AlertTriangle, CheckCircle, ExternalLink, Info, FileText, Heart, XCircle, Clock, MapPin, ArrowRight, Stethoscope, Building2 } from 'lucide-react';
-import { MEDICAL_PARTNERS } from '@/lib/verificationData';
+import ProofCard from '@/components/ProofCard';
+import { Activity, ShieldCheck, AlertTriangle, CheckCircle, FileText, XCircle, Clock, MapPin, ArrowRight, Stethoscope, Building2, ClipboardCheck } from 'lucide-react';
+import { MEDICAL_PARTNERS, PROOF_ASSETS } from '@/lib/verificationData';
 
 const healthFaqs = [
   {
@@ -61,7 +62,7 @@ export default function IjenHealthScreeningPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Ijen Health Certificate: Mandatory Safety Requirements</h1>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 text-white">Ijen Health Certificate: Mandatory Safety Requirements</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
               Operational certainty at Ijen Crater starts with a real medical assessment. JVTO helps guests complete the required local screening before attempting the 2,386m altitude and sulfur-exposure environment.
             </p>
@@ -74,14 +75,14 @@ export default function IjenHealthScreeningPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Why This Check is Mandatory</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-jvto-navy">Why This Check is Mandatory</h2>
               <div className="space-y-8">
                 <div className="flex gap-6">
                   <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 shrink-0">
                     <Activity size={28} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-display font-bold mb-2">Altitude & Sulfur Exposure</h3>
+                    <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Altitude & Sulfur Exposure</h3>
                     <p className="text-stone-600 leading-relaxed">Ijen Crater is at 2,386m altitude. The descent into the crater involves exposure to high concentrations of sulfur gas. This combination can be dangerous for guests with underlying respiratory or cardiac conditions.</p>
                   </div>
                 </div>
@@ -90,7 +91,7 @@ export default function IjenHealthScreeningPage() {
                     <ShieldCheck size={28} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-display font-bold mb-2">Official Regulation Compliance</h3>
+                    <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Official Regulation Compliance</h3>
                     <p className="text-stone-600 leading-relaxed">Ijen access rules can require a recent local medical certificate. We follow the current requirement so your entry documentation is valid and your health risk is assessed before the hike.</p>
                   </div>
                 </div>
@@ -102,6 +103,7 @@ export default function IjenHealthScreeningPage() {
                 alt="Ijen Health Safety"
                 fill
                 className="object-cover"
+                unoptimized
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -114,26 +116,26 @@ export default function IjenHealthScreeningPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">How it Works</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-jvto-navy">How it Works</h2>
               <div className="space-y-8">
                 <div className="flex gap-6 items-start">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">1</div>
                   <div>
-                    <h3 className="text-2xl font-display font-bold mb-2">Certified Clinic Visit</h3>
+                    <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Certified Clinic Visit</h3>
                     <p className="text-stone-600 text-sm">We take you to a certified medical clinic in Bondowoso or Banyuwangi before the tour begins.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-start">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">2</div>
                   <div>
-                    <h3 className="text-2xl font-display font-bold mb-2">Real Medical Assessment</h3>
+                    <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Real Medical Assessment</h3>
                     <p className="text-stone-600 text-sm">A licensed medical professional checks your blood pressure, heart rate, oxygen readiness when performed by the clinic, and general physical readiness for the hike.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-start">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">3</div>
                   <div>
-                    <h3 className="text-2xl font-display font-bold mb-2">Official Certification</h3>
+                    <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Official Certification</h3>
                     <p className="text-stone-600 text-sm">If cleared, you receive the local medical certificate required for Ijen access when the rule is in force. We help with the paperwork and fees included in your package.</p>
                   </div>
                 </div>
@@ -167,28 +169,78 @@ export default function IjenHealthScreeningPage() {
         </div>
       </section>
 
+      {/* Official Evidence & Regulatory Context */}
+      <section className="py-24 bg-white border-t border-stone-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl md:text-6xl font-display font-bold text-stone-900 leading-tight">Official <br /> <span className="text-orange-500 italic">Evidence</span></h2>
+              <p className="mt-6 text-stone-600 font-light text-lg">We maintain a verifiable audit trail for our health-screening workflow, from regulatory mandates to field-execution artifacts.</p>
+            </div>
+            <Link href="/verify-jvto/police-safety" className="text-stone-900 font-bold text-xs flex items-center gap-3 hover:gap-6 transition-all uppercase tracking-[0.2em] border-b border-stone-200 pb-2 hover:border-orange-500 w-fit">
+              View Safety Cluster <ArrowRight size={20} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "BBKSDA SE-1658/KSA-9/2024",
+                desc: "The official circular mandate for medical health certificates at Kawah Ijen.",
+                metadata: "Regulatory Authority",
+                href: PROOF_ASSETS.bbksdaSe1658,
+                icon: <FileText size={24} />
+              },
+              {
+                title: "Health Screening Form Sample",
+                desc: "An example of the standardized local medical screening form used by our partners.",
+                metadata: "Operational Artifact",
+                href: PROOF_ASSETS.healthScreeningFormSample,
+                icon: <ClipboardCheck size={24} />
+              },
+              {
+                title: "Klinik Screening Workflow",
+                desc: "Visual proof of the screening process at our partner clinics and the JVTO office.",
+                metadata: "Field Execution",
+                href: PROOF_ASSETS.jvtoOfficeScreening,
+                icon: <Building2 size={24} />
+              }
+            ].map((item, i) => (
+              <ProofCard 
+                key={i}
+                title={item.title}
+                description={item.desc}
+                metadata={item.metadata}
+                href={item.href}
+                icon={item.icon}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* What We Do Not Do */}
       <section className="py-24 bg-stone-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">What We Do Not Do</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4 text-white">What We Do Not Do</h2>
             <p className="text-stone-400 max-w-2xl mx-auto">We refuse to participate in industry shortcuts.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">No Fake Health Letters</h3>
+              <h3 className="text-2xl font-display font-bold mb-4 text-white">No Fake Health Letters</h3>
               <p className="text-stone-400 text-sm">We do not use pre-signed health letters. JVTO&apos;s screening flow is handled through real local medical checks.</p>
             </div>
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">No Skipping the Clinic</h3>
+              <h3 className="text-2xl font-display font-bold mb-4 text-white">No Skipping the Clinic</h3>
               <p className="text-stone-400 text-sm">We do not &apos;bypass&apos; the health check when it is required for access. It is treated as part of the Ijen readiness workflow.</p>
             </div>
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">No Shortcuts on Guest Safety</h3>
+              <h3 className="text-2xl font-display font-bold mb-4 text-white">No Shortcuts on Guest Safety</h3>
               <p className="text-stone-400 text-sm">We prioritize your health over the tour schedule. If you are not fit to hike, we will not take you to the crater.</p>
             </div>
           </div>
@@ -199,25 +251,25 @@ export default function IjenHealthScreeningPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Practical Logistics</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4 text-jvto-navy">Practical Logistics</h2>
             <p className="text-stone-600 max-w-2xl mx-auto">What to expect during the health screening process.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-jvto-navy">
             <div>
               <Clock className="text-orange-500 mx-auto mb-6" size={40} />
               <h3 className="text-xl font-bold mb-2">Timing & Location</h3>
-              <p className="text-stone-600 text-sm">The check takes approximately 15-30 minutes and is performed at a clinic on the way to your accommodation or the park.</p>
+              <p className="text-stone-600 text-sm leading-relaxed">The check takes approximately 15-30 minutes and is performed at a clinic on the way to your accommodation or the park.</p>
             </div>
             <div>
               <FileText className="text-orange-500 mx-auto mb-6" size={40} />
               <h3 className="text-xl font-bold mb-2">What to Bring</h3>
-              <p className="text-stone-600 text-sm">You only need your passport or a clear copy/photo of it for registration at the clinic.</p>
+              <p className="text-stone-600 text-sm leading-relaxed">You only need your passport or a clear copy/photo of it for registration at the clinic.</p>
             </div>
             <div>
               <AlertTriangle className="text-orange-500 mx-auto mb-6" size={40} />
               <h3 className="text-xl font-bold mb-2">What Happens if You Fail</h3>
-              <p className="text-stone-600 text-sm">We will discuss alternative activities or refund options. We never force a guest to hike against medical advice.</p>
+              <p className="text-stone-600 text-sm leading-relaxed">We will discuss alternative activities or refund options. We never force a guest to hike against medical advice.</p>
             </div>
           </div>
         </div>
@@ -229,12 +281,12 @@ export default function IjenHealthScreeningPage() {
       {/* Ready for Operational Certainty? */}
       <section className="py-24 bg-brand-olive text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready for Operational Certainty?</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/tours" className="bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white">Ready for Operational Certainty?</h2>
+          <div className="flex flex-wrap justify-center gap-4 text-white">
+            <Link href="/tours" className="grow-0 bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
               Explore Private Tours <ArrowRight size={20} />
             </Link>
-            <Link href="/travel-guide" className="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
+            <Link href="/travel-guide" className="grow-0 bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
               Back to Travel Guide
             </Link>
           </div>

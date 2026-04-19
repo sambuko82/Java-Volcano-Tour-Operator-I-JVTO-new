@@ -164,6 +164,16 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
         name: 'SHA-256: SPRIN-WAL-TRAVEL-2024-02-12.pdf',
         value: FORENSIC_HASHES.sprinWalTravel,
       },
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: BBKSDA-SE-1658.pdf',
+        value: FORENSIC_HASHES.bbksdaSe1658,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SHA-256: health-screening-sample.pdf',
+        value: FORENSIC_HASHES.healthScreeningSample,
+      },
     ],
 
     foundingDate: SITE_CONFIG.organization.foundingDate,
@@ -294,6 +304,8 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       mediaObject('HPWKI membership proof', PROOF_ASSETS.hpwkiPdf, FORENSIC_HASHES.hpwki, 'application/pdf'),
       mediaObject('SPRIN Tourist Police Duty Context Proof (Polpar)', PROOF_ASSETS.sprinPolparPdf, FORENSIC_HASHES.sprinPolpar, 'application/pdf'),
       mediaObject('SPRIN Wal Travel Authorization 2024-02-12', PROOF_ASSETS.sprinWalTravelPdf, FORENSIC_HASHES.sprinWalTravel, 'application/pdf'),
+      mediaObject('BBKSDA Ijen Health Certificate Mandate (SE-1658)', PROOF_ASSETS.bbksdaSe1658, FORENSIC_HASHES.bbksdaSe1658, 'application/pdf'),
+      mediaObject('JVTO Operational Office Proof', PROOF_ASSETS.officePhoto, 'fa5d...82c', 'image/jpeg'),
       { '@id': BOOK_STEFAN_LOOSE_ID },
       // Cross-reference to named press article nodes in @graph
       { '@id': PRESS_DETIK_ID },
@@ -758,6 +770,11 @@ export function buildIjenHealthScreeningServiceSchema(): JsonLdNode {
       '@type': 'WebPage',
       '@id': `${BASE_URL}/travel-guide/ijen-health-screening#webpage`,
       url: `${BASE_URL}/travel-guide/ijen-health-screening`,
+      description: 'Official guide for Ijen health screening coordination and clinic readiness.',
+      mentions: [
+        { '@type': 'Offer', name: 'Ijen Crater Private Tours', url: `${BASE_URL}/tours` },
+        { '@type': 'CreativeWork', name: 'BBKSDA SE-1658 Mandate', url: PROOF_ASSETS.bbksdaSe1658 }
+      ],
     },
   };
 }

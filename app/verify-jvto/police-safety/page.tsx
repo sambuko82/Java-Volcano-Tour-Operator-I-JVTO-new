@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
-import { Shield, ShieldCheck, Lock, CheckCircle, ExternalLink, UserCheck, AlertTriangle } from 'lucide-react';
+import { Shield, ShieldCheck, Lock, CheckCircle, ExternalLink, UserCheck, AlertTriangle, Car, Landmark } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd, { buildPoliceSafetyProofSchemas } from '@/components/JsonLd';
@@ -86,6 +86,32 @@ const safetyProtocols: SafetyProof[] = [
       'Authority Context': 'BBKSDA Jatim / Ijen ticket terms',
       'Doctor Registry': EXTERNAL_VERIFICATION_URLS.doctorSip,
       'Guide': '/travel-guide/ijen-health-screening',
+    },
+  },
+  {
+    icon: <Car className="text-orange-500" />,
+    title: 'Police-Informed Field Ops',
+    desc: 'Visual evidence of our operational vehicles and field support artifacts, reflecting safety-first discipline.',
+    metadata: 'Field Execution',
+    href: PROOF_ASSETS.policeVehicleSupport,
+    imageUrl: PROOF_ASSETS.policeVehicleSupport,
+    fullMetadata: {
+      'Artifact': 'Police-Informed Logistics Support',
+      'Context': 'Operational readiness',
+      'Proof': 'Proof of vehicle/asset standard',
+    },
+  },
+  {
+    icon: <Landmark className="text-orange-500" />,
+    title: 'JVTO Operational Office',
+    desc: 'Our Physical operating base in Bondowoso, providing support and coordination for all East Java routes.',
+    metadata: 'Identity Anchor',
+    href: PROOF_ASSETS.officePhoto,
+    imageUrl: PROOF_ASSETS.officePhoto,
+    fullMetadata: {
+      'Entity': 'PT Java Volcano Rendezvous',
+      'Location': 'Bondowoso, East Java',
+      'Function': 'Central Operations Hub',
     },
   }
 ];

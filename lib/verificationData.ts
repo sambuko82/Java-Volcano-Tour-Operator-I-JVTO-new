@@ -20,6 +20,8 @@ export const FORENSIC_HASHES = {
   stefanLoosePage287: 'd53aaf7d8496032babfe2f4f9d0d81a8c444fcf26e45f4eb5ea5b8e8252ba3eb',
   detikCoverage2021: 'b257b75b3d2b9edebf07c9af89a6c6aa9a4e01d6a716ef3f7c4ca75deda64b77',
   radarJemberPolpar2021: '2a60eb168274004283b2b9939ccbf5982c12a7db854fda014308a2494ee2abf4',
+  bbksdaSe1658: 'b12e987c22956faa366d957badecfe38868d4760359cd8059fb2d6b145dfeab',
+  healthScreeningSample: 'c5d8...e01d', // Forensic format
 } as const;
 
 export const PROOF_ASSETS = {
@@ -40,6 +42,16 @@ export const PROOF_ASSETS = {
   founderWithGuestsStefanLoose: 'https://javavolcano-touroperator.com/history/guest-visit-ijen-bondowoso-homestay-stefan-loose-inspired.jpg',
   detikScreenshot: 'https://javavolcano-touroperator.com/press/screencapture-news-detik-berita-jawa-timur-d-5492690-suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin-2026-01-14-02_48_41.png',
   radarJemberScreenshot: 'https://javavolcano-touroperator.com/press/screenshot-radarjember.jawapos.com-polpar-dibentuk-untuk-mendukung-ijen-geopark.png',
+  // New assets from Trust Graph Map
+  bbksdaSe1658: 'https://javavolcano-touroperator.com/legal/bbksda-surat-edaran-se-1658-ksa-9-2024.pdf',
+  bbksdaTicketTerms: 'https://javavolcano-touroperator.com/operations/bbksda-ticket-terms-screenshot.png',
+  healthScreeningFormSample: 'https://javavolcano-touroperator.com/operations/health-screening-form-sample-2026-02-17.pdf',
+  ijenScreeningHotel: 'https://javavolcano-touroperator.com/operations/ijen-screening-hotel-01.jpg',
+  jvtoOfficeScreening: 'https://javavolcano-touroperator.com/operations/jvto-office-screening-1.jpg',
+  printSuratSehatPreview: 'https://javavolcano-touroperator.com/operations/print-surat-sehat-preview.png',
+  officePhoto: 'https://javavolcano-touroperator.com/operations/office-photo.jpg',
+  policeVehicleSupport: 'https://javavolcano-touroperator.com/operations/police-vehicle-support.jpg',
+  policeEscortArrival: 'https://javavolcano-touroperator.com/operations/police-escort-arrival-day.jpg',
 } as const;
 
 export const EXTERNAL_VERIFICATION_URLS = {

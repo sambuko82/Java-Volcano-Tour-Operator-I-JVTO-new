@@ -18,7 +18,7 @@ export default function TeamPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white text-jvto-navy">
       <JsonLd data={teamSchema} />
       <Navbar />
       
@@ -30,7 +30,7 @@ export default function TeamPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Local Team, Daily Execution</h1>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 text-white">Local Team, Daily Execution</h1>
             <p className="text-xl text-stone-300">The local experts behind your East Java expedition, trained for real logistics and consistent execution.</p>
           </motion.div>
         </div>
@@ -40,17 +40,18 @@ export default function TeamPage() {
       <section className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border border-stone-200">
               <Image 
                 src="https://javavolcano-touroperator.com/founder/agung_sambuko.jpg"
                 alt="Agung Sambuko"
                 fill
                 className="object-cover"
+                unoptimized
                 referrerPolicy="no-referrer"
               />
             </div>
             <div>
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Leadership & Safety Oversight</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-jvto-navy">Leadership & Safety Oversight</h2>
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-display font-bold mb-4 text-brand-olive">Agung Sambuko (Founder & Safety Lead)</h3>
@@ -70,24 +71,24 @@ export default function TeamPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">The Field Team</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4 text-jvto-navy">The Field Team</h2>
             <p className="text-stone-600 max-w-2xl mx-auto">Our 14-person local team is trained for real East Java logistics and guest support.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <Award className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Certified Local Guides</h3>
+              <h3 className="text-2xl font-display font-bold mb-4 text-jvto-navy">Certified Local Guides</h3>
               <p className="text-stone-600 text-sm">Our guides are not just storytellers; they are trained in first aid, volcanic safety, and guest management.</p>
             </div>
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <Briefcase className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Professional Drivers</h3>
+              <h3 className="text-2xl font-display font-bold mb-4 text-jvto-navy">Professional Drivers</h3>
               <p className="text-stone-600 text-sm">Expert drivers with impeccable safety records and deep knowledge of East Java&apos;s rugged terrain.</p>
             </div>
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <Users className="text-orange-500 mb-6" size={40} />
-              <h3 className="text-2xl font-display font-bold mb-4">Logistics Support</h3>
+              <h3 className="text-2xl font-display font-bold mb-4 text-jvto-navy">Logistics Support</h3>
               <p className="text-stone-600 text-sm">A dedicated back-office team ensuring that every private tour runs with operational precision.</p>
             </div>
           </div>
@@ -100,9 +101,9 @@ export default function TeamPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group"
+                className="group flex flex-col h-full bg-white p-6 rounded-[2rem] border border-stone-100 hover:border-orange-200 transition-all shadow-sm hover:shadow-xl"
               >
-                <div className="relative aspect-square rounded-3xl overflow-hidden mb-6 shadow-md group-hover:shadow-xl transition-all bg-stone-100 flex items-center justify-center">
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 shadow-md bg-stone-100 flex items-center justify-center">
                   {member.photoUrl ? (
                     <Image
                       src={member.photoUrl}
@@ -110,14 +111,44 @@ export default function TeamPage() {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
+                      unoptimized
                     />
                   ) : (
                     <Users size={64} className="text-stone-300" />
                   )}
+                  {member.kta && (
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-jvto-navy shadow-sm flex items-center gap-1">
+                      <Shield size={12} className="text-brand-olive" />
+                      KTA {member.kta.split('-').pop()}
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-xl font-display font-bold mb-1">{member.name}</h3>
-                <p className="text-brand-olive font-bold text-sm uppercase tracking-widest mb-4">{member.role}</p>
-                <p className="text-stone-500 text-sm leading-relaxed">{member.about || member.highlights}</p>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-display font-bold mb-1 text-jvto-navy">{member.name}</h3>
+                  <p className="text-orange-500 font-bold text-[10px] uppercase tracking-widest mb-4">{member.role} — {member.archetype}</p>
+                  <p className="text-stone-600 text-sm leading-relaxed mb-6">{member.about || member.highlights}</p>
+                </div>
+                
+                {member.forensicReviewQuote && (
+                  <div className="mt-auto pt-6 border-t border-stone-50">
+                    <div className="flex gap-1 mb-2">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-orange-500 text-orange-500" />)}
+                    </div>
+                    <p className="text-[11px] text-stone-500 italic leading-relaxed line-clamp-2">
+                       {member.forensicReviewQuote}
+                    </p>
+                  </div>
+                )}
+                
+                {member.ktaCardUrl && (
+                  <Link 
+                    href={member.ktaCardUrl} 
+                    target="_blank"
+                    className="mt-4 text-[10px] font-bold text-jvto-navy flex items-center gap-2 hover:text-orange-500 transition-colors uppercase tracking-widest"
+                  >
+                    View License <ArrowRight size={12} />
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>
@@ -128,7 +159,7 @@ export default function TeamPage() {
       <section className="py-24 bg-stone-50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4">Training Standards</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-4 text-jvto-navy">Training Standards</h2>
             <p className="text-stone-600">We invest in our team to ensure your safety.</p>
           </div>
           
@@ -136,14 +167,14 @@ export default function TeamPage() {
             <div className="flex gap-6 items-start">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">1</div>
               <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Safety & Emergency Response</h3>
+                <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Safety & Emergency Response</h3>
                 <p className="text-stone-600">All field staff undergo regular training in first aid, evacuation procedures, and volcanic gas safety protocols.</p>
               </div>
             </div>
             <div className="flex gap-6 items-start">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 shrink-0 font-bold">2</div>
               <div>
-                <h3 className="text-2xl font-display font-bold mb-2">Guest Support Protocols</h3>
+                <h3 className="text-2xl font-display font-bold mb-2 text-jvto-navy">Guest Support Protocols</h3>
                 <p className="text-stone-600">Our team is trained in international guest service standards, ensuring clear communication and proactive support throughout your journey.</p>
               </div>
             </div>
@@ -156,7 +187,7 @@ export default function TeamPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Local Impact & Continuity</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white">Local Impact & Continuity</h2>
               <div className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-display font-bold mb-4 text-orange-400">Why We Hire Locally</h3>
@@ -174,6 +205,7 @@ export default function TeamPage() {
                 alt="Local Team"
                 fill
                 className="object-cover"
+                unoptimized
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -184,12 +216,12 @@ export default function TeamPage() {
       {/* Ready for Operational Certainty? */}
       <section className="py-24 bg-brand-olive text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready for Operational Certainty?</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/tours" className="bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-white">Ready for Operational Certainty?</h2>
+          <div className="flex flex-wrap justify-center gap-4 text-white">
+            <Link href="/tours" className="grow-0 bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2">
               Explore Private Tours <ArrowRight size={20} />
             </Link>
-            <Link href="/why-jvto/our-story" className="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
+            <Link href="/why-jvto/our-story" className="grow-0 bg-white/10 border border-white/20 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
               Read Our Story
             </Link>
           </div>

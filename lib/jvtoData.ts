@@ -1,4 +1,14 @@
 // lib/jvtoData.ts
+//
+// @deprecated  Use SSOT v4.0 (`lib/ssot/`) helpers + DB API (`/api/tours`, `/api/destinations`) instead.
+// This file kept only as fallback/seed during migration. Page consumers should migrate to:
+//   - tour data: getTourPage() from '@/lib/ssot' OR fetch('/api/tours')
+//   - destination data: getDestinationPage() from '@/lib/ssot' OR fetch('/api/destinations')
+// Note on data drift:
+//   - This file: 19 tours, 7 destinations (incl. surabaya-city, malang-city)
+//   - SSOT v4.0 canonical: 16 tours, 5 destinations (NO surabaya-city, NO malang-city)
+//   - Live site: 16 tours, 5 destinations
+// Filtering must happen at consumer level until full migration is done.
 
 export interface Destination {
   slug: string;

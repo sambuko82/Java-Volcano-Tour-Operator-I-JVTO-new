@@ -77,9 +77,21 @@
     @apply selection:bg-[color:var(--color-accent)] selection:text-[color:var(--color-white)];
   }
 
-  h1 { @apply text-hero font-display tracking-tight leading-tight; }
-  h2 { @apply text-section font-display tracking-tight; }
-  h3 { @apply text-headline font-display; }
+  h1 {
+    font-size: clamp(2.5rem, 4vw + 1rem, 5rem);
+    line-height: 1.02;
+    @apply font-display tracking-tight;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 2.4vw + 0.6rem, 3rem);
+    line-height: 1.05;
+    @apply font-display tracking-tight;
+  }
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.2;
+    @apply font-display;
+  }
   p  { @apply leading-relaxed; color: var(--text-muted); }
 
   /* Focus ring for keyboard users (high contrast, accessible) */

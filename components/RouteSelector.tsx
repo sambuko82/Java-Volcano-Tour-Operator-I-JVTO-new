@@ -81,7 +81,7 @@ export default function RouteSelector() {
                   >
                     <div>
                       <div className="text-2xl text-jvto-navy mb-2 font-bold">{origin}</div>
-                      <div className="text-sm text-jvto-muted font-light">{origin === 'Surabaya' ? 'Juanda International Airport (SUB)' : 'Ngurah Rai International Airport (DPS)'}</div>
+                      <div className="text-sm text-jvto-muted font-light">{origin === 'Surabaya' ? 'Pickup from any hotel, station, or airport in the Surabaya area' : 'Pickup from any hotel or transit point in Bali (incl. Gilimanuk ferry)'}</div>
                     </div>
                     <div className="w-12 h-12 rounded-full border border-jvto-border flex items-center justify-center group-hover:bg-jvto-navy group-hover:text-white group-hover:border-jvto-navy transition-all">
                       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

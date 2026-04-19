@@ -19,6 +19,7 @@ const ssotRedirects = (ssot.canonical_redirects ?? [])
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

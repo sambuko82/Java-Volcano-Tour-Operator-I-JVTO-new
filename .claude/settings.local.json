@@ -15,7 +15,12 @@
       "WebFetch(domain:uk.trustpilot.com)",
       "WebFetch(domain:au.trustpilot.com)",
       "Bash(rm -rf \"Redisgn Website JVTO\")",
-      "Bash(rm firebase.ts firebase-applet-config.json firebase-blueprint.json firestore.rules)"
+      "Bash(rm firebase.ts firebase-applet-config.json firebase-blueprint.json firestore.rules)",
+      "Bash(curl -sI \"https://javavolcano-touroperator.com/uploads/1768225567764-405955176-gufron.png\")",
+      "Bash(curl -sI \"https://javavolcano-touroperator.com/uploads/1768270364125-144711646-yandi.png\")",
+      "Bash(curl -sI \"https://javavolcano-touroperator.com/uploads/1768276791622-262250680-freddy.png\")",
+      "Bash(curl -s \"http://localhost:3000/_next/static/css/app/layout.css?v=1776614886536\" -o /tmp/layout.css)",
+      "Read(//tmp/**)"
     ]
   }
 }

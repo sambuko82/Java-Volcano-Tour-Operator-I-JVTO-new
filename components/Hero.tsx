@@ -29,8 +29,8 @@ export default function Hero({
   ctaSecondaryHref = "/tours",
   heroImageSrc = "/images/hero-default.jpg",
   heroImageAlt = "Java volcanic landscape",
-  rating = 4.9,
-  nib = "1102230032918",
+  rating,
+  nib,
   magmaStatus = "MAGMA: Normal",
 }: HeroProps) {
   return (

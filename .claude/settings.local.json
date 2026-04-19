@@ -13,7 +13,9 @@
       "WebFetch(domain:wanderlog.com)",
       "WebFetch(domain:web.archive.org)",
       "WebFetch(domain:uk.trustpilot.com)",
-      "WebFetch(domain:au.trustpilot.com)"
+      "WebFetch(domain:au.trustpilot.com)",
+      "Bash(rm -rf \"Redisgn Website JVTO\")",
+      "Bash(rm firebase.ts firebase-applet-config.json firebase-blueprint.json firestore.rules)"
     ]
   }
 }

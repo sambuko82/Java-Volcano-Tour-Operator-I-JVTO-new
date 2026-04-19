@@ -30,18 +30,14 @@ export const SITE_CONFIG = {
     isic: "https://www.isic.org/discounts/?providerId=259268",
     indecon: "https://www.indecon.id/spotlight-networks/java-volcano-tour-operator",
     googleMaps: "https://www.google.com/maps?cid=1266403973589689021",
-    aggregateRating: 4.9,
-    totalReviews: 112
+    facebook: "https://www.facebook.com/javavolcanotours/",
+    aggregateRating: 4.8,
+    totalReviews: 47,
+    aggregateRatingPlatform: "Trustpilot",
+    aggregateRatingLastVerified: "2026-04-19"
   },
   whatsapp: {
     number: "+6282244788833",
     waLink: "https://wa.me/6282244788833"
-  },
-  exchangeRates: {
-    USD: 16250,
-    EUR: 17800,
-    AUD: 10300,
-    SGD: 12000
-  },
-  exchangeRatesLastUpdated: "2026-03-01"
+  }
 } as const;

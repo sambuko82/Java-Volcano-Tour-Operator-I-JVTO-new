@@ -67,8 +67,8 @@
       "sources": ["Trustpilot", "TripAdvisor", "Google Maps"],
       "platform_breakdown": [
         { "platform": "Trustpilot", "rating": 4.8, "count": 47, "is_primary": true },
-        { "platform": "Google Maps", "rating": 4.90, "count": 92 },
-        { "platform": "TripAdvisor", "rating": 4.95, "count": 21 },
+        { "platform": "Google Maps", "rating": null, "count": null, "note": "sameAs eligible — rating not published in canonical SSOT" },
+        { "platform": "TripAdvisor", "rating": null, "count": null, "note": "sameAs eligible — rating not published in canonical SSOT" },
         { "platform": "GetYourGuide", "supplier_id": "s260697", "note": "Live supplier — URL confirmation pending" }
       ]
     },

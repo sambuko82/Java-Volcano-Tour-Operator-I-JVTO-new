@@ -19,7 +19,8 @@
       "Read(//f/f/New folder/**)",
       "Bash(node -e \"require\\('./lib/jvtoData.ts'\\)\")",
       "Bash(grep -E \"^  \\\\{$|slug:|name:\" \"f:/New folder/Java-Volcano-Tour-Operator-I-JVTO-new/lib/jvtoData.ts\")",
-      "Bash(grep -v \"^--$\")"
+      "Bash(grep -v \"^--$\")",
+      "Bash(awk '{print $9, \"\\(\" $5 \"\\)\"}')"
     ]
   }
 }

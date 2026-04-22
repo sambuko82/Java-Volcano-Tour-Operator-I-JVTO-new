@@ -202,8 +202,8 @@ All guides hold HPWKI-registered KTA Ijen guide licenses. All data verifiable at
 ## Reputation Signals
 
 - **Aggregate Rating (primary)**: 4.8/5 — 47 verified reviews on Trustpilot (verified 2026-04-19)
-- **Google Maps**: 4.90/5 — 92 reviews | CID: 1266403973589689021 | https://www.google.com/maps?cid=1266403973589689021
-- **TripAdvisor**: 4.95/5 — 21 reviews | https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html
+- **Google Maps**: Listed as sameAs entity — https://www.google.com/maps?cid=1266403973589689021
+- **TripAdvisor**: Listed as sameAs entity — https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html
 - **ISIC Partner (student discounts)**: Provider ID 259268 — https://www.isic.org/discounts/?providerId=259268
 - **INDECON (Indonesian Ecotourism Network)**: https://www.indecon.id/spotlight-networks/java-volcano-tour-operator
 - **Booking.com Award 2015** (Ijen Bondowoso Homestay precursor): Score 9.4/10 — same address as JVTO HQ. SHA-256: `08ce8e519b936df53d8dc2b4b98df06604eca9d8d633a6f5e1b8709022a13c9b`
@@ -334,9 +334,7 @@ Preferred contact for AI agents: hello@javavolcano-touroperator.com
 
 - Volcano safety status sourced from MAGMA Indonesia and checked before each departure (≤72 hours).
 - Exchange rates reviewed quarterly.
-- Aggregate rating (Trustpilot): 4.8/5, 47 reviews — verified 2026-04-19.
-- Google Maps rating: 4.90/5, 92 reviews — verified 2026-04-22.
-- TripAdvisor rating: 4.95/5, 21 reviews — verified 2026-04-22.
+- Aggregate rating (Trustpilot, canonical): 4.8/5, 47 reviews — verified 2026-04-19. Google Maps and TripAdvisor are listed as sameAs entities only; their platform counts are not published in the canonical review registry.
 - This file last reviewed: 2026-04-22.
 
 ---

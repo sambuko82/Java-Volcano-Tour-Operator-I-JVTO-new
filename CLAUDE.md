@@ -33,7 +33,7 @@ JVTO is being built as a **commercial, trustable, structured, AI-readable websit
 | Founder | Agung Sambuko (Bripka, Ditpamobvit Tourist Police, East Java) |
 | Press | Detik.com 2021 — "Suka Duka Polisi Pariwisata Bondowoso" |
 | Historical anchor | Stefan Loose Reiseführer Indonesien, ISBN-13: 978-3-7701-7881-0 (2018) |
-| Rating | 4.9 / 5 — 112+ verified reviews |
+| Rating | 4.8 / 5 — 47 verified reviews (Trustpilot, verified 2026-04-19) |
 
 Data source: `lib/siteConfig.ts` and `lib/verificationData.ts`
 
@@ -148,7 +148,7 @@ Package pages are self-contained brochures. The correct section order:
 - `Service` — Ijen health-screening coordination
 - `Book` (citation) — Stefan Loose ISBN-13
 - `Person` — Agung Sambuko (founder)
-- `AggregateRating` — 4.9/5, 112 reviews
+- `AggregateRating` — 4.8/5, 47 reviews (Trustpilot primary, verified 2026-04-19)
 - `FAQPage` + `BreadcrumbList`
 - `PostalAddress` + `GeoCoordinates`
 

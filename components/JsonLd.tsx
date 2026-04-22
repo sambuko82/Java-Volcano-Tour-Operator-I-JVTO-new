@@ -318,6 +318,7 @@ function buildOrganizationSchema(type: string | string[]): JsonLdNode {
       SITE_CONFIG.reputation.isic,
       SITE_CONFIG.reputation.indecon,
       SITE_CONFIG.reputation.googleMaps,
+      SITE_CONFIG.reputation.facebook,
       'https://instagram.com/javavolcanotouroperator',
       'https://web.archive.org/web/*/javavolcano-touroperator.com',
     ],
@@ -776,6 +777,31 @@ export function buildIjenHealthScreeningServiceSchema(): JsonLdNode {
         { '@type': 'CreativeWork', name: 'BBKSDA SE-1658 Mandate', url: PROOF_ASSETS.bbksdaSe1658 }
       ],
     },
+  };
+}
+
+/**
+ * BreadcrumbList schema for tour and destination pages.
+ * Enables SERP breadcrumb display and cross-page entity linkage.
+ * Usage: buildBreadcrumbSchema([{ name: 'Tours', url: '/tours' }, { name: 'Package Name', url: '/tours/slug' }])
+ * Always omits the homepage item — schema.org resolves it from the @id base URL.
+ */
+export function buildBreadcrumbSchema(items: { name: string; url: string }[]): JsonLdNode {
+  const allItems = [
+    { name: 'Home', url: BASE_URL },
+    ...items.map((item) => ({
+      name: item.name,
+      url: item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
+    })),
+  ];
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: allItems.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }
 

@@ -21,7 +21,8 @@ export const FORENSIC_HASHES = {
   detikCoverage2021: 'b257b75b3d2b9edebf07c9af89a6c6aa9a4e01d6a716ef3f7c4ca75deda64b77',
   radarJemberPolpar2021: '2a60eb168274004283b2b9939ccbf5982c12a7db854fda014308a2494ee2abf4',
   bbksdaSe1658: 'b12e987c22956faa366d957badecfe38868d4760359cd8059fb2d6b145dfeab',
-  healthScreeningSample: 'c5d8...e01d', // Forensic format
+  // TODO: Provide full 64-char SHA-256 of health-screening-form-sample-2026-02-17.pdf
+  healthScreeningSample: 'TODO:PENDING',
 } as const;
 
 export const PROOF_ASSETS = {
@@ -65,6 +66,8 @@ export const EXTERNAL_VERIFICATION_URLS = {
   radarJemberPolpar: 'https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark',
   radarJemberIjenPatrol: 'https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada',
   stefanLoose: 'https://www.tripplanner.at/en/product-page/stefan-loose-reisef%C3%BChrer-indonesien',
+  // GetYourGuide supplier profile — URL confirmation pending (supplier ID: s260697)
+  // getYourGuide: 'TODO:PENDING',
 } as const;
 
 export interface Recognition {
@@ -103,6 +106,8 @@ export interface MedicalPartner {
 export interface LegalData {
   companyName: string;
   nib: string;
+  tdup?: string;
+  tdupIssuedDate?: string;
   ossUrl: string;
   ahuCompanyUrl: string;
   domain: string;
@@ -276,6 +281,8 @@ export const MEDICAL_PARTNERS: MedicalPartner[] = [
 export const LEGAL_DATA: LegalData = {
   companyName: 'PT Java Volcano Rendezvous',
   nib: '1102230032918',
+  tdup: '1102230032918',
+  tdupIssuedDate: '2023-02-11',
   ossUrl: 'https://oss.go.id',
   ahuCompanyUrl: EXTERNAL_VERIFICATION_URLS.ahuCompany,
   domain: 'javavolcano-touroperator.com',

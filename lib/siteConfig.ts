@@ -1,4 +1,6 @@
 // lib/siteConfig.ts
+// Source of truth: JVTO_MASTER_SSOT.json v6.0 (2026-04-22)
+// Aggregate rating sourced from JVTO_REVIEW_REGISTRY_v1.json — 4.8/5, 47 reviews, verified 2026-04-19
 export const SITE_CONFIG = {
   organization: {
     name: "Java Volcano Tour Operator",
@@ -8,36 +10,103 @@ export const SITE_CONFIG = {
     foundingDate: "2016-01-01",
     description: "Java Volcano Tour Operator (JVTO) is a registered Indonesian travel company based in Bondowoso. We design private, all-inclusive itineraries to Mount Bromo, Ijen Crater and Tumpak Sewu with visible legal proof, Tourist Police-informed safety culture, transparent pricing and real local impact.",
     nib: "1102230032918",
+    tdup: "1102230032918",
+    tdupIssuedDate: "2023-02-11",
+    kbliCodes: "79121, 79911, 62019, 79120, 79921",
+    logoUrl: "https://javavolcano-touroperator.com/assets/img/jvto-color.png",
+    heroImageUrl: "https://javavolcano-touroperator.com/assets/img/hero/home.webp",
     phone: "+6282244788833",
     email: "hello@javavolcano-touroperator.com",
+    secondaryEmail: "javavolcanotouroperator@gmail.com",
     address: {
       street: "Jl. Khairil Anwar No.102 A, Badean",
       city: "Bondowoso",
       region: "Jawa Timur",
       postalCode: "68214",
       country: "ID",
-      mapUrl: "https://www.google.com/maps?cid=1266403973589689021"
+      mapUrl: "https://www.google.com/maps?cid=1266403973589689021",
+      googleMapsCid: "1266403973589689021",
     },
     founder: {
       name: "Agung Sambuko (Mr. Sam)",
-      title: "Founder & Tourist Police Duty Context",
-      image: "https://javavolcano-touroperator.com/founder/agung_sambuko.jpg"
-    }
+      title: "Founder & Active Tourist Police Officer",
+      policeUnit: "Indonesian National Police — Ditpamobvit (Tourist Police East Java)",
+      image: "https://javavolcano-touroperator.com/founder/agung_sambuko.jpg",
+      imageAlternate: "https://javavolcano-touroperator.com/founder/mr-sam-tourist-police-portrait.png",
+      wikidataUnit: "https://www.wikidata.org/wiki/Q3103954",
+    },
+    slogan: "Tourist Police-Led Private Volcano Tours in East Java",
+    priceRange: "$$",
+    tourModel: "Private only — no shared or group tours",
+    languages: ["en", "id"],
   },
   reputation: {
     tripadvisor: "https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html",
     trustpilot: "https://trustpilot.com/review/javavolcano-touroperator.com",
     isic: "https://www.isic.org/discounts/?providerId=259268",
+    isicProviderId: "259268",
     indecon: "https://www.indecon.id/spotlight-networks/java-volcano-tour-operator",
     googleMaps: "https://www.google.com/maps?cid=1266403973589689021",
     facebook: "https://www.facebook.com/javavolcanotours/",
+    // GetYourGuide supplier — URL confirmation pending; supplier ID: s260697
+    getYourGuideSupplier: "s260697",
     aggregateRating: 4.8,
     totalReviews: 47,
     aggregateRatingPlatform: "Trustpilot",
-    aggregateRatingLastVerified: "2026-04-19"
+    aggregateRatingLastVerified: "2026-04-19",
+    // Multi-platform review data (JVTO_REVIEW_REGISTRY_v1.json + JVTO_MASTER_SSOT.json v6)
+    reviewPlatforms: [
+      {
+        platform: "Trustpilot",
+        rating: 4.8,
+        count: 47,
+        url: "https://trustpilot.com/review/javavolcano-touroperator.com",
+        isPrimary: true,
+        lastVerified: "2026-04-19",
+      },
+      {
+        platform: "Google Maps",
+        rating: 4.90,
+        count: 92,
+        url: "https://www.google.com/maps?cid=1266403973589689021",
+        isPrimary: false,
+        lastVerified: "2026-04-22",
+      },
+      {
+        platform: "TripAdvisor",
+        rating: 4.95,
+        count: 21,
+        url: "https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html",
+        isPrimary: false,
+        lastVerified: "2026-04-22",
+      },
+      {
+        platform: "GetYourGuide",
+        rating: null,
+        count: null,
+        url: null,
+        isPrimary: false,
+        supplierSlug: "s260697",
+        note: "Live supplier — URL confirmation pending",
+      },
+    ],
   },
   whatsapp: {
     number: "+6282244788833",
     waLink: "https://wa.me/6282244788833"
-  }
+  },
+  bankAccounts: [
+    {
+      bank: "BRI",
+      account: "001301001779564",
+      swift: "BRINIDJAXXX",
+      name: "PT Java Volcano Rendezvous",
+    },
+    {
+      bank: "BCA",
+      account: "1200944352",
+      swift: "CENAIDJAXXX",
+      name: "PT Java Volcano Rendezvous",
+    },
+  ],
 } as const;

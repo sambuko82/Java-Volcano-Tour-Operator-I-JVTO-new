@@ -1,11 +1,12 @@
 {
   "schema_version": "2.0",
-  "last_updated": "2026-04-17",
+  "last_updated": "2026-04-22",
   "entity": {
     "name": "Java Volcano Tour Operator",
     "legal_name": "PT Java Volcano Rendezvous",
     "brand": "JVTO",
     "nib": "1102230032918",
+    "kbli_codes": "79121, 79911, 62019, 79120, 79921",
     "founded": "2016-01-01",
     "category": "TravelAgency",
     "subcategory": "VolcanoExpeditionOperator",
@@ -58,11 +59,18 @@
   ],
   "trust_signals": {
     "aggregate_rating": {
-      "value": 4.9,
-      "count": 112,
+      "value": 4.8,
+      "count": 47,
       "scale": 5.0,
-      "confirmed_iso": "2026-03-12",
-      "sources": ["Trustpilot", "TripAdvisor", "Google Maps"]
+      "primary_platform": "Trustpilot",
+      "confirmed_iso": "2026-04-19",
+      "sources": ["Trustpilot", "TripAdvisor", "Google Maps"],
+      "platform_breakdown": [
+        { "platform": "Trustpilot", "rating": 4.8, "count": 47, "is_primary": true },
+        { "platform": "Google Maps", "rating": 4.90, "count": 92 },
+        { "platform": "TripAdvisor", "rating": 4.95, "count": 21 },
+        { "platform": "GetYourGuide", "supplier_id": "s260697", "note": "Live supplier — URL confirmation pending" }
+      ]
     },
     "certifications": [
       {
@@ -78,6 +86,7 @@
         "type": "TourismBusinessLicense",
         "name": "TDUP — Tourism Business License",
         "identifier": "1102230032918",
+        "issued_date": "2023-02-11",
         "issuer": "Bondowoso tourism licensing authority",
         "proof_url": "https://javavolcano-touroperator.com/legal/TDUP-1102230032918.pdf",
         "sha256": "27252d512ddfa74de22a3e3ec10aa3dd40ef88da3eb57349fcd2137411551ee3"

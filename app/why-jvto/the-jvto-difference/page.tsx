@@ -14,11 +14,11 @@ import { SITE_CONFIG } from '@/lib/siteConfig';
 const differenceFaqs = [
   {
     question: "How do I know your safety claims are real?",
-    answer: "We provide direct links to our legal registration (NIB), our documented Tourist Police duty context, and independent review platforms. You can verify every claim we make in our proof library."
+    answer: "We provide direct links to our legal registration (NIB), our police-led operational story, and independent review platforms. You can verify every claim we make in our proof library."
   },
   {
-    question: "What is the police-informed difference in practice?",
-    answer: "It means JVTO's operating culture is shaped by Tourist Police discipline: clearer escalation, respect for official closures, formal coordination capacity, and a stronger bias toward safety over sales pressure."
+    question: "What is the 'Police-Led' difference in practice?",
+    answer: "It means our safety protocols are derived from official Indonesian Tourist Police standards. We have direct lines to local authorities for real-time updates on volcanic activity and road safety, ensuring we never take unnecessary risks for a sale."
   }
 ];
 
@@ -44,7 +44,7 @@ export default function JVTODifferencePage() {
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">The JVTO Difference: Safety Leadership and Verified Proof</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              In an industry often marked by vague claims, we provide proof-backed standards and police-informed safety discipline for private East Java expeditions.
+              In an industry often marked by vague claims, we provide proof-backed standards and police-led safety for every expedition.
             </p>
           </motion.div>
         </div>
@@ -67,7 +67,7 @@ export default function JVTODifferencePage() {
             <div className="bg-white p-10 rounded-3xl border border-stone-200 shadow-sm">
               <Scale className="text-orange-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">More Accountability</h3>
-              <p className="text-stone-600 text-sm">We are a registered PT company with a physical office and documented safety leadership context. We are legally accountable for your trip.</p>
+              <p className="text-stone-600 text-sm">We are a registered PT company with a physical office and a police-led leadership team. We are legally accountable for your trip.</p>
             </div>
             <div className="bg-white p-10 rounded-3xl border border-stone-200 shadow-sm">
               <Lock className="text-orange-500 mb-6" size={40} />
@@ -94,19 +94,19 @@ export default function JVTODifferencePage() {
             </div>
             <div className="p-8 border-l-4 border-orange-500 bg-stone-50">
               <h3 className="text-xl font-bold mb-2">Operational Safety</h3>
-              <p className="text-stone-600 text-sm mb-4">Route-specific health readiness support and professional-grade safety equipment.</p>
+              <p className="text-stone-600 text-sm mb-4">Mandatory health checks and professional-grade safety equipment.</p>
               <Link href="/verify-jvto/police-safety" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Verify Safety <ArrowRight size={12} /></Link>
             </div>
             <div className="p-8 border-l-4 border-orange-500 bg-stone-50">
-              <h3 className="text-xl font-bold mb-2">Tourist Police Context</h3>
-              <p className="text-stone-600 text-sm mb-4">Founder duty context and formal coordination habits documented through proof assets.</p>
+              <h3 className="text-xl font-bold mb-2">Police-Led Oversight</h3>
+              <p className="text-stone-600 text-sm mb-4">Direct coordination with Tourist Police and local authorities.</p>
               <Link href="/why-jvto/our-story" className="text-brand-olive font-bold text-xs uppercase tracking-widest flex items-center gap-1">Check Story <ArrowRight size={12} /></Link>
             </div>
           </div>
           
           <AuthorityShield 
-            title="Tourist Police-Informed Leadership"
-            description="Our founder, Agung Sambuko (Mr. Sam), has Tourist Police duty context documented by third-party coverage. This informs JVTO's safety culture, formal coordination habits, and proof-first operating style."
+            title="Active Tourist Police Leadership"
+            description="Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police. This ensures that every JVTO tour operates within the highest safety standards and legal frameworks of East Java."
           />
         </div>
       </section>
@@ -133,7 +133,7 @@ export default function JVTODifferencePage() {
             <div>
               <XCircle className="text-red-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">No Shared-Group Ambiguity</h3>
-              <p className="text-stone-400 text-sm">We do not offer &apos;budget&apos; shared tours. Private execution gives better control over timing, pacing, and safety decisions.</p>
+              <p className="text-stone-400 text-sm">We do not offer &apos;budget&apos; shared tours. We only offer private tours because that is the only way to ensure our safety standards.</p>
             </div>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function JVTODifferencePage() {
             <Link href="/verify-jvto/police-safety" className="bg-white p-8 rounded-3xl border border-stone-200 hover:shadow-lg transition-all">
               <Shield className="text-orange-500 mb-4" size={32} />
               <h3 className="text-xl font-bold mb-2">Police & Safety</h3>
-              <p className="text-stone-500 text-xs">Safety protocols and documented Tourist Police duty-context proof.</p>
+              <p className="text-stone-500 text-xs">Safety protocols and police-led oversight proof.</p>
             </Link>
             <Link href="/verify-jvto/press-recognition" className="bg-white p-8 rounded-3xl border border-stone-200 hover:shadow-lg transition-all">
               <Award className="text-orange-500 mb-4" size={32} />

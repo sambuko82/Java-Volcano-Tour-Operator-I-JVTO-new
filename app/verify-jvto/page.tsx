@@ -9,41 +9,15 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { ShieldCheck, CheckCircle2, Star, ArrowRight, ExternalLink, FileText, Scale, Landmark, ClipboardCheck, ShieldAlert, Activity, Globe, Award, Archive, History } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/siteConfig';
-import { EXTERNAL_VERIFICATION_URLS, LEGAL_DATA, PROOF_ASSETS, RECOGNITIONS, ARTIFACTS, TIMELINE } from '@/lib/verificationData';
+import { LEGAL_DATA, RECOGNITIONS, ARTIFACTS, TIMELINE } from '@/lib/verificationData';
 import ProofCard from '@/components/ProofCard';
 import AuthorityShield from '@/components/AuthorityShield';
-import ProofCategoryGrid from '@/components/ProofCategoryGrid';
 
 export default function VerifyJVTO() {
   const verifySchema = {
-    "@type": ["WebPage", "CollectionPage"],
+    "@type": ["WebPage", "LocalBusiness"],
     "name": "Verify JVTO – Credentials, Safety, Press & History",
-    "description": "Review JVTO’s proof library: legal identity, historical continuity, police and safety context, and third-party references.",
-    "hasPart": [
-      { "@type": "WebPage", "name": "Legal Verification", "url": "https://javavolcano-touroperator.com/verify-jvto/legal" },
-      { "@type": "WebPage", "name": "Police-Informed Safety", "url": "https://javavolcano-touroperator.com/verify-jvto/police-safety" },
-      { "@type": "WebPage", "name": "Press & Recognition", "url": "https://javavolcano-touroperator.com/verify-jvto/press-recognition" },
-      { "@type": "WebPage", "name": "History & Artifacts", "url": "https://javavolcano-touroperator.com/verify-jvto/history-artifacts" }
-    ],
-    "mainEntity": {
-      "@type": "Organization",
-      "name": SITE_CONFIG.organization.legalName,
-      "identifier": SITE_CONFIG.organization.nib,
-      "sameAs": [
-        EXTERNAL_VERIFICATION_URLS.ahuCompany,
-        SITE_CONFIG.reputation.tripadvisor,
-        SITE_CONFIG.reputation.trustpilot,
-        SITE_CONFIG.reputation.googleMaps,
-        SITE_CONFIG.reputation.isic,
-        SITE_CONFIG.reputation.indecon
-      ],
-      "subjectOf": [
-        PROOF_ASSETS.nibPdf,
-        PROOF_ASSETS.tdupPdf,
-        PROOF_ASSETS.sprinPolparPdf,
-        EXTERNAL_VERIFICATION_URLS.detikPolice
-      ]
-    }
+    "description": "Review JVTO’s proof library: legal identity, historical continuity, police and safety context, and third-party references."
   };
 
   const verifyFaqs = [
@@ -102,19 +76,6 @@ export default function VerifyJVTO() {
         </div>
       </section>
 
-      {/* Proof Category Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-2xl font-display font-bold text-jvto-navy mb-3">Proof by Category</h2>
-            <p className="text-jvto-muted text-sm max-w-2xl">
-              In the East Java tour market, many operators are unlicensed brokers or freelancers. We provide this library so travelers can audit our legitimacy, historical continuity, and safety authority before booking.
-            </p>
-          </div>
-          <ProofCategoryGrid />
-        </div>
-      </section>
-
       {/* Audit Log / Evidence Grid */}
       <section className="py-20 bg-forensic-bg border-t border-forensic-accent/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,6 +83,13 @@ export default function VerifyJVTO() {
             <div className="flex items-center gap-4">
               <div className="w-3 h-3 bg-forensic-accent rounded-full animate-pulse" />
               <h2 className="text-xl font-mono font-bold text-forensic-accent uppercase tracking-widest">Evidence_Database_v2.0</h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {['All', 'Legal', 'Press', 'History', 'Safety'].map(filter => (
+                <button key={filter} className="px-4 py-1.5 rounded-md border border-forensic-accent/20 text-[10px] font-bold uppercase tracking-widest text-forensic-muted hover:bg-forensic-accent/10 hover:text-forensic-accent transition-all">
+                  {filter}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -237,7 +205,7 @@ export default function VerifyJVTO() {
                   </div>
                   <div>
                     <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Tourist Police Leadership</h3>
-                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">Founder Agung Sambuko is an active member of the Indonesian Tourist Police (POLRI). His background shapes JVTO&apos;s safety culture, documentation habits, and formal coordination capacity.</p>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">Founder Agung Sambuko is an active member of the Indonesian Tourist Police (POLRI). This ensures our safety protocols are aligned with official law enforcement standards.</p>
                   </div>
                 </div>
                 <div className="flex gap-10">
@@ -245,8 +213,8 @@ export default function VerifyJVTO() {
                     <Activity size={36} />
                   </div>
                   <div>
-                    <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Ijen Screening Support</h3>
-                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">We support the required Ijen health-screening workflow through local medical providers. The goal is real assessment before the trek, not paperwork shortcuts.</p>
+                    <h3 className="text-3xl font-serif font-light mb-4 text-brand-olive">Real Health Screening</h3>
+                    <p className="text-stone-600 font-light leading-relaxed text-lg italic">We maintain formal partnerships with certified medical clinics for mandatory Ijen health screenings. Every check is real, ensuring you are medically cleared for the trek.</p>
                   </div>
                 </div>
               </div>
@@ -355,11 +323,10 @@ export default function VerifyJVTO() {
       <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+            src="https://picsum.photos/seed/verify-cta/1920/1080"
             alt="Background"
             fill
             className="object-cover"
-            referrerPolicy="no-referrer"
           />
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">

@@ -82,7 +82,7 @@ export default function FounderSpotlight() {
 
                 <div className="relative mb-6 rounded-xl overflow-hidden aspect-video border border-white/10">
                   <Image 
-                    src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+                    src="https://picsum.photos/seed/detik-news/800/600" 
                     alt="Detik News Article Screenshot"
                     fill
                     className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
@@ -105,7 +105,7 @@ export default function FounderSpotlight() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
                   <p className="text-2xl font-display font-bold text-jvto-orange">100%</p>
-                  <p className="micro-label text-white/40 mt-1">Proof-Led Operations</p>
+                  <p className="micro-label text-white/40 mt-1">Police-Led Operations</p>
                 </div>
                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
                   <p className="text-2xl font-display font-bold text-jvto-orange">24/7</p>

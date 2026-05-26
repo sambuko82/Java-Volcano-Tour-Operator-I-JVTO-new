@@ -1,14 +1,4 @@
 // lib/jvtoData.ts
-//
-// @deprecated  Use SSOT v4.0 (`lib/ssot/`) helpers + DB API (`/api/tours`, `/api/destinations`) instead.
-// This file kept only as fallback/seed during migration. Page consumers should migrate to:
-//   - tour data: getTourPage() from '@/lib/ssot' OR fetch('/api/tours')
-//   - destination data: getDestinationPage() from '@/lib/ssot' OR fetch('/api/destinations')
-// Note on data drift:
-//   - This file: 19 tours, 7 destinations (incl. surabaya-city, malang-city)
-//   - SSOT v4.0 canonical: 16 tours, 5 destinations (NO surabaya-city, NO malang-city)
-//   - Live site: 16 tours, 5 destinations
-// Filtering must happen at consumer level until full migration is done.
 
 export interface Destination {
   slug: string;
@@ -21,8 +11,6 @@ export interface Destination {
   practicalNotes: string[];
   altitude?: number;
   region: string;
-  geoCoordinates?: { latitude: number; longitude: number };
-  hazardousSubstance?: string;
 }
 
 export interface Tour {
@@ -44,12 +32,6 @@ export interface Tour {
   bestFor: string;
   idealTraveler: string;
   pricingTable: { pax: number; price: number }[];
-  accommodation?: string;
-  vehicleDetails?: string;
-  mealsIncluded?: string;
-  gallery?: string[];
-  faq?: { question: string; answer: string }[];
-  ijenRelevant?: boolean; // Schema flag: true if package includes Ijen Crater
 }
 
 export interface CrewMember {
@@ -63,13 +45,7 @@ export interface CrewMember {
   photoUrl: string | null;
   displayPriority: number;
   kta?: string; // Kartu Tanda Anggota / License ID
-  forensicReviewQuote?: string; // Verbatim guest quote from reviews
-  ktaCardUrl?: string; // URL to official Ijen guide license card image
-  schemaKnowsAbout?: string[]; // Override for JSON-LD knowsAbout — per GEO Blueprint persona mapping
-  schemaJobTitle?: string; // Override for JSON-LD jobTitle — per GEO Blueprint persona mapping
 }
-
-const VALID_MEDIA_FALLBACK = 'https://javavolcano-touroperator.com/assets/img/hero/home.webp';
 
 export const DESTINATIONS: Destination[] = [
   {
@@ -77,12 +53,10 @@ export const DESTINATIONS: Destination[] = [
     name: 'Mount Bromo',
     shortDesc: 'The iconic active volcano of East Java, famous for its otherworldly sea of sand and sunrise views.',
     fullDesc: 'Mount Bromo is an active volcano within the Tengger Caldera, famed for its sunrise views from Kingkong Hill, the Sea of Sand jeep adventure, and the Tenggerese Hindu rituals at Pura Luhur Poten.',
-    image: 'https://javavolcano-touroperator.com/uploads/1764649856442-820608003-bromo-new.jpg',
+    image: 'https://picsum.photos/seed/bromo-volcano/1200/800',
     difficulty: 'Moderate',
     region: 'Tengger Highlands',
     altitude: 2329,
-    geoCoordinates: { latitude: -7.9425, longitude: 112.9531 },
-    hazardousSubstance: 'Volcanic ash and sulfuric gas emissions',
     highlights: [
       'Sunrise over Tengger Caldera',
       'Sea of Sand jeep adventure',
@@ -100,12 +74,10 @@ export const DESTINATIONS: Destination[] = [
     name: 'Kawah Ijen',
     shortDesc: 'Home to the world\'s largest acidic crater lake and the rare "Blue Fire" phenomenon.',
     fullDesc: 'Kawah Ijen is the world\'s largest acidic crater lake and one of only two places where natural blue fire appears at night. It is also a site of traditional sulfur mining.',
-    image: 'https://javavolcano-touroperator.com/uploads/1764649921055-338810628-1687447803_whatsapp_image_2019-05-12_at_4.46.53_pm.jpeg',
+    image: 'https://picsum.photos/seed/ijen-crater/1200/800',
     difficulty: 'Moderate',
     region: 'Bondowoso',
     altitude: 2769,
-    geoCoordinates: { latitude: -8.0584, longitude: 114.2420 },
-    hazardousSubstance: 'Sulfur Dioxide (SO₂) — up to 50,000 ppm at crater rim',
     highlights: [
       'Blue fire phenomenon',
       'Acidic turquoise crater lake',
@@ -113,7 +85,7 @@ export const DESTINATIONS: Destination[] = [
       'Stunning sunrise over the caldera'
     ],
     practicalNotes: [
-      'Health-certificate screening is coordinated when current access rules require it.',
+      'Mandatory health screening included in JVTO packages.',
       'Gas masks and trekking poles provided by JVTO.',
       'Temperature: 5-10°C at night, 15-25°C during day.'
     ]
@@ -123,11 +95,10 @@ export const DESTINATIONS: Destination[] = [
     name: 'Madakaripura Waterfall',
     shortDesc: 'A majestic "eternal" waterfall hidden in a deep canyon, linked to the history of the Majapahit Empire.',
     fullDesc: 'A sacred 200-meter canyon waterfall believed to be the final meditation site of Gajah Mada, symbolizing loyalty and unity from the Majapahit legacy.',
-    image: 'https://javavolcano-touroperator.com/uploads/1764650020192-295296217-madakaripura1.jpg',
+    image: 'https://picsum.photos/seed/madakaripura-waterfall/1200/800',
     difficulty: 'Moderate',
     region: 'Lumbang, Probolinggo',
     altitude: 620,
-    geoCoordinates: { latitude: -7.9136, longitude: 113.0472 },
     highlights: [
       'Sacred 200-meter canyon waterfall',
       'Gajah Mada\'s meditation site',
@@ -145,11 +116,10 @@ export const DESTINATIONS: Destination[] = [
     name: 'Tumpak Sewu Waterfall',
     shortDesc: 'The "Thousand Waterfalls," a massive semi-circular curtain of water cascading into a lush jungle ravine.',
     fullDesc: 'A multi-stream semicircular waterfall formed by Mount Semeru\'s volcanic erosion, known for its canyon trail and panoramic viewpoint with Semeru backdrop.',
-    image: 'https://javavolcano-touroperator.com/uploads/1764650032945-926940542-tumpak-sewu1.jpg',
+    image: 'https://picsum.photos/seed/tumpak-sewu-waterfall/1200/800',
     difficulty: 'Hard',
     region: 'Lumajang–Malang Border',
     altitude: 500,
-    geoCoordinates: { latitude: -8.2342, longitude: 112.9158 },
     highlights: [
       'Thousand-stream waterfall curtain',
       'Mount Semeru backdrop',
@@ -167,11 +137,10 @@ export const DESTINATIONS: Destination[] = [
     name: 'Papuma Beach',
     shortDesc: 'A pristine white sand beach with dramatic rock formations rising from the Indian Ocean.',
     fullDesc: 'Beautiful white sand beach with unique rock formations and clear turquoise waters in Jember, East Java. A perfect contrast stop for multi-day tours.',
-    image: 'https://javavolcano-touroperator.com/uploads/1764650056490-963808584-papuma1.jpg',
+    image: 'https://javavolcano-touroperator.com/assets/img/destinations/papuma.webp',
     difficulty: 'Easy',
     region: 'Jember',
     altitude: 5,
-    geoCoordinates: { latitude: -8.2780, longitude: 113.6283 },
     highlights: [
       'White sand and turquoise water',
       'Unique rock formations',
@@ -183,61 +152,37 @@ export const DESTINATIONS: Destination[] = [
       'Best visited during the dry season (April–October).',
       'Ideal for a rest day between hikes.'
     ]
-  },
-  {
-    slug: 'surabaya-city',
-    name: 'Surabaya City',
-    shortDesc: 'The "City of Heroes," East Java\'s bustling capital and main arrival gateway.',
-    fullDesc: 'Surabaya is Indonesia\'s second-largest city, a major port, and the historical "City of Heroes." It serves as the primary gateway for tours to Bromo and Ijen.',
-    image: VALID_MEDIA_FALLBACK,
-    difficulty: 'Easy',
-    region: 'Surabaya',
-    highlights: ['House of Sampoerna', 'Heroes Monument', 'Suramadu Bridge'],
-    practicalNotes: ['The main arrival point via Juanda International Airport (SUB).']
-  },
-  {
-    slug: 'malang-city',
-    name: 'Malang & Batu',
-    shortDesc: 'A cool highland city known for its Dutch colonial architecture, apple orchards, and creative villages.',
-    fullDesc: 'Malang and the nearby city of Batu offer a refreshing alpine climate, colorful rainbow villages, and historical charm at the foot of Mount Semeru.',
-    image: VALID_MEDIA_FALLBACK,
-    difficulty: 'Easy',
-    region: 'Malang Highlands',
-    highlights: ['Kampung Warna-Warni (Rainbow Village)', 'Batu Flower Garden', 'Dutch Colonial Architecture'],
-    practicalNotes: ['Lower temperatures than Surabaya; a perfect cultural stop.']
   }
 ];
-
 
 export const TOURS: Tour[] = [
   {
     slug: 'bromo-1d1n',
     name: '1D1N Bromo Midnight Tour',
-    shortDesc: 'The efficient Bromo express: depart at midnight, witness sunrise, return by afternoon.',
-    longDesc: 'Designed for travelers with limited time, this midnight dash takes you from Surabaya straight to the Bromo sunrise. Experience the 4WD jeep adventure across the Sea of Sand and the crater trek before heading back to the city.',
+    shortDesc: 'Midnight departure from Surabaya for a compact yet comprehensive Bromo experience.',
+    longDesc: 'Forget the hotel and sleep on the road! This quick adventure picks you up from Surabaya at midnight and takes you through the darkness straight to the foot of Mount Bromo. You\'ll switch to a 4WD Jeep for an off-road adventure, witness a magical sunrise, climb the crater, and return to Surabaya in the afternoon.',
     duration: '1 Day, 1 Night',
     origin: 'Surabaya',
-    priceFrom: 1850000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/2d-1n-surabaya-bromo-1-day-tours-1679725846337/bromo14.webp',
-    rating: 5.0,
+    priceFrom: 1000000,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/bromo-1d1n.webp',
+    rating: 4.9,
     physicality: 'moderate',
-    bestFor: 'Time-critical travelers',
-    idealTraveler: 'Solo travelers and business guests',
+    bestFor: 'Time-sensitive travelers',
+    idealTraveler: 'Solo or couples with limited time',
     pricingTable: [
       { pax: 1, price: 1850000 },
-      { pax: 2, price: 1250000 },
-      { pax: 3, price: 950000 }
+      { pax: 2, price: 1000000 },
+      { pax: 3, price: 850000 },
+      { pax: 4, price: 750000 },
+      { pax: 5, price: 650000 }
     ],
-    highlights: ['Bromo Sunrise', 'Sea of Sand Jeep', 'Crater Rim Trek', 'Direct Surabaya Return'],
+    highlights: ['Midnight departure', '4WD Jeep experience', 'Bromo crater exploration', 'Whispering Sand'],
     destinations: ['mount-bromo'],
     itinerary: [
-      { day: '00:00', title: 'Midnight Departure', summary: 'Pickup from Surabaya. Overland drive to Bromo area.' },
-      { day: '03:30', title: 'Sunrise Adventure', summary: 'Switch to 4WD Jeep for Penanjakan sunrise view.' },
-      { day: '06:00', title: 'Crater Exploration', summary: 'Crossing the Sea of Sand and trekking to Bromo crater.' },
-      { day: '12:00', title: 'Return', summary: 'Drive back to Surabaya. Drop-off by afternoon.' }
+      { day: 'Day 1', title: 'Overnight Adventure in Bromo', summary: 'Midnight pickup from Surabaya. Jeep tour for sunrise at Kingkong Hill. Hike to Bromo crater. Return to Surabaya by noon.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Snack Box'],
-    exclusions: ['Flights', 'Lunch', 'Tipping']
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Complimentary T-shirt'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'bromo-2d1n',
@@ -247,7 +192,7 @@ export const TOURS: Tour[] = [
     duration: '2 Days, 1 Night',
     origin: 'Surabaya',
     priceFrom: 1750000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/2d-1n-surabaya-bromo-1-day-tours-1679725846337/bromo14.webp',
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/bromo-2d1n.webp',
     rating: 5.0,
     physicality: 'moderate',
     bestFor: 'Short escapes',
@@ -265,18 +210,7 @@ export const TOURS: Tour[] = [
       { day: 'Day 2', title: 'Bromo & Madakaripura', summary: 'Early morning sunrise tour. Bromo crater hike. Madakaripura Waterfall trek. Return to Surabaya.' }
     ],
     inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Daily Breakfast', 'Complimentary T-shirt'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    accommodation: 'Hutan Bromo or similar high-quality lodge near the crater rim.',
-    vehicleDetails: 'Private Toyota Avanza/Innova for overland. Private Toyota Land Cruiser 4WD for Bromo crater.',
-    mealsIncluded: 'Breakfast everyday. Coffee/tea at sunrise. Local dinner options on Day 1.',
-    faq: [
-      { question: 'What is the best time for Bromo?', answer: 'The dry season (April-October) offers the clearest sunrise views.' },
-      { question: 'Is this tour suitable for children?', answer: 'Yes, Bromo is very accessible for families, though it is cold in the morning.' }
-    ],
-    gallery: [
-      'https://javavolcano-touroperator.com/img/destinations/2d-1n-surabaya-bromo-1-day-tours-1679725846337/bromo14.webp',
-      'https://javavolcano-touroperator.com/assets/img/hero/home.webp'
-    ]
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-2d1n',
@@ -286,7 +220,7 @@ export const TOURS: Tour[] = [
     duration: '2 Days, 1 Night',
     origin: 'Surabaya',
     priceFrom: 1550000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/2d-1n-surabaya-ijen-1-day-tours-1679724664576/ijen12.webp',
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-2d1n.webp',
     rating: 4.8,
     physicality: 'moderate',
     bestFor: 'Ijen specialists',
@@ -303,16 +237,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 1', title: 'Overland to Bondowoso', summary: 'Pickup from Surabaya. Drive to Bondowoso highlands. Mandatory health check at hotel. Dinner.' },
       { day: 'Day 2', title: 'Ijen Expedition', summary: 'Midnight hike to Ijen for Blue Fire and sunrise. Crater lake exploration. Return to Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    accommodation: 'Grand Padis Hotel Bondowoso or similar.',
-    vehicleDetails: 'Private AC Transport for overland. Ijen-area shuttle coordination.',
-    mealsIncluded: 'Breakfast after descent. Coffee/tea before hike.',
-    faq: [
-      { question: 'Is the Blue Fire guaranteed?', answer: 'It is a natural phenomenon subject to weather and gas activity.' },
-      { question: 'What if I am not fit?', answer: 'We coordinate clinic checks before the tour to ensure safety.' }
-    ],
-    ijenRelevant: true
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'bromo-madakaripura-ijen-3d2n',
@@ -322,7 +248,7 @@ export const TOURS: Tour[] = [
     duration: '3 Days, 2 Nights',
     origin: 'Surabaya',
     priceFrom: 2450000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/fb4.jpg',
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/bromo-madakaripura-ijen-3d2n.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'The Classic Circuit',
@@ -340,9 +266,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 2', title: 'Bromo & Madakaripura to Ijen', summary: 'Sunrise tour. Bromo crater. Madakaripura Waterfall. Drive to Bondowoso. Health check.' },
       { day: 'Day 3', title: 'Ijen to Bali', summary: 'Ijen night hike. Ferry crossing to Bali. Drop-off at your Bali hotel.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-bromo-madakaripura-3d2n',
@@ -352,7 +277,7 @@ export const TOURS: Tour[] = [
     duration: '3 Days, 2 Nights',
     origin: 'Surabaya',
     priceFrom: 2450000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/surabaya---ijen---bromo-(3d-2n)-1676510962600/bromo2.webp',
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-bromo-madakaripura-3d2n.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'Full Volcanic Experience',
@@ -370,9 +295,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 2', title: 'Ijen to Bromo', summary: 'Ijen night hike. Drive to Bromo area. Check-in and rest.' },
       { day: 'Day 3', title: 'Bromo & Madakaripura', summary: 'Sunrise tour. Bromo crater. Madakaripura Waterfall. Return to Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'safari-bromo-madakaripura-3d2n',
@@ -382,7 +306,7 @@ export const TOURS: Tour[] = [
     duration: '3 Days, 2 Nights',
     origin: 'Surabaya',
     priceFrom: 3450000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/1736406701_baobab4.jpg',
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/safari-bromo-madakaripura-3d2n.webp',
     rating: 5.0,
     physicality: 'easy',
     bestFor: 'Families with kids',
@@ -411,7 +335,7 @@ export const TOURS: Tour[] = [
     duration: '4 Days, 3 Nights',
     origin: 'Surabaya',
     priceFrom: 3025000,
-    image: 'https://javavolcano-touroperator.com/img/destinations/mt.-ijen---bromo---madakaripura---surabaya-night-market-tour-(4d-3n)-1676513053011/bromo1.webp',
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-bromo-madakaripura-4d3n.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'Relaxed pace',
@@ -430,9 +354,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Bromo & Madakaripura', summary: 'Sunrise tour. Bromo crater. Madakaripura Waterfall. Drive to Surabaya.' },
       { day: 'Day 4', title: 'Departure', summary: 'Breakfast at hotel. Transfer to Juanda Airport for your flight.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-4d3n',
@@ -442,7 +365,7 @@ export const TOURS: Tour[] = [
     duration: '4 Days, 3 Nights',
     origin: 'Surabaya',
     priceFrom: 3125000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-papuma-tumpak-sewu-bromo-4d3n.webp',
     rating: 5.0,
     physicality: 'moderate',
     bestFor: 'Diverse landscapes',
@@ -461,9 +384,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Jember to Tumpak Sewu', summary: 'Drive to Lumajang. Prepare for waterfall adventure.' },
       { day: 'Day 4', title: 'Tumpak Sewu & Bromo', summary: 'Tumpak Sewu trek. Bromo sunrise. Return to Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'tumpak-sewu-bromo-ijen-4d3n',
@@ -473,7 +395,7 @@ export const TOURS: Tour[] = [
     duration: '4 Days, 3 Nights',
     origin: 'Surabaya',
     priceFrom: 3125000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/tumpak-sewu-bromo-ijen-4d3n.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'Surabaya to Bali overland',
@@ -492,9 +414,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Bromo to Ijen', summary: 'Sunrise tour. Bromo crater. Drive to Bondowoso. Health check.' },
       { day: 'Day 4', title: 'Ijen to Bali', summary: 'Ijen night hike. Ferry crossing to Bali. Drop-off at your Bali hotel.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-bromo-madakaripura-malang-5d4n',
@@ -504,7 +425,7 @@ export const TOURS: Tour[] = [
     duration: '5 Days, 4 Nights',
     origin: 'Surabaya',
     priceFrom: 3850000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-bromo-madakaripura-malang-5d4n.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'Culture & Nature',
@@ -524,9 +445,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Malang & Batu', summary: 'Explore Batu city, Rainbow Village, and flower gardens. Return to Surabaya.' },
       { day: 'Day 5', title: 'Departure', summary: 'Breakfast at hotel. Transfer to Juanda Airport.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-5d4n',
@@ -536,7 +456,7 @@ export const TOURS: Tour[] = [
     duration: '5 Days, 4 Nights',
     origin: 'Surabaya',
     priceFrom: 3650000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-papuma-tumpak-sewu-bromo-5d4n.webp',
     rating: 5.0,
     physicality: 'moderate',
     bestFor: 'The Ultimate Nature Trip',
@@ -556,9 +476,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Tumpak Sewu to Bromo', summary: 'Tumpak Sewu trek. Drive to Bromo area. Check-in and rest.' },
       { day: 'Day 5', title: 'Bromo & Return', summary: 'Bromo sunrise. Bromo crater. Return to Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-malang-6d5n',
@@ -568,7 +487,7 @@ export const TOURS: Tour[] = [
     duration: '6 Days, 5 Nights',
     origin: 'Surabaya',
     priceFrom: 4750000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-papuma-tumpak-sewu-bromo-malang-6d5n.webp',
     rating: 5.0,
     physicality: 'moderate',
     bestFor: 'The Complete Circuit',
@@ -589,9 +508,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 5', title: 'Bromo to Malang', summary: 'Bromo sunrise. Bromo crater. Drive to Malang city.' },
       { day: 'Day 6', title: 'Malang & Return', summary: 'Explore Batu city and Malang attractions. Return to Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'bromo-ijen-3d2n-bali',
@@ -601,7 +519,7 @@ export const TOURS: Tour[] = [
     duration: '3 Days, 2 Nights',
     origin: 'Bali',
     priceFrom: 2850000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/bromo-ijen-3d2n-bali.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'Bali round-trip',
@@ -619,9 +537,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 2', title: 'Bromo to Ijen', summary: 'Bromo sunrise tour. Bromo crater. Drive to Bondowoso. Health check.' },
       { day: 'Day 3', title: 'Ijen to Bali', summary: 'Ijen night hike. Ferry crossing back to Bali. Drop-off at your hotel.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-4d3n-bali',
@@ -631,7 +548,7 @@ export const TOURS: Tour[] = [
     duration: '4 Days, 3 Nights',
     origin: 'Bali',
     priceFrom: 3475000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-papuma-tumpak-sewu-bromo-4d3n-bali.webp',
     rating: 5.0,
     physicality: 'moderate',
     bestFor: 'Bali to Surabaya overland',
@@ -650,9 +567,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 3', title: 'Jember to Tumpak Sewu', summary: 'Drive to Lumajang. Prepare for waterfall adventure.' },
       { day: 'Day 4', title: 'Tumpak Sewu & Bromo to Surabaya', summary: 'Tumpak Sewu trek. Bromo sunrise. Drop-off in Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   },
   {
     slug: 'ijen-papuma-tumpak-sewu-bromo-5d4n-bali',
@@ -662,7 +578,7 @@ export const TOURS: Tour[] = [
     duration: '5 Days, 4 Nights',
     origin: 'Bali',
     priceFrom: 4050000,
-    image: VALID_MEDIA_FALLBACK,
+    image: 'https://javavolcano-touroperator.com/assets/img/tours/ijen-papuma-tumpak-sewu-bromo-5d4n-bali.webp',
     rating: 4.9,
     physicality: 'moderate',
     bestFor: 'Extended Bali to Surabaya',
@@ -682,9 +598,8 @@ export const TOURS: Tour[] = [
       { day: 'Day 4', title: 'Tumpak Sewu to Bromo', summary: 'Waterfall trek. Drive to Bromo area. Check-in.' },
       { day: 'Day 5', title: 'Bromo & Return to Surabaya', summary: 'Bromo sunrise. Bromo crater. Drop-off in Surabaya.' }
     ],
-    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health-Certificate Coordination', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
-    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping'],
-    ijenRelevant: true,
+    inclusions: ['Private AC Transport', 'English Speaking Guide', 'All Entrance Fees', 'Jeep for Bromo', 'Ijen Health Screening', 'Gas Masks', 'Ferry Tickets', 'Daily Breakfast'],
+    exclusions: ['Flights', 'VISA', 'Travel Insurance', 'Tipping']
   }
 ];
 
@@ -693,32 +608,25 @@ export const CREW: CrewMember[] = [
     id: 'gufron',
     name: 'Gufron',
     role: 'Guide',
-    archetype: 'Photography Specialist',
+    archetype: 'Reliable Operator',
     highlights: 'Friendly & fun, Knowledgeable guide, Great logistics',
     languages: 'English, Indonesian',
     about: 'I\'m someone who enjoys meaningful conversations on virtually any topic. In my professional life, I place the highest priority on safety and risk management – what some might call strict, I view as a fundamental matter of integrity and responsibility.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768225567764-405955176-gufron.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-001',
-    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428741674-842615436-kta_gufron.jpg',
-    forensicReviewQuote: '"Always willing to help you get your best photo." — Adrián Martínez, Google Reviews',
-    schemaKnowsAbout: ['Volcano Photography', 'Geology', 'Volcanic terrain navigation', 'Ijen crater safety procedures', 'East Java cultural heritage'],
+    kta: 'KTA-G-2024-001'
   },
   {
     id: 'rendi',
     name: 'Rendi',
     role: 'Guide',
-    archetype: 'Safety Lead',
+    archetype: 'Reliable Operator',
     highlights: 'Friendly & fun, Safety-first, Great logistics',
     languages: 'English, Indonesian',
     about: 'Love meeting people from different backgrounds and making every trip feel easy and enjoyable. I like to have new friend especially from overseas because can share about our unique culture.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768228514527-518051332-rendi.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-002',
-    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428760524-516116110-kta_rendi.jpg',
-    forensicReviewQuote: '"When we went down the steep crater, he held our hands to prevent us from falling." — Wing Shan Lui, Google Reviews',
-    schemaKnowsAbout: ['Expedition Safety', 'Mountain Rescue', 'First Aid', 'Logistics Management', 'Ijen crater safety procedures', 'East Java cultural heritage'],
-    schemaJobTitle: 'Lead Guide & Safety Officer',
+    kta: 'KTA-G-2024-002'
   },
   {
     id: 'yandi',
@@ -742,8 +650,7 @@ export const CREW: CrewMember[] = [
     about: 'I am a local resident who enjoys welcoming visitors and sharing stories about this area. I\'m happy to help travelers explore the natural beauty, local culture, and unique experiences.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768228191022-893381041-boy.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-004',
-    forensicReviewQuote: '"Incredibly knowledgeable and went out of his way to make sure everything we needed was sorted." — Jason Li, Trustpilot'
+    kta: 'KTA-G-2024-004'
   },
   {
     id: 'fredi',
@@ -755,24 +662,19 @@ export const CREW: CrewMember[] = [
     about: 'Experienced Tour Driver committed to making your travels memorable. I combine safe driving skills with a friendly, helpful attitude to provide a stress-free experience.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768276791622-262250680-freddy.png',
     displayPriority: 1,
-    kta: 'KTA-D-2024-005',
-    forensicReviewQuote: '"Always on time no matter what time of the day. Exceptional driving skills." — Pooja Prakash, Google Reviews'
+    kta: 'KTA-D-2024-005'
   },
   {
     id: 'anjas',
     name: 'Anjas',
     role: 'Guide',
-    archetype: 'Photography Specialist',
+    archetype: 'Reliable Operator',
     highlights: 'Friendly & fun, Great logistics, Great photos',
     languages: 'English, Indonesian',
     about: 'I\'m a chill guy and nerdy enough to talk about brainrote meme. love playing games and listening to any kind of music. let me show you around how beautiful east java is.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768270423657-690185912-anjas.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-006',
-    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428583288-513992233-kta_anjas.jpg',
-    forensicReviewQuote: '"Creative at taking fun photos... Anjas was the highlight for the trip." — Wang Zhe, Google Reviews',
-    schemaKnowsAbout: ['Volcanic Photography', 'Astrophotography', 'Youth Culture', 'East Java cultural heritage', 'Volcanic terrain navigation'],
-    schemaJobTitle: 'Senior Tour Guide & Photography Specialist',
+    kta: 'KTA-G-2024-006'
   },
   {
     id: 'taufik',
@@ -784,8 +686,7 @@ export const CREW: CrewMember[] = [
     about: 'Reliable and organized individual with strong communication skills. I thrive in dynamic environments and enjoy taking on new challenges.',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768228083285-919198019-taufik_1_.png',
     displayPriority: 1,
-    kta: 'KTA-G-2024-007',
-    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428704448-911506028-kta_taufik.jpg'
+    kta: 'KTA-G-2024-007'
   },
   {
     id: 'kiki',
@@ -797,8 +698,7 @@ export const CREW: CrewMember[] = [
     about: '"It is He who made the earth manageable for you—so walk among its slopes and eat of His provision—and to Him is the resurrection." (67:15)',
     photoUrl: 'https://javavolcano-touroperator.com/uploads/1768271545598-834784538-kiki.png',
     displayPriority: 2,
-    kta: 'KTA-G-2024-008',
-    ktaCardUrl: 'https://javavolcano-touroperator.com/uploads/1771428489070-55145932-kta_kiki.jpg'
+    kta: 'KTA-G-2024-008'
   },
   {
     id: 'holili',

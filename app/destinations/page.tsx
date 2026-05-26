@@ -11,29 +11,19 @@ import { ArrowRight } from 'lucide-react';
 import { DESTINATIONS } from '@/lib/jvtoData';
 import { SITE_CONFIG } from '@/lib/siteConfig';
 
-const CANONICAL_DESTINATION_SLUGS = [
-  'mount-bromo',
-  'ijen-crater',
-  'madakaripura-waterfall',
-  'tumpak-sewu-waterfall',
-  'papuma-beach',
-];
-
 export default function DestinationsPage() {
-  const destinations = DESTINATIONS.filter((d) => CANONICAL_DESTINATION_SLUGS.includes(d.slug));
-
   const destSchema = {
     "@type": "ItemList",
-    "numberOfItems": destinations.length,
-    "itemListElement": destinations.map((dest, index) => ({
+    "numberOfItems": DESTINATIONS.length,
+    "itemListElement": DESTINATIONS.map((dest, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
-        "@type": "TouristAttraction",
+        "@type": "Place",
         "name": dest.name,
         "description": dest.shortDesc,
         "image": dest.image,
-        "url": `https://javavolcano-touroperator.com/destinations/${dest.slug}`
+        "url": `${SITE_CONFIG.organization.address.mapUrl}/destinations/${dest.slug}`
       }
     }))
   };
@@ -80,7 +70,7 @@ export default function DestinationsPage() {
       <section className="py-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-64">
-            {destinations.map((dest, index) => (
+            {DESTINATIONS.map((dest, index) => (
               <motion.div
                 key={dest.slug}
                 initial={{ opacity: 0, y: 50 }}
@@ -96,7 +86,6 @@ export default function DestinationsPage() {
                       alt={dest.name}
                       fill
                       className="object-cover"
-                      unoptimized
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-brand-olive/10 mix-blend-multiply" />

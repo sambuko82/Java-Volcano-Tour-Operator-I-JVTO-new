@@ -15,15 +15,15 @@ const faqs = [
     questions: [
       {
         q: 'How do I book a tour with JVTO?',
-        a: 'Start with an availability inquiry through the official website, WhatsApp, or email. JVTO verifies the route, date, group size, and quote. A booking is confirmed only after the required deposit or full payment is processed and JVTO issues an Official E-Voucher / Invoice PDF.'
+        a: 'You can book by contacting us via WhatsApp or email. We will verify availability and send you a detailed itinerary and price quote. A deposit is required to secure your booking.'
       },
       {
         q: 'What payment methods do you accept?',
-        a: 'Official pricing is in IDR. Deposits are normally paid by card through a secure payment link or checkout when issued by JVTO. Balance payments may use card, bank transfer, Wise, or approved cash at the JVTO office.'
+        a: 'We accept bank transfers (IDR), international wire transfers (Wise), and major credit cards via secure payment links.'
       },
       {
         q: 'Is the price all-inclusive?',
-        a: 'JVTO packages are private and all-inclusive by design, but only inclusions written on the official tour page and/or your Official E-Voucher / Invoice are contractually binding.'
+        a: 'Yes, our prices are all-inclusive of private transport, English-speaking guide, all entrance fees, and safety gear. Only personal expenses and meals (unless specified) are excluded.'
       }
     ]
   },
@@ -32,11 +32,11 @@ const faqs = [
     questions: [
       {
         q: 'Is it safe to visit Mount Bromo and Ijen Crater?',
-        a: 'Volcano travel is never risk-free. JVTO reduces avoidable risk through private execution, official access checks, route monitoring, and a safety culture shaped by Tourist Police discipline.'
+        a: 'Yes, we monitor volcanic activity and weather in real-time. Our tours are led by an active Tourist Police officer, ensuring the highest safety standards.'
       },
       {
         q: 'What is the Ijen health screening?',
-        a: 'Ijen access rules can require a recent local medical certificate. We can assist with a real clinic visit in Bondowoso or Banyuwangi when the requirement applies.'
+        a: 'All visitors to Ijen Crater must present a valid medical certificate issued within the last 3 days. We can assist you in obtaining this locally.'
       },
       {
         q: 'Do you provide gas masks for Ijen?',
@@ -57,7 +57,7 @@ const faqs = [
       },
       {
         q: 'Are the tours private?',
-        a: 'Yes. JVTO operates private tours only. We do not run open join-in groups or transport-only products as our core service.'
+        a: 'Yes, all JVTO tours are 100% private. We do not run mixed-group tours.'
       }
     ]
   }
@@ -70,31 +70,17 @@ export default function FAQPage() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const faqNodeId = "https://javavolcano-touroperator.com/travel-guide/faq#faq";
-  const schema = [
-    {
-      "@type": "WebPage",
-      "@id": "https://javavolcano-touroperator.com/travel-guide/faq#webpage",
-      "url": "https://javavolcano-touroperator.com/travel-guide/faq",
-      "name": "Frequently Asked Questions: Travel Guide",
-      "description": "Common booking, safety, health, logistics, and packing questions for JVTO private East Java expeditions.",
-      "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
-      "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
-      "mainEntity": { "@id": faqNodeId }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": faqNodeId,
-      "mainEntity": faqs.flatMap(cat => cat.questions.map(q => ({
-        "@type": "Question",
-        "name": q.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": q.a
-        }
-      })))
-    }
-  ];
+  const schema = {
+    "@type": "FAQPage",
+    "mainEntity": faqs.flatMap(cat => cat.questions.map(q => ({
+      "@type": "Question",
+      "name": q.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.a
+      }
+    })))
+  };
 
   return (
     <main className="min-h-screen bg-stone-50">

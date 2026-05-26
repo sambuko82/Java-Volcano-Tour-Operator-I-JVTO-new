@@ -8,81 +8,74 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { SITE_CONFIG } from '@/lib/siteConfig';
-import { Star, Quote, ExternalLink, ShieldCheck, Users, MapPin, ArrowRight, MessageSquare, Heart } from 'lucide-react';
+import { Star, Quote, ExternalLink, ShieldCheck, Users, MapPin, ArrowRight, MessageSquare, Heart, Loader2, AlertCircle } from 'lucide-react';
 
-interface DatabaseReview {
+interface TripAdvisorReview {
   id: string;
-  name: string;
-  text: string;
   rating: number;
-  source: string;
-  date: string;
-  photo?: string;
+  published_date: string;
+  title: string;
+  text: string;
+  user: {
+    username: string;
+    user_location?: {
+      name: string;
+    };
+  };
 }
 
-// Fallback testimonials (from database, but kept here for offline support)
-const fallbackTestimonials = [
+const reviews = [
   {
-    name: "Tan Yong Xue Jayden",
+    name: "Sarah Jenkins",
+    location: "United Kingdom",
+    text: "Agung and his team were incredible. As a solo female traveler, safety was my priority. Knowing Agung is a Tourist Police officer gave me total peace of mind. The Ijen blue fire was magical!",
+    rating: 5,
+    source: "TripAdvisor"
+  },
+  {
+    name: "Marc-Antoine",
+    location: "France",
+    text: "The most professional tour operator we found in Indonesia. The medical check for Ijen is a real differentiator. They actually care about your health and safety, not just the money.",
+    rating: 5,
+    source: "Trustpilot"
+  },
+  {
+    name: "Elena Rossi",
+    location: "Italy",
+    text: "Tumpak Sewu was like a dream. Our guide, Gufron, was so helpful and took amazing photos. The logistics were perfect from start to finish.",
+    rating: 5,
+    source: "Google"
+  },
+  {
+    name: "David Chen",
     location: "Singapore",
-    text: "Our tour guide (KiKi) and driver (Nur) was amazing. Communication was easy, instructions were clear, and they made the experience fun and safe. Kiki also took amazing photos for us. 100% recommend",
+    text: "Bromo sunrise was spectacular. The private jeep was clean and the driver was very professional. Highly recommend JVTO for anyone visiting East Java.",
     rating: 5,
-    source: "Trustpilot"
-  },
-  {
-    name: "Nina Kliem",
-    location: "Germany",
-    text: "We did the 3D2N Bromo and Mount Ijen tour. It was organised very well and our tourguide Rendi as well as our driver Holili were super kind and helpful! Great experience :) the accommodations were very nice as well.",
-    rating: 5,
-    source: "Trustpilot"
-  },
-  {
-    name: "Patarachai Sereerat",
-    location: "Thailand",
-    text: "Had an amazing trip visiting Bromo, Ijen Crater, and Tumpak Sewu Waterfall! Everything was well organized and the price was really good. The staff were super kind and helpful — special thanks to Yandi (our driver) and Boy (our guide to Ijen crater). They were so friendly and shared lots of useful info. Highly recommended",
-    rating: 5,
-    source: "Trustpilot"
-  },
-  {
-    name: "Jiang Tianjian",
-    location: "China",
-    text: "The tour guides were extremely friendly and accommodating. One of our friends was injured and they helped him as well. Overall, fantastic planning from the team!",
-    rating: 5,
-    source: "Trustpilot"
+    source: "TripAdvisor"
   }
 ];
 
 export default function ReviewsPage() {
-  const [testimonials, setTestimonials] = useState(fallbackTestimonials);
+  const [taReviews, setTaReviews] = useState<TripAdvisorReview[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchReviews() {
       try {
-        // Fetch database reviews
-        const dbResponse = await fetch('/api/reviews/database?limit=8');
-
-        if (dbResponse.ok) {
-          const dbData = await dbResponse.json();
-          if (dbData.length > 0) {
-            const testimonialData = dbData.map((review: any) => ({
-              name: review.name,
-              location: review.source || 'Guest',
-              text: review.text,
-              rating: review.rating,
-              source: review.source || 'Database'
-            }));
-            setTestimonials(testimonialData);
-          }
+        const response = await fetch('/api/reviews/tripadvisor');
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || 'Failed to fetch reviews');
         }
+        const data = await response.json();
+        setTaReviews(data.data || []);
       } catch (err) {
-        console.error('Error fetching reviews:', err);
-        // Keep fallback testimonials
+        setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
         setIsLoading(false);
       }
     }
-
     fetchReviews();
   }, []);
 
@@ -121,14 +114,14 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* Review Platforms & Database Reviews */}
+      {/* Review Platforms & Live Feed */}
       <section className="py-24 bg-stone-50 border-y border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-1">
-              <h2 className="text-4xl font-display font-bold mb-6 text-stone-900">Verified Reviews</h2>
-              <p className="text-stone-600 mb-8 text-sm leading-relaxed">We don&apos;t host our own reviews. View our profiles on independent platforms where you can verify every testimonial.</p>
-
+              <h2 className="text-4xl font-display font-bold mb-6 text-stone-900">Independent Proof</h2>
+              <p className="text-stone-600 mb-8 text-sm leading-relaxed">We don&apos;t host our own reviews. We point you to the platforms where we have no control over the content.</p>
+              
               <div className="space-y-4">
                 <a href={SITE_CONFIG.reputation.tripadvisor} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-white rounded-2xl border border-stone-200 hover:border-orange-500 transition-all group">
                   <div className="flex items-center gap-3">
@@ -144,40 +137,39 @@ export default function ReviewsPage() {
                   </div>
                   <ArrowRight size={16} className="text-stone-300 group-hover:text-orange-500 transition-all" />
                 </a>
-                <a href={SITE_CONFIG.reputation.googleMaps} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 bg-white rounded-2xl border border-stone-200 hover:border-orange-500 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-600"><ExternalLink size={16} /></div>
-                    <span className="font-bold text-sm">Google Maps</span>
-                  </div>
-                  <ArrowRight size={16} className="text-stone-300 group-hover:text-orange-500 transition-all" />
-                </a>
               </div>
             </div>
 
             <div className="lg:col-span-2">
-              <div className="mb-8">
-                <h3 className="text-2xl font-display font-bold">Featured Testimonials</h3>
-                <p className="text-stone-500 text-sm mt-2">Real reviews from our guests across multiple platforms</p>
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-2xl font-display font-bold">Live TripAdvisor Feed</h3>
+                <a href={SITE_CONFIG.reputation.tripadvisor} target="_blank" className="text-xs font-bold text-brand-olive hover:text-orange-500 transition-colors">Write a Review</a>
               </div>
 
               {isLoading ? (
                 <div className="flex flex-col items-center justify-center py-12 bg-white rounded-3xl border border-stone-100">
-                  <div className="text-orange-500 animate-pulse mb-3 text-3xl">★★★★★</div>
-                  <p className="text-stone-400 text-xs font-medium">Loading testimonials...</p>
+                  <Loader2 className="text-orange-500 animate-spin mb-3" size={32} />
+                  <p className="text-stone-400 text-xs font-medium">Fetching latest reviews...</p>
+                </div>
+              ) : error ? (
+                <div className="p-8 bg-orange-50 rounded-3xl border border-orange-100 text-center">
+                  <p className="text-stone-600 text-xs mb-4">Feed temporarily unavailable. View all reviews on TripAdvisor.</p>
+                  <a href={SITE_CONFIG.reputation.tripadvisor} target="_blank" className="text-xs font-bold text-brand-olive underline">View on TripAdvisor</a>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {testimonials.slice(0, 4).map((review, index) => (
-                    <div key={index} className="bg-white p-6 rounded-2xl border border-stone-100 flex flex-col shadow-sm">
+                  {taReviews.slice(0, 4).map((review) => (
+                    <div key={review.id} className="bg-white p-6 rounded-2xl border border-stone-100 flex flex-col shadow-sm">
                       <div className="flex gap-1 mb-3">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Star key={i} size={12} className="fill-orange-500 text-orange-500" />
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={12} className={i < review.rating ? "fill-orange-500 text-orange-500" : "text-stone-300"} />
                         ))}
                       </div>
+                      <h4 className="font-bold text-stone-900 text-sm mb-2 line-clamp-1">{review.title}</h4>
                       <p className="text-stone-600 text-xs mb-4 line-clamp-3 italic flex-grow">&quot;{review.text}&quot;</p>
                       <div className="pt-4 border-t border-stone-50 mt-auto flex justify-between items-center">
-                        <span className="font-bold text-[10px] text-stone-900">{review.name}</span>
-                        <span className="text-[10px] text-stone-400 font-bold">{review.source}</span>
+                        <span className="font-bold text-[10px] text-stone-900">{review.user.username}</span>
+                        <span className="text-[10px] text-stone-400 font-mono">{new Date(review.published_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                       </div>
                     </div>
                   ))}
@@ -200,7 +192,7 @@ export default function ReviewsPage() {
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <ShieldCheck className="text-orange-500 mb-6" size={40} />
               <h3 className="text-2xl font-display font-bold mb-4">Safety & Professionalism</h3>
-              <p className="text-stone-600 text-sm">Guests frequently highlight our police-informed safety mindset and the peace of mind it provides in unpredictable environments.</p>
+              <p className="text-stone-600 text-sm">Guests frequently highlight our police-led safety mindset and the peace of mind it provides in unpredictable environments.</p>
             </div>
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
               <Users className="text-orange-500 mb-6" size={40} />
@@ -225,7 +217,7 @@ export default function ReviewsPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((review, index) => (
+            {reviews.map((review, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}

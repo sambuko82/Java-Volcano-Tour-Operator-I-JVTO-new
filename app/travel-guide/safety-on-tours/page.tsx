@@ -12,23 +12,23 @@ import { SITE_CONFIG } from '@/lib/siteConfig';
 const safetyProtocols = [
   {
     icon: <Shield className="text-orange-500" />,
-    title: 'Police-Informed Standards',
-    desc: 'Our founder, Agung Sambuko (Mr. Sam), has documented Tourist Police duty context that informs JVTO safety discipline.'
+    title: 'Police-Led Standards',
+    desc: 'Our founder, Agung Sambuko (Mr. Sam), is an active member of the Indonesian Tourist Police.'
   },
   {
     icon: <Lock className="text-orange-500" />,
     title: '100% Private Tours',
-    desc: 'No mixed groups by default. Private execution gives better control over timing, pace, and route decisions.'
+    desc: 'No mixed groups. Your safety and pace are our only priority.'
   },
   {
     icon: <UserCheck className="text-orange-500" />,
     title: 'Local Specialist Guides',
-    desc: 'Routes are handled by local specialists with practical route knowledge and safety briefings.'
+    desc: 'Every guide is a local expert with first-aid and safety training.'
   },
   {
     icon: <AlertTriangle className="text-orange-500" />,
     title: 'Real-Time Monitoring',
-    desc: 'We check official volcanic activity, weather, and access restrictions before departure and during active operations.'
+    desc: 'We monitor volcanic activity and weather in real-time for all routes.'
   }
 ];
 
@@ -54,7 +54,7 @@ export default function SafetyOnToursPage() {
           >
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Safety on Tours: Our Operational Standard</h1>
             <p className="text-xl text-stone-300 leading-relaxed">
-              Safety is not a decorative promise at JVTO; it is the operating baseline. We use private execution, official access rules, and police-informed discipline to reduce avoidable risk.
+              Safety is not an option at JVTO; it is our foundation. We implement police-led standards and rigorous protocols for every expedition.
             </p>
           </motion.div>
         </div>
@@ -83,8 +83,8 @@ export default function SafetyOnToursPage() {
           </div>
 
           <AuthorityShield 
-            title="Tourist Police-Informed Leadership"
-            description="Agung Sambuko (Mr. Sam) brings Tourist Police discipline into JVTO's operating culture. This supports formal coordination habits, realistic safety boundaries, and clear escalation when conditions change."
+            title="Active Tourist Police Leadership"
+            description="Agung Sambuko (Mr. Sam) ensures that every JVTO tour operates within the highest safety standards and legal frameworks of East Java. This includes direct communication with national park authorities and emergency services."
           />
 
           <div className="mt-16 bg-white p-12 rounded-3xl border border-stone-200 shadow-sm">

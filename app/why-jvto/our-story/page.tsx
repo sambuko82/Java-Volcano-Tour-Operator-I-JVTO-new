@@ -14,7 +14,7 @@ export default function OurStoryPage() {
   const storySchema = {
     "@type": "WebPage",
     "name": "Our Story: Roots & Continuity Since 2015",
-    "description": "The history and origins of Java Volcano Tour Operator, from local host to proof-led private tour operator.",
+    "description": "The history and origins of Java Volcano Tour Operator, from local host to professional police-led operator.",
     "mainEntity": {
       "@type": "Organization",
       "name": SITE_CONFIG.organization.name,
@@ -40,7 +40,7 @@ export default function OurStoryPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Our Story: From Local Host to Proof-Led Operator</h1>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">Our Story: From Local Host to Police-Led Operator</h1>
             <p className="text-xl text-stone-300">Roots and continuity since 2015. JVTO is built on documented history and local East Java execution.</p>
           </motion.div>
         </div>
@@ -85,8 +85,8 @@ export default function OurStoryPage() {
               />
               </div>
               <div className="order-1 lg:order-2">
-                <h3 className="text-3xl font-display font-bold mb-4 text-brand-olive">2018: Editorial Recognition and Route Discipline</h3>
-                <p className="text-stone-600 leading-relaxed mb-6">The Stefan Loose guidebook context ties Agung and Ijen Bondowoso Homestay to tour arranging in the Ijen area. As demand grew, the operation became more structured around private logistics, clearer expectations, and safer route planning.</p>
+                <h3 className="text-3xl font-display font-bold mb-4 text-brand-olive">2018: The Safety Pivot</h3>
+                <p className="text-stone-600 leading-relaxed mb-6">As the East Java volcano market grew, we saw a decline in safety standards. We made a strategic decision to pivot from a general host to a safety-first operator, investing in professional equipment and formalizing our logistics protocols.</p>
                 <div className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest">
                   <Shield size={16} /> Safety First Mindset
                 </div>
@@ -95,10 +95,10 @@ export default function OurStoryPage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-3xl font-display font-bold mb-4 text-brand-olive">2023: The Proof-First Standard</h3>
-                <p className="text-stone-600 leading-relaxed mb-6">With founder Agung Sambuko&apos;s Tourist Police duty context documented by third-party press and JVTO proof pages, JVTO formalized a proof-first safety standard: legal identity, police-safety context, Ijen readiness, and operating claims that can be checked before guests commit.</p>
+                <h3 className="text-3xl font-display font-bold mb-4 text-brand-olive">2023: The Police-Led Standard</h3>
+                <p className="text-stone-600 leading-relaxed mb-6">With our founder Agung Sambuko serving as an active Tourist Police officer, we formalized the &apos;Police-Led&apos; standard. This integrated official safety protocols directly into our daily operations, creating a unique authority-backed travel experience.</p>
                 <div className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest">
-                  <CheckCircle2 size={16} /> Documented Safety Context
+                  <CheckCircle2 size={16} /> Official Authority Oversight
                 </div>
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl">
@@ -130,7 +130,7 @@ export default function OurStoryPage() {
             </div>
             <div>
               <h3 className="text-2xl font-display font-bold mb-4 text-brand-olive">The Decision to Lead with Authority</h3>
-              <p className="text-stone-600 leading-relaxed">By putting proof and safety boundaries before sales pressure, JVTO reduces the conflict between commercial urgency and guest safety. When official conditions change, the operating decision must follow the route reality, not a marketing promise.</p>
+              <p className="text-stone-600 leading-relaxed">By integrating police-led oversight, we removed the conflict of interest between sales and safety. Our safety decisions are now backed by official protocols, ensuring that every guest has a shield of operational certainty.</p>
             </div>
           </div>
         </div>
@@ -159,9 +159,9 @@ export default function OurStoryPage() {
             </div>
             <div className="bg-stone-50 p-8 rounded-3xl border border-stone-100 text-center">
               <Shield className="text-orange-500 mx-auto mb-6" size={40} />
-              <h3 className="text-xl font-bold mb-2">Safety Context Records</h3>
-              <p className="text-stone-600 text-sm mb-6">Documentation of founder duty context, safety evidence, and emergency-response discipline.</p>
-              <Link href="/verify-jvto/police-safety" className="text-brand-olive font-bold underline">View Safety Context</Link>
+              <h3 className="text-xl font-bold mb-2">Police Training Records</h3>
+              <p className="text-stone-600 text-sm mb-6">Documentation of our team&apos;s safety and emergency response training.</p>
+              <Link href="/verify-jvto/police-safety" className="text-brand-olive font-bold underline">View Training</Link>
             </div>
           </div>
         </div>

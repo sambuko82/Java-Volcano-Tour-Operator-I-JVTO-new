@@ -8,10 +8,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
-import SupportShortcutRail from '@/components/SupportShortcutRail';
-import LiveSignalBlock from '@/components/LiveSignalBlock';
-import { BOOKING_SUPPORT_GROUPS } from '@/lib/siteOrchestration';
 import { ShieldCheck, CheckCircle2, Info, ArrowRight, Thermometer, Cloud, Clock, Luggage, Activity, Heart, Scale, Search, MapPin, Globe } from 'lucide-react';
+import { SITE_CONFIG } from '@/lib/siteConfig';
 
 const guideFaqs = [
   {
@@ -19,8 +17,8 @@ const guideFaqs = [
     answer: "It is our commitment to safety and transparency. We follow official PVMBG (Volcanology) alerts without exception. If a site is closed by authorities, we do not enter. We provide alternative routes or destinations of equal value."
   },
   {
-    question: "When is the Ijen health check required?",
-    answer: "Ijen access rules can require a recent local health certificate. JVTO follows the current requirement through real clinic checks so documentation is valid and health risk is assessed before the hike."
+    question: "Is the Ijen health check really mandatory?",
+    answer: "Yes. Official regulations require every visitor to Ijen Crater to have a valid health certificate. We ensure this is done correctly at a certified clinic to avoid fake letters and ensure you are medically cleared for the altitude and sulfur exposure."
   },
   {
     question: "What happens if a volcano is closed?",
@@ -33,30 +31,11 @@ const guideFaqs = [
 ];
 
 export default function TravelGuide() {
-  const guideSchema = [
-    {
-      "@type": "WebPage",
-      "@id": "https://javavolcano-touroperator.com/travel-guide#webpage",
-      "url": "https://javavolcano-touroperator.com/travel-guide",
-      "name": "East Java Travel Guide - The Rulebook Before You Book",
-      "description": "Comprehensive travel guide for Mount Bromo, Ijen Crater, and Tumpak Sewu. Safety, logistics, and operational boundaries.",
-      "isPartOf": { "@id": "https://javavolcano-touroperator.com/#website" },
-      "about": { "@id": "https://javavolcano-touroperator.com/#organization" },
-      "mainEntity": { "@id": "https://javavolcano-touroperator.com/travel-guide#faq" }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://javavolcano-touroperator.com/travel-guide#faq",
-      "mainEntity": guideFaqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    }
-  ];
+  const guideSchema = {
+    "@type": ["WebPage", "FAQPage"],
+    "name": "East Java Travel Guide – The Rulebook Before You Book",
+    "description": "Comprehensive travel guide for Mount Bromo, Ijen Crater, and Tumpak Sewu. Safety, logistics, and operational boundaries."
+  };
 
   return (
     <main className="min-h-screen bg-brand-cream">
@@ -67,12 +46,11 @@ export default function TravelGuide() {
       <section className="relative pt-48 pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+            src="https://picsum.photos/seed/guide/1920/1080"
             alt="East Java Landscape"
             fill
             className="object-cover opacity-20 grayscale"
             priority
-            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-cream via-brand-cream/90 to-brand-cream"></div>
         </div>
@@ -98,42 +76,6 @@ export default function TravelGuide() {
         </div>
       </section>
 
-      <SupportShortcutRail />
-
-      <section className="py-20 bg-white border-b border-jvto-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-brand-olive mb-5">Prepare & Book</p>
-              <h2 className="text-4xl font-serif text-brand-ink leading-tight">Support by Intent</h2>
-            </div>
-            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {BOOKING_SUPPORT_GROUPS.map((group) => (
-                <div key={group.id} className="bg-brand-cream p-7 rounded-2xl border border-stone-200">
-                  <h3 className="text-xl font-display font-bold text-brand-ink mb-3">{group.label}</h3>
-                  <p className="text-stone-500 text-sm leading-relaxed mb-6">{group.role}</p>
-                  <div className="space-y-3">
-                    {group.links.map((link) => (
-                      <Link key={link.href} href={link.href} className="flex items-center justify-between gap-4 text-sm font-bold text-brand-olive hover:text-jvto-orange transition-colors">
-                        <span>{link.label}</span>
-                        <ArrowRight size={14} />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Live Volcano Signal */}
-      <section className="py-8 bg-white border-b border-jvto-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <LiveSignalBlock />
-        </div>
-      </section>
-
       {/* The Rulebook Before You Book */}
       <section className="py-32 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,14 +97,14 @@ export default function TravelGuide() {
               {
                 icon: Activity,
                 title: "Health Requirements",
-                desc: "Current Ijen access rules can require certified local clinic checks. JVTO follows the active requirement through real screening support.",
-                link: "/travel-guide/ijen-health-screening",
+                desc: "Mandatory certified clinic checks for Ijen. You must be medically cleared for altitude and sulfur exposure. No fake letters.",
+                link: "/verify-jvto",
                 linkText: "Read Health Proof"
               },
               {
                 icon: Scale,
                 title: "Operational Control",
-                desc: "JVTO works through named local crew, written inclusions, and direct operating responsibility instead of vague reseller handoffs.",
+                desc: "We are the operator, not a broker. We control the vehicles, the guides, and the safety decisions from start to finish.",
                 link: "/why-jvto",
                 linkText: "Why This Matters"
               }
@@ -205,19 +147,19 @@ export default function TravelGuide() {
                 title: "Ijen Crater Guide",
                 desc: "Logistics for the blue fire, health screening requirements, and gas mask protocols.",
                 link: "/travel-guide/ijen-health-screening",
-                img: "https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+                img: "https://picsum.photos/seed/ijen/800/600"
               },
               {
                 title: "Mount Bromo Guide",
                 desc: "Jeep logistics, sunrise timing, and altitude preparation for the Bromo caldera.",
                 link: "/travel-guide/mount-bromo-logistics",
-                img: "https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+                img: "https://picsum.photos/seed/bromo/800/600"
               },
               {
                 title: "Tumpak Sewu Guide",
                 desc: "Trekking logistics, footwear requirements, and safety for the waterfall descent.",
                 link: "/travel-guide/tumpak-sewu-logistics",
-                img: "https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+                img: "https://picsum.photos/seed/tumpak/800/600"
               }
             ].map((item, idx) => (
               <Link key={idx} href={item.link} className="group relative aspect-[4/5] overflow-hidden rounded-[4rem] bg-stone-200 shadow-xl">
@@ -226,7 +168,6 @@ export default function TravelGuide() {
                   alt={item.title}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-olive via-brand-olive/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-12">
@@ -290,7 +231,7 @@ export default function TravelGuide() {
               {
                 num: "01",
                 title: "Verify Your Operator",
-                desc: "Check for a real NIB license and documented safety context. Don&apos;t book with unlicensed brokers."
+                desc: "Check for a real NIB license and police-led safety oversight. Don&apos;t book with unlicensed brokers."
               },
               {
                 num: "02",
@@ -331,11 +272,10 @@ export default function TravelGuide() {
       <section className="py-40 bg-brand-olive text-white rounded-t-[5rem] shadow-2xl shadow-brand-olive/20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="https://javavolcano-touroperator.com/assets/img/hero/home.webp"
+            src="https://picsum.photos/seed/guide-cta/1920/1080"
             alt="Background"
             fill
             className="object-cover"
-            unoptimized
           />
         </div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
